@@ -3,102 +3,175 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp">
+        android:layout_above="@id/divider"
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/log_campaign_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nothing to show." />
-        <!--Night of the Zealot-->
         <LinearLayout
-            android:id="@+id/night_log"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/log_house_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Your house is still standing."
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/log_ghoul_priest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="The Ghoul Priest is still alive."
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/log_lita_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lita was forced to find others to help her cause."
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/log_midnight_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="It is past midnight."
-                android:visibility="gone" />
-
             <LinearLayout
-                android:id="@+id/cultists_view"
+                android:id="@+id/setup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:visibility="gone">
 
-                <LinearLayout
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:paddingBottom="16dp"
+                    android:text="Setup"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Cultists interrogated: " />
-
-                    <TextView
-                        android:id="@+id/cultists_interrogated"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                </LinearLayout>
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/sets"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:paddingBottom="4dp"
+                    android:text="Sets" />
+
+                <TextView
+                    android:id="@+id/starting_locations"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="4dp"
+                    android:text="Starting locations" />
+
+                <TextView
+                    android:id="@+id/set_aside"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="4dp"
+                    android:text="Set aside" />
+
+                <TextView
+                    android:id="@+id/additional_instructions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Additional instructions" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/setup"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="16dp"
+                    android:text="Campaign Log"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/log_campaign_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nothing to show." />
+                <!--Night of the Zealot-->
+                <LinearLayout
+                    android:id="@+id/night_log"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:id="@+id/log_house_status"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Cultists got away: " />
+                        android:text="Your house is still standing."
+                        android:visibility="gone" />
 
                     <TextView
-                        android:id="@+id/cultists_got_away"
-                        android:layout_width="0dp"
+                        android:id="@+id/log_ghoul_priest"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:text="The Ghoul Priest is still alive."
+                        android:visibility="gone" />
 
+                    <TextView
+                        android:id="@+id/log_lita_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lita was forced to find others to help her cause."
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/log_midnight_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="It is past midnight."
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/cultists_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Cultists interrogated: " />
+
+                            <TextView
+                                android:id="@+id/cultists_interrogated"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Cultists got away: " />
+
+                            <TextView
+                                android:id="@+id/cultists_got_away"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+    </ScrollView>
 
-    </LinearLayout>
+    <TextView
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@id/continue_button"
+        android:background="?android:attr/listDivider" />
 
     <TextView
         android:id="@+id/continue_button"

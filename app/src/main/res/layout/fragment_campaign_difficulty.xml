@@ -8,11 +8,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingTop="16dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
         android:text="TO BE IMPLEMENTED"/>
 </LinearLayout>
+
     <TextView
+        android:id="@+id/continue_button"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -21,4 +23,10 @@
         android:text="Continue"
         android:clickable="true"
         android:onClick="continue"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="?android:attr/listDivider"
+        android:id="@+id/divider"
+        android:layout_above="@id/continue_button"/>
 </RelativeLayout>

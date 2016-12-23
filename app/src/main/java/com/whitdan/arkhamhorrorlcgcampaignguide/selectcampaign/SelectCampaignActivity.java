@@ -18,7 +18,17 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamDbHelper;
 Main Activity - Allows the user to select a campaign to start.
  */
 
+/*
+    TODO: Investigator death
+    TODO: Investigator exclusivity
+    TODO: Players jumping in and out
+    TODO: Extra scenarios
+ */
+
 public class SelectCampaignActivity extends AppCompatActivity {
+
+    private CampaignsListAdapter campaignsListAdapter;
+    private Cursor campaigns;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,19 +40,22 @@ public class SelectCampaignActivity extends AppCompatActivity {
         // Get access to the underlying writeable database
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         // Query for items from the database and get a cursor back
-        Cursor campaigns = db.rawQuery("SELECT  * FROM " + ArkhamContract.CampaignEntry.TABLE_NAME, null);
+        campaigns = db.rawQuery("SELECT  * FROM " + ArkhamContract.CampaignEntry.TABLE_NAME, null);
         // Find ListView to populate
         ListView campaignItems = (ListView) findViewById(R.id.saved_campaigns);
         // Setup cursor adapter using cursor from last step
-        CampaignsListAdapter campaignsListAdapter = new CampaignsListAdapter(this, campaigns);
-        CampaignsOnClickListener campaignsOnClickListener = new CampaignsOnClickListener((GlobalVariables) this.getApplication(), this);
+        campaignsListAdapter = new CampaignsListAdapter(this, campaigns);
+        CampaignsOnClickListener campaignsOnClickListener = new CampaignsOnClickListener((GlobalVariables) this
+                .getApplication(), this);
+        CampaignsOnLongClickListener campaignsOnLongClickListener = new CampaignsOnLongClickListener(this);
         // Attach cursor adapter to the ListView
         campaignItems.setAdapter(campaignsListAdapter);
         campaignItems.setOnItemClickListener(campaignsOnClickListener);
+        campaignItems.setOnItemLongClickListener(campaignsOnLongClickListener);
     }
 
     // Starts a Night of the Zealot campaign
-    public void startNight(View v){
+    public void startNight(View v) {
         // Set current campaign to Night of the Zealot (id = 1)
         ((GlobalVariables) this.getApplication()).setCurrentCampaign(1);
         // Set current scenario to setup (id = 0)
@@ -51,4 +64,7 @@ public class SelectCampaignActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CampaignSetupActivity.class);
         startActivity(intent);
     }
+
+    public CampaignsListAdapter getCampaignsListAdapter(){return campaignsListAdapter;}
+    public Cursor getCampaignsCursor(){return campaigns;}
 }

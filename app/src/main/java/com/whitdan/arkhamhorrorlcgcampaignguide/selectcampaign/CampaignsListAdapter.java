@@ -38,7 +38,19 @@ public class CampaignsListAdapter extends CursorAdapter {
         int currentScenario = cursor.getInt(cursor.getColumnIndexOrThrow(ArkhamContract.CampaignEntry.COLUMN_CURRENT_SCENARIO));
         // Populate fields with extracted properties
         campaignNameView.setText(campaignName);
-        currentCampaignView.setText("Current campaign: " + currentCampaign);
-        currentScenarioView.setText("Current scenario: " + currentScenario);
+        if(currentCampaign==1){
+            currentCampaignView.setText("Night of the Zealot");
+            switch(currentScenario){
+                case 1:
+                    currentScenarioView.setText("One - The Gathering");
+                    break;
+                case 2:
+                    currentScenarioView.setText("Two - The Midnight Masks");
+                    break;
+                case 3:
+                    currentScenarioView.setText("Three - The Devourer Below");
+                    break;
+            }
+        }
     }
 }

@@ -14,25 +14,31 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="60dp"
             android:clickable="true"
             android:gravity="center"
             android:onClick="startNight"
+            android:background="@color/colorPrimaryLight"
+            android:textColor="@android:color/white"
             android:text="Night of the Zealot" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="60dp"
             android:gravity="center"
+            android:background="@color/colorDunwich"
+            android:textColor="@android:color/white"
             android:text="The Dunwich Legacy [inactive]" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="48dp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:text = "Saved Campaigns"
             android:gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="?android:attr/listDivider"/>
     </LinearLayout>
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"

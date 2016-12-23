@@ -4,6 +4,12 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="?android:attr/listDivider"
+        android:id="@+id/divider"
+        android:layout_above="@id/continue_button"/>
+    <TextView
         android:id="@+id/continue_button"
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -16,15 +22,15 @@
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/continue_button"
+        android:layout_above="@id/divider"
         android:fillViewport="true"        >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,6 +41,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:paddingLeft="8dp"
                 android:text="Victory display: " />
 
             <Spinner
@@ -62,6 +69,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
                 android:text="Cultists interrogated: " />
 
             <LinearLayout
@@ -128,12 +136,12 @@
             android:id="@+id/resolution_selection"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="@dimen/activity_horizontal_margin" />
 
         <TextView
             android:id="@+id/resolution_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="@dimen/activity_horizontal_margin" />
     </LinearLayout></ScrollView>
 </RelativeLayout>

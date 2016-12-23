@@ -6,8 +6,9 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin">
         <EditText
             android:id="@+id/campaign_name"
             android:layout_width="match_parent"
@@ -17,24 +18,31 @@
             android:id="@+id/investigator_one"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="@dimen/activity_horizontal_margin"/>
         <Spinner
             android:id="@+id/investigator_two"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="@dimen/activity_horizontal_margin"/>
         <Spinner
             android:id="@+id/investigator_three"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="@dimen/activity_horizontal_margin"/>
         <Spinner
             android:id="@+id/investigator_four"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="@dimen/activity_horizontal_margin"/>
     </LinearLayout>
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="?android:attr/listDivider"
+        android:id="@+id/divider"
+        android:layout_above="@id/continue_button"/>
+    <TextView
+        android:id="@+id/continue_button"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="48dp"

@@ -21,9 +21,88 @@ public class LogFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_log, container, false);
 
         GlobalVariables globalVariables = ((GlobalVariables) this.getActivity().getApplication());
+
+        // Set setup instructions if on setup
+        if (globalVariables.getScenarioStage() == 1) {
+            LinearLayout setup = (LinearLayout) v.findViewById(R.id.setup);
+            TextView sets = (TextView) v.findViewById(R.id.sets);
+            TextView setAside = (TextView) v.findViewById(R.id.set_aside);
+            TextView locations = (TextView) v.findViewById(R.id.starting_locations);
+            TextView additional = (TextView) v.findViewById(R.id.additional_instructions);
+            setup.setVisibility(VISIBLE);
+
+            switch (globalVariables.getCurrentScenario()) {
+                case 1:
+                    sets.setText(R.string.gathering_sets);
+                    setAside.setText(R.string.gathering_set_aside);
+                    locations.setText(R.string.gathering_locations);
+                    additional.setVisibility(GONE);
+                    break;
+                case 2:
+                    sets.setText(R.string.midnight_sets);
+                    setAside.setText(R.string.midnight_set_aside);
+                    if (globalVariables.getHouseStanding() == 1) {
+                        locations.setText(R.string.midnight_locations);
+                    } else {
+                        locations.setText(R.string.midnight_locations_no_house);
+                    }
+                    StringBuilder midnightAdditionalBuilder = new StringBuilder();
+                    switch(globalVariables.investigators.size()){
+                        case 1:
+                            break;
+                        case 2:
+                            midnightAdditionalBuilder.append(getString(R.string.midnight_additional_two));
+                            break;
+                        case 3:
+                            midnightAdditionalBuilder.append(getString(R.string.midnight_additional_three));
+                            break;
+                        case 4:
+                            midnightAdditionalBuilder.append(getString(R.string.midnight_additional_four));
+                            break;
+                    }
+                    if(globalVariables.getGhoulPriestAlive()==1){
+                        midnightAdditionalBuilder.append(getString(R.string.ghoul_priest_additional));
+                    }
+                    String midnightAdditional = midnightAdditionalBuilder.toString();
+                    additional.setText(midnightAdditional);
+                    break;
+                case 3:
+                    sets.setText(R.string.devourer_sets);
+                    setAside.setText(R.string.devourer_set_aside);
+                    locations.setText(R.string.devourer_locations);
+                    StringBuilder devouringAdditionalBuilder = new StringBuilder();
+                    switch(globalVariables.getCultistsInterrogated()){
+                        case 0:
+                            break;
+                        case 1:case 2:
+                            devouringAdditionalBuilder.append(getString(R.string.devourer_cultists_one));
+                            break;
+                        case 3:case 4:
+                            devouringAdditionalBuilder.append(getString(R.string.devourer_cultists_two));
+                            break;
+                        case 5:case 6:
+                            devouringAdditionalBuilder.append(getString(R.string.devourer_cultists_three));
+                            break;
+                    }
+                    if(globalVariables.getMidnightStatus()==1){
+                        devouringAdditionalBuilder.append(getString(R.string.devourer_additional_midnight));
+                    }
+                    if(globalVariables.getGhoulPriestAlive()==1){
+                        devouringAdditionalBuilder.append(getString(R.string.ghoul_priest_additional));
+                    }
+                    String devouringAdditional = devouringAdditionalBuilder.toString();
+                    additional.setText(devouringAdditional);
+                    break;
+            }
+        }
+
         // Set nothing to show if on first scenario
-        if (globalVariables.getCurrentScenario() == 1) {
-        } else {
+        if (globalVariables.getCurrentScenario() == 1)
+
+        {
+        } else
+
+        {
             TextView campaignStart = (TextView) v.findViewById(R.id.log_campaign_start);
             campaignStart.setVisibility(GONE);
         }
@@ -31,7 +110,9 @@ public class LogFragment extends Fragment {
         /*
         Night of the Zealot log
          */
-        if (globalVariables.getCurrentCampaign() == 1) {
+        if (globalVariables.getCurrentCampaign() == 1)
+
+        {
             // First scenario log
             if (globalVariables.getCurrentScenario() > 1) {
                 // Set house status
@@ -66,40 +147,34 @@ public class LogFragment extends Fragment {
                 cultistsView.setVisibility(VISIBLE);
                 StringBuilder cultistsInterrogated = new StringBuilder();
                 StringBuilder cultistsGotAway = new StringBuilder();
-                if(globalVariables.getDrewInterrogated()==1){
+                if (globalVariables.getDrewInterrogated() == 1) {
                     cultistsInterrogated.append("'Wolf-Man' Drew\n");
-                }
-                else{
+                } else {
                     cultistsGotAway.append("'Wolf-Man' Drew\n");
                 }
-                if(globalVariables.getPeterInterrogated()==1){
+                if (globalVariables.getPeterInterrogated() == 1) {
                     cultistsInterrogated.append("Peter Warren\n");
-                }
-                else{
+                } else {
                     cultistsGotAway.append("Peter Warren\n");
                 }
-                if(globalVariables.getHermanInterrogated()==1){
+                if (globalVariables.getHermanInterrogated() == 1) {
                     cultistsInterrogated.append("Herman Collins\n");
-                }
-                else{
+                } else {
                     cultistsGotAway.append("Herman Collins\n");
                 }
-                if(globalVariables.getRuthInterrogated()==1){
+                if (globalVariables.getRuthInterrogated() == 1) {
                     cultistsInterrogated.append("Ruth Turner\n");
-                }
-                else{
+                } else {
                     cultistsGotAway.append("Ruth Turner\n");
                 }
-                if(globalVariables.getVictoriaInterrogated()==1){
+                if (globalVariables.getVictoriaInterrogated() == 1) {
                     cultistsInterrogated.append("Victoria Devereux\n");
-                }
-                else{
+                } else {
                     cultistsGotAway.append("Victoria Devereux\n");
                 }
-                if(globalVariables.getMaskedInterrogated()==1){
+                if (globalVariables.getMaskedInterrogated() == 1) {
                     cultistsInterrogated.append("The Masked Hunter\n");
-                }
-                else{
+                } else {
                     cultistsGotAway.append("The Masked Hunter\n");
                 }
                 String allCultistsInterrogated = cultistsInterrogated.toString();
@@ -113,7 +188,11 @@ public class LogFragment extends Fragment {
 
         // Set button click listener
         TextView button = (TextView) v.findViewById(R.id.continue_button);
-        button.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity()));
+        button.setOnClickListener(new
+
+                ContinueOnClickListener(globalVariables, this.getActivity()
+
+        ));
 
         return v;
     }

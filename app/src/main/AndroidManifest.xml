@@ -6,7 +6,7 @@
         android:name=".GlobalVariables"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Arkham Horror LCG"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".selectcampaign.SelectCampaignActivity">
@@ -16,9 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".campaignsetup.CampaignSetupActivity" />
-        <activity android:name=".scenariosetup.ScenarioSetupActivity" />
-        <activity android:name=".finishscenario.FinishScenarioActivity" />
+        <activity android:name=".campaignsetup.CampaignSetupActivity"
+            android:windowSoftInputMode="adjustNothing"
+            android:parentActivityName=".selectcampaign.SelectCampaignActivity"/>
+        <activity android:name=".scenariosetup.ScenarioSetupActivity"
+            android:parentActivityName=".selectcampaign.SelectCampaignActivity"/>
+        <activity android:name=".finishscenario.FinishScenarioActivity"
+            android:parentActivityName=".selectcampaign.SelectCampaignActivity"/>
     </application>
 
 </manifest>

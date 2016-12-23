@@ -4,14 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_horizontal_margin">
 
     <TextView
         android:id="@+id/investigator_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:textAllCaps="true"
         android:textStyle="bold" />
 
@@ -21,13 +22,16 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="200dp"
+            android:layout_width="0dp"
+            android:layout_weight="4"
             android:layout_height="wrap_content"
             android:text="Physical Trauma:" />
 
         <TextView
             android:id="@+id/investigator_damage"
-            android:layout_width="wrap_content"
+            android:paddingLeft="8dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
@@ -37,13 +41,16 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="200dp"
+            android:layout_width="0dp"
+            android:layout_weight="4"
             android:layout_height="wrap_content"
             android:text="Mental Trauma:" />
 
         <TextView
             android:id="@+id/investigator_horror"
-            android:layout_width="wrap_content"
+            android:paddingLeft="8dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
@@ -53,13 +60,16 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="200dp"
+            android:layout_width="0dp"
+            android:layout_weight="4"
             android:layout_height="wrap_content"
             android:text="Available XP:" />
 
         <TextView
             android:id="@+id/investigator_xp_available"
-            android:layout_width="wrap_content"
+            android:paddingLeft="8dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
@@ -71,13 +81,15 @@
         android:visibility="gone">
 
         <TextView
-            android:layout_width="200dp"
+            android:layout_width="0dp"
+            android:layout_weight="4"
             android:layout_height="wrap_content"
             android:text="XP Spent:" />
 
         <Spinner
             android:id="@+id/investigator_xp_spent"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
@@ -89,13 +101,15 @@
         android:visibility="gone">
 
         <TextView
-            android:layout_width="200dp"
+            android:layout_width="0dp"
+            android:layout_weight="3"
             android:layout_height="wrap_content"
             android:text="Defeated:" />
 
         <Spinner
             android:id="@+id/investigator_defeated"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="2"
             android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>

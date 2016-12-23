@@ -44,6 +44,12 @@
         savaged and half-eaten. The police and newspapers have stated that wild animals are
         responsible, but you believe there is something else going on. You are gathered together at
         the lead investigator\'s home to discuss these bizarre events.</string>
+    <string name="gathering_sets">Gather all the cards from the following encounter sets:\n
+    The Gathering, Rats, Ghouls, Striking Fear, Ancient Evils, and Chilling Cold.</string>
+    <string name="gathering_locations">Put the Study location into play.</string>
+    <string name="gathering_set_aside">Set aside all other locations, the Ghoul Priest and Lita Chantler.\n</string>
+    <string name="gathering_additional">No changes are made.</string>
+
     <string name="gathering_no_resolution">You barely managed to escape your house with your lives.
     The woman from your parlor follows you out the front door, slamming it behind her. \"You fools!
     See what you have done?\" She pushes a chair in front of the door, lodging it beneath the
@@ -96,6 +102,32 @@
     animals to protect their identities from one another. These masks are our mark. Symbols of death
     and decay. We must unmask the cultists to expose and derail their plans. We have but a few hours.
     The more cultists we find before midnight, the better.\"</string>
+
+    <string name="midnight_sets">Gather all cards from the following encounter sets:\n
+    The Midnight Masks, Chilling Cold, Nightgaunts, Dark Cult, and Locked Doors.</string>
+    <string name="midnight_set_aside">Set aside the Cult of Umordhoth encounter set as a separate \"Cultist
+        Deck\".</string>
+    <string name="midnight_locations">Choose one of the two Downtown locations and one of the two Southside
+        locations at random and put them into play. Remove the other versions of Downtown and Southside from
+        the game. Then, put the Northside, Easttown, Rivertown, St. Mary\'s Hospital, Graveyard, Miskatonic
+        University, and Your House locations into play.\n
+    Every investigator begins play at Your House.</string>
+    <string name="midnight_locations_no_house">Choose one of the two Downtown locations and one of the two Southside
+        locations at random and put them into play. Remove the other versions of Downtown and Southside from
+        the game. Then, put the Northside, Easttown, Rivertown, St. Mary\'s Hospital, Graveyard, and Miskatonic
+        University locations into play.\n
+        Remove Your House from the game.\n
+    Every investigator begins play at Rivertown.</string>
+    <string name="midnight_additional_one">No changes are made.\n</string>
+    <string name="midnight_additional_two">Search the gathered encounter sets for 1 copy of Acolyte and spawn
+        it at Southside.\n</string>
+    <string name="midnight_additional_three">Search the gathered encounter sets for 2 copies of Acolyte. Spawn
+        1 at Southside and 1 at Downtown.\n</string>
+    <string name="midnight_additional_four">Search the gathered encounter sets for 3 copies of Acolyte. Spawn
+        1 at Southside,  1 at Downtown, and 1 at the Graveyard.\n</string>
+
+    <string name="ghoul_priest_additional">Shuffle the Ghoul Priest into the encounter deck.\n</string>
+
     <string name="midnight_resolution_one">You\'ve managed to obtain some useful information about
     the cult and its plans. You can only hope it\'s enough.</string>
     <string name="midnight_resolution_two">Twelve bells ring out, signaling midnight. You\'re out
@@ -117,6 +149,24 @@
     dark master into this world. \"If the cult is not stopped,\" Lita warns, \"there is a possibility
     that Umordhoth\'s vengeance will consume all in its path.\" Frightened but determined to stop
     the ritual, you head into the woods...</string>
+
+    <string name="devourer_sets">Gather all cards from the following encounter sets:\n
+    The Devourer Below, Ancient Evils, Striking Fear, Ghouls, and Dark Cult.\n
+    Randomly choose one of the following 4 encounter sets:\n
+    Agents of Yog-Sothoth, Agents of Shub-Niggurath, Agents of Cthulhu, or Agents of Hastur.</string>
+    <string name="devourer_set_aside">Set aside the Ritual Site and Umordhoth cards.</string>
+    <string name="devourer_locations">Put the Main Path location into play. Shuffle the 6 copies of Arkham
+        Woods, choose 4 of them at random, and put them into play without looking at their revealed sides.
+        Remove the other 2 from the game. Each investigator begins play at the Main Path.</string>
+    <string name="devourer_additional">Add 1 Elder Thing chaos token to the chaos bag for the remainder of the
+        campaign.\n</string>
+    <string name="devourer_additional_midnight">Each player discards 2 random cards from his or her starting
+        hand.\n</string>
+    <string name="devourer_cultists_none">No changes are made.\n</string>
+    <string name="devourer_cultists_one">Place 1 doom on Agenda 1a.\n</string>
+    <string name="devourer_cultists_two">Place 2 doom on Agenda 1a.\n</string>
+    <string name="devourer_cultists_three">Place 3 doom on Agenda 1a.\n</string>
+
     <string name="devourer_no_resolution">Too frightened to face her fate, Lita flees into the night.
     She realizes that she has failed and Umordhoth\'s vengeance will pursue her wherever she goes.
     The creature\'s tendrils spread throughout the city of Arkham, searching for her. It lurks in the
