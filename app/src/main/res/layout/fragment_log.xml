@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp">
+
+        <TextView
+            android:id="@+id/log_campaign_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nothing to show." />
+        <!--Night of the Zealot-->
+        <LinearLayout
+            android:id="@+id/night_log"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/log_house_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your house is still standing."
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/log_ghoul_priest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The Ghoul Priest is still alive."
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/log_lita_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lita was forced to find others to help her cause."
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/log_midnight_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="It is past midnight."
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/cultists_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Cultists interrogated: " />
+
+                    <TextView
+                        android:id="@+id/cultists_interrogated"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Cultists got away: " />
+
+                    <TextView
+                        android:id="@+id/cultists_got_away"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/continue_button"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="Continue"
+        android:textAllCaps="true" />
+</RelativeLayout>
