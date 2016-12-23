@@ -44,11 +44,11 @@
         savaged and half-eaten. The police and newspapers have stated that wild animals are
         responsible, but you believe there is something else going on. You are gathered together at
         the lead investigator\'s home to discuss these bizarre events.</string>
+
     <string name="gathering_sets">Gather all the cards from the following encounter sets:\n
-    The Gathering, Rats, Ghouls, Striking Fear, Ancient Evils, and Chilling Cold.</string>
-    <string name="gathering_locations">Put the Study location into play.</string>
+    \nThe Gathering, Rats, Ghouls, Striking Fear, Ancient Evils, and Chilling Cold.\n</string>
+    <string name="gathering_locations">Put the Study location into play.\n</string>
     <string name="gathering_set_aside">Set aside all other locations, the Ghoul Priest and Lita Chantler.\n</string>
-    <string name="gathering_additional">No changes are made.</string>
 
     <string name="gathering_no_resolution">You barely managed to escape your house with your lives.
     The woman from your parlor follows you out the front door, slamming it behind her. \"You fools!
@@ -104,20 +104,20 @@
     The more cultists we find before midnight, the better.\"</string>
 
     <string name="midnight_sets">Gather all cards from the following encounter sets:\n
-    The Midnight Masks, Chilling Cold, Nightgaunts, Dark Cult, and Locked Doors.</string>
+    \nThe Midnight Masks, Chilling Cold, Nightgaunts, Dark Cult, and Locked Doors.\n</string>
     <string name="midnight_set_aside">Set aside the Cult of Umordhoth encounter set as a separate \"Cultist
-        Deck\".</string>
+        Deck\".\n</string>
     <string name="midnight_locations">Choose one of the two Downtown locations and one of the two Southside
         locations at random and put them into play. Remove the other versions of Downtown and Southside from
         the game. Then, put the Northside, Easttown, Rivertown, St. Mary\'s Hospital, Graveyard, Miskatonic
         University, and Your House locations into play.\n
-    Every investigator begins play at Your House.</string>
+    \nEvery investigator begins play at Your House.\n</string>
     <string name="midnight_locations_no_house">Choose one of the two Downtown locations and one of the two Southside
         locations at random and put them into play. Remove the other versions of Downtown and Southside from
         the game. Then, put the Northside, Easttown, Rivertown, St. Mary\'s Hospital, Graveyard, and Miskatonic
         University locations into play.\n
-        Remove Your House from the game.\n
-    Every investigator begins play at Rivertown.</string>
+        \nRemove Your House from the game.\n
+    \nEvery investigator begins play at Rivertown.\n</string>
     <string name="midnight_additional_one">No changes are made.\n</string>
     <string name="midnight_additional_two">Search the gathered encounter sets for 1 copy of Acolyte and spawn
         it at Southside.\n</string>
@@ -151,13 +151,13 @@
     the ritual, you head into the woods...</string>
 
     <string name="devourer_sets">Gather all cards from the following encounter sets:\n
-    The Devourer Below, Ancient Evils, Striking Fear, Ghouls, and Dark Cult.\n
-    Randomly choose one of the following 4 encounter sets:\n
-    Agents of Yog-Sothoth, Agents of Shub-Niggurath, Agents of Cthulhu, or Agents of Hastur.</string>
-    <string name="devourer_set_aside">Set aside the Ritual Site and Umordhoth cards.</string>
+    \nThe Devourer Below, Ancient Evils, Striking Fear, Ghouls, and Dark Cult.\n
+    \nRandomly choose one of the following 4 encounter sets:\n
+    \nAgents of Yog-Sothoth, Agents of Shub-Niggurath, Agents of Cthulhu, or Agents of Hastur.\n</string>
+    <string name="devourer_set_aside">Set aside the Ritual Site and Umordhoth cards.\n</string>
     <string name="devourer_locations">Put the Main Path location into play. Shuffle the 6 copies of Arkham
         Woods, choose 4 of them at random, and put them into play without looking at their revealed sides.
-        Remove the other 2 from the game. Each investigator begins play at the Main Path.</string>
+        Remove the other 2 from the game. Each investigator begins play at the Main Path.\n</string>
     <string name="devourer_additional">Add 1 Elder Thing chaos token to the chaos bag for the remainder of the
         campaign.\n</string>
     <string name="devourer_additional_midnight">Each player discards 2 random cards from his or her starting

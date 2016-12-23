@@ -36,21 +36,18 @@
                     android:id="@+id/sets"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="4dp"
                     android:text="Sets" />
 
                 <TextView
                     android:id="@+id/starting_locations"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="4dp"
                     android:text="Starting locations" />
 
                 <TextView
                     android:id="@+id/set_aside"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="4dp"
                     android:text="Set aside" />
 
                 <TextView
@@ -58,20 +55,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Additional instructions" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="?android:attr/listDivider" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/setup"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin">
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_horizontal_margin">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="16dp"
+                    android:paddingTop="@dimen/activity_horizontal_margin"
+                    android:paddingBottom="@dimen/activity_horizontal_margin"
                     android:text="Campaign Log"
                     android:textAllCaps="true"
                     android:textStyle="bold" />

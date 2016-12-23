@@ -64,7 +64,11 @@ public class LogFragment extends Fragment {
                         midnightAdditionalBuilder.append(getString(R.string.ghoul_priest_additional));
                     }
                     String midnightAdditional = midnightAdditionalBuilder.toString();
-                    additional.setText(midnightAdditional);
+                    if(midnightAdditionalBuilder.length() > 0){
+                    additional.setText(midnightAdditional);}
+                    else{
+                        additional.setVisibility(GONE);
+                    }
                     break;
                 case 3:
                     sets.setText(R.string.devourer_sets);
@@ -91,8 +95,11 @@ public class LogFragment extends Fragment {
                         devouringAdditionalBuilder.append(getString(R.string.ghoul_priest_additional));
                     }
                     String devouringAdditional = devouringAdditionalBuilder.toString();
-                    additional.setText(devouringAdditional);
-                    break;
+                    if(devouringAdditionalBuilder.length() > 0){
+                        additional.setText(devouringAdditional);}
+                    else{
+                        additional.setVisibility(GONE);
+                    }                    break;
             }
         }
 
