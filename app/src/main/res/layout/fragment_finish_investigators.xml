@@ -7,37 +7,39 @@
         android:id="@+id/lead_investigator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin">
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Lead Investigator: "
+            android:layout_weight="1"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingBottom="@dimen/activity_horizontal_margin"/>
+            android:text="@string/lead_investigator" />
 
         <TextView
             android:id="@+id/lead_investigator_textview"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true" />
+            android:layout_weight="1" />
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="?android:attr/listDivider"
-        android:layout_below="@+id/lead_investigator"/>
+        android:layout_below="@+id/lead_investigator"
+        android:background="?android:attr/listDivider" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="?android:attr/listDivider"
         android:id="@+id/divider"
-        android:layout_above="@id/continue_button"/>
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@id/continue_button"
+        android:background="?android:attr/listDivider" />
+
     <TextView
         android:id="@+id/continue_button"
         android:layout_width="match_parent"
@@ -45,21 +47,15 @@
         android:layout_alignParentBottom="true"
         android:clickable="true"
         android:gravity="center"
-        android:text="Continue"
+        android:text="@string/continue_button"
         android:textAllCaps="true" />
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ListView
+        android:id="@+id/investigator_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_above="@id/divider"
         android:layout_below="@id/lead_investigator"
-        android:fillViewport="true">
+        android:orientation="vertical" />
 
-        <ListView
-            android:id="@+id/investigator_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
-
-    </ScrollView>
 </RelativeLayout>

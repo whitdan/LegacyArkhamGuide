@@ -4,11 +4,12 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="?android:attr/listDivider"
-        android:id="@+id/divider"
-        android:layout_above="@id/continue_button"/>
+        android:layout_above="@id/continue_button"
+        android:background="?android:attr/listDivider" />
+
     <TextView
         android:id="@+id/continue_button"
         android:layout_width="match_parent"
@@ -16,146 +17,152 @@
         android:layout_alignParentBottom="true"
         android:clickable="true"
         android:gravity="center"
-        android:text="Continue"
+        android:text="@string/continue_button"
         android:textAllCaps="true" />
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/divider"
-        android:fillViewport="true"        >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/activity_horizontal_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin">
+        android:fillViewport="true">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="8dp"
-                android:text="Victory display: " />
-
-            <Button
-                android:id="@+id/victory_decrement"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:text="-"/>
-            <TextView
-                android:id="@+id/victory_display"
-                android:layout_width="@dimen/activity_horizontal_margin"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin" />
-            <Button
-                android:id="@+id/victory_increment"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:text="+"/>
-
-
-        </LinearLayout>
-
-        <CheckBox
-            android:id="@+id/ghoul_priest_killed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ghoul Priest killed"
-            android:visibility="gone"/>
-
-        <LinearLayout
-            android:id="@+id/cultists_interrogated"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="gone"
-            android:paddingTop="8dp">
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin">
 
-            <TextView
+            <!--Victory display view-->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="8dp"
-                android:text="Cultists interrogated: " />
+                android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <CheckBox
-                    android:id="@+id/drew_interrogated"
+                <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="'Wolf-Man' Drew" />
+                    android:paddingLeft="8dp"
+                    android:text="@string/victory_display" />
 
-                <CheckBox
-                    android:id="@+id/herman_interrogated"
-                    android:layout_width="0dp"
+                <Button
+                    android:id="@+id/victory_decrement"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:text="@string/negative" />
+
+                <TextView
+                    android:id="@+id/victory_display"
+                    android:layout_width="@dimen/activity_horizontal_margin"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Herman Collins" />
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin" />
+
+                <Button
+                    android:id="@+id/victory_increment"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:text="@string/positive" />
+
+
             </LinearLayout>
 
-            <LinearLayout
+            <!--Night of the Zealot Ghoul Priest checkbox-->
+            <CheckBox
+                android:id="@+id/ghoul_priest_killed"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:text="@string/ghoul_priest_checkbox"
+                android:visibility="gone" />
 
-                <CheckBox
-                    android:id="@+id/peter_interrogated"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Peter Warren" />
+            <!--Night of the Zealot: Scenario Two - The Midnight Masks cultists interrogated view-->
+            <LinearLayout
+                android:id="@+id/cultists_interrogated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:visibility="gone">
 
-                <CheckBox
-                    android:id="@+id/victoria_interrogated"
-                    android:layout_width="0dp"
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Victoria Devereux" />
+                    android:paddingLeft="8dp"
+                    android:text="@string/cultists_interrogated" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <CheckBox
+                        android:id="@+id/drew_interrogated"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/drew" />
+
+                    <CheckBox
+                        android:id="@+id/herman_interrogated"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/herman" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <CheckBox
+                        android:id="@+id/peter_interrogated"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/peter" />
+
+                    <CheckBox
+                        android:id="@+id/victoria_interrogated"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/victoria" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <CheckBox
+                        android:id="@+id/ruth_interrogated"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/ruth" />
+
+                    <CheckBox
+                        android:id="@+id/masked_hunter_interrogated"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/masked_hunter" />
+                </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
+            <!--Resolution spinner-->
+            <Spinner
+                android:id="@+id/resolution_selection"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin" />
+
+            <TextView
+                android:id="@+id/resolution_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <CheckBox
-                    android:id="@+id/ruth_interrogated"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Ruth Turner" />
-
-                <CheckBox
-                    android:id="@+id/masked_hunter_interrogated"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="The Masked Hunter" />
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_horizontal_margin" />
         </LinearLayout>
-
-
-
-        <Spinner
-            android:id="@+id/resolution_selection"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_horizontal_margin" />
-
-        <TextView
-            android:id="@+id/resolution_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
-    </LinearLayout></ScrollView>
+    </ScrollView>
 </RelativeLayout>

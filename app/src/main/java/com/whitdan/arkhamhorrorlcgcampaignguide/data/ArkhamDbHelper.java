@@ -9,12 +9,15 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.Investigator
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.NightEntry;
 
 /**
- * Created by danie on 22/12/2016.
+ * Custom SQLiteOpenHelper that creates the tables defined in the contract.
+ * Currently there are three tables:
+ *          campaigns - contains all global variables
+ *          investigators - contains a row per investigator, with all relevant variables
+ *          night - contains all variables specific to the Night of the Zealot campaign
  */
 
 public class ArkhamDbHelper extends SQLiteOpenHelper {
 
-    public static final String LOG_TAG = ArkhamDbHelper.class.getSimpleName();
     private static final String DATABASE_NAME = "campaigns.db";
     private static final int DATABASE_VERSION = 1;
 
@@ -24,13 +27,18 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Create String that contain the SQL statements to create the necessary table
+        /*
+            Create Strings that contain the SQL statements to create the necessary tables
+         */
+
+        // Campaigns table
         String SQL_CREATE_CAMPAIGNS_TABLE =  "CREATE TABLE " + CampaignEntry.TABLE_NAME + " ("
                 + CampaignEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + CampaignEntry.COLUMN_CAMPAIGN_NAME + " STRING NOT NULL, "
                 + CampaignEntry.COLUMN_CURRENT_CAMPAIGN + " INTEGER NOT NULL, "
                 + CampaignEntry.COLUMN_CURRENT_SCENARIO + " INTEGER NOT NULL);";
 
+        // Investigators table
         String SQL_CREATE_INVESTIGATORS_TABLE = "CREATE TABLE " + InvestigatorEntry.TABLE_NAME + " ("
                 + InvestigatorEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + InvestigatorEntry.PARENT_ID + " INTEGER NOT NULL, "
@@ -41,6 +49,7 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
                 + InvestigatorEntry.COLUMN_INVESTIGATOR_HORROR + " INTEGER NOT NULL, "
                 + InvestigatorEntry.COLUMN_INVESTIGATOR_XP + " INTEGER NOT NULL);";
 
+        // Night of the Zealot table
         String SQL_CREATE_NIGHT_TABLE = "CREATE TABLE " + NightEntry.TABLE_NAME + " ("
                 + NightEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + NightEntry.PARENT_ID + " INTEGER NOT NULL, "

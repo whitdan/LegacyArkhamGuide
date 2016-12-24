@@ -10,12 +10,12 @@ import java.util.ArrayList;
 
 public class GlobalVariables extends Application {
 
-    // Campaign ID (for SQL purposes)
+    // Campaign ID (in the SQLite database)
     private long mCampaignID;
     public void setCampaignID(long id){this.mCampaignID = id;}
     public long getCampaignID(){return mCampaignID;}
 
-    // Current campaign (1 = Night of the Zealot)
+    // Current campaign (1 = Night of the Zealot, 2 = Dunwich Legacy)
     private int mCurrentCampaign;
     public void setCurrentCampaign(int currentCampaign) {
         this.mCurrentCampaign = currentCampaign;

@@ -12,12 +12,12 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.R;
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract;
 
 /**
- * Created by danie on 22/12/2016.
+ * CursorAdapter to display all saved campaigns from the campaigns cursor.
  */
 
-public class CampaignsListAdapter extends CursorAdapter {
+class CampaignsListAdapter extends CursorAdapter {
 
-    public CampaignsListAdapter(Context context, Cursor cursor){
+    CampaignsListAdapter(Context context, Cursor cursor){
         super(context, cursor, 0);
     }
 
@@ -39,16 +39,16 @@ public class CampaignsListAdapter extends CursorAdapter {
         // Populate fields with extracted properties
         campaignNameView.setText(campaignName);
         if(currentCampaign==1){
-            currentCampaignView.setText("Night of the Zealot");
+            currentCampaignView.setText(R.string.night_campaign_name);
             switch(currentScenario){
                 case 1:
-                    currentScenarioView.setText("One - The Gathering");
+                    currentScenarioView.setText(R.string.night_scenario_one);
                     break;
                 case 2:
-                    currentScenarioView.setText("Two - The Midnight Masks");
+                    currentScenarioView.setText(R.string.night_scenario_two);
                     break;
                 case 3:
-                    currentScenarioView.setText("Three - The Devourer Below");
+                    currentScenarioView.setText(R.string.night_scenario_three);
                     break;
             }
         }

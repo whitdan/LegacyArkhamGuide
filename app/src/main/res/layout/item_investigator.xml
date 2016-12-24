@@ -25,7 +25,7 @@
             android:layout_width="0dp"
             android:layout_weight="4"
             android:layout_height="wrap_content"
-            android:text="Physical Trauma:" />
+            android:text="@string/physical_trauma" />
 
         <TextView
             android:id="@+id/investigator_damage"
@@ -46,7 +46,7 @@
             android:layout_width="0dp"
             android:layout_weight="4"
             android:layout_height="wrap_content"
-            android:text="Mental Trauma:" />
+            android:text="@string/mental_trauma" />
 
         <TextView
             android:id="@+id/investigator_horror"
@@ -55,7 +55,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:layout_marginRight="52dp" />
+            android:layout_marginRight="52dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -67,7 +67,7 @@
             android:layout_width="0dp"
             android:layout_weight="4"
             android:layout_height="wrap_content"
-            android:text="Available XP:" />
+            android:text="@string/available_xp" />
 
         <TextView
             android:id="@+id/investigator_xp_available"
@@ -76,9 +76,10 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:layout_marginRight="52dp" />
+            android:layout_marginRight="52dp"/>
     </LinearLayout>
 
+    <!--XP spent layout - only shown in scenario setup-->
     <LinearLayout
         android:id="@+id/xp_spent_layout"
         android:layout_width="match_parent"
@@ -87,19 +88,19 @@
         android:visibility="gone">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_weight="4"
             android:layout_height="wrap_content"
-            android:text="XP Spent:" />
+            android:text="@string/spent_xp" />
 
 
         <Button
             android:id="@+id/xp_decrement"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:text="-"/>
+            android:text="@string/negative"/>
         <TextView
-            android:gravity="right"
+            android:gravity="end"
             android:id="@+id/investigator_xp_spent"
             android:layout_width="@dimen/activity_horizontal_margin"
             android:layout_height="wrap_content"
@@ -109,10 +110,11 @@
             android:id="@+id/xp_increment"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:text="+"/>
+            android:text="@string/positive"/>
 
     </LinearLayout>
 
+    <!--Investigator defeated layout - only shown in scenario finish-->
     <LinearLayout
         android:id="@+id/defeated_layout"
         android:layout_width="match_parent"
@@ -122,14 +124,13 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="3"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Defeated:" />
+            android:text="@string/eliminated" />
 
         <Spinner
             android:id="@+id/investigator_defeated"
-            android:layout_width="0dp"
-            android:layout_weight="2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>

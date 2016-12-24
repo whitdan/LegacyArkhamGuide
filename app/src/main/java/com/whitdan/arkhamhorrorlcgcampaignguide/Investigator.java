@@ -7,51 +7,45 @@ package com.whitdan.arkhamhorrorlcgcampaignguide;
 public class Investigator {
 
     public Investigator(int investigator){
-        this.mStatus = 1;
         this.mName = investigator;
     }
 
-    public Investigator(){
-        this.mStatus = 1;
-    }
+    // Declaration for loading from SQLite database
+    public Investigator(){ }
 
+    // Basic attributes for all investigators
     private int mName;
-    private int mStatus = 0;    // 0 = not in use, 1 = in use, 2 = dead, 3 = resigned, 4 = health, 5 = horror
-    private int mTempStatus = 0;
+    private int mStatus = 1;    // 0 = not in use, 1 = in use, 2 = dead, 3 = resigned, 4 = health, 5 = horror
     private int mDamage = 0;
-    private int mTempDamage = 0;
     private int mHorror = 0;
-    private int mTempHorror = 0;
     private int mAvailableXP = 0;
+
+    // Temp variables for when a change might be pending clicking the continue button
     private int mTempXP = 0;
+    private int mTempStatus = 0;
 
     public void setName(int name){mName = name;}
+    // Not yet used, but will be when investigator death is added
+    public void setStatus(int status){mStatus = status;}
 
-    public void setTempXP(int XP){
-        mTempXP = XP;}
+    // Changes to numerical values are made by adding the value passed
     public void changeXP(int XP){
         mAvailableXP += XP;}
-
-    public void setTempDamage(int damage){
-        mTempDamage = damage;}
     public void changeDamage(int damage){
         mDamage += damage;}
-
-    public void setTempHorror(int horror){
-        mTempHorror = horror;}
     public void changeHorror(int horror){
         mHorror += horror;}
 
-    public void setTempStatus(int status){mTempStatus = status;}
-    public void setStatus(int status){mStatus = status;}
+    void setTempStatus(int status){mTempStatus = status;}
+    int getTempStatus(){return mTempStatus;}
+
+    void setTempXP(int XP){
+        mTempXP = XP;}
+    int getTempXP(){return mTempXP;}
 
     public int getName(){return mName;}
-    public int getStatus(){return mStatus;}
-    public int getTempStatus(){return mTempStatus;}
-    public int getDamage(){return mDamage;}
-    public int getTempDamage(){return mTempDamage;}
-    public int getHorror(){return mHorror;}
-    public int getTempHorror(){return mTempHorror;}
-    public int getAvailableXP(){return mAvailableXP;}
-    public int getTempXP(){return mTempXP;}
+    int getStatus(){return mStatus;}
+    int getDamage(){return mDamage;}
+    int getHorror(){return mHorror;}
+    int getAvailableXP(){return mAvailableXP;}
 }

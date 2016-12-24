@@ -58,7 +58,7 @@ public class CampaignInvestigatorsFragment extends Fragment {
         // Need to pass the GlobalVariables to the listener to allow it to be changed below
         private GlobalVariables mGlobalVariables = (GlobalVariables) getActivity().getApplication();
 
-        // Sets the correct investigator using the below methods or deletes the investigator if none selected
+        // Sets the correct investigator
         public void onItemSelected(AdapterView<?> parent, View view,
                                    int pos, long id) {
             switch (parent.getId()) {

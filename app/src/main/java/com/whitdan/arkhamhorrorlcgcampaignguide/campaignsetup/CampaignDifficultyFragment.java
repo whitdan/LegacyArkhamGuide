@@ -18,7 +18,7 @@ public class CampaignDifficultyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_campaign_difficulty, container, false);
 
-        // Set button click listener
+        // Set click listener on continue button
         TextView button = (TextView) v.findViewById(R.id.continue_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

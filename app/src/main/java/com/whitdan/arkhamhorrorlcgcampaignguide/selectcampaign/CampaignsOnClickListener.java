@@ -16,27 +16,29 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamDbHelper;
 import com.whitdan.arkhamhorrorlcgcampaignguide.scenariosetup.ScenarioSetupActivity;
 
 /**
- * Created by danie on 22/12/2016.
+ * Loads a campaign from the ListView when clicked.
  */
 
-public class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
+class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
 
     private GlobalVariables globalVariables;
     private Context context;
 
-    public CampaignsOnClickListener(GlobalVariables global, Context con) {
+    CampaignsOnClickListener(GlobalVariables global, Context con) {
         globalVariables = global;
         context = con;
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        // Get access to readable SQL database
         ArkhamDbHelper dbHelper = new ArkhamDbHelper(context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
+        // Set selectionArgs as the campaign id of the campaign clicked on
         String[] selectionArgs = {Long.toString(id)};
 
-        // Update campaign variables
+        // Set the GlobalVariable campaign variables to the relevant values in the SQL database
         String[] campaignProjection = {
                 CampaignEntry._ID,
                 CampaignEntry.COLUMN_CURRENT_CAMPAIGN,
@@ -62,7 +64,7 @@ public class CampaignsOnClickListener implements AdapterView.OnItemClickListener
         }
         campaignCursor.close();
 
-        // Update investigators
+        // Set the relevant investigator variables from the SQL database
         String[] investigatorProjection = {
                 InvestigatorEntry.COLUMN_INVESTIGATOR_NAME,
                 InvestigatorEntry.COLUMN_INVESTIGATOR_DAMAGE,
@@ -97,54 +99,57 @@ public class CampaignsOnClickListener implements AdapterView.OnItemClickListener
         }
         investigatorCursor.close();
 
-        String[] nightProjection = {
-                NightEntry.COLUMN_HOUSE_STANDING,
-                NightEntry.COLUMN_GHOUL_PRIEST,
-                NightEntry.COLUMN_LITA_STATUS,
-                NightEntry.COLUMN_MIDNIGHT_STATUS,
-                NightEntry.COLUMN_CULTISTS_INTERROGATED,
-                NightEntry.COLUMN_DREW_INTERROGATED,
-                NightEntry.COLUMN_PETER_INTERROGATED,
-                NightEntry.COLUMN_HERMAN_INTERROGATED,
-                NightEntry.COLUMN_VICTORIA_INTERROGATED,
-                NightEntry.COLUMN_RUTH_INTERROGATED,
-                NightEntry.COLUMN_MASKED_INTERROGATED
-        };
-        String nightSelection = NightEntry.PARENT_ID + " = ?";
-        Cursor nightCursor = db.query(
-                NightEntry.TABLE_NAME,
-                nightProjection,
-                nightSelection,
-                selectionArgs,
-                null,
-                null,
-                null
-        );
-        while (nightCursor.moveToNext()) {
-            globalVariables.setHouseStanding(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
-                    .COLUMN_HOUSE_STANDING)));
-            globalVariables.setGhoulPriestAlive(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
-                    .COLUMN_GHOUL_PRIEST)));
-            globalVariables.setLitaStatus(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
-                    .COLUMN_LITA_STATUS)));
-            globalVariables.setMidnightStatus(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
-                    .COLUMN_MIDNIGHT_STATUS)));
-            globalVariables.setCultistsInterrogated(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
-                    .COLUMN_CULTISTS_INTERROGATED)));
-            globalVariables.setDrewInterrogated(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
-                    .COLUMN_DREW_INTERROGATED)));
-            globalVariables.setPeterInterrogated(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
-                    .COLUMN_PETER_INTERROGATED)));
-            globalVariables.setHermanInterrogated(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
-                    .COLUMN_HERMAN_INTERROGATED)));
-            globalVariables.setVictoriaInterrogated(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
-                    .COLUMN_VICTORIA_INTERROGATED)));
-            globalVariables.setRuthInterrogated(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
-                    .COLUMN_RUTH_INTERROGATED)));
-            globalVariables.setMaskedInterrogated(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
-                    .COLUMN_MASKED_INTERROGATED)));
+        // Set the relevant Night of the Zealot variables from the SQL database
+        if (globalVariables.getCurrentCampaign() == 1) {
+            String[] nightProjection = {
+                    NightEntry.COLUMN_HOUSE_STANDING,
+                    NightEntry.COLUMN_GHOUL_PRIEST,
+                    NightEntry.COLUMN_LITA_STATUS,
+                    NightEntry.COLUMN_MIDNIGHT_STATUS,
+                    NightEntry.COLUMN_CULTISTS_INTERROGATED,
+                    NightEntry.COLUMN_DREW_INTERROGATED,
+                    NightEntry.COLUMN_PETER_INTERROGATED,
+                    NightEntry.COLUMN_HERMAN_INTERROGATED,
+                    NightEntry.COLUMN_VICTORIA_INTERROGATED,
+                    NightEntry.COLUMN_RUTH_INTERROGATED,
+                    NightEntry.COLUMN_MASKED_INTERROGATED
+            };
+            String nightSelection = NightEntry.PARENT_ID + " = ?";
+            Cursor nightCursor = db.query(
+                    NightEntry.TABLE_NAME,
+                    nightProjection,
+                    nightSelection,
+                    selectionArgs,
+                    null,
+                    null,
+                    null
+            );
+            while (nightCursor.moveToNext()) {
+                globalVariables.setHouseStanding(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
+                        .COLUMN_HOUSE_STANDING)));
+                globalVariables.setGhoulPriestAlive(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
+                        .COLUMN_GHOUL_PRIEST)));
+                globalVariables.setLitaStatus(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
+                        .COLUMN_LITA_STATUS)));
+                globalVariables.setMidnightStatus(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
+                        .COLUMN_MIDNIGHT_STATUS)));
+                globalVariables.setCultistsInterrogated(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
+                        .COLUMN_CULTISTS_INTERROGATED)));
+                globalVariables.setDrewInterrogated(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
+                        .COLUMN_DREW_INTERROGATED)));
+                globalVariables.setPeterInterrogated(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
+                        .COLUMN_PETER_INTERROGATED)));
+                globalVariables.setHermanInterrogated(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
+                        .COLUMN_HERMAN_INTERROGATED)));
+                globalVariables.setVictoriaInterrogated(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
+                        .COLUMN_VICTORIA_INTERROGATED)));
+                globalVariables.setRuthInterrogated(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
+                        .COLUMN_RUTH_INTERROGATED)));
+                globalVariables.setMaskedInterrogated(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
+                        .COLUMN_MASKED_INTERROGATED)));
+            }
+            nightCursor.close();
         }
-        nightCursor.close();
 
         // Advance to scenario setup
         globalVariables.setScenarioStage(1);

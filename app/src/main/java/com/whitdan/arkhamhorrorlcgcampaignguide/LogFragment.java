@@ -36,7 +36,7 @@ public class LogFragment extends Fragment {
                     sets.setText(R.string.gathering_sets);
                     setAside.setText(R.string.gathering_set_aside);
                     locations.setText(R.string.gathering_locations);
-                    additional.setVisibility(GONE);
+                    additional.setText(R.string.gathering_additional);
                     break;
                 case 2:
                     sets.setText(R.string.midnight_sets);
@@ -49,6 +49,7 @@ public class LogFragment extends Fragment {
                     StringBuilder midnightAdditionalBuilder = new StringBuilder();
                     switch(globalVariables.investigators.size()){
                         case 1:
+                            midnightAdditionalBuilder.append(getString(R.string.midnight_additional_one));
                             break;
                         case 2:
                             midnightAdditionalBuilder.append(getString(R.string.midnight_additional_two));

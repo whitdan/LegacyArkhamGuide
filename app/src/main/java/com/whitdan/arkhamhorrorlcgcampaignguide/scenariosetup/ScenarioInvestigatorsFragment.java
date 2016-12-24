@@ -3,7 +3,6 @@ package com.whitdan.arkhamhorrorlcgcampaignguide.scenariosetup;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +14,14 @@ import android.widget.TextView;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.ContinueOnClickListener;
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
-import com.whitdan.arkhamhorrorlcgcampaignguide.R;
 import com.whitdan.arkhamhorrorlcgcampaignguide.InvestigatorsListAdapter;
+import com.whitdan.arkhamhorrorlcgcampaignguide.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by danie on 12/12/2016.
+ * Shows info for all of the investigators in use, and allows the selection of a lead investigator for the scenario.
  */
 
 public class ScenarioInvestigatorsFragment extends Fragment {
@@ -34,25 +33,30 @@ public class ScenarioInvestigatorsFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_scenario_investigators, container, false);
         globalVariables = (GlobalVariables) getActivity().getApplication();
 
-        // Setup spinner with investigators to select lead investigator
+        /*
+            Setup spinner with investigators to select lead investigator
+        */
+        // Get all investigator names from String array
         String[] allInvestigatorNames = getResources().getStringArray(R.array.investigators);
+        // Setup ArrayList and add the names of the investigators in use to it
         List<String> investigatorNames = new ArrayList<>();
         for (int i = 0; i < globalVariables.investigators.size(); i++) {
             int currentInvestigator = globalVariables.investigators.get(i).getName();
             investigatorNames.add(allInvestigatorNames[currentInvestigator]);
         }
+        // Find the relevant spinner and attach the adapter with the names to it and an OnItemSelectedListener
         Spinner leadInvestigator = (Spinner) v.findViewById(R.id.lead_investigator_spinner);
-        ArrayAdapter<String> leadInvestigatorAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, investigatorNames);
-        leadInvestigatorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> leadInvestigatorAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, investigatorNames);
         leadInvestigator.setAdapter(leadInvestigatorAdapter);
+        leadInvestigatorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         leadInvestigator.setOnItemSelectedListener(new ListenerLeadInvestigatorSpinner());
 
-        // Setup listview
+        // Setup ListView from the InvestigatorsListAdapter
         ListView listView = (ListView) v.findViewById(R.id.investigator_list);
         InvestigatorsListAdapter investigatorsAdapter = new InvestigatorsListAdapter(this.getActivity(), globalVariables.investigators, globalVariables);
         listView.setAdapter(investigatorsAdapter);
 
-        // Set button click listener
+        // Set click listener for continue button
         TextView button = (TextView) v.findViewById(R.id.continue_button);
         button.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity()));
 
@@ -62,18 +66,13 @@ public class ScenarioInvestigatorsFragment extends Fragment {
     // OnItemSelectedListener for the LeadInvestigatorSpinner
     private class ListenerLeadInvestigatorSpinner extends Activity implements AdapterView.OnItemSelectedListener {
 
-        // Sets the correct investigator using the below methods or deletes the investigator if none selected
+        // Sets the selected investigator as lead investigator
         public void onItemSelected(AdapterView<?> parent, View view,
                                    int pos, long id) {
             globalVariables.setLeadInvestigator(pos);
-            int currentLead = globalVariables.getLeadInvestigator();
-            Log.i("Test", "Current lead: " + currentLead);
         }
 
         public void onNothingSelected(AdapterView<?> parent) {
-            globalVariables.setLeadInvestigator(0);
-            int currentLead = globalVariables.getLeadInvestigator();
-            Log.i("Test", "Current lead: " + currentLead);
         }
     }
 }

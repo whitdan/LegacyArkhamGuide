@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.whitdan.arkhamhorrorlcgcampaignguide.selectcampaign.SelectCampaignActivity">
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/activity_campaign_select"
@@ -15,41 +14,38 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:background="@color/colorPrimaryLight"
             android:clickable="true"
             android:gravity="center"
             android:onClick="startNight"
-            android:background="@color/colorPrimaryLight"
-            android:textColor="@android:color/white"
-            android:text="Night of the Zealot" />
+            android:text="@string/night_campaign_name"
+            android:textColor="@android:color/white" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:gravity="center"
             android:background="@color/colorDunwich"
-            android:textColor="@android:color/white"
-            android:text="The Dunwich Legacy [inactive]" />
+            android:gravity="center"
+            android:text="@string/dunwich_campaign_name"
+            android:textColor="@android:color/white" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:text = "Saved Campaigns"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="@string/saved_campaigns" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="?android:attr/listDivider"/>
+            android:background="?android:attr/listDivider" />
+
     </LinearLayout>
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <ListView
+        android:id="@+id/saved_campaigns"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
 
-        <ListView
-            android:id="@+id/saved_campaigns"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-
-    </ScrollView>
 </LinearLayout>

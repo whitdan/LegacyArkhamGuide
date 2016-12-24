@@ -35,26 +35,34 @@ public class SelectCampaignActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_campaign);
 
-        // TodoDatabaseHandler is a SQLiteOpenHelper class connecting to SQLite
+        // Create a new dbHelper and get access to the SQLite Database
         ArkhamDbHelper dbHelper = new ArkhamDbHelper(this);
-        // Get access to the underlying writeable database
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        // Query for items from the database and get a cursor back
+
+        // Get a cursor from the database of all saved campaigns (and all columns of that campaign)
         campaigns = db.rawQuery("SELECT  * FROM " + ArkhamContract.CampaignEntry.TABLE_NAME, null);
-        // Find ListView to populate
+        // Find saved campaigns ListView
         ListView campaignItems = (ListView) findViewById(R.id.saved_campaigns);
-        // Setup cursor adapter using cursor from last step
+        // Setup and attach cursor adapter to the list to display all saved campaigns
         campaignsListAdapter = new CampaignsListAdapter(this, campaigns);
+        campaignItems.setAdapter(campaignsListAdapter);
+        // Setup and attach onItemClickListener to the ListView to allow resuming a campaign on click
         CampaignsOnClickListener campaignsOnClickListener = new CampaignsOnClickListener((GlobalVariables) this
                 .getApplication(), this);
-        CampaignsOnLongClickListener campaignsOnLongClickListener = new CampaignsOnLongClickListener(this);
-        // Attach cursor adapter to the ListView
-        campaignItems.setAdapter(campaignsListAdapter);
         campaignItems.setOnItemClickListener(campaignsOnClickListener);
+        // Setup and attach onItemLongClickListener to the ListView to allow deleting campaigns on long click
+        CampaignsOnLongClickListener campaignsOnLongClickListener = new CampaignsOnLongClickListener(this);
         campaignItems.setOnItemLongClickListener(campaignsOnLongClickListener);
     }
 
-    // Starts a Night of the Zealot campaign
+    // Close the cursor when the Activity is destroyed
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        campaigns.close();
+    }
+
+    // Starts a Night of the Zealot campaign [attached to xml onclick for the relevant button]
     public void startNight(View v) {
         // Set current campaign to Night of the Zealot (id = 1)
         ((GlobalVariables) this.getApplication()).setCurrentCampaign(1);
@@ -65,6 +73,18 @@ public class SelectCampaignActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /* Starts a Dunwich Legacy campaign [will be attached to xml onclick for the relevant button when released]
+    public void startDunwich(View v){
+        // Set current campaign to Dunwich Legacy (id = 2)
+        ((GlobalVariables) this.getApplication()).setCurrentCampaign(2);
+        // Set current scenario to setup (id = 0)
+        ((GlobalVariables) this.getApplication()).setCurrentScenario(0);
+        // Go to campaign setup
+        Intent intent = new Intent(this, CampaignSetupActivity.class);
+        startActivity(intent);
+    }
+
+    /* These exist to allow passing the adapter to the DeleteCampaignDialogFragment to allow refreshing
+        the ListView on delete */
     public CampaignsListAdapter getCampaignsListAdapter(){return campaignsListAdapter;}
-    public Cursor getCampaignsCursor(){return campaigns;}
 }

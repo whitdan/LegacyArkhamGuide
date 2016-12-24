@@ -25,7 +25,7 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamDbHelper;
 import com.whitdan.arkhamhorrorlcgcampaignguide.scenariosetup.ScenarioSetupActivity;
 
 /*
-Activity for campaign setup. Includes a tablayout and three fragments, for the campaign introduction,
+Activity for campaign setup. Includes a TabLayout and three fragments, for the campaign introduction,
 a difficulty selector, and investigator selector.
  */
 
@@ -35,17 +35,18 @@ public class CampaignSetupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_campaign_setup);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Find the view pager that will allow the user to swipe between fragments
+        // Setup back button
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        // Find the view pager that will allow the user to swipe between fragments and setup an adapter
         ViewPager viewPager = (ViewPager) findViewById(R.id.campaign_viewpager);
-
-        // Create an adapter that knows which fragment should be shown on each page
         CampaignSetupPagerAdapter adapter = new CampaignSetupPagerAdapter(getSupportFragmentManager());
-
-        // Set the adapter onto the view pager
         viewPager.setAdapter(adapter);
 
+        // Setup tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.campaign_sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
     }
@@ -62,8 +63,7 @@ public class CampaignSetupActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    // FragmentPagerAdapter for the CampaignSetupActivity fragments
+    // Allows swiping between the campaign setup fragments
     private class CampaignSetupPagerAdapter extends FragmentPagerAdapter {
 
         private CampaignSetupPagerAdapter(FragmentManager fm) {
@@ -98,7 +98,9 @@ public class CampaignSetupActivity extends AppCompatActivity {
         }
     }
 
-    // Increments the scenario, saves a new campaign, and moves to scenario setup
+    /*
+    Increments the scenario, saves a new campaign, and moves to scenario setup (called from xml onClick)
+     */
     public void startScenario(View v) {
         GlobalVariables globalVariables = (GlobalVariables) this.getApplication();
 
@@ -110,8 +112,9 @@ public class CampaignSetupActivity extends AppCompatActivity {
             }
         }
 
+        // Check that an investigator has been selected
         if (globalVariables.investigators.size() > 0) {
-            // Set current scenario to first scenario (id = 1)
+            // Set current scenario to first scenario and to scenario setup
             globalVariables.setCurrentScenario(1);
             globalVariables.setScenarioStage(1);
 
@@ -121,19 +124,25 @@ public class CampaignSetupActivity extends AppCompatActivity {
             // Go to scenario setup
             Intent intent = new Intent(this, ScenarioSetupActivity.class);
             startActivity(intent);
-        } else {
+        }
+        // Display an error and don't proceed if no investigator has been selected
+        else {
             Toast toast = Toast.makeText(this, "You must select an investigator.", Toast.LENGTH_SHORT);
             toast.show();
         }
     }
 
-    // Saves the new campaign to the database
+    /*
+     Saves a new campaign to the database (called from startScenario - included separately for neatness)
+      */
     public void newCampaign() {
+
+        // Get a writable database
         GlobalVariables globalVariables = (GlobalVariables) this.getApplication();
         ArkhamDbHelper dbHelper = new ArkhamDbHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        // Create campaign entry
+        // Create entry in campaigns table
         ContentValues campaignValues = new ContentValues();
         EditText campaignName = (EditText) findViewById(R.id.campaign_name);
         campaignValues.put(CampaignEntry.COLUMN_CAMPAIGN_NAME, campaignName.getText().toString().trim());
@@ -142,14 +151,14 @@ public class CampaignSetupActivity extends AppCompatActivity {
         long newCampaignId = db.insert(CampaignEntry.TABLE_NAME, null, campaignValues);
         globalVariables.setCampaignID(newCampaignId);
 
+        // Create entry in night table
         if (globalVariables.getCurrentCampaign() == 1) {
-            // Create night entry
             ContentValues nightValues = new ContentValues();
             nightValues.put(ArkhamContract.NightEntry.PARENT_ID, newCampaignId);
-            long newNightId = db.insert(ArkhamContract.NightEntry.TABLE_NAME, null, nightValues);
+            db.insert(ArkhamContract.NightEntry.TABLE_NAME, null, nightValues);
         }
 
-        // Create investigator entries
+        // Create entries for every investigator in the investigators table
         for (int i = 0; i < globalVariables.investigators.size(); i++) {
             ContentValues investigatorValues = new ContentValues();
             investigatorValues.put(ArkhamContract.InvestigatorEntry.PARENT_ID, newCampaignId);
@@ -160,7 +169,7 @@ public class CampaignSetupActivity extends AppCompatActivity {
             investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_DAMAGE, 0);
             investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_HORROR, 0);
             investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_XP, 0);
-            long newInvestigatorId = db.insert(ArkhamContract.InvestigatorEntry.TABLE_NAME, null, investigatorValues);
+            db.insert(ArkhamContract.InvestigatorEntry.TABLE_NAME, null, investigatorValues);
         }
     }
 }

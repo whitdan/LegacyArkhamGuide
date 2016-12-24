@@ -23,13 +23,14 @@ public class CampaignIntroFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_intro, container, false);
         globalVariables = (GlobalVariables) getActivity().getApplication();
 
+        // Set the introductory text, depending on the campaign
         TextView textView = (TextView) v.findViewById(R.id.introductory_text);
         if(globalVariables.getCurrentCampaign()==1)
         {
             textView.setText(R.string.night_setup);
         }
 
-        // Set button click listener
+        // Set click listener on the continue button
         TextView button = (TextView) v.findViewById(R.id.continue_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

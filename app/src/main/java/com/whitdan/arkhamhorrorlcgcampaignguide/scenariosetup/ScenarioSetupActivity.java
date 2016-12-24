@@ -14,32 +14,36 @@ import android.widget.Toast;
 import com.whitdan.arkhamhorrorlcgcampaignguide.LogFragment;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
 
+/*
+    Displays the relevant scenario setup fragments (Investigators, Intro and Setup)
+ */
+
 public class ScenarioSetupActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scenario_setup);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Find the view pager that will allow the user to swipe between fragments
+        // Setup back button
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        // Find the view pager that will allow the user to swipe between fragments and set the adapter onto it
         ViewPager viewPager = (ViewPager) findViewById(R.id.scenario_viewpager);
-
-        // Create an adapter that knows which fragment should be shown on each page
         ScenarioSetupPagerAdapter adapter = new ScenarioSetupPagerAdapter(getSupportFragmentManager());
-
-        // Set the adapter onto the view pager
         viewPager.setAdapter(adapter);
 
+        // Setup tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.scenario_sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
     }
 
-    // Enables up navigation
+    // Enables up navigation (goes back to home page - SelectCampaignActivity)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
@@ -47,13 +51,14 @@ public class ScenarioSetupActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    // Disable system back button [Might change this to work the same as the up button]
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         Toast toast = Toast.makeText(getApplicationContext(), "Cannot go back.", Toast.LENGTH_SHORT);
         toast.show();
     }
 
-    // FragmentPagerAdapter for the ScenarioSetupActivity fragments
+    // Allows swiping between the scenario setup fragments
     private class ScenarioSetupPagerAdapter extends FragmentPagerAdapter {
 
         private ScenarioSetupPagerAdapter(FragmentManager fm) {
@@ -78,7 +83,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
             return 3;
         }
 
-        // Set titles of Campaign Setup tabs
+        // Set titles of scenario setup tabs
         private String tabTitles[] = new String[]{"Investigators", "Introduction", "Setup"};
 
         @Override

@@ -46,7 +46,7 @@ public class ScenarioIntroFragment extends Fragment {
             }
         }
 
-        // Set button click listener
+        // Set continue button click listener
         TextView button = (TextView) v.findViewById(R.id.continue_button);
         button.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity()));
 

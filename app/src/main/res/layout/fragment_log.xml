@@ -32,48 +32,102 @@
                     android:textAllCaps="true"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/sets"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sets" />
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/starting_locations"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Starting locations" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Encounter sets: "
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/set_aside"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Set aside" />
+                    <TextView
+                        android:id="@+id/sets"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/additional_instructions"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Additional instructions" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Starting locations: "
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/starting_locations"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Set aside: "
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/set_aside"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Additional instructions:"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/additional_instructions"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:background="?android:attr/listDivider" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingBottom="@dimen/activity_horizontal_margin">
+                android:paddingRight="@dimen/activity_horizontal_margin">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/activity_horizontal_margin"
                     android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_horizontal_margin"
                     android:text="Campaign Log"
                     android:textAllCaps="true"
                     android:textStyle="bold" />

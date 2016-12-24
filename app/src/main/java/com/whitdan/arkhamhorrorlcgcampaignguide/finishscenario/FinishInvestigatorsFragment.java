@@ -14,7 +14,7 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.R;
 import com.whitdan.arkhamhorrorlcgcampaignguide.InvestigatorsListAdapter;
 
 /**
- * Created by danie on 16/12/2016.
+ * Shows info for all of the investigators in use, including the current lead investigator.
  */
 
 public class FinishInvestigatorsFragment extends Fragment {
@@ -23,17 +23,17 @@ public class FinishInvestigatorsFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_finish_investigators, container, false);
         GlobalVariables globalVariables = ((GlobalVariables) this.getActivity().getApplication());
 
-        // Setup lead investigator TextView
+        // Setup lead investigator TextView to display current lead investigator
         TextView textView = (TextView) v.findViewById(R.id.lead_investigator_textview);
         String[] investigatorNames = getResources().getStringArray(R.array.investigators);
         textView.setText(investigatorNames[globalVariables.investigators.get(globalVariables.getLeadInvestigator()).getName()]);
 
-        // Setup listview
+        // Setup ListView from the InvestigatorsListAdapter
         ListView listView = (ListView) v.findViewById(R.id.investigator_list);
         InvestigatorsListAdapter investigatorsAdapter = new InvestigatorsListAdapter(this.getActivity(), globalVariables.investigators, globalVariables);
         listView.setAdapter(investigatorsAdapter);
 
-        // Set button click listener
+        // Set click listener for continue button
         TextView button = (TextView) v.findViewById(R.id.continue_button);
         button.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity()));
 

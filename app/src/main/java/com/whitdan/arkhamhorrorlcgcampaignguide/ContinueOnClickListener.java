@@ -15,13 +15,15 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.selectcampaign.SelectCampaignAct
 
 
 /**
- * Created by danie on 19/12/2016.
+ * The click listener for the continue button which appears in all scenario setup and scenario finish fragments
+ * If on scenario setup, it sets the available XP and advances to scenario finish
+ * If on scenario finish, it applies the selected resolution to the scenario and saves all relevant data to the database
  */
 
 public class ContinueOnClickListener implements View.OnClickListener {
 
-    GlobalVariables globalVariables;
-    Context context;
+    private GlobalVariables globalVariables;
+    private Context context;
 
     public ContinueOnClickListener(GlobalVariables mGlobalVariables, Context mContext) {
         globalVariables = mGlobalVariables;
@@ -30,36 +32,45 @@ public class ContinueOnClickListener implements View.OnClickListener {
     }
 
     public void onClick(View v) {
-        // Continue the scenario and advance to scenario finish
+        // If on scenario setup, set available XP and advance to scenario finish
         if (globalVariables.getScenarioStage() == 1) {
-            // Set XP from tempXP (by subtracting) and reset tempXP
+
+            // Subtract tempXP (as set by the spent XP view) from investigator XP and reset tempXP
             for (int i = 0; i < globalVariables.investigators.size(); i++) {
                 int XPSpent = globalVariables.investigators.get(i).getTempXP();
                 globalVariables.investigators.get(i).changeXP(-XPSpent);
                 globalVariables.investigators.get(i).setTempXP(0);
             }
+
             // Go to scenario finish
             globalVariables.setScenarioStage(2);
             Intent intent = new Intent(context, FinishScenarioActivity.class);
             context.startActivity(intent);
         }
 
-        // Apply the scenario resolution then advance to the next scenario and scenario setup
+        // If on scenario finish apply the scenario resolution then advance to the next scenario and scenario setup
         else if (globalVariables.getScenarioStage() == 2) {
+
             // Apply the scenario resolution
             if (globalVariables.getCurrentCampaign() == 1) {
                 nightResolutions(globalVariables, v);
             }
-            // Apply defeats
+
+            // Apply defeats from temp status
             for (int i = 0; i < globalVariables.investigators.size(); i++) {
                 int status = globalVariables.investigators.get(i).getTempStatus();
+                // Add to physical trauma
                 if (status == 4) {
                     globalVariables.investigators.get(i).changeDamage(1);
-                } else if (status == 5) {
+                }
+                // Add to mental trauma
+                else if (status == 5) {
                     globalVariables.investigators.get(i).changeHorror(1);
                 }
+                // Reset temp status
                 globalVariables.investigators.get(i).setTempStatus(1);
             }
+
             // Increment current scenario
             int nextScenario = globalVariables.getCurrentScenario() + 1;
             globalVariables.setCurrentScenario(nextScenario);
@@ -70,11 +81,16 @@ public class ContinueOnClickListener implements View.OnClickListener {
             // Reset victory display
             globalVariables.setVictoryDisplay(0);
 
-            // Go to scenario finish or end and delete campaign
+            /*
+                Go to scenario setup for the next scenario or end and delete campaign
+            */
+            // End and delete the campaign
             if (globalVariables.getCurrentScenario() > 3) {
-                // Delete campaign
+
+                // Get a writable database
                 ArkhamDbHelper dbHelper = new ArkhamDbHelper(context);
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
+                // Find all of the relevant rows of the database relating to the campaign
                 String campaignSelection = ArkhamContract.CampaignEntry._ID + " = ?";
                 String nightSelection = ArkhamContract.NightEntry.PARENT_ID + " = ?";
                 String investigatorSelection = ArkhamContract.InvestigatorEntry.PARENT_ID + " = ?";
@@ -84,10 +100,12 @@ public class ContinueOnClickListener implements View.OnClickListener {
                 db.delete(ArkhamContract.CampaignEntry.TABLE_NAME, campaignSelection, selectionArgs);
                 db.delete(ArkhamContract.NightEntry.TABLE_NAME, nightSelection, selectionArgs);
                 db.delete(ArkhamContract.InvestigatorEntry.TABLE_NAME, investigatorSelection, selectionArgs);
-
+                // Go back to the select campaign screen
                 Intent intent = new Intent(context, SelectCampaignActivity.class);
                 context.startActivity(intent);
-            } else {
+            }
+            // Advance to scenario setup for the next scenario
+            else {
                 globalVariables.setScenarioStage(1);
                 Intent intent = new Intent(context, ScenarioSetupActivity.class);
                 context.startActivity(intent);
@@ -95,13 +113,18 @@ public class ContinueOnClickListener implements View.OnClickListener {
         }
     }
 
-    // Contains all the Night of the Zealot resolutions
+
+
+
+    /*
+     Contains all the Night of the Zealot resolutions
+    */
     private void nightResolutions(GlobalVariables globalVariables, View v) {
         int leadInvestigator = globalVariables.getLeadInvestigator();
 
         /*
          The Gathering (scenario one) resolutions
-          */
+        */
         if (globalVariables.getCurrentScenario() == 1) {
             switch (globalVariables.getResolution()) {
                 // No resolution
@@ -138,18 +161,18 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     globalVariables.setHouseStanding(1);
                     globalVariables.setGhoulPriestAlive(1);
                     globalVariables.setLitaStatus(2);
-                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                    /*for (int i = 0; i < globalVariables.investigators.size(); i++) {
                         if (globalVariables.investigators.get(i).getTempStatus() != 3) {
                             //TODO: Kill remaining investigators (globalVariables.investigators.get(i).setStatus(2);)
                         }
-                    }
+                    }*/
                     break;
             }
         }
 
         /*
          The Midnight Masks (scenario 2) resolutions
-          */
+        */
         else if (globalVariables.getCurrentScenario() == 2) {
 
             View parent = v.getRootView();
@@ -227,18 +250,24 @@ public class ContinueOnClickListener implements View.OnClickListener {
         }
     }
 
-    // Saves the campaign, including all relevant variables
+
+
+
+    /*
+     Saves the campaign, including all relevant variables
+    */
     private void saveCampaign() {
+
+        // Get a writable database
         ArkhamDbHelper mDbHelper = new ArkhamDbHelper(context);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
-        // Update scenario number
+        // Update campaign variables (currently only the scenario number)
         ContentValues campaignValues = new ContentValues();
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_CURRENT_SCENARIO, globalVariables.getCurrentScenario());
-
         String campaignSelection = ArkhamContract.CampaignEntry._ID + " LIKE ?";
         String[] campaignSelectionArgs = {Long.toString(globalVariables.getCampaignID())};
-        int campaignUpdate = db.update(
+        db.update(
                 ArkhamContract.CampaignEntry.TABLE_NAME,
                 campaignValues,
                 campaignSelection,
@@ -266,7 +295,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
 
             String nightSelection = ArkhamContract.NightEntry.PARENT_ID + " LIKE ?";
             String[] nightSelectionArgs = {Long.toString(globalVariables.getCampaignID())};
-            int nightUpdate = db.update(
+            db.update(
                     ArkhamContract.NightEntry.TABLE_NAME,
                     nightValues,
                     nightSelection,
@@ -290,7 +319,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
             String investigatorSelection = ArkhamContract.InvestigatorEntry.PARENT_ID + " LIKE ?" + " AND " +
                     ArkhamContract.InvestigatorEntry.INVESTIGATOR_ID + " LIKE ?";
             String[] investigatorSelectionArgs = {Long.toString(globalVariables.getCampaignID()), Integer.toString(i)};
-            int investigatorUpdate = db.update(
+            db.update(
                     ArkhamContract.InvestigatorEntry.TABLE_NAME,
                     investigatorValues,
                     investigatorSelection,
