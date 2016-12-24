@@ -1,9 +1,5 @@
 package com.whitdan.arkhamhorrorlcgcampaignguide.scenariosetup;
 
-/**
- * Created by danie on 12/12/2016.
- */
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -33,11 +29,14 @@ public class ScenarioIntroFragment extends Fragment {
                     textView.setText(R.string.gathering_setup);
                     break;
                 case 2:
+                    String midnightSetup;
                     if(globalVariables.getLitaStatus() == 2){
-                        textView.setText(getString(R.string.midnight_setup_a) + getString(R.string.midnight_setup));
+                        midnightSetup = getString(R.string.midnight_setup_a) + getString(R.string.midnight_setup);
+                        textView.setText(midnightSetup);
                     }
                     else{
-                        textView.setText(getString(R.string.midnight_setup_b) + getString(R.string.midnight_setup));
+                        midnightSetup = getString(R.string.midnight_setup_b) + getString(R.string.midnight_setup);
+                        textView.setText(midnightSetup);
                     }
                     break;
                 case 3:

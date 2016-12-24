@@ -21,8 +21,8 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.scenariosetup.ScenarioSetupActiv
 
 class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
 
-    private GlobalVariables globalVariables;
-    private Context context;
+    private final GlobalVariables globalVariables;
+    private final Context context;
 
     CampaignsOnClickListener(GlobalVariables global, Context con) {
         globalVariables = global;

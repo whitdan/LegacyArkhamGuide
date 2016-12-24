@@ -26,7 +26,7 @@ import java.util.List;
 
 public class ScenarioInvestigatorsFragment extends Fragment {
 
-    GlobalVariables globalVariables;
+    private GlobalVariables globalVariables;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

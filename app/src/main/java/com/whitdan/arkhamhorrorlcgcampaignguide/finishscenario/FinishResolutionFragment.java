@@ -27,7 +27,7 @@ import static android.view.View.VISIBLE;
 
 public class FinishResolutionFragment extends Fragment {
 
-    GlobalVariables globalVariables;
+    private GlobalVariables globalVariables;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

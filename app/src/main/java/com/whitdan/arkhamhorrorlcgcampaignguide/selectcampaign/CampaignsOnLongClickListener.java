@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 
 class CampaignsOnLongClickListener implements AdapterView.OnItemLongClickListener {
 
-    private Activity activity;
+    private final Activity activity;
 
     CampaignsOnLongClickListener(FragmentActivity fragmentActivity) {
         activity = fragmentActivity;

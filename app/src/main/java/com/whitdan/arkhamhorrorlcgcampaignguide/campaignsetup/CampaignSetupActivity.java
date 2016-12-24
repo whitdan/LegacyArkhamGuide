@@ -89,7 +89,7 @@ public class CampaignSetupActivity extends AppCompatActivity {
         }
 
         // Set titles of Campaign Setup tabs
-        private String tabTitles[] = new String[]{"Investigators", "Introduction", "Difficulty"};
+        private final String[] tabTitles = new String[]{"Investigators", "Introduction", "Difficulty"};
 
         @Override
         public CharSequence getPageTitle(int position) {
@@ -135,7 +135,7 @@ public class CampaignSetupActivity extends AppCompatActivity {
     /*
      Saves a new campaign to the database (called from startScenario - included separately for neatness)
       */
-    public void newCampaign() {
+    private void newCampaign() {
 
         // Get a writable database
         GlobalVariables globalVariables = (GlobalVariables) this.getApplication();

@@ -52,8 +52,8 @@ public class GlobalVariables extends Application {
     }
 
     // Investigators and associated arrays
-    public ArrayList<Investigator> investigators = new ArrayList<>();
-    public int investigatorNames[] = new int[4];
+    public final ArrayList<Investigator> investigators = new ArrayList<>();
+    public final int[] investigatorNames = new int[4];
     private int leadInvestigator;
     public void setLeadInvestigator(int lead) {
         leadInvestigator = lead;

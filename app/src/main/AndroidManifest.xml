@@ -18,11 +18,11 @@
         </activity>
         <activity android:name=".campaignsetup.CampaignSetupActivity"
             android:windowSoftInputMode="adjustNothing"
-            android:parentActivityName=".selectcampaign.SelectCampaignActivity"/>
+            android:parentActivityName=".selectcampaign.SelectCampaignActivity" />
         <activity android:name=".scenariosetup.ScenarioSetupActivity"
-            android:parentActivityName=".selectcampaign.SelectCampaignActivity"/>
+            android:parentActivityName=".selectcampaign.SelectCampaignActivity" />
         <activity android:name=".finishscenario.FinishScenarioActivity"
-            android:parentActivityName=".selectcampaign.SelectCampaignActivity"/>
+            android:parentActivityName=".selectcampaign.SelectCampaignActivity" />
     </application>
 
 </manifest>

@@ -86,7 +86,7 @@ public class FinishScenarioActivity extends AppCompatActivity {
         }
 
         // Set titles of Campaign Setup tabs
-        private String tabTitles[] = new String[]{"Investigators", "Resolution", "Campaign Log"};
+        private final String[] tabTitles = new String[]{"Investigators", "Resolution", "Campaign Log"};
 
         @Override
         public CharSequence getPageTitle(int position) {

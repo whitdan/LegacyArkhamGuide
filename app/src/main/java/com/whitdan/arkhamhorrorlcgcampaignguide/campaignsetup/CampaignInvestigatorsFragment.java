@@ -56,7 +56,7 @@ public class CampaignInvestigatorsFragment extends Fragment {
     private class CampaignInvestigatorsSpinnerListener extends Activity implements AdapterView.OnItemSelectedListener {
 
         // Need to pass the GlobalVariables to the listener to allow it to be changed below
-        private GlobalVariables mGlobalVariables = (GlobalVariables) getActivity().getApplication();
+        private final GlobalVariables mGlobalVariables = (GlobalVariables) getActivity().getApplication();
 
         // Sets the correct investigator
         public void onItemSelected(AdapterView<?> parent, View view,

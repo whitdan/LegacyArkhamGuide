@@ -25,7 +25,7 @@ import static android.view.View.VISIBLE;
 
 public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
 
-    private GlobalVariables globalVariables;
+    private final GlobalVariables globalVariables;
     private int position;
 
     public InvestigatorsListAdapter(Context context, ArrayList<Investigator> investigators, GlobalVariables global) {

@@ -87,7 +87,7 @@
     <string name="victoria">Victoria Devereux</string>
     <string name="ruth">Ruth Turner</string>
     <string name="masked_hunter">The Masked Hunter</string>
-    <string name="no_changes">No changes are made.</string>
+    <string name="no_changes">No changes are made.\n</string>
 
     <!--Campaign log-->
     <string name="house_standing">Your house is still standing.</string>

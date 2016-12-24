@@ -22,8 +22,8 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.selectcampaign.SelectCampaignAct
 
 public class ContinueOnClickListener implements View.OnClickListener {
 
-    private GlobalVariables globalVariables;
-    private Context context;
+    private final GlobalVariables globalVariables;
+    private final Context context;
 
     public ContinueOnClickListener(GlobalVariables mGlobalVariables, Context mContext) {
         globalVariables = mGlobalVariables;

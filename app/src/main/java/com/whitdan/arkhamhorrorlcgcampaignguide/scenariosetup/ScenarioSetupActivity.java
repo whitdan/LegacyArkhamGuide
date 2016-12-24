@@ -84,7 +84,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
         }
 
         // Set titles of scenario setup tabs
-        private String tabTitles[] = new String[]{"Investigators", "Introduction", "Setup"};
+        private final String[] tabTitles = new String[]{"Investigators", "Introduction", "Setup"};
 
         @Override
         public CharSequence getPageTitle(int position) {
