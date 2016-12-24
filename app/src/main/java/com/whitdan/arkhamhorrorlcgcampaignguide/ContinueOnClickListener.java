@@ -67,6 +67,9 @@ public class ContinueOnClickListener implements View.OnClickListener {
             // Save the campaign
             saveCampaign();
 
+            // Reset victory display
+            globalVariables.setVictoryDisplay(0);
+
             // Go to scenario finish or end and delete campaign
             if (globalVariables.getCurrentScenario() > 3) {
                 // Delete campaign

@@ -44,10 +44,22 @@
                 android:paddingLeft="8dp"
                 android:text="Victory display: " />
 
-            <Spinner
+            <Button
+                android:id="@+id/victory_decrement"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="-"/>
+            <TextView
                 android:id="@+id/victory_display"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="@dimen/activity_horizontal_margin"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin" />
+            <Button
+                android:id="@+id/victory_increment"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="+"/>
 
 
         </LinearLayout>
@@ -64,7 +76,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="gone"
+            android:paddingTop="8dp">
 
             <TextView
                 android:layout_width="match_parent"

@@ -63,7 +63,7 @@ public class GlobalVariables extends Application {
     }
 
     // Victory display amount
-    private int mVictoryDisplay;
+    private int mVictoryDisplay = 0;
     public void setVictoryDisplay(int xp) {
         mVictoryDisplay = xp;
     }

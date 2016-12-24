@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -16,9 +17,6 @@ import android.widget.TextView;
 import com.whitdan.arkhamhorrorlcgcampaignguide.ContinueOnClickListener;
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static android.view.View.VISIBLE;
 
@@ -52,24 +50,29 @@ public class FinishResolutionFragment extends Fragment {
         resolutionSpinner.setAdapter(adapter);
         resolutionSpinner.setOnItemSelectedListener(new ResolutionSpinnerListener());
 
-        // Setup victory display spinner and apply an adapter
-        Spinner victorySpinner = (Spinner) v.findViewById(R.id.victory_display);
-        List<Integer> victoryArray = new ArrayList<Integer>();
-        for (int i = 0; 10 > i; i++) {
-            victoryArray.add(i);
-        }
-        ArrayAdapter<Integer> victoryAdapter = new ArrayAdapter<Integer>(getContext(), android.R.layout.simple_spinner_item, victoryArray);
-        victoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        victorySpinner.setAdapter(victoryAdapter);
-        victorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        // Setup victory display buttons
+        final TextView victoryDisplay = (TextView) v.findViewById(R.id.victory_display);
+        victoryDisplay.setText(Integer.toString(globalVariables.getVictoryDisplay()));
+        Button victoryDecrement = (Button) v.findViewById(R.id.victory_decrement);
+        Button victoryIncrement = (Button) v.findViewById(R.id.victory_increment);
+        victoryDecrement.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                globalVariables.setVictoryDisplay(position);
+            public void onClick(View v) {
+                int current = globalVariables.getVictoryDisplay();
+                if(current > 0){
+                    globalVariables.setVictoryDisplay(current - 1);
+                    victoryDisplay.setText(Integer.toString(globalVariables.getVictoryDisplay()));
+                }
             }
-
+        });
+        victoryIncrement.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                globalVariables.setVictoryDisplay(0);
+            public void onClick(View v) {
+                int current = globalVariables.getVictoryDisplay();
+                if(current < 100){
+                    globalVariables.setVictoryDisplay(current + 1);
+                    victoryDisplay.setText(Integer.toString(globalVariables.getVictoryDisplay()));
+                }
             }
         });
 

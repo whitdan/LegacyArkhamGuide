@@ -32,7 +32,9 @@
             android:paddingLeft="8dp"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginRight="52dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -51,7 +53,9 @@
             android:paddingLeft="8dp"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginRight="52dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -70,7 +74,9 @@
             android:paddingLeft="8dp"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginRight="52dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -81,16 +87,30 @@
         android:visibility="gone">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_weight="4"
             android:layout_height="wrap_content"
             android:text="XP Spent:" />
 
-        <Spinner
+
+        <Button
+            android:id="@+id/xp_decrement"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:text="-"/>
+        <TextView
+            android:gravity="right"
             android:id="@+id/investigator_xp_spent"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:layout_width="@dimen/activity_horizontal_margin"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin" />
+        <Button
+            android:id="@+id/xp_increment"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:text="+"/>
+
     </LinearLayout>
 
     <LinearLayout

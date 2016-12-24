@@ -7,12 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -40,7 +40,7 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
                     R.layout.item_investigator, parent, false);
         }
 
-        Investigator currentInvestigator = getItem(position);
+        final Investigator currentInvestigator = getItem(position);
         String[] investigatorNames = getContext().getResources().getStringArray(R.array.investigators);
 
         // Create an ArrayAdapter using the investigators string array and a default spinner layout
@@ -51,7 +51,7 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
 
 
         // Set investigator name and attributes as long as the investigator is in use
-        if ((currentInvestigator.getStatus() != 0) && (currentInvestigator.getStatus() != 2) ) {
+        if ((currentInvestigator.getStatus() != 0) && (currentInvestigator.getStatus() != 2)) {
 
             View investigatorView = listItemView.findViewById(R.id.investigator_view);
             investigatorView.setVisibility(VISIBLE);
@@ -82,22 +82,41 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
             if (globalVariables.getScenarioStage() == 1) {
                 xpView.setVisibility(VISIBLE);
                 defeatedView.setVisibility(GONE);
-                Spinner investigatorXPSpinner = (Spinner) listItemView.findViewById(R.id.investigator_xp_spent);
-                List<Integer> iOneXPArray = new ArrayList<Integer>();
-                for (int i = 0; investigatorXP >= i; i++) {
-                    iOneXPArray.add(i);
-                }
-                ArrayAdapter<Integer> iOneXPadapter = new ArrayAdapter<Integer>(getContext(), android.R.layout.simple_spinner_item, iOneXPArray);
-                iOneXPadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                investigatorXPSpinner.setAdapter(iOneXPadapter);
-                investigatorXPSpinner.setOnItemSelectedListener(new ListenerXPSpinner(position));
+
+                final TextView xpSpent = (TextView) listItemView.findViewById(R.id.investigator_xp_spent);
+                Button xpDecrement = (Button) listItemView.findViewById(R.id.xp_decrement);
+                Button xpIncrement = (Button) listItemView.findViewById(R.id.xp_increment);
+
+                xpSpent.setText(Integer.toString(currentInvestigator.getTempXP()));
+                xpDecrement.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int current = currentInvestigator.getTempXP();
+                        if (current > 0) {
+                            currentInvestigator.setTempXP(current - 1);
+                            xpSpent.setText(Integer.toString(currentInvestigator.getTempXP()));
+                        }
+                    }
+                });
+                xpIncrement.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int current = currentInvestigator.getTempXP();
+                        if (current < currentInvestigator.getAvailableXP()) {
+                            currentInvestigator.setTempXP(current + 1);
+                            xpSpent.setText(Integer.toString(currentInvestigator.getTempXP()));
+                        }
+                    }
+                });
             }
+
             // Set up defeated spinner and apply OnItemSelectedListener if on scenario finish
             else if (globalVariables.getScenarioStage() == 2) {
                 xpView.setVisibility(GONE);
                 defeatedView.setVisibility(VISIBLE);
                 Spinner defeatedSpinner = (Spinner) listItemView.findViewById(R.id.investigator_defeated);
-                ArrayAdapter<CharSequence> defeatedAdapter = ArrayAdapter.createFromResource(getContext(), R.array.defeated, android.R.layout.simple_spinner_item);
+                ArrayAdapter<CharSequence> defeatedAdapter = ArrayAdapter.createFromResource(getContext(), R.array
+                        .defeated, android.R.layout.simple_spinner_item);
                 defeatedAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 defeatedSpinner.setAdapter(defeatedAdapter);
                 defeatedSpinner.setOnItemSelectedListener(new ListenerDefeatedSpinner(position));
@@ -109,16 +128,6 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
             LinearLayout investigatorView = (LinearLayout) listItemView.findViewById(R.id.investigator_view);
             investigatorView.setVisibility(GONE);
         }
-
-       /* TODO: // If investigator is dead, setup a new investigator selection spinner
-        else if (currentInvestigator.getStatus() == 2) {
-            View investigatorView = listItemView.findViewById(R.id.investigator_view);
-            investigatorView.setVisibility(GONE);
-            Spinner spinner = (Spinner) listItemView.findViewById(R.id.investigator_one);
-            spinner.setVisibility(VISIBLE);
-            spinner.setAdapter(adapter);
-            spinner.setOnItemSelectedListener(new CampaignInvestigatorsSpinnerListener(globalVariables));
-        }*/
 
         return listItemView;
     }
@@ -148,28 +157,5 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
             }
         }
     }
-
-    // OnItemSelectedListener for the XPSpinner
-    private class ListenerXPSpinner extends Activity implements AdapterView.OnItemSelectedListener {
-        private int superPosition;
-
-        private ListenerXPSpinner(int position) {
-            superPosition = position;
-        }
-
-        // Sets the correct investigator using the below methods or deletes the investigator if none selected
-        public void onItemSelected(AdapterView<?> parent, View view,
-                                   int pos, long id) {
-            setXPSpent(pos);
-        }
-
-        public void onNothingSelected(AdapterView<?> parent) {
-        }
-
-        private void setXPSpent(int pos) {
-            globalVariables.investigators.get(superPosition).setTempXP(pos);
-        }
-    }
-
 
 }
