@@ -113,21 +113,21 @@ public class GlobalVariables extends Application {
     public void setCultistsInterrogated(int interrogated){this.mCultistsInterrogated = interrogated;}
     public int getCultistsInterrogated(){return this.mCultistsInterrogated;}
     private int mDrewInterrogated;
-    public void setDrewInterrogated(int interrogated){this.mDrewInterrogated = interrogated;};
+    public void setDrewInterrogated(int interrogated){this.mDrewInterrogated = interrogated;}
     public int getDrewInterrogated(){return this.mDrewInterrogated;}
     private int mHermanInterrogated;
-    public void setHermanInterrogated(int interrogated){this.mHermanInterrogated = interrogated;};
+    public void setHermanInterrogated(int interrogated){this.mHermanInterrogated = interrogated;}
     public int getHermanInterrogated(){return this.mHermanInterrogated;}
     private int mPeterInterrogated;
-    public void setPeterInterrogated(int interrogated){this.mPeterInterrogated = interrogated;};
+    public void setPeterInterrogated(int interrogated){this.mPeterInterrogated = interrogated;}
     public int getPeterInterrogated(){return this.mPeterInterrogated;}
     private int mVictoriaInterrogated;
-    public void setVictoriaInterrogated(int interrogated){this.mVictoriaInterrogated = interrogated;};
+    public void setVictoriaInterrogated(int interrogated){this.mVictoriaInterrogated = interrogated;}
     public int getVictoriaInterrogated(){return this.mVictoriaInterrogated;}
     private int mRuthInterrogated;
-    public void setRuthInterrogated(int interrogated){this.mRuthInterrogated = interrogated;};
+    public void setRuthInterrogated(int interrogated){this.mRuthInterrogated = interrogated;}
     public int getRuthInterrogated(){return this.mRuthInterrogated;}
     private int mMaskedInterrogated;
-    public void setMaskedInterrogated(int interrogated){this.mMaskedInterrogated = interrogated;};
+    public void setMaskedInterrogated(int interrogated){this.mMaskedInterrogated = interrogated;}
     public int getMaskedInterrogated(){return this.mMaskedInterrogated;}
 }

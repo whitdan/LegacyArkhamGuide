@@ -49,6 +49,13 @@
     <string name="lead_investigator">Lead investigator: </string>
     <string name="victory_display">Victory display: </string>
     <string name="campaign_name">Campaign name</string>
+    <string name="setup">Setup</string>
+    <string name="sets">Encounter sets: </string>
+    <string name="locations">Starting locations: </string>
+    <string name="set_aside">Set aside: </string>
+    <string name="additional">Additional setup: </string>
+    <string name="campaign_log">Campaign Log</string>
+    <string name="nothing">Nothing to show.</string>
 
 
     <!--Night of the Zealot-->
@@ -69,15 +76,25 @@
         of investigators will soon take note of these strange happenings and set forth to make
         things right. I\'ll be watching their progress&#8230;but I won\'t be holding my breath.</string>
 
+    <!--Miscellaneous-->
     <string name="ghoul_priest_additional">Shuffle the Ghoul Priest into the encounter deck.\n</string>
     <string name="ghoul_priest_checkbox">Ghoul Priest killed</string>
     <string name="cultists_interrogated">Cultists interrogated: </string>
+    <string name="cultists_got_away">Cultists got away: </string>
     <string name="drew">"Wolf-Man" Drew</string>
     <string name="herman">Herman Collins</string>
     <string name="peter">Peter Warren</string>
     <string name="victoria">Victoria Devereux</string>
     <string name="ruth">Ruth Turner</string>
     <string name="masked_hunter">The Masked Hunter</string>
+    <string name="no_changes">No changes are made.</string>
+
+    <!--Campaign log-->
+    <string name="house_standing">Your house is still standing.</string>
+    <string name="house_burned">Your house has burned to the ground.</string>
+    <string name="ghoul_priest_alive">The Ghoul Priest is still alive.</string>
+    <string name="lita_forced">Lita was forced to find others to help her cause.</string>
+    <string name="past_midnight">It is past midnight.</string>
 
     <!--Scenario One - The Gathering-->
 
@@ -91,7 +108,6 @@
     <string name="gathering_sets">The Gathering, Rats, Ghouls, Striking Fear, Ancient Evils, and Chilling Cold.\n</string>
     <string name="gathering_locations">Put the Study location into play.\n</string>
     <string name="gathering_set_aside">All other locations, the Ghoul Priest and Lita Chantler.\n</string>
-    <string name="gathering_additional">No changes are made.\n</string>
 
     <string name="gathering_no_resolution">You barely managed to escape your house with your lives.
     The woman from your parlor follows you out the front door, slamming it behind her. \"You fools!
@@ -165,7 +181,6 @@
         University locations into play.\n
         \nRemove Your House from the game.\n
     \nEvery investigator begins play at Rivertown.\n</string>
-    <string name="midnight_additional_one">No changes are made.\n</string>
     <string name="midnight_additional_two">Search the gathered encounter sets for 1 copy of Acolyte and spawn
         it at Southside.\n</string>
     <string name="midnight_additional_three">Search the gathered encounter sets for 2 copies of Acolyte. Spawn
@@ -209,7 +224,6 @@
         campaign.\n</string>
     <string name="devourer_additional_midnight">Each player discards 2 random cards from his or her starting
         hand.\n</string>
-    <string name="devourer_cultists_none">No changes are made.\n</string>
     <string name="devourer_cultists_one">Place 1 doom on Agenda 1a.\n</string>
     <string name="devourer_cultists_two">Place 2 doom on Agenda 1a.\n</string>
     <string name="devourer_cultists_three">Place 3 doom on Agenda 1a.\n</string>

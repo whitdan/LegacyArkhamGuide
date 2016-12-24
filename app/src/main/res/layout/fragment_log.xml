@@ -14,6 +14,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!--Setup instructions-->
             <LinearLayout
                 android:id="@+id/setup"
                 android:layout_width="match_parent"
@@ -28,7 +29,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="16dp"
-                    android:text="Setup"
+                    android:text="@string/setup"
                     android:textAllCaps="true"
                     android:textStyle="bold" />
 
@@ -41,7 +42,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Encounter sets: "
+                        android:text="@string/sets"
                         android:textStyle="bold" />
 
                     <TextView
@@ -60,7 +61,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Starting locations: "
+                        android:text="@string/locations"
                         android:textStyle="bold" />
 
                     <TextView
@@ -79,7 +80,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Set aside: "
+                        android:text="@string/set_aside"
                         android:textStyle="bold" />
 
                     <TextView
@@ -98,7 +99,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Additional instructions:"
+                        android:text="@string/additional"
                         android:textStyle="bold" />
 
                     <TextView
@@ -115,6 +116,7 @@
 
             </LinearLayout>
 
+            <!--Campaign Log-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -128,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="@dimen/activity_horizontal_margin"
                     android:paddingTop="@dimen/activity_horizontal_margin"
-                    android:text="Campaign Log"
+                    android:text="@string/campaign_log"
                     android:textAllCaps="true"
                     android:textStyle="bold" />
 
@@ -136,7 +138,8 @@
                     android:id="@+id/log_campaign_start"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nothing to show." />
+                    android:text="@string/nothing" />
+
                 <!--Night of the Zealot-->
                 <LinearLayout
                     android:id="@+id/night_log"
@@ -148,28 +151,27 @@
                         android:id="@+id/log_house_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Your house is still standing."
                         android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/log_ghoul_priest"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="The Ghoul Priest is still alive."
+                        android:text="@string/ghoul_priest_alive"
                         android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/log_lita_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lita was forced to find others to help her cause."
+                        android:text="@string/lita_forced"
                         android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/log_midnight_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="It is past midnight."
+                        android:text="@string/past_midnight"
                         android:visibility="gone" />
 
                     <LinearLayout
@@ -188,7 +190,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Cultists interrogated: " />
+                                android:text="@string/cultists_interrogated" />
 
                             <TextView
                                 android:id="@+id/cultists_interrogated"
@@ -207,7 +209,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Cultists got away: " />
+                                android:text="@string/cultists_got_away" />
 
                             <TextView
                                 android:id="@+id/cultists_got_away"
@@ -236,6 +238,6 @@
         android:layout_alignParentBottom="true"
         android:clickable="true"
         android:gravity="center"
-        android:text="Continue"
+        android:text="@string/continue_button"
         android:textAllCaps="true" />
 </RelativeLayout>
