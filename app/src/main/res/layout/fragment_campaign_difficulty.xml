@@ -7,14 +7,382 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin">
+
+        <Spinner
+            android:id="@+id/difficulty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:text="@string/chaos_bag"
             android:paddingTop="@dimen/activity_horizontal_margin"
-            android:text="TO BE IMPLEMENTED" />
+            android:paddingBottom="@dimen/activity_horizontal_margin"/>
+
+        <LinearLayout
+            android:id="@+id/plus_two_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/plus_two"/>
+
+            <TextView
+                android:id="@+id/plus_two"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/plus_one_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/plus_one"/>
+
+            <TextView
+                android:id="@+id/plus_one"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/zero_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/zero"/>
+
+            <TextView
+                android:id="@+id/zero"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/minus_one_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/minus_one"/>
+
+            <TextView
+                android:id="@+id/minus_one"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/minus_two_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/minus_two"/>
+
+            <TextView
+                android:id="@+id/minus_two"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/minus_three_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/minus_three"/>
+
+            <TextView
+                android:id="@+id/minus_three"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/minus_four_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/minus_four"/>
+
+            <TextView
+                android:id="@+id/minus_four"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/minus_five_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/minus_five"/>
+
+            <TextView
+                android:id="@+id/minus_five"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/minus_six_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/minus_six"/>
+
+            <TextView
+                android:id="@+id/minus_six"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/minus_seven_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/minus_seven"/>
+
+            <TextView
+                android:id="@+id/minus_seven"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/minus_eight_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/minus_eight"/>
+
+            <TextView
+                android:id="@+id/minus_eight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/skull_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/skull"/>
+
+            <TextView
+                android:id="@+id/skull"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cultist_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/cultist"/>
+
+            <TextView
+                android:id="@+id/cultist"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tablet_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/tablet"/>
+
+            <TextView
+                android:id="@+id/tablet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/elder_thing_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/elder_thing"/>
+
+            <TextView
+                android:id="@+id/elder_thing"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tentacles_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/tentacles"/>
+
+            <TextView
+                android:id="@+id/tentacles"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/elder_sign_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/elder_sign"/>
+
+            <TextView
+                android:id="@+id/elder_sign"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        </LinearLayout>
     </LinearLayout>
 
     <TextView
@@ -25,12 +393,12 @@
         android:clickable="true"
         android:gravity="center"
         android:text="@string/continue_button"
-        android:textAllCaps="true" />
+        android:textAllCaps="true"/>
 
     <TextView
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_above="@id/continue_button"
-        android:background="?android:attr/listDivider" />
+        android:background="?android:attr/listDivider"/>
 </RelativeLayout>

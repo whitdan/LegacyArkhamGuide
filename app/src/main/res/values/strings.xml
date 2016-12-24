@@ -34,6 +34,35 @@
         <item>Resolution 3</item>
     </string-array>
 
+    <!--Difficulty strings-->
+    <string-array name="difficulty">
+        <item>Easy</item>
+        <item>Standard</item>
+        <item>Hard</item>
+        <item>Expert</item>
+    </string-array>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="chaos_bag">Chaos Bag</string>
+    <string name="plus_two">+2</string>
+    <string name="plus_one">+1</string>
+    <string name="zero">0</string>
+    <string name="minus_one">-1</string>
+    <string name="minus_two">-2</string>
+    <string name="minus_three">-3</string>
+    <string name="minus_four">-4</string>
+    <string name="minus_five">-5</string>
+    <string name="minus_six">-6</string>
+    <string name="minus_seven">-7</string>
+    <string name="minus_eight">-8</string>
+    <string name="skull">Skull</string>
+    <string name="cultist">Cultist</string>
+    <string name="tablet">Tablet</string>
+    <string name="elder_thing">Elder Thing</string>
+    <string name="tentacles">Tentacles</string>
+    <string name="elder_sign">Elder Sign</string>
+
     <!--Miscellaneous other UI strings-->
     <string name="saved_campaigns">Saved Campaigns</string>
     <string name="current_campaign">Current campaign: </string>
