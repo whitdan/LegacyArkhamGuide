@@ -106,17 +106,19 @@ public class CampaignSetupActivity extends AppCompatActivity {
 
         // Clear and then set investigators
         globalVariables.investigators.clear();
-        for (int i = 0; i < 4; i++) {
-            if (globalVariables.investigatorNames[i] > 0) {
-                globalVariables.investigators.add(new Investigator(globalVariables.investigatorNames[i]));
-            }
+        for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+            globalVariables.investigators.add(new Investigator(globalVariables.investigatorNames.get(i)));
+            globalVariables.investigatorsInUse[globalVariables.investigatorNames.get(i)] = 1;
         }
 
-        // Check that an investigator has been selected
-        if (globalVariables.investigators.size() > 0) {
+        // Check that an investigator has been selected and a campaign name has been entered
+        EditText campaignName = (EditText) findViewById(R.id.campaign_name);
+        if (globalVariables.investigators.size() > 0 && campaignName.getText().toString().trim().length() > 0) {
             // Set current scenario to first scenario and to scenario setup
             globalVariables.setCurrentScenario(1);
             globalVariables.setScenarioStage(1);
+
+            globalVariables.investigatorNames.clear();
 
             // Save the new campaign
             newCampaign();
@@ -126,8 +128,11 @@ public class CampaignSetupActivity extends AppCompatActivity {
             startActivity(intent);
         }
         // Display an error and don't proceed if no investigator has been selected
-        else {
+        else if(globalVariables.investigators.size() == 0){
             Toast toast = Toast.makeText(this, "You must select an investigator.", Toast.LENGTH_SHORT);
+            toast.show();
+        }else if(campaignName.getText().toString().trim().length() == 0){
+            Toast toast = Toast.makeText(this, "You must enter a campaign name.", Toast.LENGTH_SHORT);
             toast.show();
         }
     }
@@ -148,6 +153,16 @@ public class CampaignSetupActivity extends AppCompatActivity {
         campaignValues.put(CampaignEntry.COLUMN_CAMPAIGN_NAME, campaignName.getText().toString().trim());
         campaignValues.put(CampaignEntry.COLUMN_CURRENT_CAMPAIGN, globalVariables.getCurrentCampaign());
         campaignValues.put(CampaignEntry.COLUMN_CURRENT_SCENARIO, globalVariables.getCurrentScenario());
+        campaignValues.put(CampaignEntry.COLUMN_ROLAND_INUSE, globalVariables.investigatorsInUse[globalVariables
+                .ROLAND_BANKS]);
+        campaignValues.put(CampaignEntry.COLUMN_DAISY_INUSE, globalVariables.investigatorsInUse[globalVariables
+                .DAISY_WALKER]);
+        campaignValues.put(CampaignEntry.COLUMN_SKIDS_INUSE, globalVariables.investigatorsInUse[globalVariables
+                .SKIDS_OTOOLE]);
+        campaignValues.put(CampaignEntry.COLUMN_AGNES_INUSE, globalVariables.investigatorsInUse[globalVariables
+                .AGNES_BAKER]);
+        campaignValues.put(CampaignEntry.COLUMN_WENDY_INUSE, globalVariables.investigatorsInUse[globalVariables
+                .WENDY_ADAMS]);
         long newCampaignId = db.insert(CampaignEntry.TABLE_NAME, null, campaignValues);
         globalVariables.setCampaignID(newCampaignId);
 

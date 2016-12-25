@@ -42,7 +42,12 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
         String[] campaignProjection = {
                 CampaignEntry._ID,
                 CampaignEntry.COLUMN_CURRENT_CAMPAIGN,
-                CampaignEntry.COLUMN_CURRENT_SCENARIO
+                CampaignEntry.COLUMN_CURRENT_SCENARIO,
+                CampaignEntry.COLUMN_ROLAND_INUSE,
+                CampaignEntry.COLUMN_DAISY_INUSE,
+                CampaignEntry.COLUMN_SKIDS_INUSE,
+                CampaignEntry.COLUMN_AGNES_INUSE,
+                CampaignEntry.COLUMN_WENDY_INUSE
         };
         String campaignSelection = CampaignEntry._ID + " = ?";
         Cursor campaignCursor = db.query(
@@ -61,6 +66,16 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_CURRENT_CAMPAIGN)));
             globalVariables.setCurrentScenario(campaignCursor.getInt(campaignCursor
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_CURRENT_SCENARIO)));
+            globalVariables.investigatorsInUse[globalVariables.ROLAND_BANKS] = campaignCursor.getInt(campaignCursor
+                    .getColumnIndexOrThrow(CampaignEntry.COLUMN_ROLAND_INUSE));
+            globalVariables.investigatorsInUse[globalVariables.DAISY_WALKER] = campaignCursor.getInt(campaignCursor
+                    .getColumnIndexOrThrow(CampaignEntry.COLUMN_DAISY_INUSE));
+            globalVariables.investigatorsInUse[globalVariables.AGNES_BAKER] = campaignCursor.getInt(campaignCursor
+                    .getColumnIndexOrThrow(CampaignEntry.COLUMN_AGNES_INUSE));
+            globalVariables.investigatorsInUse[globalVariables.SKIDS_OTOOLE] = campaignCursor.getInt(campaignCursor
+                    .getColumnIndexOrThrow(CampaignEntry.COLUMN_SKIDS_INUSE));
+            globalVariables.investigatorsInUse[globalVariables.WENDY_ADAMS] = campaignCursor.getInt(campaignCursor
+                    .getColumnIndexOrThrow(CampaignEntry.COLUMN_WENDY_INUSE));
         }
         campaignCursor.close();
 

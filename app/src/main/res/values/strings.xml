@@ -11,6 +11,12 @@
         <item>Agnes Baker</item>
         <item>Wendy Adams</item>
     </string-array>
+    <string name="choose_investigators">Choose Investigators</string>
+    <string name="roland_banks">Roland Banks</string>
+    <string name="daisy_walker">Daisy Walker</string>
+    <string name="skids_otoole">Skids O\'Toole</string>
+    <string name="agnes_baker">Agnes Baker</string>
+    <string name="wendy_adams">Wendy Adams</string>
 
     <!--Strings for the investigator defeated spinner-->
     <string-array name="investigator_eliminated">
@@ -85,6 +91,7 @@
     <string name="additional">Additional setup: </string>
     <string name="campaign_log">Campaign Log</string>
     <string name="nothing">Nothing to show.</string>
+    <string name="lost">The investigators have lost.</string>
 
 
     <!--Night of the Zealot-->

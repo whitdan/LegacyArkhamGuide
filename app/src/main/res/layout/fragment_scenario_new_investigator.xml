@@ -17,26 +17,10 @@
             android:layout_height="wrap_content"
             android:visibility="gone"/>
 
-        <Spinner
-            android:id="@+id/investigator_one"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:visibility="gone"/>
-
         <TextView
             android:id="@+id/investigator_two_died"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"/>
-
-        <Spinner
-            android:id="@+id/investigator_two"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:visibility="gone"/>
 
         <TextView
@@ -45,26 +29,56 @@
             android:layout_height="wrap_content"
             android:visibility="gone"/>
 
-        <Spinner
-            android:id="@+id/investigator_three"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:visibility="gone"/>
-
         <TextView
             android:id="@+id/investigator_four_died"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"/>
 
-        <Spinner
-            android:id="@+id/investigator_four"
-            android:layout_width="fill_parent"
+        <TextView
+            android:id="@+id/choose_investigators"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:text="@string/choose_investigators"/>
+
+        <CheckBox
+            android:id="@+id/roland_banks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/roland_banks"
+            android:visibility="gone"/>
+
+        <CheckBox
+            android:id="@+id/daisy_walker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/daisy_walker"
+            android:visibility="gone"/>
+
+        <CheckBox
+            android:id="@+id/skids_otoole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skids_otoole"
+            android:visibility="gone"/>
+
+        <CheckBox
+            android:id="@+id/agnes_baker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/agnes_baker"
+            android:visibility="gone"/>
+
+        <CheckBox
+            android:id="@+id/wendy_adams"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wendy_adams"
             android:visibility="gone"/>
     </LinearLayout>
 
