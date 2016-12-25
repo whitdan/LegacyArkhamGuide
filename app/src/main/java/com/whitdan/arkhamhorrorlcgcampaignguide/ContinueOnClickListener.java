@@ -22,16 +22,16 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.selectcampaign.SelectCampaignAct
 
 public class ContinueOnClickListener implements View.OnClickListener {
 
-    private final GlobalVariables globalVariables;
-    private final Context context;
+    private GlobalVariables globalVariables;
+    private Context context;
 
     public ContinueOnClickListener(GlobalVariables mGlobalVariables, Context mContext) {
         globalVariables = mGlobalVariables;
         context = mContext;
-
     }
 
     public void onClick(View v) {
+
         // If on scenario setup, set available XP and advance to scenario finish
         if (globalVariables.getScenarioStage() == 1) {
 
@@ -58,17 +58,23 @@ public class ContinueOnClickListener implements View.OnClickListener {
 
             // Apply defeats from temp status
             for (int i = 0; i < globalVariables.investigators.size(); i++) {
-                int status = globalVariables.investigators.get(i).getTempStatus();
+                Investigator currentInvestigator = globalVariables.investigators.get(i);
+                int status = currentInvestigator.getTempStatus();
                 // Add to physical trauma
-                if (status == 4) {
-                    globalVariables.investigators.get(i).changeDamage(1);
+                if (status == 2) {
+                    currentInvestigator.changeDamage(1);
                 }
                 // Add to mental trauma
-                else if (status == 5) {
-                    globalVariables.investigators.get(i).changeHorror(1);
+                else if (status == 3) {
+                    currentInvestigator.changeHorror(1);
+                }
+                // Check health and sanity
+                if ((currentInvestigator.getDamage() >= currentInvestigator.getHealth()) ||
+                        (currentInvestigator.getHorror() >= currentInvestigator.getSanity())) {
+                    currentInvestigator.setStatus(2);
                 }
                 // Reset temp status
-                globalVariables.investigators.get(i).setTempStatus(1);
+                currentInvestigator.setTempStatus(0);
             }
 
             // Increment current scenario
@@ -112,8 +118,6 @@ public class ContinueOnClickListener implements View.OnClickListener {
             }
         }
     }
-
-
 
 
     /*
@@ -161,11 +165,11 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     globalVariables.setHouseStanding(1);
                     globalVariables.setGhoulPriestAlive(1);
                     globalVariables.setLitaStatus(2);
-                    /*for (int i = 0; i < globalVariables.investigators.size(); i++) {
-                        if (globalVariables.investigators.get(i).getTempStatus() != 3) {
-                            //TODO: Kill remaining investigators (globalVariables.investigators.get(i).setStatus(2);)
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        if (globalVariables.investigators.get(i).getTempStatus() != 1) {
+                            globalVariables.investigators.get(i).setStatus(2);
                         }
-                    }*/
+                    }
                     break;
             }
         }
@@ -249,8 +253,6 @@ public class ContinueOnClickListener implements View.OnClickListener {
             }
         }
     }
-
-
 
 
     /*

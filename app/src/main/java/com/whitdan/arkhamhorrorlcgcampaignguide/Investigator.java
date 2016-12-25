@@ -6,23 +6,39 @@ package com.whitdan.arkhamhorrorlcgcampaignguide;
 
 public class Investigator {
 
+    // Sets maximum health and sanity values for the various investigators (correspond to the names in the string array)
+    private int[] health = {0,9,5,8,6,7};
+    private int[] sanity = {0,5,9,6,8,7};
+
     public Investigator(int investigator){
-        this.mName = investigator;
+        setupInvestigator(investigator);
     }
 
     // Declaration for loading from SQLite database
     public Investigator(){ }
 
+    public void setupInvestigator(int investigator){
+        this.mName = investigator;
+        this.mHealth = health[investigator];
+        this.mSanity = sanity[investigator];
+        this.mStatus = 1;
+        this.mDamage = 0;
+        this.mHorror = 0;
+        this.mAvailableXP = 0;
+    }
+
     // Basic attributes for all investigators
     private int mName;
-    private int mStatus = 1;    // 0 = not in use, 1 = in use, 2 = dead, 3 = resigned, 4 = health, 5 = horror
-    private int mDamage = 0;
-    private int mHorror = 0;
-    private int mAvailableXP = 0;
+    private int mHealth;
+    private int mSanity;
+    private int mStatus;    // 0 = not in use, 1 = in use, 2 = dead
+    private int mDamage;
+    private int mHorror;
+    private int mAvailableXP;
 
     // Temp variables for when a change might be pending clicking the continue button
-    private int mTempXP = 0;
-    private int mTempStatus = 0;
+    private int mTempXP = 0;    // 0 = normal, 1 = resigned, 2 = health, 3 = horror
+    private int mTempStatus;
 
     public void setName(int name){mName = name;}
     // Not yet used, but will be when investigator death is added
@@ -44,7 +60,9 @@ public class Investigator {
     int getTempXP(){return mTempXP;}
 
     public int getName(){return mName;}
-    int getStatus(){return mStatus;}
+    public int getHealth(){return mHealth;}
+    public int getSanity(){return mSanity;}
+    public int getStatus(){return mStatus;}
     int getDamage(){return mDamage;}
     int getHorror(){return mHorror;}
     int getAvailableXP(){return mAvailableXP;}

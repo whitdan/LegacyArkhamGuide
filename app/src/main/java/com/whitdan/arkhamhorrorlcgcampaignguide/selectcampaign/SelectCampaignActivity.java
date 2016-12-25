@@ -18,7 +18,6 @@ Main Activity - Allows the user to select a campaign to start.
  */
 
 /*
-    TODO: Investigator death
     TODO: Investigator exclusivity
     TODO: Players jumping in and out
     TODO: Extra scenarios

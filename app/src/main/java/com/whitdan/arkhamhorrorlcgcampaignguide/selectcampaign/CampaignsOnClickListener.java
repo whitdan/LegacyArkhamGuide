@@ -67,6 +67,7 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
         // Set the relevant investigator variables from the SQL database
         String[] investigatorProjection = {
                 InvestigatorEntry.COLUMN_INVESTIGATOR_NAME,
+                InvestigatorEntry.COLUMN_INVESTIGATOR_STATUS,
                 InvestigatorEntry.COLUMN_INVESTIGATOR_DAMAGE,
                 InvestigatorEntry.COLUMN_INVESTIGATOR_HORROR,
                 InvestigatorEntry.COLUMN_INVESTIGATOR_XP
@@ -87,6 +88,8 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
             globalVariables.investigators.get(i).setName(investigatorCursor.getInt
                     (investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
                             .COLUMN_INVESTIGATOR_NAME)));
+            globalVariables.investigators.get(i).setStatus(investigatorCursor.getInt(investigatorCursor
+                    .getColumnIndexOrThrow(InvestigatorEntry.COLUMN_INVESTIGATOR_STATUS)));
             globalVariables.investigators.get(i).changeDamage(investigatorCursor.getInt
                     (investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
                             .COLUMN_INVESTIGATOR_DAMAGE)));
