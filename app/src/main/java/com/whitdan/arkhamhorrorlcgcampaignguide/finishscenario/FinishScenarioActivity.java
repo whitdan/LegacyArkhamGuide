@@ -9,7 +9,6 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.LogFragment;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
@@ -53,11 +52,10 @@ public class FinishScenarioActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // Disable system back button [Might change this to work the same as the up button]
+    // Makes back button go up (back to home page - SelectCampaignActivity)
     @Override
     public void onBackPressed() {
-        Toast toast = Toast.makeText(getApplicationContext(), "Cannot go back.", Toast.LENGTH_SHORT);
-        toast.show();
+        NavUtils.navigateUpFromSameTask(this);
     }
 
     // Allows swiping between the scenario finish fragments
