@@ -13,7 +13,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
@@ -31,6 +30,8 @@ a difficulty selector, and investigator selector.
 
 public class CampaignSetupActivity extends AppCompatActivity {
 
+    String campaignName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,7 @@ public class CampaignSetupActivity extends AppCompatActivity {
 
         // Find the view pager that will allow the user to swipe between fragments and setup an adapter
         ViewPager viewPager = (ViewPager) findViewById(R.id.campaign_viewpager);
+        viewPager.setOffscreenPageLimit(2);
         CampaignSetupPagerAdapter adapter = new CampaignSetupPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
@@ -112,8 +114,7 @@ public class CampaignSetupActivity extends AppCompatActivity {
         }
 
         // Check that an investigator has been selected and a campaign name has been entered
-        EditText campaignName = (EditText) findViewById(R.id.campaign_name);
-        if (globalVariables.investigators.size() > 0 && campaignName.getText().toString().trim().length() > 0) {
+        if (globalVariables.investigators.size() > 0 && campaignName.length() > 0) {
             // Set current scenario to first scenario and to scenario setup
             globalVariables.setCurrentScenario(1);
             globalVariables.setScenarioStage(1);
@@ -131,7 +132,7 @@ public class CampaignSetupActivity extends AppCompatActivity {
         else if(globalVariables.investigators.size() == 0){
             Toast toast = Toast.makeText(this, "You must select an investigator.", Toast.LENGTH_SHORT);
             toast.show();
-        }else if(campaignName.getText().toString().trim().length() == 0){
+        }else if(campaignName.length() == 0){
             Toast toast = Toast.makeText(this, "You must enter a campaign name.", Toast.LENGTH_SHORT);
             toast.show();
         }
@@ -149,8 +150,7 @@ public class CampaignSetupActivity extends AppCompatActivity {
 
         // Create entry in campaigns table
         ContentValues campaignValues = new ContentValues();
-        EditText campaignName = (EditText) findViewById(R.id.campaign_name);
-        campaignValues.put(CampaignEntry.COLUMN_CAMPAIGN_NAME, campaignName.getText().toString().trim());
+        campaignValues.put(CampaignEntry.COLUMN_CAMPAIGN_NAME, campaignName);
         campaignValues.put(CampaignEntry.COLUMN_CURRENT_CAMPAIGN, globalVariables.getCurrentCampaign());
         campaignValues.put(CampaignEntry.COLUMN_CURRENT_SCENARIO, globalVariables.getCurrentScenario());
         campaignValues.put(CampaignEntry.COLUMN_ROLAND_INUSE, globalVariables.investigatorsInUse[globalVariables

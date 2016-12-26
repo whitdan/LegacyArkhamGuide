@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
@@ -75,6 +76,10 @@ public class SelectCampaignActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void startDunwich(View v){
+        Toast toast = Toast.makeText(this, "The Dunwich Legacy has not yet been released.", Toast.LENGTH_SHORT);
+        toast.show();
+    }
     /* Starts a Dunwich Legacy campaign [will be attached to xml onclick for the relevant button when released]
     public void startDunwich(View v){
         // Set current campaign to Dunwich Legacy (id = 2)

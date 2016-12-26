@@ -162,34 +162,34 @@ public class LogFragment extends Fragment {
                 StringBuilder cultistsInterrogated = new StringBuilder();
                 StringBuilder cultistsGotAway = new StringBuilder();
                 if (globalVariables.getDrewInterrogated() == 1) {
-                    cultistsInterrogated.append(R.string.drew + "\n");
+                    cultistsInterrogated.append(getString(R.string.drew) + "\n");
                 } else {
-                    cultistsGotAway.append(R.string.drew + "\n");
+                    cultistsGotAway.append(getString(R.string.drew) + "\n");
                 }
                 if (globalVariables.getPeterInterrogated() == 1) {
-                    cultistsInterrogated.append(R.string.peter + "\n");
+                    cultistsInterrogated.append(getString(R.string.peter) + "\n");
                 } else {
-                    cultistsGotAway.append(R.string.peter + "\n");
+                    cultistsGotAway.append(getString(R.string.peter) + "\n");
                 }
                 if (globalVariables.getHermanInterrogated() == 1) {
-                    cultistsInterrogated.append(R.string.herman + "\n");
+                    cultistsInterrogated.append(getString(R.string.herman) + "\n");
                 } else {
-                    cultistsGotAway.append(R.string.herman + "\n");
+                    cultistsGotAway.append(getString(R.string.herman) + "\n");
                 }
                 if (globalVariables.getRuthInterrogated() == 1) {
-                    cultistsInterrogated.append(R.string.ruth + "\n");
+                    cultistsInterrogated.append(getString(R.string.ruth) + "\n");
                 } else {
-                    cultistsGotAway.append(R.string.ruth + "\n");
+                    cultistsGotAway.append(getString(R.string.ruth) + "\n");
                 }
                 if (globalVariables.getVictoriaInterrogated() == 1) {
-                    cultistsInterrogated.append(R.string.victoria + "\n");
+                    cultistsInterrogated.append(getString(R.string.victoria) + "\n");
                 } else {
-                    cultistsGotAway.append(R.string.victoria + "\n");
+                    cultistsGotAway.append(getString(R.string.victoria) + "\n");
                 }
                 if (globalVariables.getMaskedInterrogated() == 1) {
-                    cultistsInterrogated.append(R.string.masked_hunter + "\n");
+                    cultistsInterrogated.append(getString(R.string.masked_hunter) + "\n");
                 } else {
-                    cultistsGotAway.append(R.string.masked_hunter + "\n");
+                    cultistsGotAway.append(getString(R.string.masked_hunter) + "\n");
                 }
                 String allCultistsInterrogated = cultistsInterrogated.toString();
                 String allCultistsGotAway = cultistsGotAway.toString();

@@ -32,6 +32,7 @@ public class FinishScenarioActivity extends AppCompatActivity {
 
         // Find the view pager that will allow the user to swipe between fragments and set the adapter to it
         ViewPager viewPager = (ViewPager) findViewById(R.id.finish_viewpager);
+        viewPager.setOffscreenPageLimit(2);
         FinishScenarioPagerAdapter adapter = new FinishScenarioPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 

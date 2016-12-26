@@ -53,6 +53,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
 
         // Find the view pager that will allow the user to swipe between fragments and set the adapter onto it
         ViewPager viewPager = (ViewPager) findViewById(R.id.scenario_viewpager);
+        viewPager.setOffscreenPageLimit(2);
         // If any investigators are dead, go to new investigator fragment
         if (investigatorDead) {
             NewInvestigatorPagerAdapter adapter = new NewInvestigatorPagerAdapter(getSupportFragmentManager());

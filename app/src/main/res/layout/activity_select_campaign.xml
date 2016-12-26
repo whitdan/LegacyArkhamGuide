@@ -25,7 +25,9 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/colorDunwich"
+            android:clickable="true"
             android:gravity="center"
+            android:onClick="startDunwich"
             android:text="@string/dunwich_campaign_name"
             android:textColor="@android:color/white" />
 

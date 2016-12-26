@@ -39,12 +39,12 @@ public class CampaignDifficultyFragment extends Fragment {
         difficultySpinner.setAdapter(adapter);
         difficultySpinner.setOnItemSelectedListener(new DifficultySpinnerListener(v));
 
-        // Set click listener on continue button
+        // Set click listener on the continue button
         TextView button = (TextView) v.findViewById(R.id.continue_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((CampaignSetupActivity) getActivity()).startScenario(v);
+                ((CampaignSetupActivity)getActivity()).startScenario(v);
             }
         });
 
