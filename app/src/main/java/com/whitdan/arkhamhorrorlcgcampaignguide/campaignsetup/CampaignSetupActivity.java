@@ -30,7 +30,7 @@ a difficulty selector, and investigator selector.
 
 public class CampaignSetupActivity extends AppCompatActivity {
 
-    String campaignName;
+    String campaignName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
