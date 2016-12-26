@@ -141,7 +141,7 @@
         responsible, but you believe there is something else going on. You are gathered together at
         the lead investigator\'s home to discuss these bizarre events.</string>
 
-    <string name="gathering_sets">The Gathering, Rats, Ghouls, Striking Fear, Ancient Evils, and Chilling Cold.\n</string>
+    <string name="gathering_sets">The Gathering, Rats, Ghouls, Striking Fear, Ancient Evils, and Chilling Cold.</string>
     <string name="gathering_locations">Put the Study location into play.\n</string>
     <string name="gathering_set_aside">All other locations, the Ghoul Priest and Lita Chantler.\n</string>
 
@@ -201,9 +201,9 @@
     and decay. We must unmask the cultists to expose and derail their plans. We have but a few hours.
     The more cultists we find before midnight, the better.\"</string>
 
-    <string name="midnight_sets">The Midnight Masks, Chilling Cold, Nightgaunts, Dark Cult, and Locked Doors.\n</string>
+    <string name="midnight_sets">The Midnight Masks, Chilling Cold, Nightgaunts, Dark Cult, and Locked Doors.</string>
     <string name="midnight_set_aside">Cult of Umordhoth encounter set as a separate \"Cultist
-        Deck\".\n</string>
+        Deck\".</string>
     <string name="midnight_locations">Choose one of the two Downtown locations and one of the two Southside
         locations at random and put them into play. Remove the other versions of Downtown and Southside from
         the game.\n
@@ -248,9 +248,10 @@
     that Umordhoth\'s vengeance will consume all in its path.\" Frightened but determined to stop
     the ritual, you head into the woods&#8230;</string>
 
-    <string name="devourer_sets">The Devourer Below, Ancient Evils, Striking Fear, Ghouls, and Dark Cult.\n
-    \nRandomly choose one of the following 4 encounter sets:\n
-    \nAgents of Yog-Sothoth, Agents of Shub-Niggurath, Agents of Cthulhu, or Agents of Hastur.\n</string>
+    <string name="devourer_sets">The Devourer Below, Ancient Evils, Striking Fear, Ghouls, and Dark
+        Cult.</string>
+    <string name="devourer_sets_two">Randomly choose one of the following 4 encounter sets:\n
+    \nAgents of Yog-Sothoth, Agents of Shub-Niggurath, Agents of Cthulhu, or Agents of Hastur.</string>
     <string name="devourer_set_aside">The Ritual Site and Umordhoth cards.\n</string>
     <string name="devourer_locations">Put the Main Path location into play. Shuffle the 6 copies of Arkham
         Woods, choose 4 of them at random, and put them into play without looking at their revealed sides.

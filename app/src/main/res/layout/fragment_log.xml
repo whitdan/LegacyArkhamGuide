@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/divider"
-        android:fillViewport="true">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/divider"
+                android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                     android:paddingBottom="16dp"
                     android:text="@string/setup"
                     android:textAllCaps="true"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -43,13 +43,38 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/sets"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
-                    <TextView
-                        android:id="@+id/sets"
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/sets"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <ImageView
+                            android:id="@+id/sets_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/sets"/>
+
+                        <TextView
+                            android:id="@+id/sets_two"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"/>
+
+                        <ImageView
+                            android:id="@+id/sets_two_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/sets"
+                            android:visibility="gone"/>
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -62,13 +87,13 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/locations"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/starting_locations"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -76,18 +101,35 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/set_aside"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
-                    <TextView
-                        android:id="@+id/set_aside"
+                    <LinearLayout
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/set_aside"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"/>
+
+                        <ImageView
+                            android:id="@+id/set_aside_image"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/sets"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -100,19 +142,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/additional"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/additional_instructions"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"/>
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1px"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"/>
 
             </LinearLayout>
 
@@ -132,13 +174,13 @@
                     android:paddingTop="@dimen/activity_horizontal_margin"
                     android:text="@string/campaign_log"
                     android:textAllCaps="true"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/log_campaign_start"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/nothing" />
+                    android:text="@string/nothing"/>
 
                 <!--Night of the Zealot-->
                 <LinearLayout
@@ -151,28 +193,28 @@
                         android:id="@+id/log_house_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone" />
+                        android:visibility="gone"/>
 
                     <TextView
                         android:id="@+id/log_ghoul_priest"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/ghoul_priest_alive"
-                        android:visibility="gone" />
+                        android:visibility="gone"/>
 
                     <TextView
                         android:id="@+id/log_lita_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/lita_forced"
-                        android:visibility="gone" />
+                        android:visibility="gone"/>
 
                     <TextView
                         android:id="@+id/log_midnight_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/past_midnight"
-                        android:visibility="gone" />
+                        android:visibility="gone"/>
 
                     <LinearLayout
                         android:id="@+id/cultists_view"
@@ -190,13 +232,13 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/cultists_interrogated" />
+                                android:text="@string/cultists_interrogated"/>
 
                             <TextView
                                 android:id="@+id/cultists_interrogated"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"/>
 
                         </LinearLayout>
 
@@ -209,13 +251,13 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/cultists_got_away" />
+                                android:text="@string/cultists_got_away"/>
 
                             <TextView
                                 android:id="@+id/cultists_got_away"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"/>
 
                         </LinearLayout>
                     </LinearLayout>
@@ -229,7 +271,7 @@
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_above="@id/continue_button"
-        android:background="?android:attr/listDivider" />
+        android:background="?android:attr/listDivider"/>
 
     <TextView
         android:id="@+id/continue_button"
@@ -239,5 +281,5 @@
         android:clickable="true"
         android:gravity="center"
         android:text="@string/continue_button"
-        android:textAllCaps="true" />
+        android:textAllCaps="true"/>
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,13 +23,19 @@ public class LogFragment extends Fragment {
 
         GlobalVariables globalVariables = ((GlobalVariables) this.getActivity().getApplication());
 
-        // Set setup instructions if on setup
+        /*
+         Set setup instructions if on setup
+          */
         if (globalVariables.getScenarioStage() == 1) {
 
             // Get the various views and set the visibility of the LinearLayout to VISIBLE
             LinearLayout setup = (LinearLayout) v.findViewById(R.id.setup);
             TextView sets = (TextView) v.findViewById(R.id.sets);
+            ImageView setsImage = (ImageView) v.findViewById(R.id.sets_image);
+            TextView setsTwo = (TextView) v.findViewById(R.id.sets_two);
+            ImageView setsTwoImage = (ImageView) v.findViewById(R.id.sets_two_image);
             TextView setAside = (TextView) v.findViewById(R.id.set_aside);
+            ImageView setAsideImage = (ImageView) v.findViewById(R.id.set_aside_image);
             TextView locations = (TextView) v.findViewById(R.id.starting_locations);
             TextView additional = (TextView) v.findViewById(R.id.additional_instructions);
             setup.setVisibility(VISIBLE);
@@ -37,6 +44,7 @@ public class LogFragment extends Fragment {
                 // Scenario One - The Gathering
                 case 1:
                     sets.setText(R.string.gathering_sets);
+                    setsImage.setImageResource(R.drawable.gathering_sets);
                     setAside.setText(R.string.gathering_set_aside);
                     locations.setText(R.string.gathering_locations);
                     additional.setText(R.string.no_changes);
@@ -44,7 +52,10 @@ public class LogFragment extends Fragment {
                 // Scenario Two - The Midnight Masks
                 case 2:
                     sets.setText(R.string.midnight_sets);
+                    setsImage.setImageResource(R.drawable.midnight_sets);
                     setAside.setText(R.string.midnight_set_aside);
+                    setAsideImage.setImageResource(R.drawable.cult_set);
+                    setAsideImage.setVisibility(VISIBLE);
                     // Check if house is standing
                     if (globalVariables.getHouseStanding() == 1) {
                         locations.setText(R.string.midnight_locations);
@@ -80,6 +91,11 @@ public class LogFragment extends Fragment {
                     break;
                 case 3:
                     sets.setText(R.string.devourer_sets);
+                    setsImage.setImageResource(R.drawable.devourer_sets);
+                    setsTwo.setText(R.string.devourer_sets_two);
+                    setsTwoImage.setImageResource(R.drawable.devourer_sets_two);
+                    setsTwo.setVisibility(VISIBLE);
+                    setsTwoImage.setVisibility(VISIBLE);
                     setAside.setText(R.string.devourer_set_aside);
                     locations.setText(R.string.devourer_locations);
                     // StringBuilder for the additional instructions
