@@ -100,7 +100,7 @@ public class FinishResolutionFragment extends Fragment {
 
         // Set continue button click listener
         TextView button = (TextView) v.findViewById(R.id.continue_button);
-        button.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity()));
+        button.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity(), this.getActivity()));
 
         return v;
     }

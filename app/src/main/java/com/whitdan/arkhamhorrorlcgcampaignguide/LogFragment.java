@@ -222,7 +222,7 @@ public class LogFragment extends Fragment {
 
         // Set click listener on continue button
         TextView button = (TextView) v.findViewById(R.id.continue_button);
-        button.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity()));
+        button.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity(), this.getActivity()));
 
         return v;
     }

@@ -1,9 +1,16 @@
 package com.whitdan.arkhamhorrorlcgcampaignguide;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.CheckBox;
 
@@ -22,12 +29,20 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.selectcampaign.SelectCampaignAct
 
 public class ContinueOnClickListener implements View.OnClickListener {
 
-    private GlobalVariables globalVariables;
-    private Context context;
+    private static GlobalVariables globalVariables;
+    private static Context context;
+    private Activity activity;
 
     public ContinueOnClickListener(GlobalVariables mGlobalVariables, Context mContext) {
         globalVariables = mGlobalVariables;
         context = mContext;
+    }
+
+    public ContinueOnClickListener(GlobalVariables mGlobalVariables, Context mContext, FragmentActivity
+            fragmentActivity) {
+        globalVariables = mGlobalVariables;
+        context = mContext;
+        activity = fragmentActivity;
     }
 
     public void onClick(View v) {
@@ -49,7 +64,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
         }
 
         // If on scenario finish apply the scenario resolution then advance to the next scenario and scenario setup
-        else if (globalVariables.getScenarioStage() == 2) {
+        else if (globalVariables.getScenarioStage() == 2 && globalVariables.getCurrentScenario() != 3) {
 
             // Apply the scenario resolution
             if (globalVariables.getCurrentCampaign() == 1) {
@@ -87,35 +102,16 @@ public class ContinueOnClickListener implements View.OnClickListener {
             // Reset victory display
             globalVariables.setVictoryDisplay(0);
 
-            /*
-                Go to scenario setup for the next scenario or end and delete campaign
-            */
-            // End and delete the campaign
-            if (globalVariables.getCurrentScenario() > 3) {
 
-                // Get a writable database
-                ArkhamDbHelper dbHelper = new ArkhamDbHelper(context);
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                // Find all of the relevant rows of the database relating to the campaign
-                String campaignSelection = ArkhamContract.CampaignEntry._ID + " = ?";
-                String nightSelection = ArkhamContract.NightEntry.PARENT_ID + " = ?";
-                String investigatorSelection = ArkhamContract.InvestigatorEntry.PARENT_ID + " = ?";
-                // Where id = current campaign id
-                String[] selectionArgs = {Long.toString(globalVariables.getCampaignID())};
-                // Execute deletions
-                db.delete(ArkhamContract.CampaignEntry.TABLE_NAME, campaignSelection, selectionArgs);
-                db.delete(ArkhamContract.NightEntry.TABLE_NAME, nightSelection, selectionArgs);
-                db.delete(ArkhamContract.InvestigatorEntry.TABLE_NAME, investigatorSelection, selectionArgs);
-                // Go back to the select campaign screen
-                Intent intent = new Intent(context, SelectCampaignActivity.class);
-                context.startActivity(intent);
-            }
-            // Advance to scenario setup for the next scenario
-            else {
-                globalVariables.setScenarioStage(1);
-                Intent intent = new Intent(context, ScenarioSetupActivity.class);
-                context.startActivity(intent);
-            }
+            //   Go to scenario setup for the next scenario or end and delete campaign
+            globalVariables.setScenarioStage(1);
+            Intent intent = new Intent(context, ScenarioSetupActivity.class);
+            context.startActivity(intent);
+
+        } else if (globalVariables.getScenarioStage() == 2 && globalVariables.getCurrentScenario() == 3) {
+            // End and delete the campaign
+            FinishCampaignDialogFragment newFragment = new FinishCampaignDialogFragment();
+            newFragment.show(activity.getFragmentManager(), "delete");
         }
     }
 
@@ -327,5 +323,51 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     investigatorSelection,
                     investigatorSelectionArgs);
         }
+    }
+
+    /*
+        Shows a dialog box when finishing the campaign to confirm deletion
+     */
+    public static class FinishCampaignDialogFragment extends DialogFragment {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Get access to writable SQLite database
+            ArkhamDbHelper dbHelper = new ArkhamDbHelper(getActivity());
+            final SQLiteDatabase db = dbHelper.getWritableDatabase();
+            final long position = globalVariables.getCampaignID();
+
+            // Create a new Alert Dialog Builder
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage("Finish and delete campaign?");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+
+                    // Set selectionArgs as the _ID of the campaign clicked on
+                    String[] selectionArgs = {Long.toString(position)};
+
+                    // Find all of the relevant rows of the database tables for the campaign clicked on
+                    String campaignSelection = ArkhamContract.CampaignEntry._ID + " = ?";
+                    String investigatorSelection = ArkhamContract.InvestigatorEntry.PARENT_ID + " = ?";
+                    String nightSelection = ArkhamContract.NightEntry.PARENT_ID + " = ?";
+
+                    // Delete the rows
+                    db.delete(ArkhamContract.CampaignEntry.TABLE_NAME, campaignSelection, selectionArgs);
+                    db.delete(ArkhamContract.InvestigatorEntry.TABLE_NAME, investigatorSelection, selectionArgs);
+                    db.delete(ArkhamContract.NightEntry.TABLE_NAME, nightSelection, selectionArgs);
+
+                    // Go back to the CampaignSelectActivity
+                    Intent intent = new Intent(context, SelectCampaignActivity.class);
+                    context.startActivity(intent);
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // User cancelled the dialog
+                }
+            });
+            return builder.create();
+        }
+
     }
 }
