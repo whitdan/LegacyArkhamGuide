@@ -14,13 +14,10 @@ public class Investigator {
         setupInvestigator(investigator);
     }
 
-    // Declaration for loading from SQLite database
-    public Investigator(){ }
-
     public void setupInvestigator(int investigator){
         this.mName = investigator;
-        this.mHealth = health[investigator];
-        this.mSanity = sanity[investigator];
+        this.mHealth = health[mName];
+        this.mSanity = sanity[mName];
         this.mStatus = 1;
         this.mDamage = 0;
         this.mHorror = 0;

@@ -99,10 +99,9 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
         );
         globalVariables.investigators.clear();
         for (int i = 0; investigatorCursor.moveToNext(); i++) {
-            globalVariables.investigators.add(new Investigator());
-            globalVariables.investigators.get(i).setName(investigatorCursor.getInt
-                    (investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
-                            .COLUMN_INVESTIGATOR_NAME)));
+            int name = investigatorCursor.getInt(investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
+                            .COLUMN_INVESTIGATOR_NAME));
+            globalVariables.investigators.add(new Investigator(name));
             globalVariables.investigators.get(i).setStatus(investigatorCursor.getInt(investigatorCursor
                     .getColumnIndexOrThrow(InvestigatorEntry.COLUMN_INVESTIGATOR_STATUS)));
             globalVariables.investigators.get(i).changeDamage(investigatorCursor.getInt
