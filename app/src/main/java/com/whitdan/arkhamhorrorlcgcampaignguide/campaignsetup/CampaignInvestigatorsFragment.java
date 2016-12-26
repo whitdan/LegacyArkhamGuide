@@ -3,12 +3,16 @@ package com.whitdan.arkhamhorrorlcgcampaignguide.campaignsetup;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
@@ -18,68 +22,168 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.R;
  */
 
 public class CampaignInvestigatorsFragment extends Fragment {
+
+    int investigators;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_campaign_investigators, container, false);
+        investigators = 0;
 
-        // Create an ArrayAdapter using the investigators string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
-                R.array.investigators, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        final EditText campaign = (EditText) v.findViewById(R.id.campaign_name);
 
-        // Setup first spinner and apply the adapter
-        Spinner spinnerOne = (Spinner) v.findViewById(R.id.investigator_one);
-        spinnerOne.setAdapter(adapter);
-        spinnerOne.setOnItemSelectedListener(new CampaignInvestigatorsSpinnerListener());
+        // Text change listener to set the next text to the campaignName variable in CampaignSetupActivity
+        campaign.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
-        // Setup second spinner and apply the adapter
-        Spinner spinnerTwo = (Spinner) v.findViewById(R.id.investigator_two);
-        spinnerTwo.setAdapter(adapter);
-        spinnerTwo.setOnItemSelectedListener(new CampaignInvestigatorsSpinnerListener());
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                ((CampaignSetupActivity) getActivity()).campaignName = campaign.getText().toString().trim();
+            }
 
-        // Setup third spinner and apply the adapter
-        Spinner spinnerThree = (Spinner) v.findViewById(R.id.investigator_three);
-        spinnerThree.setAdapter(adapter);
-        spinnerThree.setOnItemSelectedListener(new CampaignInvestigatorsSpinnerListener());
+            @Override
+            public void afterTextChanged(Editable s) {
 
-        // Setup fourth spinner and apply the adapter
-        Spinner spinnerFour = (Spinner) v.findViewById(R.id.investigator_four);
-        spinnerFour.setAdapter(adapter);
-        spinnerFour.setOnItemSelectedListener(new CampaignInvestigatorsSpinnerListener());
+            }
+        });
+
+        CheckBox roland = (CheckBox) v.findViewById(R.id.roland_banks);
+        roland.setOnCheckedChangeListener(new InvestigatorsCheckedChangeListener());
+
+        CheckBox skids = (CheckBox) v.findViewById(R.id.skids_otoole);
+        skids.setOnCheckedChangeListener(new InvestigatorsCheckedChangeListener());
+
+        CheckBox agnes = (CheckBox) v.findViewById(R.id.agnes_baker);
+        agnes.setOnCheckedChangeListener(new InvestigatorsCheckedChangeListener());
+
+        CheckBox daisy = (CheckBox) v.findViewById(R.id.daisy_walker);
+        daisy.setOnCheckedChangeListener(new InvestigatorsCheckedChangeListener());
+
+        CheckBox wendy = (CheckBox) v.findViewById(R.id.wendy_adams);
+        wendy.setOnCheckedChangeListener(new InvestigatorsCheckedChangeListener());
+
+        setupUI(v.findViewById(R.id.parent_layout), getActivity());
 
         return v;
     }
 
-    // Custom OnItemSelectedListener for the investigator spinners
-    private class CampaignInvestigatorsSpinnerListener extends Activity implements AdapterView.OnItemSelectedListener {
+    // Hides the soft keyboard when someone clicks outside the EditText
+    public void setupUI(View view, final Activity activity) {
 
-        // Need to pass the GlobalVariables to the listener to allow it to be changed below
-        private final GlobalVariables mGlobalVariables = (GlobalVariables) getActivity().getApplication();
+        // Set up touch listener for non-text box views to hide keyboard.
+        if (!(view instanceof EditText)) {
+            view.setOnTouchListener(new View.OnTouchListener() {
+                public boolean onTouch(View v, MotionEvent event) {
+                    InputMethodManager inputMethodManager =
+                            (InputMethodManager) activity.getSystemService(
+                                    Activity.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(
+                            activity.getCurrentFocus().getWindowToken(), 0);
+                    return false;
+                }
+            });
+        }
 
-        // Sets the correct investigator
-        public void onItemSelected(AdapterView<?> parent, View view,
-                                   int pos, long id) {
-            switch (parent.getId()) {
-                case R.id.investigator_one:
-                    mGlobalVariables.investigatorNames[0] = pos;
-                    break;
-                case R.id.investigator_two:
-                    mGlobalVariables.investigatorNames[1] = pos;
-                    break;
-                case R.id.investigator_three:
-                    mGlobalVariables.investigatorNames[2] = pos;
-                    break;
-                case R.id.investigator_four:
-                    mGlobalVariables.investigatorNames[3] = pos;
-                    break;
+        //If a layout container, iterate over children and seed recursion.
+        if (view instanceof ViewGroup) {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+                View innerView = ((ViewGroup) view).getChildAt(i);
+                setupUI(innerView, activity);
             }
         }
+    }
 
-        public void onNothingSelected(AdapterView<?> parent) {
+    // Custom OnCheckedChangeListener
+    private class InvestigatorsCheckedChangeListener implements CompoundButton.OnCheckedChangeListener {
+
+        private final GlobalVariables globalVariables = (GlobalVariables) getActivity().getApplication();
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+            if (buttonView.isPressed()) {
+                switch (buttonView.getId()) {
+                    case R.id.roland_banks:
+                        if (isChecked && investigators < 4) {
+                            globalVariables.investigatorNames.add(1);
+                            investigators++;
+                        } else if (isChecked) {
+                            buttonView.setChecked(false);
+                        } else {
+                            investigators--;
+                            for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+                                if (globalVariables.investigatorNames.get(i) == 1) {
+                                    globalVariables.investigatorNames.remove(i);
+                                }
+                            }
+                        }
+                        break;
+                    case R.id.skids_otoole:
+                        if (isChecked && investigators < 4) {
+                            globalVariables.investigatorNames.add(3);
+                            investigators++;
+                        } else if (isChecked) {
+                            buttonView.setChecked(false);
+                        } else {
+                            investigators--;
+                            for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+                                if (globalVariables.investigatorNames.get(i) == 3) {
+                                    globalVariables.investigatorNames.remove(i);
+                                }
+                            }
+                        }
+                        break;
+                    case R.id.agnes_baker:
+                        if (isChecked && investigators < 4) {
+                            globalVariables.investigatorNames.add(4);
+                            investigators++;
+                        } else if (isChecked) {
+                            buttonView.setChecked(false);
+                        } else {
+                            investigators--;
+                            for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+                                if (globalVariables.investigatorNames.get(i) == 4) {
+                                    globalVariables.investigatorNames.remove(i);
+                                }
+                            }
+                        }
+                        break;
+                    case R.id.daisy_walker:
+                        if (isChecked && investigators < 4) {
+                            globalVariables.investigatorNames.add(2);
+                            investigators++;
+                        } else if (isChecked) {
+                            buttonView.setChecked(false);
+                        } else {
+                            investigators--;
+                            for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+                                if (globalVariables.investigatorNames.get(i) == 2) {
+                                    globalVariables.investigatorNames.remove(i);
+                                }
+                            }
+                        }
+                        break;
+                    case R.id.wendy_adams:
+                        if (isChecked && investigators < 4) {
+                            globalVariables.investigatorNames.add(5);
+                            investigators++;
+                        } else if (isChecked) {
+                            buttonView.setChecked(false);
+                        } else {
+                            investigators--;
+                            for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+                                if (globalVariables.investigatorNames.get(i) == 5) {
+                                    globalVariables.investigatorNames.remove(i);
+                                }
+                            }
+                        }
+                        break;
+                }
+            }
         }
-
     }
 }
 

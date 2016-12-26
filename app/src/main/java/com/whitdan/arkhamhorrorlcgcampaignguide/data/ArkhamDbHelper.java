@@ -36,7 +36,12 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
                 + CampaignEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + CampaignEntry.COLUMN_CAMPAIGN_NAME + " STRING NOT NULL, "
                 + CampaignEntry.COLUMN_CURRENT_CAMPAIGN + " INTEGER NOT NULL, "
-                + CampaignEntry.COLUMN_CURRENT_SCENARIO + " INTEGER NOT NULL);";
+                + CampaignEntry.COLUMN_CURRENT_SCENARIO + " INTEGER NOT NULL, "
+                + CampaignEntry.COLUMN_ROLAND_INUSE + " INTEGER, "
+                + CampaignEntry.COLUMN_DAISY_INUSE + " INTEGER, "
+                + CampaignEntry.COLUMN_SKIDS_INUSE + " INTEGER, "
+                + CampaignEntry.COLUMN_AGNES_INUSE + " INTEGER, "
+                + CampaignEntry.COLUMN_WENDY_INUSE + " INTEGER);";
 
         // Investigators table
         String SQL_CREATE_INVESTIGATORS_TABLE = "CREATE TABLE " + InvestigatorEntry.TABLE_NAME + " ("

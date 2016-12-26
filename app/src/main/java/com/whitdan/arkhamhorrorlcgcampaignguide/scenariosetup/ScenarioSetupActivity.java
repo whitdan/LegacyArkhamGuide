@@ -1,5 +1,6 @@
 package com.whitdan.arkhamhorrorlcgcampaignguide.scenariosetup;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -11,15 +12,17 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.Investigator;
 import com.whitdan.arkhamhorrorlcgcampaignguide.LogFragment;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
+import com.whitdan.arkhamhorrorlcgcampaignguide.selectcampaign.SelectCampaignActivity;
 
 /*
     Displays the relevant scenario setup fragments (Investigators, Intro and Setup)
+
+    Also contains method for showing the dead investigator screen if there is a dead investigator
  */
 
 public class ScenarioSetupActivity extends AppCompatActivity {
@@ -50,6 +53,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
 
         // Find the view pager that will allow the user to swipe between fragments and set the adapter onto it
         ViewPager viewPager = (ViewPager) findViewById(R.id.scenario_viewpager);
+        viewPager.setOffscreenPageLimit(2);
         // If any investigators are dead, go to new investigator fragment
         if (investigatorDead) {
             NewInvestigatorPagerAdapter adapter = new NewInvestigatorPagerAdapter(getSupportFragmentManager());
@@ -77,11 +81,10 @@ public class ScenarioSetupActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // Disable system back button [Might change this to work the same as the up button]
+    // Makes back button go up (back to home page - SelectCampaignActivity)
     @Override
     public void onBackPressed() {
-        Toast toast = Toast.makeText(getApplicationContext(), "Cannot go back.", Toast.LENGTH_SHORT);
-        toast.show();
+        NavUtils.navigateUpFromSameTask(this);
     }
 
     // Allows swiping between the scenario setup fragments
@@ -139,7 +142,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
         }
 
         // Set titles of scenario setup tabs
-        private final String[] tabTitles = new String[]{"Dead Investigator"};
+        private final String[] tabTitles = new String[]{"Dead Investigators"};
 
         @Override
         public CharSequence getPageTitle(int position) {
@@ -149,27 +152,36 @@ public class ScenarioSetupActivity extends AppCompatActivity {
     }
 
     // Used when an investigator has died to restart the scenario;
-    public void restartScenario(){
-        boolean[] removeInvestigator = new boolean[]{};
+    public void restartScenario(Context context) {
+        boolean[] removeInvestigator = new boolean[4];
         // If the investigator is dead, recreates it
-        for(int i = 0; i < globalVariables.investigators.size(); i++){
+        for (int i = 0; i < globalVariables.investigators.size(); i++) {
             Investigator currentInvestigator = globalVariables.investigators.get(i);
-            if(currentInvestigator.getStatus()==2){
-                if(globalVariables.investigatorNames[i] > 0){
-                    currentInvestigator.setupInvestigator(globalVariables.investigatorNames[i]);
-                }
-                else
-                {
+            if (currentInvestigator.getStatus() == 2) {
                     removeInvestigator[i] = true;
-                }
             }
         }
-        // Removes any unused investigators
-        for(int i = 0; i < removeInvestigator.length; i++){
-            globalVariables.investigators.remove(i);
+        for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+            globalVariables.investigators.add(new Investigator(globalVariables.investigatorNames.get(i)));
+            globalVariables.investigatorsInUse[globalVariables.investigatorNames.get(i)] = 1;
         }
-        // Sets up the page again (effectively advancing to scenario setup normally)
-        finish();
-        startActivity(starterIntent);
+        globalVariables.investigatorNames.clear();
+
+        // Removes any unused investigators (works backwards to avoid reindexing)
+        for (int i = 3; i >= 0; i--) {
+            if (removeInvestigator[i]) {
+                globalVariables.investigators.remove(i);
+            }
+        }
+
+        if (globalVariables.investigators.size() == 0) {
+            // Kick back to Campaign Select if no replacement investigators are selected
+            Intent restartIntent = new Intent(context, SelectCampaignActivity.class);
+            context.startActivity(restartIntent);
+        } else {
+            // Sets up the page again (effectively advancing to scenario setup normally)
+            finish();
+            startActivity(starterIntent);
+        }
     }
 }

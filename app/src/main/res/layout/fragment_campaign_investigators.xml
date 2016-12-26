@@ -2,7 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/parent_layout">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,29 +19,41 @@
             android:layout_height="wrap_content"
             android:hint="@string/campaign_name" />
 
-        <Spinner
-            android:id="@+id/investigator_one"
-            android:layout_width="fill_parent"
+        <TextView
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_horizontal_margin" />
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:text="@string/choose_investigators"/>
+        <CheckBox
+            android:id="@+id/roland_banks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/roland_banks"/>
+        <CheckBox
+            android:id="@+id/daisy_walker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/daisy_walker"/>
+        <CheckBox
+            android:id="@+id/skids_otoole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skids_otoole"/>
+        <CheckBox
+            android:id="@+id/agnes_baker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/agnes_baker"/>
+        <CheckBox
+            android:id="@+id/wendy_adams"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wendy_adams"/>
 
-        <Spinner
-            android:id="@+id/investigator_two"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_horizontal_margin" />
-
-        <Spinner
-            android:id="@+id/investigator_three"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_horizontal_margin" />
-
-        <Spinner
-            android:id="@+id/investigator_four"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_horizontal_margin" />
     </LinearLayout>
 
     <TextView

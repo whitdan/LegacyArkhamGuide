@@ -22,6 +22,11 @@ public class ArkhamContract {
         public static final String COLUMN_CAMPAIGN_NAME = "name";
         public static final String COLUMN_CURRENT_CAMPAIGN = "campaign"; // Denotes which campaign
         public static final String COLUMN_CURRENT_SCENARIO = "scenario";
+        public static final String COLUMN_ROLAND_INUSE = "roland";
+        public static final String COLUMN_DAISY_INUSE = "daisy";
+        public static final String COLUMN_SKIDS_INUSE = "skids";
+        public static final String COLUMN_AGNES_INUSE ="agnes";
+        public static final String COLUMN_WENDY_INUSE = "wendy";
     }
 
     public static class InvestigatorEntry implements BaseColumns{

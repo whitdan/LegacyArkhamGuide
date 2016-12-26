@@ -5,7 +5,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;import android.widget.ListView;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
@@ -18,7 +20,6 @@ Main Activity - Allows the user to select a campaign to start.
  */
 
 /*
-    TODO: Investigator exclusivity
     TODO: Players jumping in and out
     TODO: Extra scenarios
  */
@@ -62,15 +63,23 @@ public class SelectCampaignActivity extends AppCompatActivity {
 
     // Starts a Night of the Zealot campaign [attached to xml onclick for the relevant button]
     public void startNight(View v) {
+        GlobalVariables globalVariables = (GlobalVariables) this.getApplication();
         // Set current campaign to Night of the Zealot (id = 1)
-        ((GlobalVariables) this.getApplication()).setCurrentCampaign(1);
+        globalVariables.setCurrentCampaign(1);
         // Set current scenario to setup (id = 0)
-        ((GlobalVariables) this.getApplication()).setCurrentScenario(0);
+        globalVariables.setCurrentScenario(0);
+        // Reset a couple of variables used elsewhere
+        globalVariables.investigatorNames.clear();
+        globalVariables.investigatorsInUse = new int[]{0,0,0,0,0,0};
         // Go to campaign setup
         Intent intent = new Intent(this, CampaignSetupActivity.class);
         startActivity(intent);
     }
 
+    public void startDunwich(View v){
+        Toast toast = Toast.makeText(this, "The Dunwich Legacy has not yet been released.", Toast.LENGTH_SHORT);
+        toast.show();
+    }
     /* Starts a Dunwich Legacy campaign [will be attached to xml onclick for the relevant button when released]
     public void startDunwich(View v){
         // Set current campaign to Dunwich Legacy (id = 2)
