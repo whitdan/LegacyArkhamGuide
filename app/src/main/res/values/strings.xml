@@ -17,6 +17,8 @@
     <string name="skids_otoole">Skids O\'Toole</string>
     <string name="agnes_baker">Agnes Baker</string>
     <string name="wendy_adams">Wendy Adams</string>
+    <string name="cover_up">Unresolved Cover Up in play</string>
+    <string name="hospital_debts">Unresolved Hospital Debts in play</string>
 
     <!--Strings for the investigator defeated spinner-->
     <string-array name="investigator_eliminated">
@@ -134,7 +136,8 @@
 
     <!--Scenario One - The Gathering-->
 
-    <string name="gathering_setup">You and your partners have been investigating strange events
+    <string name="gathering_setup"><b>Scenario One - The Gathering</b>\n
+        \nYou and your partners have been investigating strange events
         taking place in your home city of Arkham, Massachusetts. Over the past few weeks, several
         townspeople have mysetriously gone missing. Recently, their corpses turned up in the woods,
         savaged and half-eaten. The police and newspapers have stated that wild animals are
@@ -173,20 +176,36 @@
 
     <!--Scenario Two - The Midnight Masks-->
 
-    <string name="midnight_setup_a">The woman came to you in a panic, raving about monsters
-    emerging from the ground in a home near Rivertown. \"I managed to trap them,\" she explains,
-        \"but there are others. Other pits. Other domains.\" Only last week, you would have thought
-    she was a lunatic. Recent events, however, have challenged your preconceptions of normality. You
-    decide to hear her out.\n
+    <string name="midnight_setup_a"><b>Scenario Two - The Midnight Masks</b>\n
+        \nThe woman came to you in a panic, raving about monsters emerging from the ground in a home near Rivertown.
+        \"I managed to trap them,\" she explains, \"but there are others. Other pits. Other domains.\" Only last
+        week, you would have thought she was a lunatic. Recent events, however, have challenged your preconceptions
+        of normality. You decide to hear her out.\n
     \nShe introduces herself as Lita Chantler and lays out a tale that strains the limits of your
     belief. \"The creatures I speak of,\" she claims, \"are called ghouls - cruel beings who plague
-    the crypts, caverns, and tunnels beneath the city of Arkham&#8230;\"\n</string>
-    <string name="midnight_setup_b">In the wake of the disaster at your home, Lita Chantler, the
+    the crypts, caverns, and tunnels beneath the city of Arkham&#8230;\"\n
+    \n\"These creatures feed on the corpses of humans, and they are
+    served by a dark cult within Arkham whose members have inexplicably come to worship the ancient
+    master of the ghouls. This cult has been killing innocent people and feeding them to the ghouls,
+    satiating a monstrous hunger. A dark balance was maintained. Until now. Recently,\" Lita continues,
+    \"one of their lairs, where the corpses were stored, was destroyed. Since then, the ghouls have
+    been more active than usual. I have tracked their movements and tried my best to stop them from
+    running amok throughout the city. But I think there is something worse going on. The cult has been
+    planning something darker, and more ominous, than anything I have yet observed. Indicates are
+    that this plan shall come to fruition tonight, shortly after midnight. Beyond that, I cannot
+    fathom what to expect.\n
+    \n\"Many of the cultists,\" Lita continues, \"will seem like everyday people, despite their foul
+    intentions. Whenever the cult meets, its members don masks shaped like the skulls of various
+    animals to protect their identities from one another. These masks are our mark. Symbols of death
+    and decay. We must unmask the cultists to expose and derail their plans. We have but a few hours.
+    The more cultists we find before midnight, the better.\"</string>
+    <string name="midnight_setup_b"><b>Scenario Two - The Midnight Masks</b>\n
+        \nIn the wake of the disaster at your home, Lita Chantler, the
     red-haired woman from your parlor, lays out a tale that - even in light of what you have just
     witnessed - strains the limits of your belief. \"The creatures in your home,\" she claims,
     \"are called ghouls - cruel beings who plague the crypts, caverns, and tunnels beneat the city
-    of Arkham&#8230;\"\n</string>
-    <string name="midnight_setup">\n\"These creatures feed on the corpses of humans, and they are
+    of Arkham&#8230;\"\n
+    \n\"These creatures feed on the corpses of humans, and they are
     served by a dark cult within Arkham whose members have inexplicably come to worship the ancient
     master of the ghouls. This cult has been killing innocent people and feeding them to the ghouls,
     satiating a monstrous hunger. A dark balance was maintained. Until now. Recently,\" Lita continues,
@@ -233,7 +252,8 @@
 
     <!--Scenario Three - The Devourer Below-->
 
-    <string name="devourer_setup">After a frantic nighttime search throughout Arkham, you have tracked
+    <string name="devourer_setup"><b>Scenario Three - The Devourer Below</b>\n
+        \nAfter a frantic nighttime search throughout Arkham, you have tracked
     down and questioned several members of the cult. Your finds are disturbing: they claim to worship
     a being known as Umordhoth, a monstrous entity from another realm.\n
     \nYou are able to confirm much of Lita\'s story: the cult is agitated over the destruction of a

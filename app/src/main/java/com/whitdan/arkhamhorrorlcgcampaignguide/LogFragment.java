@@ -100,7 +100,7 @@ public class LogFragment extends Fragment {
                     locations.setText(R.string.devourer_locations);
                     // StringBuilder for the additional instructions
                     StringBuilder devouringAdditionalBuilder = new StringBuilder();
-                    devouringAdditionalBuilder.append(R.string.devourer_additional);
+                    devouringAdditionalBuilder.append(getString(R.string.devourer_additional));
                     // Check how many cultists were interrogated
                     switch (globalVariables.getCultistsInterrogated()) {
                         case 0:

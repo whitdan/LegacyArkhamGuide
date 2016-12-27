@@ -78,7 +78,7 @@ public class FinishResolutionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 int current = globalVariables.getVictoryDisplay();
-                if (current < 100) {
+                if (current < 99) {
                     globalVariables.setVictoryDisplay(current + 1);
                     victoryDisplay.setText(String.valueOf(globalVariables.getVictoryDisplay()));
                 }

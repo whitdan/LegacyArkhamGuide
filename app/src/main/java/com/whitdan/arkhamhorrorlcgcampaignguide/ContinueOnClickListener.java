@@ -71,7 +71,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                 nightResolutions(globalVariables, v);
             }
 
-            // Apply defeats from temp status
+            // Apply defeats from temp status and weaknesses
             for (int i = 0; i < globalVariables.investigators.size(); i++) {
                 Investigator currentInvestigator = globalVariables.investigators.get(i);
                 int status = currentInvestigator.getTempStatus();
@@ -90,6 +90,29 @@ public class ContinueOnClickListener implements View.OnClickListener {
                 }
                 // Reset temp status
                 currentInvestigator.setTempStatus(0);
+
+                // Apply any relevant weaknesses
+                View parent = v.getRootView();
+                CheckBox weakness = (CheckBox) parent.findViewById(R.id.weakness);
+                switch (currentInvestigator.getName()) {
+                    case GlobalVariables.ROLAND_BANKS:
+                        if (weakness.isChecked()) {
+                            currentInvestigator.changeHorror(1);
+                        }
+                        break;
+                    case GlobalVariables.SKIDS_OTOOLE:
+                        if (weakness.isChecked()) {
+                            currentInvestigator.changeXP(-2);
+                            for (; currentInvestigator.getAvailableXP() < 0; ) {
+                                currentInvestigator.changeXP(1);
+                            }
+                        }
+                        break;
+                    case GlobalVariables.AGNES_BAKER:
+                    case GlobalVariables.DAISY_WALKER:
+                    case GlobalVariables.WENDY_ADAMS:
+                        break;
+                }
             }
 
             // Increment current scenario
@@ -101,7 +124,6 @@ public class ContinueOnClickListener implements View.OnClickListener {
 
             // Reset victory display
             globalVariables.setVictoryDisplay(0);
-
 
             //   Go to scenario setup for the next scenario or end and delete campaign
             globalVariables.setScenarioStage(1);

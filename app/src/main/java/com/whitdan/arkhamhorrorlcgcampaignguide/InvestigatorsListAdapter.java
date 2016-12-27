@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -103,8 +104,10 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
             });
         }
 
-        // If on scenario finish set up defeated spinner and apply OnItemSelectedListener
+        // If on scenario finish set up defeated spinner and apply OnItemSelectedListener, and set up weakness
+        // checkbox for relevant investigators
         else if (globalVariables.getScenarioStage() == 2) {
+            // Set up defeated spinner
             xpView.setVisibility(GONE);
             defeatedView.setVisibility(VISIBLE);
             Spinner defeatedSpinner = (Spinner) listItemView.findViewById(R.id.investigator_defeated);
@@ -113,6 +116,23 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
             defeatedAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             defeatedSpinner.setAdapter(defeatedAdapter);
             defeatedSpinner.setOnItemSelectedListener(new ListenerDefeatedSpinner(pos));
+
+            // Set up weakness checkbox
+            CheckBox weakness = (CheckBox) listItemView.findViewById(R.id.weakness);
+            switch (currentInvestigator.getName()) {
+                case GlobalVariables.ROLAND_BANKS:
+                    weakness.setText(R.string.cover_up);
+                    weakness.setVisibility(VISIBLE);
+                    break;
+                case GlobalVariables.SKIDS_OTOOLE:
+                    weakness.setText(R.string.hospital_debts);
+                    weakness.setVisibility(VISIBLE);
+                    break;
+                case GlobalVariables.AGNES_BAKER:
+                case GlobalVariables.DAISY_WALKER:
+                case GlobalVariables.WENDY_ADAMS:
+                    break;
+            }
         }
 
         return listItemView;

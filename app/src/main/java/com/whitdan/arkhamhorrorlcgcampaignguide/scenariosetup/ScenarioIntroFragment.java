@@ -29,14 +29,11 @@ public class ScenarioIntroFragment extends Fragment {
                     textView.setText(R.string.gathering_setup);
                     break;
                 case 2:
-                    String midnightSetup;
                     if(globalVariables.getLitaStatus() == 2){
-                        midnightSetup = getString(R.string.midnight_setup_a) + getString(R.string.midnight_setup);
-                        textView.setText(midnightSetup);
+                        textView.setText(R.string.midnight_setup_a);
                     }
                     else{
-                        midnightSetup = getString(R.string.midnight_setup_b) + getString(R.string.midnight_setup);
-                        textView.setText(midnightSetup);
+                        textView.setText(R.string.midnight_setup_b);
                     }
                     break;
                 case 3:

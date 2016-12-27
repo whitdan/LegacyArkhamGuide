@@ -77,7 +77,8 @@
             android:layout_marginRight="52dp"
             android:layout_weight="1"
             android:gravity="right"
-            android:paddingLeft="8dp"/>
+            android:paddingLeft="8dp"
+            android:text="0"/>
     </LinearLayout>
 
     <!--XP spent layout - only shown in scenario setup-->
@@ -107,7 +108,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:gravity="end"/>
+            android:gravity="end"
+            android:text="190"/>
 
         <Button
             android:id="@+id/xp_increment"
@@ -136,4 +138,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+    
+    <!--Weakness checkbox - only shown for relevant investigators-->
+    <CheckBox
+        android:id="@+id/weakness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
 </LinearLayout>

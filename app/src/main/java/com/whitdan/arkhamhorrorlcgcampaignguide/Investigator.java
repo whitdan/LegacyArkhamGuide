@@ -36,9 +36,9 @@ public class Investigator {
     // Temp variables for when a change might be pending clicking the continue button
     private int mTempXP = 0;    // 0 = normal, 1 = resigned, 2 = health, 3 = horror
     private int mTempStatus;
+    private int mTempWeakness;  // 0 = not active, 1 = active
 
     public void setName(int name){mName = name;}
-    // Not yet used, but will be when investigator death is added
     public void setStatus(int status){mStatus = status;}
 
     // Changes to numerical values are made by adding the value passed
@@ -55,6 +55,9 @@ public class Investigator {
     void setTempXP(int XP){
         mTempXP = XP;}
     int getTempXP(){return mTempXP;}
+
+    void setWeakness(int weakness){mTempWeakness = weakness;}
+    int getWeakness(){return mTempWeakness;}
 
     public int getName(){return mName;}
     public int getHealth(){return mHealth;}
