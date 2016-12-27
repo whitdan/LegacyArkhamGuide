@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -115,10 +116,21 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
                     .investigator_eliminated, android.R.layout.simple_spinner_item);
             defeatedAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             defeatedSpinner.setAdapter(defeatedAdapter);
+            defeatedSpinner.setSelection(currentInvestigator.getTempStatus());
             defeatedSpinner.setOnItemSelectedListener(new ListenerDefeatedSpinner(pos));
 
             // Set up weakness checkbox
             CheckBox weakness = (CheckBox) listItemView.findViewById(R.id.weakness);
+            weakness.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){currentInvestigator.setWeakness(1);}
+                    else{currentInvestigator.setWeakness(0);}
+                }
+            });
+            if(currentInvestigator.getWeakness() == 1){
+                weakness.setChecked(true);
+            }
             switch (currentInvestigator.getName()) {
                 case GlobalVariables.ROLAND_BANKS:
                     weakness.setText(R.string.cover_up);

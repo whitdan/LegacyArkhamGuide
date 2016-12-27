@@ -30,7 +30,7 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.selectcampaign.SelectCampaignAct
 public class ContinueOnClickListener implements View.OnClickListener {
 
     private static GlobalVariables globalVariables;
-    private static Context context;
+    private Context context;
     private Activity activity;
 
     public ContinueOnClickListener(GlobalVariables mGlobalVariables, Context mContext) {
@@ -61,75 +61,10 @@ public class ContinueOnClickListener implements View.OnClickListener {
             globalVariables.setScenarioStage(2);
             Intent intent = new Intent(context, FinishScenarioActivity.class);
             context.startActivity(intent);
-        }
-
-        // If on scenario finish apply the scenario resolution then advance to the next scenario and scenario setup
-        else if (globalVariables.getScenarioStage() == 2 && globalVariables.getCurrentScenario() != 3) {
-
-            // Apply the scenario resolution
-            if (globalVariables.getCurrentCampaign() == 1) {
-                nightResolutions(globalVariables, v);
-            }
-
-            // Apply defeats from temp status and weaknesses
-            for (int i = 0; i < globalVariables.investigators.size(); i++) {
-                Investigator currentInvestigator = globalVariables.investigators.get(i);
-                int status = currentInvestigator.getTempStatus();
-                // Add to physical trauma
-                if (status == 2) {
-                    currentInvestigator.changeDamage(1);
-                }
-                // Add to mental trauma
-                else if (status == 3) {
-                    currentInvestigator.changeHorror(1);
-                }
-                // Check health and sanity
-                if ((currentInvestigator.getDamage() >= currentInvestigator.getHealth()) ||
-                        (currentInvestigator.getHorror() >= currentInvestigator.getSanity())) {
-                    currentInvestigator.setStatus(2);
-                }
-                // Reset temp status
-                currentInvestigator.setTempStatus(0);
-
-                // Apply any relevant weaknesses
-                View parent = v.getRootView();
-                CheckBox weakness = (CheckBox) parent.findViewById(R.id.weakness);
-                switch (currentInvestigator.getName()) {
-                    case GlobalVariables.ROLAND_BANKS:
-                        if (weakness.isChecked()) {
-                            currentInvestigator.changeHorror(1);
-                        }
-                        break;
-                    case GlobalVariables.SKIDS_OTOOLE:
-                        if (weakness.isChecked()) {
-                            currentInvestigator.changeXP(-2);
-                            for (; currentInvestigator.getAvailableXP() < 0; ) {
-                                currentInvestigator.changeXP(1);
-                            }
-                        }
-                        break;
-                    case GlobalVariables.AGNES_BAKER:
-                    case GlobalVariables.DAISY_WALKER:
-                    case GlobalVariables.WENDY_ADAMS:
-                        break;
-                }
-            }
-
-            // Increment current scenario
-            int nextScenario = globalVariables.getCurrentScenario() + 1;
-            globalVariables.setCurrentScenario(nextScenario);
-
-            // Save the campaign
-            saveCampaign();
-
-            // Reset victory display
-            globalVariables.setVictoryDisplay(0);
-
-            //   Go to scenario setup for the next scenario or end and delete campaign
-            globalVariables.setScenarioStage(1);
-            Intent intent = new Intent(context, ScenarioSetupActivity.class);
-            context.startActivity(intent);
-
+        } else if (globalVariables.getScenarioStage() == 2 && globalVariables.getCurrentScenario() != 3) {
+            // Save and continue the campaign
+            FinishScenarioDialogFragment newFragment = new FinishScenarioDialogFragment();
+            newFragment.show(activity.getFragmentManager(), "continue");
         } else if (globalVariables.getScenarioStage() == 2 && globalVariables.getCurrentScenario() == 3) {
             // End and delete the campaign
             FinishCampaignDialogFragment newFragment = new FinishCampaignDialogFragment();
@@ -139,9 +74,164 @@ public class ContinueOnClickListener implements View.OnClickListener {
 
 
     /*
+        Shows a dialog box when finishing the scenario to confirm continuing
+     */
+    public static class FinishScenarioDialogFragment extends DialogFragment {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+            // Create a new Alert Dialog Builder
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+            // Set message
+            StringBuilder dialogMessage = new StringBuilder();
+            dialogMessage.append("Scenario " + globalVariables.getCurrentScenario() + " completed.\n\n");
+            if (globalVariables.getResolution() == 0) {
+                dialogMessage.append("No resolution.\n");
+            } else {
+                dialogMessage.append("Resolution " + globalVariables.getResolution() + "\n");
+            }
+            dialogMessage.append("Victory display: " + globalVariables.getVictoryDisplay() + "\n\n");
+            for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                Investigator currentInvestigator = globalVariables.investigators.get(i);
+                String[] investigatorNames = getActivity().getResources().getStringArray(R.array
+                        .investigators);
+                String name = investigatorNames[currentInvestigator.getName()];
+                String[] investigatorStatuses = getActivity().getResources().getStringArray(R.array
+                        .investigator_eliminated);
+                String status = investigatorStatuses[currentInvestigator.getTempStatus()];
+                dialogMessage.append(name + ": " + status + "\n");
+            }
+            dialogMessage.append("\nSave and continue?");
+            builder.setMessage(dialogMessage);
+
+            // Apply everything to finish the scenario and move on
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // Apply the scenario resolution
+                    if (globalVariables.getCurrentCampaign() == 1) {
+                        nightResolutions(globalVariables, getActivity());
+                    }
+
+                    // Apply defeats from temp status and weaknesses
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        Investigator currentInvestigator = globalVariables.investigators.get(i);
+                        int status = currentInvestigator.getTempStatus();
+                        // Add to physical trauma
+                        if (status == 2) {
+                            currentInvestigator.changeDamage(1);
+                        }
+                        // Add to mental trauma
+                        else if (status == 3) {
+                            currentInvestigator.changeHorror(1);
+                        }
+                        // Check health and sanity
+                        if ((currentInvestigator.getDamage() >= currentInvestigator.getHealth()) ||
+                                (currentInvestigator.getHorror() >= currentInvestigator.getSanity())) {
+                            currentInvestigator.setStatus(2);
+                        }
+                        // Reset temp status
+                        currentInvestigator.setTempStatus(0);
+
+                        // Apply any relevant weaknesses
+                        if (currentInvestigator.getWeakness() == 1) {
+                            switch (currentInvestigator.getName()) {
+                                case GlobalVariables.ROLAND_BANKS:
+                                    currentInvestigator.changeHorror(1);
+                                    break;
+                                case GlobalVariables.SKIDS_OTOOLE:
+                                    currentInvestigator.changeXP(-2);
+                                    for (; currentInvestigator.getAvailableXP() < 0; ) {
+                                        currentInvestigator.changeXP(1);
+                                    }
+                                    break;
+                                case GlobalVariables.AGNES_BAKER:
+                                case GlobalVariables.DAISY_WALKER:
+                                case GlobalVariables.WENDY_ADAMS:
+                                    break;
+                            }
+                            currentInvestigator.setWeakness(0);
+                        }
+                    }
+
+                    // Increment current scenario
+                    int nextScenario = globalVariables.getCurrentScenario() + 1;
+                    globalVariables.setCurrentScenario(nextScenario);
+
+                    // Save the campaign
+                    saveCampaign(getActivity());
+
+                    // Reset victory display
+                    globalVariables.setVictoryDisplay(0);
+
+                    //   Go to scenario setup for the next scenario or end and delete campaign
+                    globalVariables.setScenarioStage(1);
+                    Intent intent = new Intent(getActivity(), ScenarioSetupActivity.class);
+                    getActivity().startActivity(intent);
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // User cancelled the dialog
+                }
+            });
+            return builder.create();
+        }
+    }
+
+
+    /*
+        Shows a dialog box when finishing the campaign to confirm deletion
+     */
+    public static class FinishCampaignDialogFragment extends DialogFragment {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Get access to writable SQLite database
+            ArkhamDbHelper dbHelper = new ArkhamDbHelper(getActivity());
+            final SQLiteDatabase db = dbHelper.getWritableDatabase();
+            final long position = globalVariables.getCampaignID();
+
+            // Create a new Alert Dialog Builder
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage("Finish and delete campaign?");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+
+                    // Set selectionArgs as the _ID of the campaign clicked on
+                    String[] selectionArgs = {Long.toString(position)};
+
+                    // Find all of the relevant rows of the database tables for the campaign clicked on
+                    String campaignSelection = ArkhamContract.CampaignEntry._ID + " = ?";
+                    String investigatorSelection = ArkhamContract.InvestigatorEntry.PARENT_ID + " = ?";
+                    String nightSelection = ArkhamContract.NightEntry.PARENT_ID + " = ?";
+
+                    // Delete the rows
+                    db.delete(ArkhamContract.CampaignEntry.TABLE_NAME, campaignSelection, selectionArgs);
+                    db.delete(ArkhamContract.InvestigatorEntry.TABLE_NAME, investigatorSelection, selectionArgs);
+                    db.delete(ArkhamContract.NightEntry.TABLE_NAME, nightSelection, selectionArgs);
+
+                    // Go back to the CampaignSelectActivity
+                    Intent intent = new Intent(getActivity(), SelectCampaignActivity.class);
+                    getActivity().startActivity(intent);
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // User cancelled the dialog
+                }
+            });
+            return builder.create();
+        }
+
+    }
+
+
+    /*
      Contains all the Night of the Zealot resolutions
     */
-    private void nightResolutions(GlobalVariables globalVariables, View v) {
+    private static void nightResolutions(GlobalVariables globalVariables, Activity parent) {
         int leadInvestigator = globalVariables.getLeadInvestigator();
 
         /*
@@ -196,8 +286,6 @@ public class ContinueOnClickListener implements View.OnClickListener {
          The Midnight Masks (scenario 2) resolutions
         */
         else if (globalVariables.getCurrentScenario() == 2) {
-
-            View parent = v.getRootView();
 
             // Check if Ghoul Priest is still alive
             CheckBox ghoulPriest = (CheckBox) parent.findViewById(R.id.ghoul_priest_killed);
@@ -276,7 +364,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
     /*
      Saves the campaign, including all relevant variables
     */
-    private void saveCampaign() {
+    private static void saveCampaign(Context context) {
 
         // Get a writable database
         ArkhamDbHelper mDbHelper = new ArkhamDbHelper(context);
@@ -345,51 +433,5 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     investigatorSelection,
                     investigatorSelectionArgs);
         }
-    }
-
-    /*
-        Shows a dialog box when finishing the campaign to confirm deletion
-     */
-    public static class FinishCampaignDialogFragment extends DialogFragment {
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Get access to writable SQLite database
-            ArkhamDbHelper dbHelper = new ArkhamDbHelper(getActivity());
-            final SQLiteDatabase db = dbHelper.getWritableDatabase();
-            final long position = globalVariables.getCampaignID();
-
-            // Create a new Alert Dialog Builder
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage("Finish and delete campaign?");
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-
-                    // Set selectionArgs as the _ID of the campaign clicked on
-                    String[] selectionArgs = {Long.toString(position)};
-
-                    // Find all of the relevant rows of the database tables for the campaign clicked on
-                    String campaignSelection = ArkhamContract.CampaignEntry._ID + " = ?";
-                    String investigatorSelection = ArkhamContract.InvestigatorEntry.PARENT_ID + " = ?";
-                    String nightSelection = ArkhamContract.NightEntry.PARENT_ID + " = ?";
-
-                    // Delete the rows
-                    db.delete(ArkhamContract.CampaignEntry.TABLE_NAME, campaignSelection, selectionArgs);
-                    db.delete(ArkhamContract.InvestigatorEntry.TABLE_NAME, investigatorSelection, selectionArgs);
-                    db.delete(ArkhamContract.NightEntry.TABLE_NAME, nightSelection, selectionArgs);
-
-                    // Go back to the CampaignSelectActivity
-                    Intent intent = new Intent(context, SelectCampaignActivity.class);
-                    context.startActivity(intent);
-                }
-            });
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    // User cancelled the dialog
-                }
-            });
-            return builder.create();
-        }
-
     }
 }
