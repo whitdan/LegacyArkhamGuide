@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
@@ -45,7 +44,6 @@ public class ScenarioSetupActivity extends AppCompatActivity {
         // Check if any investigators are dead
         boolean investigatorDead = false;
         for (int i = 0; i < globalVariables.investigators.size(); i++) {
-            Log.i("Fragment", "Current investigator: " + globalVariables.investigators.get(i).getStatus());
             if (globalVariables.investigators.get(i).getStatus() == 2) {
                 investigatorDead = true;
             }

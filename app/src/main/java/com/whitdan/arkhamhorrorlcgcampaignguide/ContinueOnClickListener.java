@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 
@@ -126,11 +127,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                         else if (status == 3) {
                             currentInvestigator.changeHorror(1);
                         }
-                        // Check health and sanity
-                        if ((currentInvestigator.getDamage() >= currentInvestigator.getHealth()) ||
-                                (currentInvestigator.getHorror() >= currentInvestigator.getSanity())) {
-                            currentInvestigator.setStatus(2);
-                        }
+
                         // Reset temp status
                         currentInvestigator.setTempStatus(0);
 
@@ -152,6 +149,14 @@ public class ContinueOnClickListener implements View.OnClickListener {
                                     break;
                             }
                             currentInvestigator.setWeakness(0);
+                        }
+
+                        // Check health and sanity
+                        if ((currentInvestigator.getDamage() >= currentInvestigator.getHealth()) ||
+                                (currentInvestigator.getHorror() >= currentInvestigator.getSanity())) {
+                            Log.i("TEST", "Sanity: " + currentInvestigator.getSanity());
+                            Log.i("TEST", "Mental Trauma: " + currentInvestigator.getHorror());
+                            currentInvestigator.setStatus(2);
                         }
                     }
 
