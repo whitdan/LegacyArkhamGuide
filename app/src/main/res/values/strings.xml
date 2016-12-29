@@ -128,11 +128,11 @@
     <string name="no_changes">No changes are made.\n</string>
 
     <!--Campaign log-->
-    <string name="house_standing">Your house is still standing.</string>
-    <string name="house_burned">Your house has burned to the ground.</string>
-    <string name="ghoul_priest_alive">The Ghoul Priest is still alive.</string>
-    <string name="lita_forced">Lita was forced to find others to help her cause.</string>
-    <string name="past_midnight">It is past midnight.</string>
+    <string name="house_standing">Your house is still standing.\n</string>
+    <string name="house_burned">Your house has burned to the ground.\n</string>
+    <string name="ghoul_priest_alive">The Ghoul Priest is still alive.\n</string>
+    <string name="lita_forced">Lita was forced to find others to help her cause.\n</string>
+    <string name="past_midnight">It is past midnight.\n</string>
 
     <!--Scenario One - The Gathering-->
 
@@ -223,7 +223,7 @@
 
     <string name="midnight_sets">The Midnight Masks, Chilling Cold, Nightgaunts, Dark Cult, and Locked Doors.</string>
     <string name="midnight_set_aside">Cult of Umordhoth encounter set as a separate \"Cultist
-        Deck\".</string>
+        Deck\".\n</string>
     <string name="midnight_locations">Choose one of the two Downtown locations and one of the two Southside
         locations at random and put them into play. Remove the other versions of Downtown and Southside from
         the game.\n

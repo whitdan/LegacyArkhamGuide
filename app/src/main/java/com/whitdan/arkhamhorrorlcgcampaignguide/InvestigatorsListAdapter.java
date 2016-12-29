@@ -143,6 +143,7 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
                 case GlobalVariables.AGNES_BAKER:
                 case GlobalVariables.DAISY_WALKER:
                 case GlobalVariables.WENDY_ADAMS:
+                    weakness.setVisibility(GONE);
                     break;
             }
         }

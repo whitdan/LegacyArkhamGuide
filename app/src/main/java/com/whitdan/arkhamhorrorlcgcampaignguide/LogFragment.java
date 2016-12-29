@@ -103,18 +103,18 @@ public class LogFragment extends Fragment {
                     devouringAdditionalBuilder.append(getString(R.string.devourer_additional));
                     // Check how many cultists were interrogated
                     switch (globalVariables.getCultistsInterrogated()) {
-                        case 0:
+                        case 6:
                             break;
-                        case 1:
-                        case 2:
+                        case 5:
+                        case 4:
                             devouringAdditionalBuilder.append(getString(R.string.devourer_cultists_one));
                             break;
                         case 3:
-                        case 4:
+                        case 2:
                             devouringAdditionalBuilder.append(getString(R.string.devourer_cultists_two));
                             break;
-                        case 5:
-                        case 6:
+                        case 1:
+                        case 0:
                             devouringAdditionalBuilder.append(getString(R.string.devourer_cultists_three));
                             break;
                     }
