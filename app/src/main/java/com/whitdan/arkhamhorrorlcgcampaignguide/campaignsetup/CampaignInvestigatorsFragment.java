@@ -65,6 +65,21 @@ public class CampaignInvestigatorsFragment extends Fragment {
         CheckBox wendy = (CheckBox) v.findViewById(R.id.wendy_adams);
         wendy.setOnCheckedChangeListener(new InvestigatorsCheckedChangeListener());
 
+        CheckBox zoey = (CheckBox) v.findViewById(R.id.zoey_samaras);
+        zoey.setOnCheckedChangeListener(new InvestigatorsCheckedChangeListener());
+
+        CheckBox rex = (CheckBox) v.findViewById(R.id.rex_murphy);
+        rex.setOnCheckedChangeListener(new InvestigatorsCheckedChangeListener());
+
+        CheckBox jenny = (CheckBox) v.findViewById(R.id.jenny_barnes);
+        jenny.setOnCheckedChangeListener(new InvestigatorsCheckedChangeListener());
+
+        CheckBox jim = (CheckBox) v.findViewById(R.id.jim_culver);
+        jim.setOnCheckedChangeListener(new InvestigatorsCheckedChangeListener());
+
+        CheckBox pete = (CheckBox) v.findViewById(R.id.ashcan_pete);
+        pete.setOnCheckedChangeListener(new InvestigatorsCheckedChangeListener());
+
         setupUI(v.findViewById(R.id.parent_layout), getActivity());
 
         return v;
@@ -108,14 +123,14 @@ public class CampaignInvestigatorsFragment extends Fragment {
                 switch (buttonView.getId()) {
                     case R.id.roland_banks:
                         if (isChecked && investigators < 4) {
-                            globalVariables.investigatorNames.add(1);
+                            globalVariables.investigatorNames.add(globalVariables.ROLAND_BANKS);
                             investigators++;
                         } else if (isChecked) {
                             buttonView.setChecked(false);
                         } else {
                             investigators--;
                             for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
-                                if (globalVariables.investigatorNames.get(i) == 1) {
+                                if (globalVariables.investigatorNames.get(i) == globalVariables.ROLAND_BANKS) {
                                     globalVariables.investigatorNames.remove(i);
                                 }
                             }
@@ -123,14 +138,14 @@ public class CampaignInvestigatorsFragment extends Fragment {
                         break;
                     case R.id.skids_otoole:
                         if (isChecked && investigators < 4) {
-                            globalVariables.investigatorNames.add(3);
+                            globalVariables.investigatorNames.add(globalVariables.SKIDS_OTOOLE);
                             investigators++;
                         } else if (isChecked) {
                             buttonView.setChecked(false);
                         } else {
                             investigators--;
                             for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
-                                if (globalVariables.investigatorNames.get(i) == 3) {
+                                if (globalVariables.investigatorNames.get(i) == globalVariables.SKIDS_OTOOLE) {
                                     globalVariables.investigatorNames.remove(i);
                                 }
                             }
@@ -138,14 +153,14 @@ public class CampaignInvestigatorsFragment extends Fragment {
                         break;
                     case R.id.agnes_baker:
                         if (isChecked && investigators < 4) {
-                            globalVariables.investigatorNames.add(4);
+                            globalVariables.investigatorNames.add(globalVariables.AGNES_BAKER);
                             investigators++;
                         } else if (isChecked) {
                             buttonView.setChecked(false);
                         } else {
                             investigators--;
                             for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
-                                if (globalVariables.investigatorNames.get(i) == 4) {
+                                if (globalVariables.investigatorNames.get(i) == globalVariables.AGNES_BAKER) {
                                     globalVariables.investigatorNames.remove(i);
                                 }
                             }
@@ -153,14 +168,14 @@ public class CampaignInvestigatorsFragment extends Fragment {
                         break;
                     case R.id.daisy_walker:
                         if (isChecked && investigators < 4) {
-                            globalVariables.investigatorNames.add(2);
+                            globalVariables.investigatorNames.add(globalVariables.DAISY_WALKER);
                             investigators++;
                         } else if (isChecked) {
                             buttonView.setChecked(false);
                         } else {
                             investigators--;
                             for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
-                                if (globalVariables.investigatorNames.get(i) == 2) {
+                                if (globalVariables.investigatorNames.get(i) == globalVariables.DAISY_WALKER) {
                                     globalVariables.investigatorNames.remove(i);
                                 }
                             }
@@ -168,14 +183,89 @@ public class CampaignInvestigatorsFragment extends Fragment {
                         break;
                     case R.id.wendy_adams:
                         if (isChecked && investigators < 4) {
-                            globalVariables.investigatorNames.add(5);
+                            globalVariables.investigatorNames.add(globalVariables.WENDY_ADAMS);
                             investigators++;
                         } else if (isChecked) {
                             buttonView.setChecked(false);
                         } else {
                             investigators--;
                             for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
-                                if (globalVariables.investigatorNames.get(i) == 5) {
+                                if (globalVariables.investigatorNames.get(i) == globalVariables.WENDY_ADAMS) {
+                                    globalVariables.investigatorNames.remove(i);
+                                }
+                            }
+                        }
+                        break;
+                    case R.id.zoey_samaras:
+                        if (isChecked && investigators < 4) {
+                            globalVariables.investigatorNames.add(globalVariables.ZOEY_SAMARAS);
+                            investigators++;
+                        } else if (isChecked) {
+                            buttonView.setChecked(false);
+                        } else {
+                            investigators--;
+                            for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+                                if (globalVariables.investigatorNames.get(i) == globalVariables.ZOEY_SAMARAS) {
+                                    globalVariables.investigatorNames.remove(i);
+                                }
+                            }
+                        }
+                        break;
+                    case R.id.rex_murphy:
+                        if (isChecked && investigators < 4) {
+                            globalVariables.investigatorNames.add(globalVariables.REX_MURPHY);
+                            investigators++;
+                        } else if (isChecked) {
+                            buttonView.setChecked(false);
+                        } else {
+                            investigators--;
+                            for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+                                if (globalVariables.investigatorNames.get(i) == globalVariables.REX_MURPHY) {
+                                    globalVariables.investigatorNames.remove(i);
+                                }
+                            }
+                        }
+                        break;
+                    case R.id.jenny_barnes:
+                        if (isChecked && investigators < 4) {
+                            globalVariables.investigatorNames.add(globalVariables.JENNY_BARNES);
+                            investigators++;
+                        } else if (isChecked) {
+                            buttonView.setChecked(false);
+                        } else {
+                            investigators--;
+                            for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+                                if (globalVariables.investigatorNames.get(i) == globalVariables.JENNY_BARNES) {
+                                    globalVariables.investigatorNames.remove(i);
+                                }
+                            }
+                        }
+                        break;
+                    case R.id.jim_culver:
+                        if (isChecked && investigators < 4) {
+                            globalVariables.investigatorNames.add(globalVariables.JIM_CULVER);
+                            investigators++;
+                        } else if (isChecked) {
+                            buttonView.setChecked(false);
+                        } else {
+                            investigators--;
+                            for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+                                if (globalVariables.investigatorNames.get(i) == globalVariables.JIM_CULVER) {
+                                    globalVariables.investigatorNames.remove(i);
+                                }
+                            }
+                        }
+                        break;
+                    case R.id.ashcan_pete:
+                        if (isChecked && investigators < 4) {
+                            globalVariables.investigatorNames.add(globalVariables.ASHCAN_PETE);
+                            investigators++;
+                        } else if (isChecked) {
+                            buttonView.setChecked(false);
+                        } else {
+                            investigators--;
+                            for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+                                if (globalVariables.investigatorNames.get(i) == globalVariables.ASHCAN_PETE) {
                                     globalVariables.investigatorNames.remove(i);
                                 }
                             }

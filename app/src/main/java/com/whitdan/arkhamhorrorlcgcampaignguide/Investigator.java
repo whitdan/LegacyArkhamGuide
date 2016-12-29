@@ -7,8 +7,8 @@ package com.whitdan.arkhamhorrorlcgcampaignguide;
 public class Investigator {
 
     // Sets maximum health and sanity values for the various investigators (correspond to the names in the string array)
-    private int[] health = {0,9,5,8,6,7};
-    private int[] sanity = {0,5,9,6,8,7};
+    private int[] health = {0,9,5,8,6,7,9,6,8,7,6};
+    private int[] sanity = {0,5,9,6,8,7,6,9,7,8,5};
 
     public Investigator(int investigator){
         setupInvestigator(investigator);

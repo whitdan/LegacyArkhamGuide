@@ -124,11 +124,14 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
             weakness.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if(isChecked){currentInvestigator.setWeakness(1);}
-                    else{currentInvestigator.setWeakness(0);}
+                    if (isChecked) {
+                        currentInvestigator.setWeakness(1);
+                    } else {
+                        currentInvestigator.setWeakness(0);
+                    }
                 }
             });
-            if(currentInvestigator.getWeakness() == 1){
+            if (currentInvestigator.getWeakness() == 1) {
                 weakness.setChecked(true);
             }
             switch (currentInvestigator.getName()) {
@@ -140,9 +143,20 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
                     weakness.setText(R.string.hospital_debts);
                     weakness.setVisibility(VISIBLE);
                     break;
+                case GlobalVariables.ZOEY_SAMARAS:
+                    weakness.setText(R.string.smite_the_wicked);
+                    weakness.setVisibility(VISIBLE);
+                    break;
+                case GlobalVariables.JENNY_BARNES:
+                    weakness.setText(R.string.searching_for_izzie);
+                    weakness.setVisibility(VISIBLE);
+                    break;
                 case GlobalVariables.AGNES_BAKER:
                 case GlobalVariables.DAISY_WALKER:
                 case GlobalVariables.WENDY_ADAMS:
+                case GlobalVariables.REX_MURPHY:
+                case GlobalVariables.JIM_CULVER:
+                case GlobalVariables.ASHCAN_PETE:
                     weakness.setVisibility(GONE);
                     break;
             }

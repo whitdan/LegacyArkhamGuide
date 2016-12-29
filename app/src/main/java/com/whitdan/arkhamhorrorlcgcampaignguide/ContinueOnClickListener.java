@@ -135,6 +135,8 @@ public class ContinueOnClickListener implements View.OnClickListener {
                         if (currentInvestigator.getWeakness() == 1) {
                             switch (currentInvestigator.getName()) {
                                 case GlobalVariables.ROLAND_BANKS:
+                                case GlobalVariables.ZOEY_SAMARAS:
+                                case GlobalVariables.JENNY_BARNES:
                                     currentInvestigator.changeHorror(1);
                                     break;
                                 case GlobalVariables.SKIDS_OTOOLE:
@@ -146,6 +148,9 @@ public class ContinueOnClickListener implements View.OnClickListener {
                                 case GlobalVariables.AGNES_BAKER:
                                 case GlobalVariables.DAISY_WALKER:
                                 case GlobalVariables.WENDY_ADAMS:
+                                case GlobalVariables.REX_MURPHY:
+                                case GlobalVariables.JIM_CULVER:
+                                case GlobalVariables.ASHCAN_PETE:
                                     break;
                             }
                             currentInvestigator.setWeakness(0);
