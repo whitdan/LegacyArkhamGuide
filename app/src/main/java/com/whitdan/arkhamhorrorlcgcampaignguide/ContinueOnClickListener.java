@@ -299,6 +299,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
             }
 
             // Check if each cultist has been interrogated
+            globalVariables.setCultistsInterrogated(0);
             CheckBox drew = (CheckBox) parent.findViewById(R.id.drew_interrogated);
             if (drew.isChecked()) {
                 globalVariables.incrementCultistsInterrogated();
