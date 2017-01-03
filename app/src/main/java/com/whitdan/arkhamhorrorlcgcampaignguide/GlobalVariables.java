@@ -54,7 +54,7 @@ public class GlobalVariables extends Application {
     // Investigators and associated arrays
     public ArrayList<Investigator> investigators = new ArrayList<>();
     public ArrayList<Integer> investigatorNames = new ArrayList<>();
-    public int[] investigatorsInUse = {0,0,0,0,0,0};    // Matches up to the names in the string array
+    public int[] investigatorsInUse = {0,0,0,0,0,0,0,0,0,0,0};          // Matches up to the names in the string array
     private int leadInvestigator;
     public void setLeadInvestigator(int lead) {
         leadInvestigator = lead;
@@ -62,13 +62,6 @@ public class GlobalVariables extends Application {
     public int getLeadInvestigator() {
         return leadInvestigator;
     }
-
-    // Integer values for each investigator
-    public static final int ROLAND_BANKS = 1;
-    public static final int DAISY_WALKER = 2;
-    public static final int SKIDS_OTOOLE = 3;
-    public static final int AGNES_BAKER = 4;
-    public static final int WENDY_ADAMS = 5;
 
     // Victory display amount
     private int mVictoryDisplay = 0;

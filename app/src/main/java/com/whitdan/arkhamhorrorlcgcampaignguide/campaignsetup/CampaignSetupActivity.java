@@ -1,5 +1,6 @@
 package com.whitdan.arkhamhorrorlcgcampaignguide.campaignsetup;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,7 +13,11 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
@@ -51,6 +56,8 @@ public class CampaignSetupActivity extends AppCompatActivity {
         // Setup tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.campaign_sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        setupUI(findViewById(R.id.campaign_setup_layout), this);
     }
 
     // Enables up navigation
@@ -108,6 +115,7 @@ public class CampaignSetupActivity extends AppCompatActivity {
 
         // Clear and then set investigators
         globalVariables.investigators.clear();
+        globalVariables.investigatorsInUse = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
             globalVariables.investigators.add(new Investigator(globalVariables.investigatorNames.get(i)));
             globalVariables.investigatorsInUse[globalVariables.investigatorNames.get(i)] = 1;
@@ -129,12 +137,38 @@ public class CampaignSetupActivity extends AppCompatActivity {
             startActivity(intent);
         }
         // Display an error and don't proceed if no investigator has been selected
-        else if(globalVariables.investigators.size() == 0){
+        else if (globalVariables.investigators.size() == 0) {
             Toast toast = Toast.makeText(this, "You must select an investigator.", Toast.LENGTH_SHORT);
             toast.show();
-        }else if(campaignName.length() == 0){
+        } else if (campaignName.length() == 0) {
             Toast toast = Toast.makeText(this, "You must enter a campaign name.", Toast.LENGTH_SHORT);
             toast.show();
+        }
+    }
+
+    // Hides the soft keyboard when someone clicks outside the EditText
+    public void setupUI(final View view, final Activity activity) {
+
+        // Set up touch listener for non-text box views to hide keyboard.
+        if (!(view instanceof EditText)) {
+            view.setOnTouchListener(new View.OnTouchListener() {
+                public boolean onTouch(View v, MotionEvent event) {
+                    InputMethodManager inputMethodManager =
+                            (InputMethodManager) activity.getSystemService(
+                                    Activity.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(
+                            view.getWindowToken(), 0);
+                    return false;
+                }
+            });
+        }
+
+        //If a layout container, iterate over children and seed recursion.
+        if (view instanceof ViewGroup) {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+                View innerView = ((ViewGroup) view).getChildAt(i);
+                setupUI(innerView, activity);
+            }
         }
     }
 
@@ -153,16 +187,26 @@ public class CampaignSetupActivity extends AppCompatActivity {
         campaignValues.put(CampaignEntry.COLUMN_CAMPAIGN_NAME, campaignName);
         campaignValues.put(CampaignEntry.COLUMN_CURRENT_CAMPAIGN, globalVariables.getCurrentCampaign());
         campaignValues.put(CampaignEntry.COLUMN_CURRENT_SCENARIO, globalVariables.getCurrentScenario());
-        campaignValues.put(CampaignEntry.COLUMN_ROLAND_INUSE, globalVariables.investigatorsInUse[globalVariables
+        campaignValues.put(CampaignEntry.COLUMN_ROLAND_INUSE, globalVariables.investigatorsInUse[Investigator
                 .ROLAND_BANKS]);
-        campaignValues.put(CampaignEntry.COLUMN_DAISY_INUSE, globalVariables.investigatorsInUse[globalVariables
+        campaignValues.put(CampaignEntry.COLUMN_DAISY_INUSE, globalVariables.investigatorsInUse[Investigator
                 .DAISY_WALKER]);
-        campaignValues.put(CampaignEntry.COLUMN_SKIDS_INUSE, globalVariables.investigatorsInUse[globalVariables
+        campaignValues.put(CampaignEntry.COLUMN_SKIDS_INUSE, globalVariables.investigatorsInUse[Investigator
                 .SKIDS_OTOOLE]);
-        campaignValues.put(CampaignEntry.COLUMN_AGNES_INUSE, globalVariables.investigatorsInUse[globalVariables
+        campaignValues.put(CampaignEntry.COLUMN_AGNES_INUSE, globalVariables.investigatorsInUse[Investigator
                 .AGNES_BAKER]);
-        campaignValues.put(CampaignEntry.COLUMN_WENDY_INUSE, globalVariables.investigatorsInUse[globalVariables
+        campaignValues.put(CampaignEntry.COLUMN_WENDY_INUSE, globalVariables.investigatorsInUse[Investigator
                 .WENDY_ADAMS]);
+        campaignValues.put(CampaignEntry.COLUMN_ZOEY_INUSE, globalVariables.investigatorsInUse[Investigator
+                .ZOEY_SAMARAS]);
+        campaignValues.put(CampaignEntry.COLUMN_REX_INUSE, globalVariables.investigatorsInUse[Investigator
+                .REX_MURPHY]);
+        campaignValues.put(CampaignEntry.COLUMN_JENNY_INUSE, globalVariables.investigatorsInUse[Investigator
+                .JENNY_BARNES]);
+        campaignValues.put(CampaignEntry.COLUMN_JIM_INUSE, globalVariables.investigatorsInUse[Investigator
+                .JIM_CULVER]);
+        campaignValues.put(CampaignEntry.COLUMN_PETE_INUSE, globalVariables.investigatorsInUse[Investigator
+                .ASHCAN_PETE]);
         long newCampaignId = db.insert(CampaignEntry.TABLE_NAME, null, campaignValues);
         globalVariables.setCampaignID(newCampaignId);
 

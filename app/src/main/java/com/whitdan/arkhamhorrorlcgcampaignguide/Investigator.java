@@ -6,15 +6,27 @@ package com.whitdan.arkhamhorrorlcgcampaignguide;
 
 public class Investigator {
 
+    // Integer values for each investigator
+    public static final int ROLAND_BANKS = 1;
+    public static final int DAISY_WALKER = 2;
+    public static final int SKIDS_OTOOLE = 3;
+    public static final int AGNES_BAKER = 4;
+    public static final int WENDY_ADAMS = 5;
+    public static final int ZOEY_SAMARAS = 6;
+    public static final int REX_MURPHY = 7;
+    public static final int JENNY_BARNES = 8;
+    public static final int JIM_CULVER = 9;
+    public static final int ASHCAN_PETE = 10;
+
     // Sets maximum health and sanity values for the various investigators (correspond to the names in the string array)
-    private int[] health = {0,9,5,8,6,7};
-    private int[] sanity = {0,5,9,6,8,7};
+    private int[] health = {0,9,5,8,6,7,9,6,8,7,6};
+    private int[] sanity = {0,5,9,6,8,7,6,9,7,8,5};
 
     public Investigator(int investigator){
         setupInvestigator(investigator);
     }
 
-    public void setupInvestigator(int investigator){
+    private void setupInvestigator(int investigator){
         this.mName = investigator;
         this.mHealth = health[mName];
         this.mSanity = sanity[mName];
@@ -60,9 +72,9 @@ public class Investigator {
     int getWeakness(){return mTempWeakness;}
 
     public int getName(){return mName;}
-    public int getHealth(){return mHealth;}
-    public int getSanity(){return mSanity;}
     public int getStatus(){return mStatus;}
+    int getHealth(){return mHealth;}
+    int getSanity(){return mSanity;}
     int getDamage(){return mDamage;}
     int getHorror(){return mHorror;}
     int getAvailableXP(){return mAvailableXP;}

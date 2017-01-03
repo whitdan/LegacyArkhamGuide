@@ -134,18 +134,23 @@ public class ContinueOnClickListener implements View.OnClickListener {
                         // Apply any relevant weaknesses
                         if (currentInvestigator.getWeakness() == 1) {
                             switch (currentInvestigator.getName()) {
-                                case GlobalVariables.ROLAND_BANKS:
+                                case Investigator.ROLAND_BANKS:
+                                case Investigator.ZOEY_SAMARAS:
+                                case Investigator.JENNY_BARNES:
                                     currentInvestigator.changeHorror(1);
                                     break;
-                                case GlobalVariables.SKIDS_OTOOLE:
+                                case Investigator.SKIDS_OTOOLE:
                                     currentInvestigator.changeXP(-2);
                                     for (; currentInvestigator.getAvailableXP() < 0; ) {
                                         currentInvestigator.changeXP(1);
                                     }
                                     break;
-                                case GlobalVariables.AGNES_BAKER:
-                                case GlobalVariables.DAISY_WALKER:
-                                case GlobalVariables.WENDY_ADAMS:
+                                case Investigator.AGNES_BAKER:
+                                case Investigator.DAISY_WALKER:
+                                case Investigator.WENDY_ADAMS:
+                                case Investigator.REX_MURPHY:
+                                case Investigator.JIM_CULVER:
+                                case Investigator.ASHCAN_PETE:
                                     break;
                             }
                             currentInvestigator.setWeakness(0);
@@ -376,9 +381,29 @@ public class ContinueOnClickListener implements View.OnClickListener {
         ArkhamDbHelper mDbHelper = new ArkhamDbHelper(context);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
-        // Update campaign variables (currently only the scenario number)
+        // Update campaign variables (currently only the scenario number and which investigators are in use)
         ContentValues campaignValues = new ContentValues();
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_CURRENT_SCENARIO, globalVariables.getCurrentScenario());
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_ROLAND_INUSE, globalVariables
+                .investigatorsInUse[Investigator.ROLAND_BANKS]);
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_DAISY_INUSE, globalVariables
+                .investigatorsInUse[Investigator.DAISY_WALKER]);
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_SKIDS_INUSE, globalVariables
+                .investigatorsInUse[Investigator.SKIDS_OTOOLE]);
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_AGNES_INUSE, globalVariables
+                .investigatorsInUse[Investigator.AGNES_BAKER]);
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_WENDY_INUSE, globalVariables
+                .investigatorsInUse[Investigator.WENDY_ADAMS]);
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_ZOEY_INUSE, globalVariables
+                .investigatorsInUse[Investigator.ZOEY_SAMARAS]);
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_REX_INUSE, globalVariables
+                .investigatorsInUse[Investigator.REX_MURPHY]);
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_JENNY_INUSE, globalVariables
+                .investigatorsInUse[Investigator.JENNY_BARNES]);
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_JIM_INUSE, globalVariables
+                .investigatorsInUse[Investigator.JIM_CULVER]);
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_PETE_INUSE, globalVariables
+                .investigatorsInUse[Investigator.ASHCAN_PETE]);
         String campaignSelection = ArkhamContract.CampaignEntry._ID + " LIKE ?";
         String[] campaignSelectionArgs = {Long.toString(globalVariables.getCampaignID())};
         db.update(

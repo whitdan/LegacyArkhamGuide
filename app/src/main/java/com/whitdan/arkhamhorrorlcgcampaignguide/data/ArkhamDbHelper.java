@@ -11,15 +11,15 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.NightEntry;
 /**
  * Custom SQLiteOpenHelper that creates the tables defined in the contract.
  * Currently there are three tables:
- *          campaigns - contains all global variables
- *          investigators - contains a row per investigator, with all relevant variables
- *          night - contains all variables specific to the Night of the Zealot campaign
+ * campaigns - contains all global variables
+ * investigators - contains a row per investigator, with all relevant variables
+ * night - contains all variables specific to the Night of the Zealot campaign
  */
 
 public class ArkhamDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "campaigns.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     public ArkhamDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -32,7 +32,7 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
          */
 
         // Campaigns table
-        String SQL_CREATE_CAMPAIGNS_TABLE =  "CREATE TABLE " + CampaignEntry.TABLE_NAME + " ("
+        String SQL_CREATE_CAMPAIGNS_TABLE = "CREATE TABLE " + CampaignEntry.TABLE_NAME + " ("
                 + CampaignEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + CampaignEntry.COLUMN_CAMPAIGN_NAME + " STRING NOT NULL, "
                 + CampaignEntry.COLUMN_CURRENT_CAMPAIGN + " INTEGER NOT NULL, "
@@ -41,7 +41,12 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
                 + CampaignEntry.COLUMN_DAISY_INUSE + " INTEGER, "
                 + CampaignEntry.COLUMN_SKIDS_INUSE + " INTEGER, "
                 + CampaignEntry.COLUMN_AGNES_INUSE + " INTEGER, "
-                + CampaignEntry.COLUMN_WENDY_INUSE + " INTEGER);";
+                + CampaignEntry.COLUMN_WENDY_INUSE + " INTEGER, "
+                + CampaignEntry.COLUMN_ZOEY_INUSE + " INTEGER, "
+                + CampaignEntry.COLUMN_REX_INUSE + " INTEGER, "
+                + CampaignEntry.COLUMN_JENNY_INUSE + " INTEGER, "
+                + CampaignEntry.COLUMN_JIM_INUSE + " INTEGER, "
+                + CampaignEntry.COLUMN_PETE_INUSE + " INTEGER);";
 
         // Investigators table
         String SQL_CREATE_INVESTIGATORS_TABLE = "CREATE TABLE " + InvestigatorEntry.TABLE_NAME + " ("
@@ -78,6 +83,24 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // The database is still at version 1, so there's nothing to do be done here.
+        switch (oldVersion) {
+            case 1:
+                String SQL_UPGRADE_ONE_ONE = "ALTER TABLE " + CampaignEntry.TABLE_NAME + " ADD COLUMN " +
+                        CampaignEntry.COLUMN_ZOEY_INUSE + " INTEGER";
+                String SQL_UPGRADE_ONE_TWO = "ALTER TABLE " + CampaignEntry.TABLE_NAME + " ADD COLUMN " +
+                        CampaignEntry.COLUMN_REX_INUSE + " INTEGER";
+                String SQL_UPGRADE_ONE_THREE = "ALTER TABLE " + CampaignEntry.TABLE_NAME + " ADD COLUMN " +
+                        CampaignEntry.COLUMN_JENNY_INUSE + " INTEGER";
+                String SQL_UPGRADE_ONE_FOUR = "ALTER TABLE " + CampaignEntry.TABLE_NAME + " ADD COLUMN " +
+                        CampaignEntry.COLUMN_JIM_INUSE + " INTEGER";
+                String SQL_UPGRADE_ONE_FIVE = "ALTER TABLE " + CampaignEntry.TABLE_NAME + " ADD COLUMN " +
+                        CampaignEntry.COLUMN_PETE_INUSE + " INTEGER";
+
+                db.execSQL(SQL_UPGRADE_ONE_ONE);
+                db.execSQL(SQL_UPGRADE_ONE_TWO);
+                db.execSQL(SQL_UPGRADE_ONE_THREE);
+                db.execSQL(SQL_UPGRADE_ONE_FOUR);
+                db.execSQL(SQL_UPGRADE_ONE_FIVE);
+        }
     }
 }

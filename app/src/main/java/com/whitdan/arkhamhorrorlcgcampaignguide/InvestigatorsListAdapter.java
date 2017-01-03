@@ -124,25 +124,39 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
             weakness.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if(isChecked){currentInvestigator.setWeakness(1);}
-                    else{currentInvestigator.setWeakness(0);}
+                    if (isChecked) {
+                        currentInvestigator.setWeakness(1);
+                    } else {
+                        currentInvestigator.setWeakness(0);
+                    }
                 }
             });
-            if(currentInvestigator.getWeakness() == 1){
+            if (currentInvestigator.getWeakness() == 1) {
                 weakness.setChecked(true);
             }
             switch (currentInvestigator.getName()) {
-                case GlobalVariables.ROLAND_BANKS:
+                case Investigator.ROLAND_BANKS:
                     weakness.setText(R.string.cover_up);
                     weakness.setVisibility(VISIBLE);
                     break;
-                case GlobalVariables.SKIDS_OTOOLE:
+                case Investigator.SKIDS_OTOOLE:
                     weakness.setText(R.string.hospital_debts);
                     weakness.setVisibility(VISIBLE);
                     break;
-                case GlobalVariables.AGNES_BAKER:
-                case GlobalVariables.DAISY_WALKER:
-                case GlobalVariables.WENDY_ADAMS:
+                case Investigator.ZOEY_SAMARAS:
+                    weakness.setText(R.string.smite_the_wicked);
+                    weakness.setVisibility(VISIBLE);
+                    break;
+                case Investigator.JENNY_BARNES:
+                    weakness.setText(R.string.searching_for_izzie);
+                    weakness.setVisibility(VISIBLE);
+                    break;
+                case Investigator.AGNES_BAKER:
+                case Investigator.DAISY_WALKER:
+                case Investigator.WENDY_ADAMS:
+                case Investigator.REX_MURPHY:
+                case Investigator.JIM_CULVER:
+                case Investigator.ASHCAN_PETE:
                     weakness.setVisibility(GONE);
                     break;
             }

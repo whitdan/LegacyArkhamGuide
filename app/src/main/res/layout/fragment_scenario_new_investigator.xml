@@ -37,49 +37,106 @@
 
         <TextView
             android:id="@+id/choose_investigators"
-            android:paddingTop="@dimen/activity_horizontal_margin"
-            android:paddingBottom="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textStyle="bold"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:text="@string/choose_investigators"
             android:textAllCaps="true"
-            android:text="@string/choose_investigators"/>
+            android:textStyle="bold"/>
 
-        <CheckBox
-            android:id="@+id/roland_banks"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/roland_banks"
-            android:visibility="gone"/>
+            android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/daisy_walker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/daisy_walker"
-            android:visibility="gone"/>
+            <LinearLayout
+                android:id="@+id/core_investigators"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/skids_otoole"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/skids_otoole"
-            android:visibility="gone"/>
+                <CheckBox
+                    android:id="@+id/roland_banks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/roland_banks"
+                    android:visibility="gone"/>
 
-        <CheckBox
-            android:id="@+id/agnes_baker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/agnes_baker"
-            android:visibility="gone"/>
+                <CheckBox
+                    android:id="@+id/daisy_walker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/daisy_walker"
+                    android:visibility="gone"/>
 
-        <CheckBox
-            android:id="@+id/wendy_adams"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/wendy_adams"
-            android:visibility="gone"/>
+                <CheckBox
+                    android:id="@+id/skids_otoole"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/skids_otoole"
+                    android:visibility="gone"/>
+
+                <CheckBox
+                    android:id="@+id/agnes_baker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/agnes_baker"
+                    android:visibility="gone"/>
+
+                <CheckBox
+                    android:id="@+id/wendy_adams"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wendy_adams"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dunwich_investigators"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/zoey_samaras"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zoey_samaras"
+                    android:visibility="gone"/>
+
+                <CheckBox
+                    android:id="@+id/rex_murphy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rex_murphy"
+                    android:visibility="gone"/>
+
+                <CheckBox
+                    android:id="@+id/jenny_barnes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jenny_barnes"
+                    android:visibility="gone"/>
+
+                <CheckBox
+                    android:id="@+id/jim_culver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jim_culver"
+                    android:visibility="gone"/>
+
+                <CheckBox
+                    android:id="@+id/ashcan_pete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ashcan_pete"
+                    android:visibility="gone"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <TextView
