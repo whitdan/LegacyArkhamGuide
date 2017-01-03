@@ -75,7 +75,7 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
         String sharedPrefs = getActivity().getResources().getString(R.string.expacs_owned);
         String dunwichOwnedString = getActivity().getResources().getString(R.string.dunwich_campaign_name);
         SharedPreferences settings = getActivity().getSharedPreferences(sharedPrefs, 0);
-        boolean dunwichOwned = settings.getBoolean(dunwichOwnedString, true);
+        boolean dunwichOwned = settings.getBoolean(dunwichOwnedString, false);
 
         int investigators = 5;
         if (dunwichOwned) {

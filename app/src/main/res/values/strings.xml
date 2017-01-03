@@ -111,7 +111,7 @@
     <string name="nothing">Nothing to show.</string>
     <string name="lost">The investigators have lost.</string>
     <string name="expacs_owned">Expansions owned</string>
-    <string name="pick_expacs_owned">Pick expansions you own</string>
+    <string name="pick_expacs_owned">Pick expansions owned</string>
 
 
     <!--Night of the Zealot-->
@@ -135,8 +135,8 @@
     <!--Miscellaneous-->
     <string name="ghoul_priest_additional">Shuffle the Ghoul Priest into the encounter deck.\n</string>
     <string name="ghoul_priest_checkbox">Ghoul Priest killed</string>
-    <string name="cultists_interrogated">Cultists interrogated: </string>
-    <string name="cultists_got_away">Cultists got away: </string>
+    <string name="cultists_interrogated">Cultists interrogated: \n</string>
+    <string name="cultists_got_away">Cultists got away: \n</string>
     <string name="drew">"Wolf-Man" Drew</string>
     <string name="herman">Herman Collins</string>
     <string name="peter">Peter Warren</string>

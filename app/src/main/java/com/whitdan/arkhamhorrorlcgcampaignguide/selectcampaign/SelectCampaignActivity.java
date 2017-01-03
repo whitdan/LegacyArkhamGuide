@@ -30,6 +30,7 @@ Main Activity - Allows the user to select a campaign to start.
 /*
     TODO: Players jumping in and out
     TODO: Extra scenarios
+    TODO: Chaos bag
  */
 
 public class SelectCampaignActivity extends AppCompatActivity {
@@ -107,7 +108,7 @@ public class SelectCampaignActivity extends AppCompatActivity {
     }
 
     public void startDunwich(View v) {
-        Toast toast = Toast.makeText(this, "The Dunwich Legacy has not yet been released.", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(this, "The Dunwich Legacy is not available yet.", Toast.LENGTH_SHORT);
         toast.show();
     }
 
@@ -145,7 +146,7 @@ public class SelectCampaignActivity extends AppCompatActivity {
             dunwichOwnedString = getActivity().getResources().getString(R.string.dunwich_campaign_name);
 
             settings = getActivity().getSharedPreferences(sharedPrefs, 0);
-            dunwichOwned = settings.getBoolean(dunwichOwnedString, true);
+            dunwichOwned = settings.getBoolean(dunwichOwnedString, false);
 
             boolean[] startChecked = new boolean[1];
             startChecked[0] = dunwichOwned;

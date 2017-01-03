@@ -72,9 +72,9 @@ public class Investigator {
     int getWeakness(){return mTempWeakness;}
 
     public int getName(){return mName;}
-    public int getHealth(){return mHealth;}
-    public int getSanity(){return mSanity;}
     public int getStatus(){return mStatus;}
+    int getHealth(){return mHealth;}
+    int getSanity(){return mSanity;}
     int getDamage(){return mDamage;}
     int getHorror(){return mHorror;}
     int getAvailableXP(){return mAvailableXP;}
