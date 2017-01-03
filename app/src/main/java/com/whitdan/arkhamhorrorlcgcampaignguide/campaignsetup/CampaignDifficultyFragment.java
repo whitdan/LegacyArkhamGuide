@@ -181,4 +181,6 @@ public class CampaignDifficultyFragment extends Fragment {
 
         }
     }
+
+
 }
