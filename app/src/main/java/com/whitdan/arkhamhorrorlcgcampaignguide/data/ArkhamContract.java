@@ -27,6 +27,11 @@ public class ArkhamContract {
         public static final String COLUMN_SKIDS_INUSE = "skids";
         public static final String COLUMN_AGNES_INUSE ="agnes";
         public static final String COLUMN_WENDY_INUSE = "wendy";
+        public static final String COLUMN_ZOEY_INUSE = "zoey";
+        public static final String COLUMN_REX_INUSE = "rex";
+        public static final String COLUMN_JENNY_INUSE = "jenny";
+        public static final String COLUMN_JIM_INUSE = "jim";
+        public static final String COLUMN_PETE_INUSE = "pete";
     }
 
     public static class InvestigatorEntry implements BaseColumns{

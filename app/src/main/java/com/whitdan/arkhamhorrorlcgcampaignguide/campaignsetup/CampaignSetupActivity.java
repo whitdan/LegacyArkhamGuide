@@ -108,7 +108,7 @@ public class CampaignSetupActivity extends AppCompatActivity {
 
         // Clear and then set investigators
         globalVariables.investigators.clear();
-        globalVariables.investigatorsInUse = new int[] {0,0,0,0,0,0,0,0,0,0};
+        globalVariables.investigatorsInUse = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
             globalVariables.investigators.add(new Investigator(globalVariables.investigatorNames.get(i)));
             globalVariables.investigatorsInUse[globalVariables.investigatorNames.get(i)] = 1;
@@ -130,10 +130,10 @@ public class CampaignSetupActivity extends AppCompatActivity {
             startActivity(intent);
         }
         // Display an error and don't proceed if no investigator has been selected
-        else if(globalVariables.investigators.size() == 0){
+        else if (globalVariables.investigators.size() == 0) {
             Toast toast = Toast.makeText(this, "You must select an investigator.", Toast.LENGTH_SHORT);
             toast.show();
-        }else if(campaignName.length() == 0){
+        } else if (campaignName.length() == 0) {
             Toast toast = Toast.makeText(this, "You must enter a campaign name.", Toast.LENGTH_SHORT);
             toast.show();
         }
@@ -154,16 +154,26 @@ public class CampaignSetupActivity extends AppCompatActivity {
         campaignValues.put(CampaignEntry.COLUMN_CAMPAIGN_NAME, campaignName);
         campaignValues.put(CampaignEntry.COLUMN_CURRENT_CAMPAIGN, globalVariables.getCurrentCampaign());
         campaignValues.put(CampaignEntry.COLUMN_CURRENT_SCENARIO, globalVariables.getCurrentScenario());
-        campaignValues.put(CampaignEntry.COLUMN_ROLAND_INUSE, globalVariables.investigatorsInUse[globalVariables
+        campaignValues.put(CampaignEntry.COLUMN_ROLAND_INUSE, globalVariables.investigatorsInUse[Investigator
                 .ROLAND_BANKS]);
-        campaignValues.put(CampaignEntry.COLUMN_DAISY_INUSE, globalVariables.investigatorsInUse[globalVariables
+        campaignValues.put(CampaignEntry.COLUMN_DAISY_INUSE, globalVariables.investigatorsInUse[Investigator
                 .DAISY_WALKER]);
-        campaignValues.put(CampaignEntry.COLUMN_SKIDS_INUSE, globalVariables.investigatorsInUse[globalVariables
+        campaignValues.put(CampaignEntry.COLUMN_SKIDS_INUSE, globalVariables.investigatorsInUse[Investigator
                 .SKIDS_OTOOLE]);
-        campaignValues.put(CampaignEntry.COLUMN_AGNES_INUSE, globalVariables.investigatorsInUse[globalVariables
+        campaignValues.put(CampaignEntry.COLUMN_AGNES_INUSE, globalVariables.investigatorsInUse[Investigator
                 .AGNES_BAKER]);
-        campaignValues.put(CampaignEntry.COLUMN_WENDY_INUSE, globalVariables.investigatorsInUse[globalVariables
+        campaignValues.put(CampaignEntry.COLUMN_WENDY_INUSE, globalVariables.investigatorsInUse[Investigator
                 .WENDY_ADAMS]);
+        campaignValues.put(CampaignEntry.COLUMN_ZOEY_INUSE, globalVariables.investigatorsInUse[Investigator
+                .ZOEY_SAMARAS]);
+        campaignValues.put(CampaignEntry.COLUMN_REX_INUSE, globalVariables.investigatorsInUse[Investigator
+                .REX_MURPHY]);
+        campaignValues.put(CampaignEntry.COLUMN_JENNY_INUSE, globalVariables.investigatorsInUse[Investigator
+                .JENNY_BARNES]);
+        campaignValues.put(CampaignEntry.COLUMN_JIM_INUSE, globalVariables.investigatorsInUse[Investigator
+                .JIM_CULVER]);
+        campaignValues.put(CampaignEntry.COLUMN_PETE_INUSE, globalVariables.investigatorsInUse[Investigator
+                .ASHCAN_PETE]);
         long newCampaignId = db.insert(CampaignEntry.TABLE_NAME, null, campaignValues);
         globalVariables.setCampaignID(newCampaignId);
 

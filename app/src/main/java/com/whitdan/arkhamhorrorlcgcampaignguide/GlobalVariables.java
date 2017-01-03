@@ -63,18 +63,6 @@ public class GlobalVariables extends Application {
         return leadInvestigator;
     }
 
-    // Integer values for each investigator
-    public static final int ROLAND_BANKS = 1;
-    public static final int DAISY_WALKER = 2;
-    public static final int SKIDS_OTOOLE = 3;
-    public static final int AGNES_BAKER = 4;
-    public static final int WENDY_ADAMS = 5;
-    public static final int ZOEY_SAMARAS = 6;
-    public static final int REX_MURPHY = 7;
-    public static final int JENNY_BARNES = 8;
-    public static final int JIM_CULVER = 9;
-    public static final int ASHCAN_PETE = 10;
-
     // Victory display amount
     private int mVictoryDisplay = 0;
     public void setVictoryDisplay(int xp) {

@@ -16,7 +16,7 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.R;
 
 public class CampaignIntroFragment extends Fragment {
 
-    private GlobalVariables globalVariables;
+    GlobalVariables globalVariables;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -2,6 +2,10 @@
 
     <string name="app_name">Arkham Horror LCG Campaign Guide</string>
 
+    <string-array name="expansion_names">
+        <item>The Dunwich Legacy</item>
+    </string-array>
+
     <!-- Investigator name strings-->
     <string-array name="investigators">
         <item>None</item>
@@ -106,6 +110,8 @@
     <string name="campaign_log">Campaign Log</string>
     <string name="nothing">Nothing to show.</string>
     <string name="lost">The investigators have lost.</string>
+    <string name="expacs_owned">Expansions owned</string>
+    <string name="pick_expacs_owned">Pick expansions you own</string>
 
 
     <!--Night of the Zealot-->

@@ -47,7 +47,12 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                 CampaignEntry.COLUMN_DAISY_INUSE,
                 CampaignEntry.COLUMN_SKIDS_INUSE,
                 CampaignEntry.COLUMN_AGNES_INUSE,
-                CampaignEntry.COLUMN_WENDY_INUSE
+                CampaignEntry.COLUMN_WENDY_INUSE,
+                CampaignEntry.COLUMN_ZOEY_INUSE,
+                CampaignEntry.COLUMN_REX_INUSE,
+                CampaignEntry.COLUMN_JENNY_INUSE,
+                CampaignEntry.COLUMN_JIM_INUSE,
+                CampaignEntry.COLUMN_PETE_INUSE
         };
         String campaignSelection = CampaignEntry._ID + " = ?";
         Cursor campaignCursor = db.query(
@@ -66,16 +71,26 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_CURRENT_CAMPAIGN)));
             globalVariables.setCurrentScenario(campaignCursor.getInt(campaignCursor
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_CURRENT_SCENARIO)));
-            globalVariables.investigatorsInUse[globalVariables.ROLAND_BANKS] = campaignCursor.getInt(campaignCursor
+            globalVariables.investigatorsInUse[Investigator.ROLAND_BANKS] = campaignCursor.getInt(campaignCursor
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_ROLAND_INUSE));
-            globalVariables.investigatorsInUse[globalVariables.DAISY_WALKER] = campaignCursor.getInt(campaignCursor
+            globalVariables.investigatorsInUse[Investigator.DAISY_WALKER] = campaignCursor.getInt(campaignCursor
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_DAISY_INUSE));
-            globalVariables.investigatorsInUse[globalVariables.AGNES_BAKER] = campaignCursor.getInt(campaignCursor
+            globalVariables.investigatorsInUse[Investigator.AGNES_BAKER] = campaignCursor.getInt(campaignCursor
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_AGNES_INUSE));
-            globalVariables.investigatorsInUse[globalVariables.SKIDS_OTOOLE] = campaignCursor.getInt(campaignCursor
+            globalVariables.investigatorsInUse[Investigator.SKIDS_OTOOLE] = campaignCursor.getInt(campaignCursor
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_SKIDS_INUSE));
-            globalVariables.investigatorsInUse[globalVariables.WENDY_ADAMS] = campaignCursor.getInt(campaignCursor
+            globalVariables.investigatorsInUse[Investigator.WENDY_ADAMS] = campaignCursor.getInt(campaignCursor
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_WENDY_INUSE));
+            globalVariables.investigatorsInUse[Investigator.ZOEY_SAMARAS] = campaignCursor.getInt(campaignCursor
+                    .getColumnIndexOrThrow(CampaignEntry.COLUMN_ZOEY_INUSE));
+            globalVariables.investigatorsInUse[Investigator.REX_MURPHY] = campaignCursor.getInt(campaignCursor
+                    .getColumnIndexOrThrow(CampaignEntry.COLUMN_REX_INUSE));
+            globalVariables.investigatorsInUse[Investigator.JENNY_BARNES] = campaignCursor.getInt(campaignCursor
+                    .getColumnIndexOrThrow(CampaignEntry.COLUMN_JENNY_INUSE));
+            globalVariables.investigatorsInUse[Investigator.JIM_CULVER] = campaignCursor.getInt(campaignCursor
+                    .getColumnIndexOrThrow(CampaignEntry.COLUMN_JIM_INUSE));
+            globalVariables.investigatorsInUse[Investigator.ASHCAN_PETE] = campaignCursor.getInt(campaignCursor
+                    .getColumnIndexOrThrow(CampaignEntry.COLUMN_PETE_INUSE));
         }
         campaignCursor.close();
 

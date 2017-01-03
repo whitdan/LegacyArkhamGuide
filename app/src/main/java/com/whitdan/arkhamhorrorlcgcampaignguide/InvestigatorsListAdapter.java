@@ -135,28 +135,28 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
                 weakness.setChecked(true);
             }
             switch (currentInvestigator.getName()) {
-                case GlobalVariables.ROLAND_BANKS:
+                case Investigator.ROLAND_BANKS:
                     weakness.setText(R.string.cover_up);
                     weakness.setVisibility(VISIBLE);
                     break;
-                case GlobalVariables.SKIDS_OTOOLE:
+                case Investigator.SKIDS_OTOOLE:
                     weakness.setText(R.string.hospital_debts);
                     weakness.setVisibility(VISIBLE);
                     break;
-                case GlobalVariables.ZOEY_SAMARAS:
+                case Investigator.ZOEY_SAMARAS:
                     weakness.setText(R.string.smite_the_wicked);
                     weakness.setVisibility(VISIBLE);
                     break;
-                case GlobalVariables.JENNY_BARNES:
+                case Investigator.JENNY_BARNES:
                     weakness.setText(R.string.searching_for_izzie);
                     weakness.setVisibility(VISIBLE);
                     break;
-                case GlobalVariables.AGNES_BAKER:
-                case GlobalVariables.DAISY_WALKER:
-                case GlobalVariables.WENDY_ADAMS:
-                case GlobalVariables.REX_MURPHY:
-                case GlobalVariables.JIM_CULVER:
-                case GlobalVariables.ASHCAN_PETE:
+                case Investigator.AGNES_BAKER:
+                case Investigator.DAISY_WALKER:
+                case Investigator.WENDY_ADAMS:
+                case Investigator.REX_MURPHY:
+                case Investigator.JIM_CULVER:
+                case Investigator.ASHCAN_PETE:
                     weakness.setVisibility(GONE);
                     break;
             }
