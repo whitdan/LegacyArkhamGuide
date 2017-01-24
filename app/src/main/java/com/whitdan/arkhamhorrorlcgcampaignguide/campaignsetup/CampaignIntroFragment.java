@@ -25,9 +25,16 @@ public class CampaignIntroFragment extends Fragment {
 
         // Set the introductory text, depending on the campaign
         TextView textView = (TextView) v.findViewById(R.id.introductory_text);
-        if(globalVariables.getCurrentCampaign()==1)
-        {
-            textView.setText(R.string.night_setup);
+        int currentCampaign = globalVariables.getCurrentCampaign();
+        switch(currentCampaign){
+            // Night of the Zealot
+            case 1:
+                textView.setText(R.string.night_setup);
+                break;
+            // The Dunwich Legacy
+            case 2:
+                textView.setText(R.string.dunwich_setup);
+                break;
         }
 
         // Set click listener on the continue button

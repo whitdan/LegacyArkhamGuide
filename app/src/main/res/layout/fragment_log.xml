@@ -113,23 +113,36 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/set_aside"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"/>
+
+                            <ImageView
+                                android:id="@+id/set_aside_image"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:contentDescription="@string/sets"
+                                android:visibility="gone"/>
+                        </LinearLayout>
 
                         <TextView
-                            android:id="@+id/set_aside"
-                            android:layout_width="0dp"
-                            android:layout_weight="2"
-                            android:layout_height="wrap_content"/>
-
-                        <ImageView
-                            android:id="@+id/set_aside_image"
-                            android:layout_width="0dp"
-                            android:layout_weight="2"
+                            android:id="@+id/set_aside_two"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:contentDescription="@string/sets"
                             android:visibility="gone"/>
-
                     </LinearLayout>
+
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -177,89 +190,55 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/log_campaign_start"
+                    android:id="@+id/log_campaign"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/nothing"/>
 
                 <!--Night of the Zealot-->
                 <LinearLayout
-                    android:id="@+id/night_log"
+                    android:id="@+id/cultists_view"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/log_house_status"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"/>
-
-                    <TextView
-                        android:id="@+id/log_ghoul_priest"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ghoul_priest_alive"
-                        android:visibility="gone"/>
-
-                    <TextView
-                        android:id="@+id/log_lita_status"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/lita_forced"
-                        android:visibility="gone"/>
-
-                    <TextView
-                        android:id="@+id/log_midnight_status"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/past_midnight"
-                        android:visibility="gone"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <LinearLayout
-                        android:id="@+id/cultists_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="gone">
+                        android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:layout_weight="1"
+                            android:text="@string/cultists_interrogated"/>
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/cultists_interrogated"/>
-
-                            <TextView
-                                android:id="@+id/cultists_interrogated"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"/>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/cultists_interrogated"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:layout_weight="1"/>
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/cultists_got_away"/>
+                    </LinearLayout>
 
-                            <TextView
-                                android:id="@+id/cultists_got_away"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                        </LinearLayout>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/cultists_got_away"/>
+
+                        <TextView
+                            android:id="@+id/cultists_got_away"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

@@ -111,8 +111,13 @@ public class ContinueOnClickListener implements View.OnClickListener {
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     // Apply the scenario resolution
-                    if (globalVariables.getCurrentCampaign() == 1) {
-                        nightResolutions(globalVariables, getActivity());
+                    switch (globalVariables.getCurrentCampaign()) {
+                        case 1:
+                            nightResolutions(globalVariables, getActivity());
+                            break;
+                        case 2:
+                            dunwichResolutions(globalVariables, getActivity());
+                            break;
                     }
 
                     // Apply defeats from temp status and weaknesses
@@ -166,7 +171,16 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     }
 
                     // Increment current scenario
-                    int nextScenario = globalVariables.getCurrentScenario() + 1;
+                    int nextScenario;
+                    if (globalVariables.getCurrentCampaign()==2 && globalVariables.getFirstScenario() == 2) {
+                        if (globalVariables.getCurrentScenario() == 1) {
+                            nextScenario = 3;
+                        } else {
+                            nextScenario = 1;
+                        }
+                    } else {
+                        nextScenario = globalVariables.getCurrentScenario() + 1;
+                    }
                     globalVariables.setCurrentScenario(nextScenario);
 
                     // Save the campaign
@@ -373,6 +387,111 @@ public class ContinueOnClickListener implements View.OnClickListener {
 
 
     /*
+    Contains all the Dunwich Legacy resolutions
+   */
+    private static void dunwichResolutions(GlobalVariables globalVariables, Activity parent) {
+        int leadInvestigator = globalVariables.getLeadInvestigator();
+
+        /*
+         Extracurricular Activity - Scenario 1-A
+        */
+        if (globalVariables.getCurrentScenario() == 1) {
+            switch (globalVariables.getResolution()) {
+                // No resolution
+                case 0:
+                    globalVariables.setWarrenRice(0);
+                    globalVariables.setStudents(0);
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay() + 1);
+                    }
+                    break;
+                // Resolution one
+                case 1:
+                    globalVariables.setWarrenRice(1);
+                    globalVariables.setStudents(0);
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
+                    }
+                    break;
+                // Resolution two
+                case 2:
+                    globalVariables.setWarrenRice(0);
+                    globalVariables.setStudents(1);
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
+                    }
+                    break;
+                // Resolution three
+                case 3:
+                    globalVariables.setWarrenRice(0);
+                    globalVariables.setStudents(2);
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
+                    }
+                    break;
+                // Resolution four
+                case 4:
+                    globalVariables.setInvestigatorsUnconscious(1);
+                    globalVariables.setWarrenRice(0);
+                    globalVariables.setStudents(0);
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay() + 1);
+                    }
+                    break;
+            }
+        }
+
+        /*
+         The House Always Wins - Scenario 1-B
+        */
+        else if (globalVariables.getCurrentScenario() == 2) {
+
+            CheckBox cheated = (CheckBox) parent.findViewById(R.id.cheated_checkbox);
+            if(cheated.isChecked()){
+                globalVariables.setInvestigatorsCheated(1);
+            }
+
+            switch (globalVariables.getResolution()) {
+                // No resolution or resolution one
+                case 1:
+                    globalVariables.setObannionGang(0);
+                    globalVariables.setFrancisMorgan(0);
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay() + 1);
+                    }
+                    break;
+                // Resolution two
+                case 2:
+                    globalVariables.setObannionGang(0);
+                    globalVariables.setFrancisMorgan(1);
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
+                    }
+                    break;
+                // Resolution three
+                case 3:
+                    globalVariables.setObannionGang(1);
+                    globalVariables.setFrancisMorgan(0);
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
+                    }
+                    break;
+                // Resolution four
+                case 4:
+                    globalVariables.setObannionGang(0);
+                    globalVariables.setFrancisMorgan(0);
+                    globalVariables.setInvestigatorsUnconscious(1);
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay() + 1);
+                        globalVariables.investigators.get(i).changeDamage(1);
+                    }
+                    break;
+            }
+        }
+    }
+
+
+    /*
      Saves the campaign, including all relevant variables
     */
     private static void saveCampaign(Context context) {
@@ -439,6 +558,29 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     nightValues,
                     nightSelection,
                     nightSelectionArgs);
+        }
+
+        // Update all Dunwich variables
+        if (globalVariables.getCurrentCampaign() == 2) {
+            ContentValues dunwichValues = new ContentValues();
+            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_FIRST_SCENARIO, globalVariables.getFirstScenario());
+            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_INVESTIGATORS_UNCONSCIOUS, globalVariables
+                    .getInvestigatorsUnconscious());
+            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_HENRY_ARMITAGE, globalVariables.getHenryArmitage());
+            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_WARREN_RICE, globalVariables.getWarrenRice());
+            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_STUDENTS, globalVariables.getStudents());
+            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_OBANNION_GANG, globalVariables.getObannionGang());
+            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_FRANCIS_MORGAN, globalVariables.getFrancisMorgan());
+            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_INVESTIGATORS_CHEATED, globalVariables
+                    .getInvestigatorsCheated());
+
+            String dunwichSelection = ArkhamContract.DunwichEntry.PARENT_ID + " LIKE ?";
+            String[] dunwichSelectionArgs = {Long.toString(globalVariables.getCampaignID())};
+            db.update(
+                    ArkhamContract.DunwichEntry.TABLE_NAME,
+                    dunwichValues,
+                    dunwichSelection,
+                    dunwichSelectionArgs);
         }
 
         // Update investigator entries

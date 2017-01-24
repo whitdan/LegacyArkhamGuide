@@ -44,7 +44,7 @@ public class CampaignDifficultyFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((CampaignSetupActivity)getActivity()).startScenario(v);
+                ((CampaignSetupActivity) getActivity()).startScenario(v);
             }
         });
 
@@ -55,7 +55,7 @@ public class CampaignDifficultyFragment extends Fragment {
 
         View v;
 
-        DifficultySpinnerListener(View view){
+        DifficultySpinnerListener(View view) {
             v = view;
         }
 
@@ -90,7 +90,7 @@ public class CampaignDifficultyFragment extends Fragment {
             TextView minusFive = (TextView) v.findViewById(R.id.minus_five);
             TextView minusSix = (TextView) v.findViewById(R.id.minus_six);
             TextView minusSeven = (TextView) v.findViewById(R.id.minus_seven);
-            TextView minusEight= (TextView) v.findViewById(R.id.minus_eight);
+            TextView minusEight = (TextView) v.findViewById(R.id.minus_eight);
             TextView skull = (TextView) v.findViewById(R.id.skull);
             TextView cultist = (TextView) v.findViewById(R.id.cultist);
             TextView tablet = (TextView) v.findViewById(R.id.tablet);
@@ -98,81 +98,161 @@ public class CampaignDifficultyFragment extends Fragment {
             TextView tentacles = (TextView) v.findViewById(R.id.tentacles);
             TextView elderSign = (TextView) v.findViewById(R.id.elder_sign);
 
-            // Night of the Zealot
-            if (globalVariables.getCurrentCampaign() == 1) {
-                // Hide all unused token views
-                plusTwoLayout.setVisibility(GONE);
-                minusSevenLayout.setVisibility(GONE);
-                elderThingLayout.setVisibility(GONE);
-                // Set consistent values
-                skull.setText(R.string.two);
-                cultist.setText(R.string.one);
-                tablet.setText(R.string.one);
-                tentacles.setText(R.string.one);
-                elderSign.setText(R.string.one);
-                switch (position) {
-                    // Easy
-                    case 0:
-                        plusOneLayout.setVisibility(VISIBLE);
-                        plusOne.setText(R.string.two);
-                        zero.setText(R.string.three);
-                        minusOne.setText(R.string.three);
-                        minusTwo.setText(R.string.two);
-                        minusThreeLayout.setVisibility(GONE);
-                        minusFourLayout.setVisibility(GONE);
-                        minusFiveLayout.setVisibility(GONE);
-                        minusSixLayout.setVisibility(GONE);
-                        minusEightLayout.setVisibility(GONE);
-                        break;
-                    // Standard
-                    case 1:
-                        plusOneLayout.setVisibility(VISIBLE);
-                        plusOne.setText(R.string.one);
-                        zero.setText(R.string.two);
-                        minusOne.setText(R.string.three);
-                        minusTwo.setText(R.string.two);
-                        minusThreeLayout.setVisibility(VISIBLE);
-                        minusThree.setText(R.string.one);
-                        minusFourLayout.setVisibility(VISIBLE);
-                        minusFour.setText(R.string.one);
-                        minusFiveLayout.setVisibility(GONE);
-                        minusSixLayout.setVisibility(GONE);
-                        minusEightLayout.setVisibility(GONE);
-                        break;
-                    // Hard
-                    case 2:
-                        plusOneLayout.setVisibility(VISIBLE);
-                        plusOneLayout.setVisibility(GONE);
-                        zero.setText(R.string.three);
-                        minusOne.setText(R.string.two);
-                        minusTwo.setText(R.string.two);
-                        minusThreeLayout.setVisibility(VISIBLE);
-                        minusThree.setText(R.string.two);
-                        minusFourLayout.setVisibility(VISIBLE);
-                        minusFour.setText(R.string.one);
-                        minusFiveLayout.setVisibility(VISIBLE);
-                        minusFive.setText(R.string.one);
-                        minusSixLayout.setVisibility(GONE);
-                        minusEightLayout.setVisibility(GONE);
-                        break;
-                    // Expert
-                    case 3:
-                        plusOneLayout.setVisibility(GONE);
-                        zero.setText(R.string.one);
-                        minusOne.setText(R.string.two);
-                        minusTwo.setText(R.string.two);
-                        minusThreeLayout.setVisibility(VISIBLE);
-                        minusThree.setText(R.string.two);
-                        minusFourLayout.setVisibility(VISIBLE);
-                        minusFour.setText(R.string.two);
-                        minusFiveLayout.setVisibility(VISIBLE);
-                        minusFive.setText(R.string.one);
-                        minusSixLayout.setVisibility(VISIBLE);
-                        minusSix.setText(R.string.one);
-                        minusEightLayout.setVisibility(VISIBLE);
-                        minusEight.setText(R.string.one);
-                        break;
-                }
+            int currentCampaign = globalVariables.getCurrentCampaign();
+            switch (currentCampaign) {
+
+                // Night of the Zealot
+                case 1:
+                    // Hide all unused token views
+                    plusTwoLayout.setVisibility(GONE);
+                    minusSevenLayout.setVisibility(GONE);
+                    elderThingLayout.setVisibility(GONE);
+                    // Set consistent values
+                    skull.setText(R.string.two);
+                    cultist.setText(R.string.one);
+                    tablet.setText(R.string.one);
+                    tentacles.setText(R.string.one);
+                    elderSign.setText(R.string.one);
+                    switch (position) {
+                        // Easy
+                        case 0:
+                            plusOneLayout.setVisibility(VISIBLE);
+                            plusOne.setText(R.string.two);
+                            zero.setText(R.string.three);
+                            minusOne.setText(R.string.three);
+                            minusTwo.setText(R.string.two);
+                            minusThreeLayout.setVisibility(GONE);
+                            minusFourLayout.setVisibility(GONE);
+                            minusFiveLayout.setVisibility(GONE);
+                            minusSixLayout.setVisibility(GONE);
+                            minusEightLayout.setVisibility(GONE);
+                            break;
+                        // Standard
+                        case 1:
+                            plusOneLayout.setVisibility(VISIBLE);
+                            plusOne.setText(R.string.one);
+                            zero.setText(R.string.two);
+                            minusOne.setText(R.string.three);
+                            minusTwo.setText(R.string.two);
+                            minusThreeLayout.setVisibility(VISIBLE);
+                            minusThree.setText(R.string.one);
+                            minusFourLayout.setVisibility(VISIBLE);
+                            minusFour.setText(R.string.one);
+                            minusFiveLayout.setVisibility(GONE);
+                            minusSixLayout.setVisibility(GONE);
+                            minusEightLayout.setVisibility(GONE);
+                            break;
+                        // Hard
+                        case 2:
+                            plusOneLayout.setVisibility(VISIBLE);
+                            plusOneLayout.setVisibility(GONE);
+                            zero.setText(R.string.three);
+                            minusOne.setText(R.string.two);
+                            minusTwo.setText(R.string.two);
+                            minusThreeLayout.setVisibility(VISIBLE);
+                            minusThree.setText(R.string.two);
+                            minusFourLayout.setVisibility(VISIBLE);
+                            minusFour.setText(R.string.one);
+                            minusFiveLayout.setVisibility(VISIBLE);
+                            minusFive.setText(R.string.one);
+                            minusSixLayout.setVisibility(GONE);
+                            minusEightLayout.setVisibility(GONE);
+                            break;
+                        // Expert
+                        case 3:
+                            plusOneLayout.setVisibility(GONE);
+                            zero.setText(R.string.one);
+                            minusOne.setText(R.string.two);
+                            minusTwo.setText(R.string.two);
+                            minusThreeLayout.setVisibility(VISIBLE);
+                            minusThree.setText(R.string.two);
+                            minusFourLayout.setVisibility(VISIBLE);
+                            minusFour.setText(R.string.two);
+                            minusFiveLayout.setVisibility(VISIBLE);
+                            minusFive.setText(R.string.one);
+                            minusSixLayout.setVisibility(VISIBLE);
+                            minusSix.setText(R.string.one);
+                            minusEightLayout.setVisibility(VISIBLE);
+                            minusEight.setText(R.string.one);
+                            break;
+                    }
+                    break;
+                // The Dunwich Legacy
+                case 2:
+                    // Hide all unused token views
+                    plusTwoLayout.setVisibility(GONE);
+                    minusSevenLayout.setVisibility(GONE);
+                    elderThingLayout.setVisibility(GONE);
+                    tabletLayout.setVisibility(GONE);
+                    // Set consistent values
+                    skull.setText(R.string.two);
+                    cultist.setText(R.string.one);
+                    tentacles.setText(R.string.one);
+                    elderSign.setText(R.string.one);
+                    switch (position) {
+                        // Easy
+                        case 0:
+                            plusOneLayout.setVisibility(VISIBLE);
+                            plusOne.setText(R.string.two);
+                            zero.setText(R.string.three);
+                            minusOne.setText(R.string.three);
+                            minusTwo.setText(R.string.two);
+                            minusThreeLayout.setVisibility(GONE);
+                            minusFourLayout.setVisibility(GONE);
+                            minusFiveLayout.setVisibility(GONE);
+                            minusSixLayout.setVisibility(GONE);
+                            minusEightLayout.setVisibility(GONE);
+                            break;
+                        // Standard
+                        case 1:
+                            plusOneLayout.setVisibility(VISIBLE);
+                            plusOne.setText(R.string.one);
+                            zero.setText(R.string.two);
+                            minusOne.setText(R.string.three);
+                            minusTwo.setText(R.string.two);
+                            minusThreeLayout.setVisibility(VISIBLE);
+                            minusThree.setText(R.string.one);
+                            minusFourLayout.setVisibility(VISIBLE);
+                            minusFour.setText(R.string.one);
+                            minusFiveLayout.setVisibility(GONE);
+                            minusSixLayout.setVisibility(GONE);
+                            minusEightLayout.setVisibility(GONE);
+                            break;
+                        // Hard
+                        case 2:
+                            plusOneLayout.setVisibility(VISIBLE);
+                            plusOneLayout.setVisibility(GONE);
+                            zero.setText(R.string.three);
+                            minusOne.setText(R.string.two);
+                            minusTwo.setText(R.string.two);
+                            minusThreeLayout.setVisibility(VISIBLE);
+                            minusThree.setText(R.string.two);
+                            minusFourLayout.setVisibility(VISIBLE);
+                            minusFour.setText(R.string.one);
+                            minusFiveLayout.setVisibility(VISIBLE);
+                            minusFive.setText(R.string.one);
+                            minusSixLayout.setVisibility(GONE);
+                            minusEightLayout.setVisibility(GONE);
+                            break;
+                        // Expert
+                        case 3:
+                            plusOneLayout.setVisibility(GONE);
+                            zero.setText(R.string.one);
+                            minusOne.setText(R.string.two);
+                            minusTwo.setText(R.string.two);
+                            minusThreeLayout.setVisibility(VISIBLE);
+                            minusThree.setText(R.string.two);
+                            minusFourLayout.setVisibility(VISIBLE);
+                            minusFour.setText(R.string.two);
+                            minusFiveLayout.setVisibility(VISIBLE);
+                            minusFive.setText(R.string.one);
+                            minusSixLayout.setVisibility(VISIBLE);
+                            minusSix.setText(R.string.one);
+                            minusEightLayout.setVisibility(VISIBLE);
+                            minusEight.setText(R.string.one);
+                            break;
+                    }
+                    break;
             }
         }
 

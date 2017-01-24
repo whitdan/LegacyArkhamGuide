@@ -6,9 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.Investigator;
+import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract;
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.CampaignEntry;
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.InvestigatorEntry;
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.NightEntry;
@@ -115,7 +117,7 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
         globalVariables.investigators.clear();
         for (int i = 0; investigatorCursor.moveToNext(); i++) {
             int name = investigatorCursor.getInt(investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
-                            .COLUMN_INVESTIGATOR_NAME));
+                    .COLUMN_INVESTIGATOR_NAME));
             globalVariables.investigators.add(new Investigator(name));
             globalVariables.investigators.get(i).setStatus(investigatorCursor.getInt(investigatorCursor
                     .getColumnIndexOrThrow(InvestigatorEntry.COLUMN_INVESTIGATOR_STATUS)));
@@ -183,9 +185,59 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
             nightCursor.close();
         }
 
+        // Set the relevant Dunwich variables from the database
+        if (globalVariables.getCurrentCampaign() == 2) {
+            String[] dunwichProjection = {
+                    ArkhamContract.DunwichEntry.COLUMN_FIRST_SCENARIO,
+                    ArkhamContract.DunwichEntry.COLUMN_INVESTIGATORS_UNCONSCIOUS,
+                    ArkhamContract.DunwichEntry.COLUMN_HENRY_ARMITAGE,
+                    ArkhamContract.DunwichEntry.COLUMN_WARREN_RICE,
+                    ArkhamContract.DunwichEntry.COLUMN_STUDENTS,
+                    ArkhamContract.DunwichEntry.COLUMN_OBANNION_GANG,
+                    ArkhamContract.DunwichEntry.COLUMN_FRANCIS_MORGAN,
+                    ArkhamContract.DunwichEntry.COLUMN_INVESTIGATORS_CHEATED
+            };
+            String dunwichSelection = ArkhamContract.DunwichEntry.PARENT_ID + " = ?";
+            Cursor dunwichCursor = db.query(
+                    ArkhamContract.DunwichEntry.TABLE_NAME,
+                    dunwichProjection,
+                    dunwichSelection,
+                    selectionArgs,
+                    null,
+                    null,
+                    null
+            );
+            while (dunwichCursor.moveToNext()) {
+                globalVariables.setFirstScenario(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow
+                        (ArkhamContract.DunwichEntry.COLUMN_FIRST_SCENARIO)));
+                globalVariables.setInvestigatorsUnconscious(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow
+                        (ArkhamContract.DunwichEntry.COLUMN_INVESTIGATORS_UNCONSCIOUS)));
+                globalVariables.setHenryArmitage(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow
+                        (ArkhamContract.DunwichEntry.COLUMN_HENRY_ARMITAGE)));
+                globalVariables.setWarrenRice(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow
+                        (ArkhamContract.DunwichEntry.COLUMN_WARREN_RICE)));
+                globalVariables.setStudents(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow
+                        (ArkhamContract.DunwichEntry.COLUMN_STUDENTS)));
+                globalVariables.setObannionGang(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow
+                        (ArkhamContract.DunwichEntry.COLUMN_OBANNION_GANG)));
+                globalVariables.setFrancisMorgan(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow
+                        (ArkhamContract.DunwichEntry.COLUMN_FRANCIS_MORGAN)));
+                globalVariables.setInvestigatorsCheated(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow
+                        (ArkhamContract.DunwichEntry.COLUMN_INVESTIGATORS_CHEATED)));
+            }
+            dunwichCursor.close();
+        }
+
+        // If on the first unreleased scenario, display a toast and do nothing more
+        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 4) {
+            Toast toast = Toast.makeText(context, "This scenario is not available yet.", Toast.LENGTH_SHORT);
+            toast.show();
+        }
         // Advance to scenario setup
-        globalVariables.setScenarioStage(1);
-        Intent intent = new Intent(context, ScenarioSetupActivity.class);
-        context.startActivity(intent);
+        else {
+            globalVariables.setScenarioStage(1);
+            Intent intent = new Intent(context, ScenarioSetupActivity.class);
+            context.startActivity(intent);
+        }
     }
 }

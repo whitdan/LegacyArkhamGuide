@@ -49,12 +49,23 @@ public class ScenarioSetupActivity extends AppCompatActivity {
             }
         }
 
+        // Check if on interlude
+        boolean interlude = false;
+        if(globalVariables.getCurrentCampaign()==2 && globalVariables.getCurrentScenario()==3){
+            interlude = true;
+        }
+
         // Find the view pager that will allow the user to swipe between fragments and set the adapter onto it
         ViewPager viewPager = (ViewPager) findViewById(R.id.scenario_viewpager);
         viewPager.setOffscreenPageLimit(2);
         // If any investigators are dead, go to new investigator fragment
         if (investigatorDead) {
             NewInvestigatorPagerAdapter adapter = new NewInvestigatorPagerAdapter(getSupportFragmentManager());
+            viewPager.setAdapter(adapter);
+        }
+        // If appropriate, go to interlude
+        else if (interlude){
+            InterludePagerAdapter adapter = new InterludePagerAdapter(getSupportFragmentManager());
             viewPager.setAdapter(adapter);
         }
         // If no investigators are dead, go to normal scenario setup
@@ -141,6 +152,35 @@ public class ScenarioSetupActivity extends AppCompatActivity {
 
         // Set titles of scenario setup tabs
         private final String[] tabTitles = new String[]{"Dead Investigators"};
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            // Generate title based on item position
+            return tabTitles[position];
+        }
+    }
+
+    // Returns the interlude fragment instead
+    private class InterludePagerAdapter extends FragmentPagerAdapter {
+
+        private InterludePagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        // Returns the right fragment to page to
+        @Override
+        public Fragment getItem(int position) {
+            return new ScenarioInterludeFragment();
+        }
+
+        // Number of tabs
+        @Override
+        public int getCount() {
+            return 1;
+        }
+
+        // Set titles of scenario setup tabs
+        private final String[] tabTitles = new String[]{"Interlude"};
 
         @Override
         public CharSequence getPageTitle(int position) {

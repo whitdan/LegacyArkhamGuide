@@ -1,7 +1,10 @@
 package com.whitdan.arkhamhorrorlcgcampaignguide.campaignsetup;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,6 +14,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -35,12 +39,14 @@ a difficulty selector, and investigator selector.
 
 public class CampaignSetupActivity extends AppCompatActivity {
 
-    String campaignName = "";
+    static String campaignName = "";
+    private static GlobalVariables globalVariables;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_campaign_setup);
+        globalVariables = (GlobalVariables) this.getApplication();
 
         // Setup back button
         if (getSupportActionBar() != null) {
@@ -123,18 +129,30 @@ public class CampaignSetupActivity extends AppCompatActivity {
 
         // Check that an investigator has been selected and a campaign name has been entered
         if (globalVariables.investigators.size() > 0 && campaignName.length() > 0) {
-            // Set current scenario to first scenario and to scenario setup
-            globalVariables.setCurrentScenario(1);
-            globalVariables.setScenarioStage(1);
 
-            globalVariables.investigatorNames.clear();
+            int currentCampaign = globalVariables.getCurrentCampaign();
+            switch (currentCampaign) {
+                // Night of the Zealot
+                case 1:
+                    // Set current scenario to first scenario
+                    globalVariables.setCurrentScenario(1);
+                    globalVariables.setScenarioStage(1);
+                    globalVariables.investigatorNames.clear();
 
-            // Save the new campaign
-            newCampaign();
+                    // Save the new campaign
+                    newCampaign();
 
-            // Go to scenario setup
-            Intent intent = new Intent(this, ScenarioSetupActivity.class);
-            startActivity(intent);
+                    // Go to scenario setup
+                    Intent intent = new Intent(this, ScenarioSetupActivity.class);
+                    startActivity(intent);
+                    break;
+                // The Dunwich Legacy
+                case 2:
+                    // Create dialogfragment for scenario selection
+                    DialogFragment dunwichFragment = new DunwichDialog();
+                    dunwichFragment.show(this.getFragmentManager(), "dunwich");
+                    break;
+            }
         }
         // Display an error and don't proceed if no investigator has been selected
         else if (globalVariables.investigators.size() == 0) {
@@ -147,6 +165,7 @@ public class CampaignSetupActivity extends AppCompatActivity {
     }
 
     // Hides the soft keyboard when someone clicks outside the EditText
+
     public void setupUI(final View view, final Activity activity) {
 
         // Set up touch listener for non-text box views to hide keyboard.
@@ -210,11 +229,15 @@ public class CampaignSetupActivity extends AppCompatActivity {
         long newCampaignId = db.insert(CampaignEntry.TABLE_NAME, null, campaignValues);
         globalVariables.setCampaignID(newCampaignId);
 
-        // Create entry in night table
-        if (globalVariables.getCurrentCampaign() == 1) {
-            ContentValues nightValues = new ContentValues();
-            nightValues.put(ArkhamContract.NightEntry.PARENT_ID, newCampaignId);
-            db.insert(ArkhamContract.NightEntry.TABLE_NAME, null, nightValues);
+        // Create campaign specific table
+        int currentCampaign = globalVariables.getCurrentCampaign();
+        switch (currentCampaign) {
+            // Night of the Zealot
+            case 1:
+                ContentValues nightValues = new ContentValues();
+                nightValues.put(ArkhamContract.NightEntry.PARENT_ID, newCampaignId);
+                db.insert(ArkhamContract.NightEntry.TABLE_NAME, null, nightValues);
+                break;
         }
 
         // Create entries for every investigator in the investigators table
@@ -229,6 +252,106 @@ public class CampaignSetupActivity extends AppCompatActivity {
             investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_HORROR, 0);
             investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_XP, 0);
             db.insert(ArkhamContract.InvestigatorEntry.TABLE_NAME, null, investigatorValues);
+        }
+    }
+
+    /*
+        DialogFragment for The Dunwich Legacy
+     */
+    public static class DunwichDialog extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle(R.string.pick_option)
+                    .setItems(R.array.dunwich_setup_options, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            switch (which) {
+                                case 0:
+                                    // Set current scenario and first scenario
+                                    globalVariables.setCurrentScenario(1);
+                                    globalVariables.setFirstScenario(1);
+                                    break;
+                                case 1:
+                                    globalVariables.setCurrentScenario(2);
+                                    globalVariables.setFirstScenario(2);
+                                    break;
+                            }
+                            globalVariables.setScenarioStage(1);
+                            globalVariables.investigatorNames.clear();
+
+                            // Save the new campaign
+                            // Get a writable database
+                            ArkhamDbHelper dbHelper = new ArkhamDbHelper(getActivity());
+                            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+                            // Create entry in campaigns table
+                            ContentValues campaignValues = new ContentValues();
+                            campaignValues.put(CampaignEntry.COLUMN_CAMPAIGN_NAME, campaignName);
+                            campaignValues.put(CampaignEntry.COLUMN_CURRENT_CAMPAIGN, globalVariables
+                                    .getCurrentCampaign());
+                            campaignValues.put(CampaignEntry.COLUMN_CURRENT_SCENARIO, globalVariables
+                                    .getCurrentScenario());
+                            campaignValues.put(CampaignEntry.COLUMN_ROLAND_INUSE, globalVariables
+                                    .investigatorsInUse[Investigator
+                                    .ROLAND_BANKS]);
+                            campaignValues.put(CampaignEntry.COLUMN_DAISY_INUSE, globalVariables
+                                    .investigatorsInUse[Investigator
+                                    .DAISY_WALKER]);
+                            campaignValues.put(CampaignEntry.COLUMN_SKIDS_INUSE, globalVariables
+                                    .investigatorsInUse[Investigator
+                                    .SKIDS_OTOOLE]);
+                            campaignValues.put(CampaignEntry.COLUMN_AGNES_INUSE, globalVariables
+                                    .investigatorsInUse[Investigator
+                                    .AGNES_BAKER]);
+                            campaignValues.put(CampaignEntry.COLUMN_WENDY_INUSE, globalVariables
+                                    .investigatorsInUse[Investigator
+                                    .WENDY_ADAMS]);
+                            campaignValues.put(CampaignEntry.COLUMN_ZOEY_INUSE, globalVariables
+                                    .investigatorsInUse[Investigator
+                                    .ZOEY_SAMARAS]);
+                            campaignValues.put(CampaignEntry.COLUMN_REX_INUSE, globalVariables
+                                    .investigatorsInUse[Investigator
+                                    .REX_MURPHY]);
+                            campaignValues.put(CampaignEntry.COLUMN_JENNY_INUSE, globalVariables
+                                    .investigatorsInUse[Investigator
+                                    .JENNY_BARNES]);
+                            campaignValues.put(CampaignEntry.COLUMN_JIM_INUSE, globalVariables
+                                    .investigatorsInUse[Investigator
+                                    .JIM_CULVER]);
+                            campaignValues.put(CampaignEntry.COLUMN_PETE_INUSE, globalVariables
+                                    .investigatorsInUse[Investigator
+                                    .ASHCAN_PETE]);
+                            long newCampaignId = db.insert(CampaignEntry.TABLE_NAME, null, campaignValues);
+                            globalVariables.setCampaignID(newCampaignId);
+
+                            // Create campaign specific table
+                            ContentValues dunwichValues = new ContentValues();
+                            dunwichValues.put(ArkhamContract.DunwichEntry.PARENT_ID, newCampaignId);
+                            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_FIRST_SCENARIO,
+                                    globalVariables.getFirstScenario());
+                            db.insert(ArkhamContract.DunwichEntry.TABLE_NAME, null, dunwichValues);
+
+                            // Create entries for every investigator in the investigators table
+                            for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                                ContentValues investigatorValues = new ContentValues();
+                                investigatorValues.put(ArkhamContract.InvestigatorEntry.PARENT_ID, newCampaignId);
+                                investigatorValues.put(ArkhamContract.InvestigatorEntry.INVESTIGATOR_ID, i);
+                                investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_NAME,
+                                        globalVariables.investigators.get(i).getName());
+                                investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_STATUS, 1);
+                                investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_DAMAGE, 0);
+                                investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_HORROR, 0);
+                                investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_XP, 0);
+                                db.insert(ArkhamContract.InvestigatorEntry.TABLE_NAME, null, investigatorValues);
+                            }
+
+                            // Go to scenario setup
+                            Intent intent = new Intent(getActivity(), ScenarioSetupActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+            return builder.create();
         }
     }
 }

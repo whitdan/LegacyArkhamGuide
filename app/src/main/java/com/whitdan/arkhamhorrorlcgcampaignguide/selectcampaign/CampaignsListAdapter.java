@@ -17,7 +17,7 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract;
 
 class CampaignsListAdapter extends CursorAdapter {
 
-    CampaignsListAdapter(Context context, Cursor cursor){
+    CampaignsListAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);
     }
 
@@ -33,24 +33,45 @@ class CampaignsListAdapter extends CursorAdapter {
         TextView currentCampaignView = (TextView) view.findViewById(R.id.current_campaign);
         TextView currentScenarioView = (TextView) view.findViewById(R.id.current_scenario);
         // Extract properties from cursor
-        String campaignName = cursor.getString(cursor.getColumnIndexOrThrow(ArkhamContract.CampaignEntry.COLUMN_CAMPAIGN_NAME));
-        int currentCampaign = cursor.getInt(cursor.getColumnIndexOrThrow(ArkhamContract.CampaignEntry.COLUMN_CURRENT_CAMPAIGN));
-        int currentScenario = cursor.getInt(cursor.getColumnIndexOrThrow(ArkhamContract.CampaignEntry.COLUMN_CURRENT_SCENARIO));
+        String campaignName = cursor.getString(cursor.getColumnIndexOrThrow(ArkhamContract.CampaignEntry
+                .COLUMN_CAMPAIGN_NAME));
+        int currentCampaign = cursor.getInt(cursor.getColumnIndexOrThrow(ArkhamContract.CampaignEntry
+                .COLUMN_CURRENT_CAMPAIGN));
+        int currentScenario = cursor.getInt(cursor.getColumnIndexOrThrow(ArkhamContract.CampaignEntry
+                .COLUMN_CURRENT_SCENARIO));
         // Populate fields with extracted properties
         campaignNameView.setText(campaignName);
-        if(currentCampaign==1){
-            currentCampaignView.setText(R.string.night_campaign_name);
-            switch(currentScenario){
-                case 1:
-                    currentScenarioView.setText(R.string.night_scenario_one);
-                    break;
-                case 2:
-                    currentScenarioView.setText(R.string.night_scenario_two);
-                    break;
-                case 3:
-                    currentScenarioView.setText(R.string.night_scenario_three);
-                    break;
-            }
+        switch (currentCampaign) {
+            case 1:
+                currentCampaignView.setText(R.string.night_campaign_name);
+                switch (currentScenario) {
+                    case 1:
+                        currentScenarioView.setText(R.string.night_scenario_one);
+                        break;
+                    case 2:
+                        currentScenarioView.setText(R.string.night_scenario_two);
+                        break;
+                    case 3:
+                        currentScenarioView.setText(R.string.night_scenario_three);
+                        break;
+                }
+                break;
+            case 2:
+                currentCampaignView.setText(R.string.dunwich_campaign_name);
+                switch (currentScenario) {
+                    case 1:
+                        currentScenarioView.setText(R.string.dunwich_scenario_one);
+                        break;
+                    case 2:
+                        currentScenarioView.setText(R.string.dunwich_scenario_two);
+                        break;
+                    case 3:
+                        currentScenarioView.setText(R.string.dunwich_interlude_one);
+                        break;
+                    case 4:
+                        currentScenarioView.setText(R.string.dunwich_scenario_three);
+                        break;
+                }
         }
     }
 }

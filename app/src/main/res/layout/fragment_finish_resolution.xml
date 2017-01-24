@@ -77,6 +77,20 @@
                 android:text="@string/ghoul_priest_checkbox"
                 android:visibility="gone" />
 
+            <!--The Dunwich Legacy cheated checkbox-->
+            <CheckBox
+                android:id="@+id/cheated_checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cheated_checkbox"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/cheated_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cheated_text"
+                android:visibility="gone"/>
+
             <!--Night of the Zealot: Scenario Two - The Midnight Masks cultists interrogated view-->
             <LinearLayout
                 android:id="@+id/cultists_interrogated"

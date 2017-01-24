@@ -131,4 +131,33 @@ public class GlobalVariables extends Application {
     private int mMaskedInterrogated;
     public void setMaskedInterrogated(int interrogated){this.mMaskedInterrogated = interrogated;}
     public int getMaskedInterrogated(){return this.mMaskedInterrogated;}
+
+
+    /*
+        The Dunwich Legacy variables
+     */
+    private int FirstScenario;         // Used for determining which scenario the player completed first
+    public void setFirstScenario(int first){this.FirstScenario = first;}
+    public int getFirstScenario(){return this.FirstScenario;}
+    private int InvestigatorsUnconscious = 0;
+    public void setInvestigatorsUnconscious(int unconscious){this.InvestigatorsUnconscious = unconscious;}
+    public int getInvestigatorsUnconscious(){return this.InvestigatorsUnconscious;}
+    private int HenryArmitage;
+    public void setHenryArmitage(int var){this.HenryArmitage = var;}
+    public int getHenryArmitage(){return HenryArmitage;}
+    private int WarrenRice;         // 0 = kidnapped, 1 = rescued
+    public void setWarrenRice(int var){this.WarrenRice = var;}
+    public int getWarrenRice(){return WarrenRice;}
+    private int Students;           // 0 = failed, 1 = saved, 2 = Experiment defeated
+    public void setStudents(int var){this.Students = var;}
+    public int getStudents(){return Students;}
+    private int ObannionGang;       // 0 = bone to pick, 1 = has back
+    public void setObannionGang(int var){this.ObannionGang = var;}
+    public int getObannionGang(){return ObannionGang;}
+    private int FrancisMorgan;
+    public void setFrancisMorgan(int var){this.FrancisMorgan = var;}
+    public int getFrancisMorgan(){return FrancisMorgan;}
+    private int InvestigatorsCheated;
+    public void setInvestigatorsCheated(int var){this.InvestigatorsCheated = var;}
+    public int getInvestigatorsCheated(){return InvestigatorsCheated;}
 }
