@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.CampaignEntry;
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.InvestigatorEntry;
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.NightEntry;
+import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.DunwichEntry;
 
 /**
  * Custom SQLiteOpenHelper that creates the tables defined in the contract.
@@ -19,7 +20,7 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.NightEntry;
 public class ArkhamDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "campaigns.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     public ArkhamDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -75,10 +76,24 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
                 + NightEntry.COLUMN_RUTH_INTERROGATED + " INTEGER, "
                 + NightEntry.COLUMN_MASKED_INTERROGATED + " INTEGER);";
 
+        // The Dunwich Legacy table
+        String SQL_CREATE_DUNWICH_TABLE = "CREATE TABLE " + DunwichEntry.TABLE_NAME + " ("
+                + DunwichEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + DunwichEntry.PARENT_ID + " INTEGER NOT NULL, "
+                + DunwichEntry.COLUMN_FIRST_SCENARIO + " INTEGER, "
+                + DunwichEntry.COLUMN_INVESTIGATORS_UNCONSCIOUS + " INTEGER, "
+                + DunwichEntry.COLUMN_HENRY_ARMITAGE + " INTEGER, "
+                + DunwichEntry.COLUMN_WARREN_RICE + " INTEGER, "
+                + DunwichEntry.COLUMN_STUDENTS + " INTEGER, "
+                + DunwichEntry.COLUMN_FRANCIS_MORGAN + " INTEGER, "
+                + DunwichEntry.COLUMN_OBANNION_GANG + " INTEGER, "
+                + DunwichEntry.COLUMN_INVESTIGATORS_CHEATED + " INTEGER);";
+
         // Execute the SQL statements
         db.execSQL(SQL_CREATE_CAMPAIGNS_TABLE);
         db.execSQL(SQL_CREATE_INVESTIGATORS_TABLE);
         db.execSQL(SQL_CREATE_NIGHT_TABLE);
+        db.execSQL(SQL_CREATE_DUNWICH_TABLE);
     }
 
     @Override
@@ -101,6 +116,19 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_UPGRADE_ONE_THREE);
                 db.execSQL(SQL_UPGRADE_ONE_FOUR);
                 db.execSQL(SQL_UPGRADE_ONE_FIVE);
+            case 2:
+                String SQL_CREATE_DUNWICH_TABLE = "CREATE TABLE " + DunwichEntry.TABLE_NAME + " ("
+                        + DunwichEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + DunwichEntry.PARENT_ID + " INTEGER NOT NULL, "
+                        + DunwichEntry.COLUMN_FIRST_SCENARIO + " INTEGER, "
+                        + DunwichEntry.COLUMN_INVESTIGATORS_UNCONSCIOUS + " INTEGER, "
+                        + DunwichEntry.COLUMN_HENRY_ARMITAGE + " INTEGER, "
+                        + DunwichEntry.COLUMN_WARREN_RICE + " INTEGER, "
+                        + DunwichEntry.COLUMN_STUDENTS + " INTEGER, "
+                        + DunwichEntry.COLUMN_FRANCIS_MORGAN + " INTEGER, "
+                        + DunwichEntry.COLUMN_OBANNION_GANG + " INTEGER, "
+                        + DunwichEntry.COLUMN_INVESTIGATORS_CHEATED + " INTEGER);";
+                db.execSQL(SQL_CREATE_DUNWICH_TABLE);
         }
     }
 }

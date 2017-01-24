@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 /**
@@ -36,145 +35,170 @@ public class LogFragment extends Fragment {
             ImageView setsTwoImage = (ImageView) v.findViewById(R.id.sets_two_image);
             TextView setAside = (TextView) v.findViewById(R.id.set_aside);
             ImageView setAsideImage = (ImageView) v.findViewById(R.id.set_aside_image);
+            TextView setAsideTwo = (TextView) v.findViewById(R.id.set_aside_two);
             TextView locations = (TextView) v.findViewById(R.id.starting_locations);
             TextView additional = (TextView) v.findViewById(R.id.additional_instructions);
             setup.setVisibility(VISIBLE);
 
-            switch (globalVariables.getCurrentScenario()) {
-                // Scenario One - The Gathering
+            switch (globalVariables.getCurrentCampaign()) {
+                // Night of the Zealot
                 case 1:
-                    sets.setText(R.string.gathering_sets);
-                    setsImage.setImageResource(R.drawable.gathering_sets);
-                    setAside.setText(R.string.gathering_set_aside);
-                    locations.setText(R.string.gathering_locations);
-                    additional.setText(R.string.no_changes);
+                    switch (globalVariables.getCurrentScenario()) {
+                        // Scenario One - The Gathering
+                        case 1:
+                            sets.setText(R.string.gathering_sets);
+                            setsImage.setImageResource(R.drawable.gathering_sets);
+                            setAside.setText(R.string.gathering_set_aside);
+                            locations.setText(R.string.gathering_locations);
+                            additional.setText(R.string.no_changes);
+                            break;
+                        // Scenario Two - The Midnight Masks
+                        case 2:
+                            sets.setText(R.string.midnight_sets);
+                            setsImage.setImageResource(R.drawable.midnight_sets);
+                            setAside.setText(R.string.midnight_set_aside);
+                            setAsideImage.setImageResource(R.drawable.cult_set);
+                            setAsideImage.setVisibility(VISIBLE);
+                            // Check if house is standing
+                            if (globalVariables.getHouseStanding() == 1) {
+                                locations.setText(R.string.midnight_locations);
+                            } else {
+                                locations.setText(R.string.midnight_locations_no_house);
+                            }
+                            // StringBuilder for the additional instructions
+                            StringBuilder midnightAdditionalBuilder = new StringBuilder();
+                            // Check how many players
+                            switch (globalVariables.investigators.size()) {
+                                case 1:
+                                    break;
+                                case 2:
+                                    midnightAdditionalBuilder.append(getString(R.string.midnight_additional_two));
+                                    break;
+                                case 3:
+                                    midnightAdditionalBuilder.append(getString(R.string.midnight_additional_three));
+                                    break;
+                                case 4:
+                                    midnightAdditionalBuilder.append(getString(R.string.midnight_additional_four));
+                                    break;
+                            }
+                            // Check if Ghoul Priest is alive
+                            if (globalVariables.getGhoulPriestAlive() == 1) {
+                                midnightAdditionalBuilder.append(getString(R.string.ghoul_priest_additional));
+                            }
+                            if (midnightAdditionalBuilder.length() == 0) {
+                                midnightAdditionalBuilder.append(getString(R.string.no_changes));
+                            }
+                            // Show additional instructions
+                            String midnightAdditional = midnightAdditionalBuilder.toString();
+                            additional.setText(midnightAdditional);
+                            break;
+                        case 3:
+                            sets.setText(R.string.devourer_sets);
+                            setsImage.setImageResource(R.drawable.devourer_sets);
+                            setsTwo.setText(R.string.devourer_sets_two);
+                            setsTwoImage.setImageResource(R.drawable.devourer_sets_two);
+                            setsTwo.setVisibility(VISIBLE);
+                            setsTwoImage.setVisibility(VISIBLE);
+                            setAside.setText(R.string.devourer_set_aside);
+                            locations.setText(R.string.devourer_locations);
+                            // StringBuilder for the additional instructions
+                            StringBuilder devouringAdditionalBuilder = new StringBuilder();
+                            devouringAdditionalBuilder.append(getString(R.string.devourer_additional));
+                            // Check how many cultists were interrogated
+                            switch (globalVariables.getCultistsInterrogated()) {
+                                case 6:
+                                    break;
+                                case 5:
+                                case 4:
+                                    devouringAdditionalBuilder.append(getString(R.string.devourer_cultists_one));
+                                    break;
+                                case 3:
+                                case 2:
+                                    devouringAdditionalBuilder.append(getString(R.string.devourer_cultists_two));
+                                    break;
+                                case 1:
+                                case 0:
+                                    devouringAdditionalBuilder.append(getString(R.string.devourer_cultists_three));
+                                    break;
+                            }
+                            // Check if it is past midnight
+                            if (globalVariables.getMidnightStatus() == 1) {
+                                devouringAdditionalBuilder.append(getString(R.string.devourer_additional_midnight));
+                            }
+                            // Check if the Ghoul Priest is alive
+                            if (globalVariables.getGhoulPriestAlive() == 1) {
+                                devouringAdditionalBuilder.append(getString(R.string.ghoul_priest_additional));
+                            }
+                            if (devouringAdditionalBuilder.length() == 0) {
+                                devouringAdditionalBuilder.append(getString(R.string.no_changes));
+                            }
+                            // Show the additional text
+                            String devouringAdditional = devouringAdditionalBuilder.toString();
+                            additional.setText(devouringAdditional);
+                            break;
+                    }
                     break;
-                // Scenario Two - The Midnight Masks
+                // The Dunwich Legacy
                 case 2:
-                    sets.setText(R.string.midnight_sets);
-                    setsImage.setImageResource(R.drawable.midnight_sets);
-                    setAside.setText(R.string.midnight_set_aside);
-                    setAsideImage.setImageResource(R.drawable.cult_set);
-                    setAsideImage.setVisibility(VISIBLE);
-                    // Check if house is standing
-                    if (globalVariables.getHouseStanding() == 1) {
-                        locations.setText(R.string.midnight_locations);
-                    } else {
-                        locations.setText(R.string.midnight_locations_no_house);
-                    }
-                    // StringBuilder for the additional instructions
-                    StringBuilder midnightAdditionalBuilder = new StringBuilder();
-                    // Check how many players
-                    switch (globalVariables.investigators.size()) {
+                    switch (globalVariables.getCurrentScenario()) {
+                        // Extracurricular activity
                         case 1:
+                            sets.setText(R.string.extracurricular_sets);
+                            setsImage.setImageResource(R.drawable.extracurricular_sets);
+                            //setsImage.setImageResource(R.drawable.extracurricular_sets);
+                            if (globalVariables.getFirstScenario() == 1) {
+                                setAside.setText(R.string.extracurricular_set_aside_one);
+                            } else {
+                                setAside.setText(R.string.extracurricular_set_aside_two);
+                            }
+                            locations.setText(R.string.extracurricular_locations);
+                            additional.setText(R.string.no_changes);
                             break;
+                        // The House Always Wins
                         case 2:
-                            midnightAdditionalBuilder.append(getString(R.string.midnight_additional_two));
-                            break;
-                        case 3:
-                            midnightAdditionalBuilder.append(getString(R.string.midnight_additional_three));
-                            break;
-                        case 4:
-                            midnightAdditionalBuilder.append(getString(R.string.midnight_additional_four));
-                            break;
-                    }
-                    // Check if Ghoul Priest is alive
-                    if (globalVariables.getGhoulPriestAlive() == 1) {
-                        midnightAdditionalBuilder.append(getString(R.string.ghoul_priest_additional));
-                    }
-                    if(midnightAdditionalBuilder.length()==0){
-                        midnightAdditionalBuilder.append(getString(R.string.no_changes));
-                    }
-                    // Show additional instructions
-                    String midnightAdditional = midnightAdditionalBuilder.toString();
-                    additional.setText(midnightAdditional);
-                    break;
-                case 3:
-                    sets.setText(R.string.devourer_sets);
-                    setsImage.setImageResource(R.drawable.devourer_sets);
-                    setsTwo.setText(R.string.devourer_sets_two);
-                    setsTwoImage.setImageResource(R.drawable.devourer_sets_two);
-                    setsTwo.setVisibility(VISIBLE);
-                    setsTwoImage.setVisibility(VISIBLE);
-                    setAside.setText(R.string.devourer_set_aside);
-                    locations.setText(R.string.devourer_locations);
-                    // StringBuilder for the additional instructions
-                    StringBuilder devouringAdditionalBuilder = new StringBuilder();
-                    devouringAdditionalBuilder.append(getString(R.string.devourer_additional));
-                    // Check how many cultists were interrogated
-                    switch (globalVariables.getCultistsInterrogated()) {
-                        case 6:
-                            break;
-                        case 5:
-                        case 4:
-                            devouringAdditionalBuilder.append(getString(R.string.devourer_cultists_one));
-                            break;
-                        case 3:
-                        case 2:
-                            devouringAdditionalBuilder.append(getString(R.string.devourer_cultists_two));
-                            break;
-                        case 1:
-                        case 0:
-                            devouringAdditionalBuilder.append(getString(R.string.devourer_cultists_three));
+                            sets.setText(R.string.house_sets);
+                            setsImage.setImageResource(R.drawable.house_sets);
+                            setAside.setText(R.string.house_set_aside);
+                            setAsideImage.setVisibility(VISIBLE);
+                            setAsideImage.setImageResource(R.drawable.house_set_aside);
+                            setAsideTwo.setVisibility(VISIBLE);
+                            setAsideTwo.setText(R.string.house_set_aside_two);
+                            locations.setText(R.string.house_locations);
+                            additional.setText(R.string.house_additional);
                             break;
                     }
-                    // Check if it is past midnight
-                    if (globalVariables.getMidnightStatus() == 1) {
-                        devouringAdditionalBuilder.append(getString(R.string.devourer_additional_midnight));
-                    }
-                    // Check if the Ghoul Priest is alive
-                    if (globalVariables.getGhoulPriestAlive() == 1) {
-                        devouringAdditionalBuilder.append(getString(R.string.ghoul_priest_additional));
-                    }
-                    if(devouringAdditionalBuilder.length()==0){
-                        devouringAdditionalBuilder.append(getString(R.string.no_changes));
-                    }
-                    // Show the additional text
-                    String devouringAdditional = devouringAdditionalBuilder.toString();
-                    additional.setText(devouringAdditional);
                     break;
             }
         }
 
-        // Hide nothing to show if past current scenario
-        if (globalVariables.getCurrentScenario() != 1) {
-            TextView campaignStart = (TextView) v.findViewById(R.id.log_campaign_start);
-            campaignStart.setVisibility(GONE);
-        }
+        StringBuilder campaignLogBuilder = new StringBuilder();
 
         /*
         Night of the Zealot log
          */
-        if (globalVariables.getCurrentCampaign() == 1)
-
-        {
+        if (globalVariables.getCurrentCampaign() == 1) {
             // First scenario log
             if (globalVariables.getCurrentScenario() > 1) {
                 // Set house status
-                TextView houseStatus = (TextView) v.findViewById(R.id.log_house_status);
-                houseStatus.setVisibility(VISIBLE);
                 if (globalVariables.getHouseStanding() == 1) {
-                    houseStatus.setText(R.string.house_standing);
+                    campaignLogBuilder.append(getString(R.string.house_standing));
                 } else {
-                    houseStatus.setText(R.string.house_burned);
+                    campaignLogBuilder.append(getString(R.string.house_burned));
                 }
                 // Set ghoul priest status
                 if (globalVariables.getGhoulPriestAlive() == 1) {
-                    TextView priestStatus = (TextView) v.findViewById(R.id.log_ghoul_priest);
-                    priestStatus.setVisibility(VISIBLE);
+                    campaignLogBuilder.append(getString(R.string.ghoul_priest_alive));
                 }
                 // Set Lita status
                 if (globalVariables.getLitaStatus() == 2) {
-                    TextView litaStatus = (TextView) v.findViewById(R.id.log_lita_status);
-                    litaStatus.setVisibility(VISIBLE);
+                    campaignLogBuilder.append(getString(R.string.lita_forced));
                 }
             }
             // Second scenario log
             if (globalVariables.getCurrentScenario() > 2) {
                 // Set midnight status
                 if (globalVariables.getMidnightStatus() == 1) {
-                    TextView midnightStatus = (TextView) v.findViewById(R.id.log_midnight_status);
-                    midnightStatus.setVisibility(VISIBLE);
+                    campaignLogBuilder.append(getString(R.string.past_midnight));
                 }
 
                 // Set cultists
@@ -219,6 +243,54 @@ public class LogFragment extends Fragment {
                 TextView cultistsGotAwayView = (TextView) v.findViewById(R.id.cultists_got_away);
                 cultistsGotAwayView.setText(allCultistsGotAway);
             }
+        }
+
+        /*
+            Dunwich Legacy log
+         */
+        else if (globalVariables.getCurrentCampaign() == 2) {
+            if (globalVariables.getInvestigatorsUnconscious() == 1) {
+                campaignLogBuilder.append(getString(R.string.investigators_unconscious));
+            }
+            // Extracurricular Activity log
+            if ((globalVariables.getCurrentScenario() > 1 && globalVariables.getFirstScenario() == 1) ||
+                    globalVariables.getCurrentScenario() > 2) {
+                if (globalVariables.getWarrenRice() == 0) {
+                    campaignLogBuilder.append(getString(R.string.warren_kidnapped));
+                } else if (globalVariables.getWarrenRice() == 1) {
+                    campaignLogBuilder.append(getString(R.string.warren_rescued));
+                }
+                if (globalVariables.getStudents() == 0) {
+                    campaignLogBuilder.append(getString(R.string.students_failed));
+                } else if (globalVariables.getStudents() == 1) {
+                    campaignLogBuilder.append(getString(R.string.students_rescued));
+                } else if (globalVariables.getStudents() == 2) {
+                    campaignLogBuilder.append(getString(R.string.experiment_defeated));
+                }
+            }
+            // The House Always Wins log
+            if ((globalVariables.getCurrentScenario() == 1 && globalVariables.getFirstScenario() == 2) ||
+                    globalVariables.getCurrentScenario() > 2) {
+                if (globalVariables.getFrancisMorgan() == 0) {
+                    campaignLogBuilder.append(getString(R.string.morgan_kidnapped));
+                } else if (globalVariables.getFrancisMorgan() == 1) {
+                    campaignLogBuilder.append(getString(R.string.morgan_rescued));
+                }
+                if (globalVariables.getObannionGang() == 0) {
+                    campaignLogBuilder.append(getString(R.string.obannion_failed));
+                } else if (globalVariables.getObannionGang() == 1) {
+                    campaignLogBuilder.append(getString(R.string.obannion_succeeded));
+                }
+                if (globalVariables.getInvestigatorsCheated() == 1) {
+                    campaignLogBuilder.append(getString(R.string.cheated));
+                }
+            }
+        }
+
+        String campaignLog = campaignLogBuilder.toString();
+        TextView campaignLogView = (TextView) v.findViewById(R.id.log_campaign);
+        if (campaignLog.length() > 0) {
+            campaignLogView.setText(campaignLog);
         }
 
         // Set click listener on continue button

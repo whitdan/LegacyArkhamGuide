@@ -15,7 +15,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
@@ -54,10 +53,12 @@ public class SelectCampaignActivity extends AppCompatActivity {
         // Setup and attach cursor adapter to the list to display all saved campaigns
         campaignsListAdapter = new CampaignsListAdapter(this, campaigns);
         campaignItems.setAdapter(campaignsListAdapter);
+
         // Setup and attach onItemClickListener to the ListView to allow resuming a campaign on click
         CampaignsOnClickListener campaignsOnClickListener = new CampaignsOnClickListener((GlobalVariables) this
                 .getApplication(), this);
         campaignItems.setOnItemClickListener(campaignsOnClickListener);
+
         // Setup and attach onItemLongClickListener to the ListView to allow deleting campaigns on long click
         CampaignsOnLongClickListener campaignsOnLongClickListener = new CampaignsOnLongClickListener(this);
         campaignItems.setOnItemLongClickListener(campaignsOnLongClickListener);
@@ -70,7 +71,50 @@ public class SelectCampaignActivity extends AppCompatActivity {
         campaigns.close();
     }
 
-    // Sets up overflow menu
+    // Starts a Night of the Zealot campaign [attached to xml onclick for the relevant button]
+    public void startNight(View v) {
+        GlobalVariables globalVariables = (GlobalVariables) this.getApplication();
+        // Set current campaign to Night of the Zealot (id = 1)
+        globalVariables.setCurrentCampaign(1);
+        // Set current scenario to setup (id = 0)
+        globalVariables.setCurrentScenario(0);
+        // Reset a couple of variables used elsewhere
+        globalVariables.investigatorNames.clear();
+        globalVariables.investigatorsInUse = new int[]{0, 0, 0, 0, 0, 0};
+        // Go to campaign setup
+        Intent intent = new Intent(this, CampaignSetupActivity.class);
+        startActivity(intent);
+    }
+
+    // Starts a Dunwich Legacy campaign [attached to xml onclick for the relevant button]
+    public void startDunwich(View v){
+        GlobalVariables globalVariables = (GlobalVariables) this.getApplication();
+        // Set current campaign to The Dunwich Legacy (id = 2)
+        globalVariables.setCurrentCampaign(2);
+        // Set current scenario to setup (id = 0)
+        globalVariables.setCurrentScenario(0);
+        // Reset a couple of variables used elsewhere
+        globalVariables.investigatorNames.clear();
+        globalVariables.investigatorsInUse = new int[]{0, 0, 0, 0, 0, 0};
+        globalVariables.setInvestigatorsUnconscious(0);
+        globalVariables.setInvestigatorsCheated(0);
+        // Go to campaign setup
+        Intent intent = new Intent(this, CampaignSetupActivity.class);
+        startActivity(intent);
+    }
+
+    /* These exist to allow passing the adapter to the DeleteCampaignDialogFragment to allow refreshing
+        the ListView on delete */
+    public CampaignsListAdapter getCampaignsListAdapter() {
+        return campaignsListAdapter;
+    }
+
+
+
+
+    /*
+     Sets up overflow menu with option to Choose expansions
+      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -91,44 +135,6 @@ public class SelectCampaignActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-    // Starts a Night of the Zealot campaign [attached to xml onclick for the relevant button]
-    public void startNight(View v) {
-        GlobalVariables globalVariables = (GlobalVariables) this.getApplication();
-        // Set current campaign to Night of the Zealot (id = 1)
-        globalVariables.setCurrentCampaign(1);
-        // Set current scenario to setup (id = 0)
-        globalVariables.setCurrentScenario(0);
-        // Reset a couple of variables used elsewhere
-        globalVariables.investigatorNames.clear();
-        globalVariables.investigatorsInUse = new int[]{0, 0, 0, 0, 0, 0};
-        // Go to campaign setup
-        Intent intent = new Intent(this, CampaignSetupActivity.class);
-        startActivity(intent);
-    }
-
-    public void startDunwich(View v) {
-        Toast toast = Toast.makeText(this, "The Dunwich Legacy is not available yet.", Toast.LENGTH_SHORT);
-        toast.show();
-    }
-
-    /* Starts a Dunwich Legacy campaign [will be attached to xml onclick for the relevant button when released]
-    public void startDunwich(View v){
-        // Set current campaign to Dunwich Legacy (id = 2)
-        ((GlobalVariables) this.getApplication()).setCurrentCampaign(2);
-        // Set current scenario to setup (id = 0)
-        ((GlobalVariables) this.getApplication()).setCurrentScenario(0);
-        // Go to campaign setup
-        Intent intent = new Intent(this, CampaignSetupActivity.class);
-        startActivity(intent);
-    }
-
-    /* These exist to allow passing the adapter to the DeleteCampaignDialogFragment to allow refreshing
-        the ListView on delete */
-    public CampaignsListAdapter getCampaignsListAdapter() {
-        return campaignsListAdapter;
-    }
-
 
     // Dialog fragment for controlling which expansions are owned
     public static class ExpacsOwnedDialogFragment extends DialogFragment {

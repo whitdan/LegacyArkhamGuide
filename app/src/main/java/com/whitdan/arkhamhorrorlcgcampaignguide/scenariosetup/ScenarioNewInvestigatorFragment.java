@@ -191,7 +191,7 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((ScenarioSetupActivity) getActivity()).restartScenario(getContext());
+                ((ScenarioSetupActivity) getActivity()).restartScenario(getActivity());
             }
         });
 

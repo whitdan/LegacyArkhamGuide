@@ -62,4 +62,18 @@ public class ArkhamContract {
         public static final String COLUMN_RUTH_INTERROGATED = "ruth_interrogated";
         public static final String COLUMN_MASKED_INTERROGATED = "masked_interrogated";
     }
+
+    public static class DunwichEntry implements BaseColumns{
+        public static final String TABLE_NAME = "dunwich";
+        static final String _ID = BaseColumns._ID;
+        public static final String PARENT_ID = "parent_id";
+        public static final String COLUMN_FIRST_SCENARIO = "first_scenario";
+        public static final String COLUMN_INVESTIGATORS_UNCONSCIOUS = "investigators_unconscious";
+        public static final String COLUMN_HENRY_ARMITAGE = "henry_armitage";
+        public static final String COLUMN_WARREN_RICE = "warren_rice";
+        public static final String COLUMN_STUDENTS = "students";
+        public static final String COLUMN_OBANNION_GANG = "obannion_gang";
+        public static final String COLUMN_FRANCIS_MORGAN = "francis_morgan";
+        public static final String COLUMN_INVESTIGATORS_CHEATED = "investigators_cheated";
+    }
 }

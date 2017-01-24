@@ -22,24 +22,36 @@ public class ScenarioIntroFragment extends Fragment {
         GlobalVariables globalVariables = (GlobalVariables) getActivity().getApplication();
         TextView textView = (TextView) v.findViewById(R.id.introductory_text);
 
-        if(globalVariables.getCurrentCampaign()==1)
-        {
-            switch(globalVariables.getCurrentScenario()){
-                case 1:
-                    textView.setText(R.string.gathering_setup);
-                    break;
-                case 2:
-                    if(globalVariables.getLitaStatus() == 2){
-                        textView.setText(R.string.midnight_setup_a);
-                    }
-                    else{
-                        textView.setText(R.string.midnight_setup_b);
-                    }
-                    break;
-                case 3:
-                    textView.setText(R.string.devourer_setup);
-                    break;
-            }
+        switch (globalVariables.getCurrentCampaign()) {
+            // Night of the Zealot
+            case 1:
+                switch (globalVariables.getCurrentScenario()) {
+                    case 1:
+                        textView.setText(R.string.gathering_setup);
+                        break;
+                    case 2:
+                        if (globalVariables.getLitaStatus() == 2) {
+                            textView.setText(R.string.midnight_setup_a);
+                        } else {
+                            textView.setText(R.string.midnight_setup_b);
+                        }
+                        break;
+                    case 3:
+                        textView.setText(R.string.devourer_setup);
+                        break;
+
+                }
+                break;
+            // The Dunwich Legacy
+            case 2:
+                switch(globalVariables.getCurrentScenario()){
+                    case 1:
+                        textView.setText(R.string.extracurricular_setup);
+                        break;
+                    case 2:
+                        textView.setText(R.string.house_setup);
+                        break;
+                }
         }
 
         // Set continue button click listener
