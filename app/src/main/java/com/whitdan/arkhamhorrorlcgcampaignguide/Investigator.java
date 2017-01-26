@@ -77,5 +77,5 @@ public class Investigator {
     int getSanity(){return mSanity;}
     int getDamage(){return mDamage;}
     int getHorror(){return mHorror;}
-    int getAvailableXP(){return mAvailableXP;}
+    public int getAvailableXP(){return mAvailableXP;}
 }
