@@ -121,7 +121,6 @@ public class CampaignSetupActivity extends AppCompatActivity {
 
         // Clear and then set investigators
         globalVariables.investigators.clear();
-        globalVariables.investigatorsInUse = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
             globalVariables.investigators.add(new Investigator(globalVariables.investigatorNames.get(i)));
             globalVariables.investigatorsInUse[globalVariables.investigatorNames.get(i)] = 1;

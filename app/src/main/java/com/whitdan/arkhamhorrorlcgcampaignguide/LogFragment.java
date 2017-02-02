@@ -169,20 +169,40 @@ public class LogFragment extends Fragment {
                     }
                     break;
             }
+            // Side stories
+            if(globalVariables.getCurrentScenario()>100){
+                switch(globalVariables.getCurrentScenario()){
+                    case 101:
+                        sets.setText(R.string.rougarou_sets);
+                        setsImage.setImageResource(R.drawable.rougarou_sets);
+                        setAside.setText(R.string.rougarou_set_aside);
+                        setAsideImage.setVisibility(VISIBLE);
+                        setAsideImage.setImageResource(R.drawable.rougarou_set_aside);
+                        setAsideTwo.setVisibility(VISIBLE);
+                        setAsideTwo.setText(R.string.rougarou_set_aside_two);
+                        locations.setText(R.string.rougarou_locations);
+                        additional.setText(R.string.no_changes);
+                        break;
+                }
+            }
         }
 
         StringBuilder campaignLogBuilder = new StringBuilder();
+
+        if(globalVariables.getCurrentScenario()<100){
+            globalVariables.setPreviousScenario(globalVariables.getCurrentScenario());
+        }
 
         /*
         Night of the Zealot log
          */
         if (globalVariables.getCurrentCampaign() == 1) {
             // First scenario log
-            if (globalVariables.getCurrentScenario() > 1) {
+            if (globalVariables.getPreviousScenario() > 1) {
                 // Set house status
                 if (globalVariables.getHouseStanding() == 1) {
                     campaignLogBuilder.append(getString(R.string.house_standing));
-                } else {
+                } else if (globalVariables.getHouseStanding() == 0) {
                     campaignLogBuilder.append(getString(R.string.house_burned));
                 }
                 // Set ghoul priest status
@@ -195,7 +215,7 @@ public class LogFragment extends Fragment {
                 }
             }
             // Second scenario log
-            if (globalVariables.getCurrentScenario() > 2) {
+            if (globalVariables.getPreviousScenario() > 2) {
                 // Set midnight status
                 if (globalVariables.getMidnightStatus() == 1) {
                     campaignLogBuilder.append(getString(R.string.past_midnight));
@@ -208,32 +228,32 @@ public class LogFragment extends Fragment {
                 StringBuilder cultistsGotAway = new StringBuilder();
                 if (globalVariables.getDrewInterrogated() == 1) {
                     cultistsInterrogated.append(getString(R.string.drew) + "\n");
-                } else {
+                } else if (globalVariables.getDrewInterrogated() == 0) {
                     cultistsGotAway.append(getString(R.string.drew) + "\n");
                 }
                 if (globalVariables.getPeterInterrogated() == 1) {
                     cultistsInterrogated.append(getString(R.string.peter) + "\n");
-                } else {
+                } else if (globalVariables.getPeterInterrogated() == 0) {
                     cultistsGotAway.append(getString(R.string.peter) + "\n");
                 }
                 if (globalVariables.getHermanInterrogated() == 1) {
                     cultistsInterrogated.append(getString(R.string.herman) + "\n");
-                } else {
+                } else if (globalVariables.getHermanInterrogated() == 0) {
                     cultistsGotAway.append(getString(R.string.herman) + "\n");
                 }
                 if (globalVariables.getRuthInterrogated() == 1) {
                     cultistsInterrogated.append(getString(R.string.ruth) + "\n");
-                } else {
+                } else if (globalVariables.getRuthInterrogated() == 0) {
                     cultistsGotAway.append(getString(R.string.ruth) + "\n");
                 }
                 if (globalVariables.getVictoriaInterrogated() == 1) {
                     cultistsInterrogated.append(getString(R.string.victoria) + "\n");
-                } else {
+                } else if (globalVariables.getVictoriaInterrogated() == 0) {
                     cultistsGotAway.append(getString(R.string.victoria) + "\n");
                 }
                 if (globalVariables.getMaskedInterrogated() == 1) {
                     cultistsInterrogated.append(getString(R.string.masked_hunter) + "\n");
-                } else {
+                } else if (globalVariables.getMaskedInterrogated() == 0) {
                     cultistsGotAway.append(getString(R.string.masked_hunter) + "\n");
                 }
                 String allCultistsInterrogated = cultistsInterrogated.toString();
@@ -253,8 +273,8 @@ public class LogFragment extends Fragment {
                 campaignLogBuilder.append(getString(R.string.investigators_unconscious));
             }
             // Extracurricular Activity log
-            if ((globalVariables.getCurrentScenario() > 1 && globalVariables.getFirstScenario() == 1) ||
-                    globalVariables.getCurrentScenario() > 2) {
+            if ((globalVariables.getPreviousScenario() > 1 && globalVariables.getFirstScenario() == 1) ||
+                    globalVariables.getPreviousScenario() > 2) {
                 if (globalVariables.getWarrenRice() == 0) {
                     campaignLogBuilder.append(getString(R.string.warren_kidnapped));
                 } else if (globalVariables.getWarrenRice() == 1) {
@@ -269,8 +289,8 @@ public class LogFragment extends Fragment {
                 }
             }
             // The House Always Wins log
-            if ((globalVariables.getCurrentScenario() == 1 && globalVariables.getFirstScenario() == 2) ||
-                    globalVariables.getCurrentScenario() > 2) {
+            if ((globalVariables.getPreviousScenario() == 1 && globalVariables.getFirstScenario() == 2) ||
+                    globalVariables.getPreviousScenario() > 2) {
                 if (globalVariables.getFrancisMorgan() == 0) {
                     campaignLogBuilder.append(getString(R.string.morgan_kidnapped));
                 } else if (globalVariables.getFrancisMorgan() == 1) {
@@ -285,6 +305,17 @@ public class LogFragment extends Fragment {
                     campaignLogBuilder.append(getString(R.string.cheated));
                 }
             }
+        }
+
+        /*
+            Side story log
+         */
+        if(globalVariables.getRougarouStatus()==1){
+            campaignLogBuilder.append(getString(R.string.rougarou_alive));
+        }else if (globalVariables.getRougarouStatus()==2){
+            campaignLogBuilder.append(getString(R.string.rougarou_destroyed));
+        }else if(globalVariables.getRougarouStatus()==3){
+            campaignLogBuilder.append(getString(R.string.rougarou_escaped));
         }
 
         String campaignLog = campaignLogBuilder.toString();

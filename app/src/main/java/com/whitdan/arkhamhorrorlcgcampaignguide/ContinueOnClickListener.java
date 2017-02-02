@@ -119,6 +119,9 @@ public class ContinueOnClickListener implements View.OnClickListener {
                             dunwichResolutions(globalVariables, getActivity());
                             break;
                     }
+                    if(globalVariables.getCurrentScenario()>100){
+                        sideResolutions(globalVariables, getActivity());
+                    }
 
                     // Apply defeats from temp status and weaknesses
                     for (int i = 0; i < globalVariables.investigators.size(); i++) {
@@ -180,6 +183,9 @@ public class ContinueOnClickListener implements View.OnClickListener {
                         }
                     } else {
                         nextScenario = globalVariables.getCurrentScenario() + 1;
+                    }
+                    if(globalVariables.getCurrentScenario()>100){
+                        nextScenario = globalVariables.getPreviousScenario();
                     }
                     globalVariables.setCurrentScenario(nextScenario);
 
@@ -490,6 +496,42 @@ public class ContinueOnClickListener implements View.OnClickListener {
         }
     }
 
+    /*
+   Contains all the side story resolutions
+  */
+    private static void sideResolutions(GlobalVariables globalVariables, Activity parent) {
+        int leadInvestigator = globalVariables.getLeadInvestigator();
+
+        /*
+         Curse of the Rougarou
+        */
+        if (globalVariables.getCurrentScenario() == 101) {
+            switch (globalVariables.getResolution()) {
+                // Resolution one
+                case 1:
+                    globalVariables.setRougarouStatus(1);
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
+                    }
+                    break;
+                // Resolution two
+                case 2:
+                    globalVariables.setRougarouStatus(2);
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
+                    }
+                    break;
+                // Resolution three
+                case 3:
+                    globalVariables.setRougarouStatus(3);
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
+                    }
+                    break;
+            }
+        }
+    }
+
 
     /*
      Saves the campaign, including all relevant variables
@@ -606,5 +648,16 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     investigatorSelection,
                     investigatorSelectionArgs);
         }
+
+        // Update misc entries
+        ContentValues miscValues = new ContentValues();
+        miscValues.put(ArkhamContract.MiscEntry.ROUGAROU_STATUS, globalVariables.getRougarouStatus());
+        String miscSelection = ArkhamContract.MiscEntry.PARENT_ID + " LIKE ?";
+        String[] miscSelectionArgs = {Long.toString(globalVariables.getCampaignID())};
+        db.update(
+                ArkhamContract.MiscEntry.TABLE_NAME,
+                miscValues,
+                miscSelection,
+                miscSelectionArgs);
     }
 }

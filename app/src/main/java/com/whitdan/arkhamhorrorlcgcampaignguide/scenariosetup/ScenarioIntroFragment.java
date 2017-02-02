@@ -54,6 +54,15 @@ public class ScenarioIntroFragment extends Fragment {
                 }
         }
 
+        // Side stories
+        if(globalVariables.getCurrentScenario()>100){
+            switch(globalVariables.getCurrentScenario()){
+                case 101:
+                    textView.setText(R.string.rougarou_setup);
+                    break;
+            }
+        }
+
         // Set continue button click listener
         TextView button = (TextView) v.findViewById(R.id.continue_button);
         button.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity()));

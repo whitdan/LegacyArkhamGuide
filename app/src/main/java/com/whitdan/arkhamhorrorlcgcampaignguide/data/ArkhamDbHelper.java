@@ -9,6 +9,8 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.Investigator
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.NightEntry;
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.DunwichEntry;
 
+import static com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.InvestigatorEntry.INVESTIGATOR_ID;
+
 /**
  * Custom SQLiteOpenHelper that creates the tables defined in the contract.
  * Currently there are three tables:
@@ -20,7 +22,7 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.DunwichEntry
 public class ArkhamDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "campaigns.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     public ArkhamDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -53,12 +55,18 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
         String SQL_CREATE_INVESTIGATORS_TABLE = "CREATE TABLE " + InvestigatorEntry.TABLE_NAME + " ("
                 + InvestigatorEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + InvestigatorEntry.PARENT_ID + " INTEGER NOT NULL, "
-                + InvestigatorEntry.INVESTIGATOR_ID + " INTEGER NOT NULL, "
+                + INVESTIGATOR_ID + " INTEGER NOT NULL, "
                 + InvestigatorEntry.COLUMN_INVESTIGATOR_NAME + " INTEGER NOT NULL, "
                 + InvestigatorEntry.COLUMN_INVESTIGATOR_STATUS + " INTEGER NOT NULL, "
                 + InvestigatorEntry.COLUMN_INVESTIGATOR_DAMAGE + " INTEGER NOT NULL, "
                 + InvestigatorEntry.COLUMN_INVESTIGATOR_HORROR + " INTEGER NOT NULL, "
                 + InvestigatorEntry.COLUMN_INVESTIGATOR_XP + " INTEGER NOT NULL);";
+
+        // Miscellaneous table
+        String SQL_CREATE_MISC_TABLE = "CREATE TABLE " + ArkhamContract.MiscEntry.TABLE_NAME + " ("
+                + ArkhamContract.MiscEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + ArkhamContract.MiscEntry.PARENT_ID + " INTEGER NOT NULL, "
+                + ArkhamContract.MiscEntry.ROUGAROU_STATUS + " INTEGER);";
 
         // Night of the Zealot table
         String SQL_CREATE_NIGHT_TABLE = "CREATE TABLE " + NightEntry.TABLE_NAME + " ("
@@ -92,6 +100,7 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
         // Execute the SQL statements
         db.execSQL(SQL_CREATE_CAMPAIGNS_TABLE);
         db.execSQL(SQL_CREATE_INVESTIGATORS_TABLE);
+        db.execSQL(SQL_CREATE_MISC_TABLE);
         db.execSQL(SQL_CREATE_NIGHT_TABLE);
         db.execSQL(SQL_CREATE_DUNWICH_TABLE);
     }
@@ -129,6 +138,12 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
                         + DunwichEntry.COLUMN_OBANNION_GANG + " INTEGER, "
                         + DunwichEntry.COLUMN_INVESTIGATORS_CHEATED + " INTEGER);";
                 db.execSQL(SQL_CREATE_DUNWICH_TABLE);
+            case 3:
+                String SQL_CREATE_MISC_TABLE = "CREATE TABLE " + ArkhamContract.MiscEntry.TABLE_NAME + " ("
+                        + ArkhamContract.MiscEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + ArkhamContract.MiscEntry.PARENT_ID + " INTEGER NOT NULL, "
+                        + ArkhamContract.MiscEntry.ROUGAROU_STATUS + " INTEGER);";
+                db.execSQL(SQL_CREATE_MISC_TABLE);
         }
     }
 }

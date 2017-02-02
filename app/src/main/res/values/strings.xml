@@ -120,6 +120,7 @@
     <string name="lost">The investigators have lost.</string>
     <string name="expacs_owned">Expansions owned</string>
     <string name="pick_expacs_owned">Pick expansions owned</string>
+    <string name="add_side_story">Add side story</string>
     <string name="pick_option">Pick an option</string>
 
 
@@ -539,5 +540,56 @@
         spins a tale that you would scarcely believe had it not been for your harrowing experiences earlier
         that night&#8230;\n
     \n<b>Any one investigator may choose to add Dr. Henry Armitage to his or her deck.</b></string>
+
+
+    <!--Side stories-->
+    <string-array name="side_stories">
+        <item>Curse of the Rougarou</item>
+    </string-array>
+
+    <!--Curse of the Rougarou-->
+    <string name="rougarou_setup"><b>Curse of the Rougarou</b>\n
+        \n<b>Terror Grips New Orleans!</b>\n
+    \nMinnie Klein, your contact at the Arkham Advertiser, had slipped you a draft of the article over a cup of
+        coffee at Velma\'s Diner. It would have gone to print had Doyle Jeffries, the lead editor, not scoffed at
+        the concept. \"I believe his exact words were, \'I ain\'t printing the ravings of some Voodoo lunatic
+        and passing it off as news,\'\" she explained. From the sly grin spreading across her face, you could
+        tell she smelled a story.\n
+    \nThe headline was sensationalist. Three killings in nine days was enough to spook a town, sure. But you
+        doubt all of New Orleans is gripped by terror, or even knows about the killings. Still, something
+        piqued your interest. \"Lady Esprit,\" the Voodoo priestess from the article, claimed that a malign
+        curse had taken root in the bayou.\n
+    \n\"There\'s something to this, isn\'t there? I know that look,\" Minnie said. You weren\'t sure. If Lady
+        Esprit was right, this \"roux-ga-roux\" wouldn\'t stop killing at three, that\'s for sure. But curses?
+        Wolf-people? How could such things be real? Only one way to find out. You put on your coat and head for
+        the Northside station&#8230;</string>
+    <string name="rougarou_sets">The Bayou.</string>
+    <string name="rougarou_locations">Sort each of the locations into 4 piles, by trait (New Orleans,
+        Riverside, Wilderness, and Unhallowed). Randomly choose 1 of these piles and remove those locations
+        from the game. Randomly choose another 1 of these piles and put those locations into play.\n
+        Each investigator begins play at a Bayou location in play.\n</string>
+    <string name="rougarou_set_aside">Curse of the Rougarou encounter set.\n</string>
+    <string name="rougarou_set_aside_two">Each location in the other 2 piles, Lady Esprit, Bear Trap, and Fishing Net.\n</string>
+    <string name="rougarou_resolution_one">Somehow, you manage to make it back to safety before daybreak,
+        resting until late afternoon. It isn\'t until you seek out Lady Esprit the next day that you realize
+        who last night\'s victim was. With a heavy heart and an unshakeable dread, you choose to bury her body
+        instead of contacting the authorities - the less people who delve this deep into the bayou, the better.</string>
+    <string name="rougarou_resolution_two">The creature gives a pitiful wail as dark miry blood oozes from its
+        wounds. By the time its body collapses into the mud, it has transformed back into its original form -
+        the form of a young dark-skinned man, his expression twisted in agony. You bring his body back to Lady
+        Esprit and she works her strange magic, removing the stain of the curse from the land. \"Call on me
+        should you ever need my help,\" the mysterious woman tells you.\n
+        \n<b>Remove the Curse of the Rougarou weakness from it\'s bearer\'s deck.</b>\n
+    \n<b>Any one investigator may choose to add Lady Esprit to his or her deck.</b></string>
+    <string name="rougarou_resolution_three">Somehow, you have managed to quell the rage and bloodlust of the
+        curse within the creature, and in moments the shape of a young, dark-skinned man stands before you,
+        panting and sweating. He seems to only just now understand everything he\'s done, and agrees to flee to
+    a secluded corner of the earth where he can harm no one. However, the curse lives on. He sees it in your
+        eyes and grips your arm tightly. \"Don\'t let it take control,\" he warns. \"I was weak, but you - I
+        can tell you are strong. Control the curse as I could not.\"</string>
+    <string name="rougarou_alive">The Rougarou continues to haunt the bayou.\nCurse of the Rougarou weakness added to an investigator\'s deck.</string>
+    <string name="rougarou_destroyed">The Rougarou is destroyed, and the curse is lifted.\nLady Esprit added to an investigator\'s deck.\n</string>
+    <string name="rougarou_escaped">The Rougarou escaped, and you embraced the curse.\nCurse of the Rougarou weakness and Monstrous Transformation added to an investigator\'s deck.</string>
+
 
 </resources>

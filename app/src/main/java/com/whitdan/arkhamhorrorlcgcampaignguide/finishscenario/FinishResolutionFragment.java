@@ -69,6 +69,15 @@ public class FinishResolutionFragment extends Fragment {
                 }
                 break;
         }
+        // Side stories
+        if(globalVariables.getCurrentScenario()>100){
+            switch(globalVariables.getCurrentScenario()){
+                case 101:
+                    adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                            R.array.resolutions_three, android.R.layout.simple_spinner_item);
+                    break;
+            }
+        }
         // Set the layout, adapter and OnItemSelectedListener to the spinner
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         resolutionSpinner.setAdapter(adapter);
@@ -113,7 +122,7 @@ public class FinishResolutionFragment extends Fragment {
 
         // If on first campaign, second or third scenario and Ghoul Priest is alive, set ghoul priest view to visible
         if (globalVariables.getCurrentCampaign() == 1 && globalVariables.getCurrentScenario() > 1 && globalVariables
-                .getGhoulPriestAlive() == 1) {
+                .getGhoulPriestAlive() == 1 && globalVariables.getCurrentScenario() < 100) {
             CheckBox ghoulPriest = (CheckBox) v.findViewById(R.id.ghoul_priest_killed);
             ghoulPriest.setVisibility(VISIBLE);
         }
@@ -288,6 +297,28 @@ public class FinishResolutionFragment extends Fragment {
                             break;
                     }
                     break;
+            }
+            // Side stories
+            if(globalVariables.getCurrentScenario()>100){
+                switch(globalVariables.getCurrentScenario()){
+                    case 101:
+                        switch(pos){
+                            case 0:
+                            case 1:
+                                resolutionText.setText(R.string.rougarou_resolution_one);
+                                globalVariables.setResolution(1);
+                                break;
+                            case 2:
+                                resolutionText.setText(R.string.rougarou_resolution_two);
+                                globalVariables.setResolution(2);
+                                break;
+                            case 3:
+                                resolutionText.setText(R.string.rougarou_resolution_three);
+                                globalVariables.setResolution(3);
+                                break;
+                        }
+                        break;
+                }
             }
         }
 

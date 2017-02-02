@@ -28,7 +28,6 @@ Main Activity - Allows the user to select a campaign to start.
 
 /*
     TODO: Players jumping in and out
-    TODO: Extra scenarios
     TODO: Chaos bag
  */
 
@@ -80,7 +79,8 @@ public class SelectCampaignActivity extends AppCompatActivity {
         globalVariables.setCurrentScenario(0);
         // Reset a couple of variables used elsewhere
         globalVariables.investigatorNames.clear();
-        globalVariables.investigatorsInUse = new int[]{0, 0, 0, 0, 0, 0};
+        globalVariables.investigatorsInUse = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        globalVariables.setRougarouStatus(0);
         // Go to campaign setup
         Intent intent = new Intent(this, CampaignSetupActivity.class);
         startActivity(intent);
@@ -88,6 +88,13 @@ public class SelectCampaignActivity extends AppCompatActivity {
 
     // Starts a Dunwich Legacy campaign [attached to xml onclick for the relevant button]
     public void startDunwich(View v){
+        // Set Dunwich Legacy to owned in settings
+        String sharedPrefs = getString(R.string.expacs_owned);
+        String dunwichOwnedString = getString(R.string.dunwich_campaign_name);
+        SharedPreferences settings = getSharedPreferences(sharedPrefs, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(dunwichOwnedString, true);
+        editor.apply();
         GlobalVariables globalVariables = (GlobalVariables) this.getApplication();
         // Set current campaign to The Dunwich Legacy (id = 2)
         globalVariables.setCurrentCampaign(2);
@@ -95,9 +102,10 @@ public class SelectCampaignActivity extends AppCompatActivity {
         globalVariables.setCurrentScenario(0);
         // Reset a couple of variables used elsewhere
         globalVariables.investigatorNames.clear();
-        globalVariables.investigatorsInUse = new int[]{0, 0, 0, 0, 0, 0};
+        globalVariables.investigatorsInUse = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         globalVariables.setInvestigatorsUnconscious(0);
         globalVariables.setInvestigatorsCheated(0);
+        globalVariables.setRougarouStatus(0);
         // Go to campaign setup
         Intent intent = new Intent(this, CampaignSetupActivity.class);
         startActivity(intent);
