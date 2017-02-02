@@ -586,7 +586,8 @@
         panting and sweating. He seems to only just now understand everything he\'s done, and agrees to flee to
     a secluded corner of the earth where he can harm no one. However, the curse lives on. He sees it in your
         eyes and grips your arm tightly. \"Don\'t let it take control,\" he warns. \"I was weak, but you - I
-        can tell you are strong. Control the curse as I could not.\"</string>
+        can tell you are strong. Control the curse as I could not.\"\n
+    \n<b>The bearer of the Curse of the Rougarou weakness must add Monstrous Transformation to his or her deck.</b></string>
     <string name="rougarou_alive">The Rougarou continues to haunt the bayou.\nCurse of the Rougarou weakness added to an investigator\'s deck.</string>
     <string name="rougarou_destroyed">The Rougarou is destroyed, and the curse is lifted.\nLady Esprit added to an investigator\'s deck.\n</string>
     <string name="rougarou_escaped">The Rougarou escaped, and you embraced the curse.\nCurse of the Rougarou weakness and Monstrous Transformation added to an investigator\'s deck.</string>
