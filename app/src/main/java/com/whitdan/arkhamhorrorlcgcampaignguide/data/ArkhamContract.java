@@ -32,6 +32,7 @@ public class ArkhamContract {
         public static final String COLUMN_JENNY_INUSE = "jenny";
         public static final String COLUMN_JIM_INUSE = "jim";
         public static final String COLUMN_PETE_INUSE = "pete";
+        public static final String COLUMN_ROUGAROU_STATUS = "rougarou_status";
     }
 
     public static class InvestigatorEntry implements BaseColumns{
@@ -44,13 +45,6 @@ public class ArkhamContract {
         public static final String COLUMN_INVESTIGATOR_DAMAGE = "damage";
         public static final String COLUMN_INVESTIGATOR_HORROR = "horror";
         public static final String COLUMN_INVESTIGATOR_XP = "xp";
-    }
-
-    public static class MiscEntry implements BaseColumns{
-        public static final String TABLE_NAME = "miscellaneous";
-        static final String _ID = BaseColumns._ID;
-        public static final String PARENT_ID = "parent_id";
-        public static final String ROUGAROU_STATUS = "rougarou_status";
     }
 
     public static class NightEntry implements BaseColumns{

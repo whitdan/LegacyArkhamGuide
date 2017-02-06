@@ -54,7 +54,8 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                 CampaignEntry.COLUMN_REX_INUSE,
                 CampaignEntry.COLUMN_JENNY_INUSE,
                 CampaignEntry.COLUMN_JIM_INUSE,
-                CampaignEntry.COLUMN_PETE_INUSE
+                CampaignEntry.COLUMN_PETE_INUSE,
+                CampaignEntry.COLUMN_ROUGAROU_STATUS
         };
         String campaignSelection = CampaignEntry._ID + " = ?";
         Cursor campaignCursor = db.query(
@@ -93,27 +94,10 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_JIM_INUSE));
             globalVariables.investigatorsInUse[Investigator.ASHCAN_PETE] = campaignCursor.getInt(campaignCursor
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_PETE_INUSE));
+            globalVariables.setRougarouStatus(campaignCursor.getInt(campaignCursor.getColumnIndexOrThrow
+                    (CampaignEntry.COLUMN_ROUGAROU_STATUS)));
         }
         campaignCursor.close();
-
-        // Set the miscellaneous variables from the SQL database
-        String[] miscProjections = {
-                ArkhamContract.MiscEntry.ROUGAROU_STATUS
-        };
-        String miscSelection = ArkhamContract.MiscEntry.PARENT_ID + " = ?";
-        Cursor miscCursor = db.query(
-                ArkhamContract.MiscEntry.TABLE_NAME,
-                miscProjections,
-                miscSelection,
-                selectionArgs,
-                null,
-                null,
-                null
-        );
-        while(miscCursor.moveToNext()){
-            globalVariables.setRougarouStatus(miscCursor.getInt(miscCursor
-                    .getColumnIndexOrThrow(ArkhamContract.MiscEntry.ROUGAROU_STATUS)));
-        }
 
         // Set the relevant investigator variables from the SQL database
         String[] investigatorProjection = {

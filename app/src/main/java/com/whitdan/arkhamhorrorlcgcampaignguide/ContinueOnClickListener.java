@@ -87,7 +87,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
 
             // Set message
             StringBuilder dialogMessage = new StringBuilder();
-            dialogMessage.append("Scenario " + globalVariables.getCurrentScenario() + " completed.\n\n");
+            dialogMessage.append("Scenario completed.\n\n");
             if (globalVariables.getResolution() == 0) {
                 dialogMessage.append("No resolution.\n");
             } else {
@@ -565,6 +565,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                 .investigatorsInUse[Investigator.JIM_CULVER]);
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_PETE_INUSE, globalVariables
                 .investigatorsInUse[Investigator.ASHCAN_PETE]);
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_ROUGAROU_STATUS, globalVariables.getRougarouStatus());
         String campaignSelection = ArkhamContract.CampaignEntry._ID + " LIKE ?";
         String[] campaignSelectionArgs = {Long.toString(globalVariables.getCampaignID())};
         db.update(
@@ -648,16 +649,5 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     investigatorSelection,
                     investigatorSelectionArgs);
         }
-
-        // Update misc entries
-        ContentValues miscValues = new ContentValues();
-        miscValues.put(ArkhamContract.MiscEntry.ROUGAROU_STATUS, globalVariables.getRougarouStatus());
-        String miscSelection = ArkhamContract.MiscEntry.PARENT_ID + " LIKE ?";
-        String[] miscSelectionArgs = {Long.toString(globalVariables.getCampaignID())};
-        db.update(
-                ArkhamContract.MiscEntry.TABLE_NAME,
-                miscValues,
-                miscSelection,
-                miscSelectionArgs);
     }
 }
