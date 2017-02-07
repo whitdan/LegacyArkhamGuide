@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.whitdan.arkhamhorrorlcgcampaignguide">
+          package="com.whitdan.arkhamhorrorlcgcampaignguide">
 
     <application
         android:name=".GlobalVariables"
@@ -11,18 +11,24 @@
         android:theme="@style/AppTheme">
         <activity android:name=".selectcampaign.SelectCampaignActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".campaignsetup.CampaignSetupActivity"
-            android:windowSoftInputMode="adjustNothing"
-            android:parentActivityName=".selectcampaign.SelectCampaignActivity" />
-        <activity android:name=".scenariosetup.ScenarioSetupActivity"
-            android:parentActivityName=".selectcampaign.SelectCampaignActivity" />
-        <activity android:name=".finishscenario.FinishScenarioActivity"
-            android:parentActivityName=".selectcampaign.SelectCampaignActivity" />
+        <activity
+            android:name=".campaignsetup.CampaignSetupActivity"
+            android:parentActivityName=".selectcampaign.SelectCampaignActivity"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name=".scenariosetup.ScenarioSetupActivity"
+            android:parentActivityName=".selectcampaign.SelectCampaignActivity"/>
+        <activity
+            android:name=".finishscenario.FinishScenarioActivity"
+            android:parentActivityName=".selectcampaign.SelectCampaignActivity"/>
+        <activity
+            android:name=".standalone.StandaloneActivity"
+            android:parentActivityName=".selectcampaign.SelectCampaignActivity"/>
     </application>
 
 </manifest>

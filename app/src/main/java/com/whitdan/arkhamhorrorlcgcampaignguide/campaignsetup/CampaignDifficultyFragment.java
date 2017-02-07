@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
+import com.whitdan.arkhamhorrorlcgcampaignguide.standalone.StandaloneOnClickListener;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -33,20 +34,32 @@ public class CampaignDifficultyFragment extends Fragment {
 
         // Setup difficulty selection spinner
         Spinner difficultySpinner = (Spinner) v.findViewById(R.id.difficulty);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
-                R.array.difficulty, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter;
+        if (globalVariables.getCurrentCampaign() == 999) {
+            adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                    R.array.difficulty_two, android.R.layout.simple_spinner_item);
+        } else {
+            adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                    R.array.difficulty, android.R.layout.simple_spinner_item);
+        }
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(adapter);
         difficultySpinner.setOnItemSelectedListener(new DifficultySpinnerListener(v));
 
         // Set click listener on the continue button
         TextView button = (TextView) v.findViewById(R.id.continue_button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((CampaignSetupActivity) getActivity()).startScenario(v);
-            }
-        });
+        // Standalone scenario
+        if (globalVariables.getCurrentCampaign() == 999) {
+            // Set click listener on continue button
+            button.setOnClickListener(new StandaloneOnClickListener(this.getActivity()));
+        } else {
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((CampaignSetupActivity) getActivity()).startScenario(v);
+                }
+            });
+        }
 
         return v;
     }
@@ -144,7 +157,6 @@ public class CampaignDifficultyFragment extends Fragment {
                             break;
                         // Hard
                         case 2:
-                            plusOneLayout.setVisibility(VISIBLE);
                             plusOneLayout.setVisibility(GONE);
                             zero.setText(R.string.three);
                             minusOne.setText(R.string.two);
@@ -250,6 +262,45 @@ public class CampaignDifficultyFragment extends Fragment {
                             minusSix.setText(R.string.one);
                             minusEightLayout.setVisibility(VISIBLE);
                             minusEight.setText(R.string.one);
+                            break;
+                    }
+                    break;
+                // Standalone scenarios
+                case 999:
+                    switch (globalVariables.getCurrentScenario()) {
+                        // Curse of the Rougarou
+                        case 101:
+                            // Hide all unused token views
+                            plusTwoLayout.setVisibility(GONE);
+                            minusSevenLayout.setVisibility(GONE);
+                            // Set consisten values
+                            zero.setText(R.string.three);
+                            minusOne.setText(R.string.three);
+                            minusTwo.setText(R.string.two);
+                            minusThree.setText(R.string.two);
+                            minusFour.setText(R.string.two);
+                            minusSix.setText(R.string.one);
+                            cultist.setText(R.string.two);
+                            tablet.setText(R.string.one);
+                            elderThing.setText(R.string.one);
+                            tentacles.setText(R.string.one);
+                            elderSign.setText(R.string.one);
+                            switch (position) {
+                                // Standard
+                                case 0:
+                                    plusOne.setText(R.string.two);
+                                    minusFive.setText(R.string.one);
+                                    minusEightLayout.setVisibility(GONE);
+                                    skull.setText(R.string.two);
+                                    break;
+                                // Hard
+                                case 1:
+                                    plusOne.setText(R.string.one);
+                                    minusFive.setText(R.string.two);
+                                    minusEightLayout.setVisibility(VISIBLE);
+                                    minusEight.setText(R.string.one);
+                                    skull.setText(R.string.three);
+                            }
                             break;
                     }
                     break;

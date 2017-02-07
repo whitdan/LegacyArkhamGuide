@@ -87,7 +87,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
     }
 
     /*
-     Sets up overflow menu with option to Choose expansions
+     Sets up overflow menu with option to add side story
       */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -113,7 +113,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
     }
 
     /*
-        DialogFragment for The Dunwich Legacy
+        DialogFragment for side stories
      */
     public static class SideStoryDialog extends DialogFragment {
         @Override

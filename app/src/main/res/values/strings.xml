@@ -36,6 +36,12 @@
     <string name="smite_the_wicked">Unresolved Smite the Wicked in play</string>
     <string name="searching_for_izzie">Unresolved Searching for Izzie in play</string>
 
+    <!--Strings for player cards-->
+    <string-array name="player_cards">
+        <item>Strange Solution identified</item>
+    </string-array>
+    <string name="strange_solution">You have identified the solution.</string>
+
     <!--Strings for the investigator defeated spinner-->
     <string-array name="investigator_eliminated">
         <item>Not eliminated</item>
@@ -72,6 +78,10 @@
         <item>Standard</item>
         <item>Hard</item>
         <item>Expert</item>
+    </string-array>
+    <string-array name="difficulty_two">
+        <item>Standard</item>
+        <item>Hard</item>
     </string-array>
     <string name="one">1</string>
     <string name="two">2</string>
@@ -120,7 +130,9 @@
     <string name="lost">The investigators have lost.</string>
     <string name="expacs_owned">Expansions owned</string>
     <string name="pick_expacs_owned">Pick expansions owned</string>
+    <string name="standalone">Standalone scenario</string>
     <string name="add_side_story">Add side story</string>
+    <string name="player_cards">Player cards</string>
     <string name="pick_option">Pick an option</string>
 
 

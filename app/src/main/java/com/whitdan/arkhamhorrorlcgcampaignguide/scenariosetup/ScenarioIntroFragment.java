@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.whitdan.arkhamhorrorlcgcampaignguide.ContinueOnClickListener;
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
+import com.whitdan.arkhamhorrorlcgcampaignguide.standalone.StandaloneOnClickListener;
 
 /**
  * Displays the introductory flavour text for the scenario.
@@ -63,9 +64,16 @@ public class ScenarioIntroFragment extends Fragment {
             }
         }
 
+
+        // Standalone scenario
+        if(globalVariables.getCurrentCampaign()==999){
+            // Set click listener on continue button
+            TextView button = (TextView) v.findViewById(R.id.continue_button);
+            button.setOnClickListener(new StandaloneOnClickListener(this.getActivity()));
+        } else{
         // Set continue button click listener
         TextView button = (TextView) v.findViewById(R.id.continue_button);
-        button.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity()));
+        button.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity()));}
 
         return v;
     }

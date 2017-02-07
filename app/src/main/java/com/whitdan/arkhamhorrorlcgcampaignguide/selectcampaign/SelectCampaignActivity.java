@@ -21,6 +21,7 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.R;
 import com.whitdan.arkhamhorrorlcgcampaignguide.campaignsetup.CampaignSetupActivity;
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract;
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamDbHelper;
+import com.whitdan.arkhamhorrorlcgcampaignguide.standalone.StandaloneActivity;
 
 /*
 Main Activity - Allows the user to select a campaign to start.
@@ -33,6 +34,7 @@ Main Activity - Allows the user to select a campaign to start.
 
 public class SelectCampaignActivity extends AppCompatActivity {
 
+    private static GlobalVariables globalVariables;
     private CampaignsListAdapter campaignsListAdapter;
     private Cursor campaigns;
 
@@ -40,6 +42,7 @@ public class SelectCampaignActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_campaign);
+        globalVariables = (GlobalVariables) this.getApplication();
 
         // Create a new dbHelper and get access to the SQLite Database
         ArkhamDbHelper dbHelper = new ArkhamDbHelper(this);
@@ -81,13 +84,14 @@ public class SelectCampaignActivity extends AppCompatActivity {
         globalVariables.investigatorNames.clear();
         globalVariables.investigatorsInUse = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         globalVariables.setRougarouStatus(0);
+        globalVariables.setStrangeSolution(0);
         // Go to campaign setup
         Intent intent = new Intent(this, CampaignSetupActivity.class);
         startActivity(intent);
     }
 
     // Starts a Dunwich Legacy campaign [attached to xml onclick for the relevant button]
-    public void startDunwich(View v){
+    public void startDunwich(View v) {
         // Set Dunwich Legacy to owned in settings
         String sharedPrefs = getString(R.string.expacs_owned);
         String dunwichOwnedString = getString(R.string.dunwich_campaign_name);
@@ -106,6 +110,7 @@ public class SelectCampaignActivity extends AppCompatActivity {
         globalVariables.setInvestigatorsUnconscious(0);
         globalVariables.setInvestigatorsCheated(0);
         globalVariables.setRougarouStatus(0);
+        globalVariables.setStrangeSolution(0);
         // Go to campaign setup
         Intent intent = new Intent(this, CampaignSetupActivity.class);
         startActivity(intent);
@@ -116,8 +121,6 @@ public class SelectCampaignActivity extends AppCompatActivity {
     public CampaignsListAdapter getCampaignsListAdapter() {
         return campaignsListAdapter;
     }
-
-
 
 
     /*
@@ -136,8 +139,13 @@ public class SelectCampaignActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.expacs_owned:
                 // Creates a multi-selection dialog to select which expansions are owned
-                ExpacsOwnedDialogFragment newFragment = new ExpacsOwnedDialogFragment();
-                newFragment.show(this.getFragmentManager(), "owned");
+                ExpacsOwnedDialogFragment expacsFragment = new ExpacsOwnedDialogFragment();
+                expacsFragment.show(this.getFragmentManager(), "owned");
+                return true;
+            case R.id.standalone:
+                // Creates a dialog to select which standalone to launch
+                StandaloneDialog standaloneFragment = new StandaloneDialog();
+                standaloneFragment.show(this.getFragmentManager(), "standalone");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -186,7 +194,7 @@ public class SelectCampaignActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int id) {
                             // Save the settings
                             SharedPreferences.Editor editor = settings.edit();
-                            editor.putBoolean(dunwichOwnedString,  dunwichOwned);
+                            editor.putBoolean(dunwichOwnedString, dunwichOwned);
                             editor.apply();
                         }
                     })
@@ -197,6 +205,32 @@ public class SelectCampaignActivity extends AppCompatActivity {
                         }
                     });
 
+            return builder.create();
+        }
+    }
+
+
+    /*
+        DialogFragment for standalone scenarios
+     */
+    public static class StandaloneDialog extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder
+                    (getActivity());
+            builder.setTitle(R.string.pick_option)
+                    .setItems(R.array.side_stories, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            globalVariables.setCurrentCampaign(999);
+                            switch (which) {
+                                case 0:
+                                    globalVariables.setCurrentScenario(101);
+                                    break;
+                            }
+                            Intent intent = new Intent(getActivity(), StandaloneActivity.class);
+                            startActivity(intent);
+                        }
+                    });
             return builder.create();
         }
     }

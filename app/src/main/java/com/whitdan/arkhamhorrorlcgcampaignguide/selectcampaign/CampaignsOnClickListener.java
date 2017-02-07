@@ -55,7 +55,8 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                 CampaignEntry.COLUMN_JENNY_INUSE,
                 CampaignEntry.COLUMN_JIM_INUSE,
                 CampaignEntry.COLUMN_PETE_INUSE,
-                CampaignEntry.COLUMN_ROUGAROU_STATUS
+                CampaignEntry.COLUMN_ROUGAROU_STATUS,
+                CampaignEntry.COLUMN_STRANGE_SOLUTION
         };
         String campaignSelection = CampaignEntry._ID + " = ?";
         Cursor campaignCursor = db.query(
@@ -96,6 +97,8 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_PETE_INUSE));
             globalVariables.setRougarouStatus(campaignCursor.getInt(campaignCursor.getColumnIndexOrThrow
                     (CampaignEntry.COLUMN_ROUGAROU_STATUS)));
+            globalVariables.setStrangeSolution(campaignCursor.getInt(campaignCursor.getColumnIndexOrThrow
+                    (CampaignEntry.COLUMN_STRANGE_SOLUTION)));
         }
         campaignCursor.close();
 

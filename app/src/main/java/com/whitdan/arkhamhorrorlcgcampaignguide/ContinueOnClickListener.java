@@ -566,6 +566,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_PETE_INUSE, globalVariables
                 .investigatorsInUse[Investigator.ASHCAN_PETE]);
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_ROUGAROU_STATUS, globalVariables.getRougarouStatus());
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_STRANGE_SOLUTION, globalVariables.getStrangeSolution());
         String campaignSelection = ArkhamContract.CampaignEntry._ID + " LIKE ?";
         String[] campaignSelectionArgs = {Long.toString(globalVariables.getCampaignID())};
         db.update(

@@ -33,6 +33,7 @@ public class ArkhamContract {
         public static final String COLUMN_JIM_INUSE = "jim";
         public static final String COLUMN_PETE_INUSE = "pete";
         public static final String COLUMN_ROUGAROU_STATUS = "rougarou_status";
+        public static final String COLUMN_STRANGE_SOLUTION = "strange_solution";
     }
 
     public static class InvestigatorEntry implements BaseColumns{

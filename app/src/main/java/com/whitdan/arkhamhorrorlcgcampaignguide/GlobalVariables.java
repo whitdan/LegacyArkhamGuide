@@ -170,4 +170,11 @@ public class GlobalVariables extends Application {
     private int RougarouStatus;     // 1 = alive, 2 = defeated, 3 = escaped
     public void setRougarouStatus(int var){this.RougarouStatus = var;}
     public int getRougarouStatus(){return this.RougarouStatus;}
+
+    /*
+    Player cards
+     */
+    private int StrangeSolution;
+    public void setStrangeSolution(int var){this.StrangeSolution = var;}
+    public int getStrangeSolution(){return this.StrangeSolution;}
 }

@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.whitdan.arkhamhorrorlcgcampaignguide.standalone.StandaloneOnClickListener;
+
+import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 /**
@@ -23,9 +26,9 @@ public class LogFragment extends Fragment {
         GlobalVariables globalVariables = ((GlobalVariables) this.getActivity().getApplication());
 
         /*
-         Set setup instructions if on setup
+         Set setup instructions if on setup or in standalone scenario
           */
-        if (globalVariables.getScenarioStage() == 1) {
+        if (globalVariables.getScenarioStage() == 1 || globalVariables.getCurrentCampaign() == 999) {
 
             // Get the various views and set the visibility of the LinearLayout to VISIBLE
             LinearLayout setup = (LinearLayout) v.findViewById(R.id.setup);
@@ -187,6 +190,16 @@ public class LogFragment extends Fragment {
             }
         }
 
+        // Standalone scenario
+        if(globalVariables.getCurrentCampaign()==999){
+            LinearLayout logLayout = (LinearLayout) v.findViewById(R.id.log_layout);
+            logLayout.setVisibility(GONE);
+            // Set click listener on continue button
+            TextView button = (TextView) v.findViewById(R.id.continue_button);
+            button.setOnClickListener(new StandaloneOnClickListener(this.getActivity()));
+            return v;
+        }
+
         StringBuilder campaignLogBuilder = new StringBuilder();
 
         if(globalVariables.getCurrentScenario()<100){
@@ -316,6 +329,13 @@ public class LogFragment extends Fragment {
             campaignLogBuilder.append(getString(R.string.rougarou_destroyed));
         }else if(globalVariables.getRougarouStatus()==3){
             campaignLogBuilder.append(getString(R.string.rougarou_escaped));
+        }
+
+        /*
+            Player cards log
+         */
+        if(globalVariables.getStrangeSolution()==1){
+            campaignLogBuilder.append(getString(R.string.strange_solution));
         }
 
         String campaignLog = campaignLogBuilder.toString();
