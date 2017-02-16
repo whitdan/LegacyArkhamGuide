@@ -150,6 +150,25 @@ public class ScenarioSetupActivity extends AppCompatActivity {
                                         startActivity(starterIntent);
                                     }
                                     break;
+                                case 1:
+                                    if (XP < 3) {
+                                        Toast toast = Toast.makeText(getActivity(), "You do not have enough XP (cost:" +
+                                                " 3 per investigator).", Toast.LENGTH_SHORT);
+                                        toast.show();
+                                    } else if (globalVariables.getCarnevaleStatus() > 0) {
+                                        Toast toast = Toast.makeText(getActivity(), "You have already completed this " +
+                                                "scenario.", Toast.LENGTH_SHORT);
+                                        toast.show();
+                                    } else {
+                                        globalVariables.setPreviousScenario(globalVariables.getCurrentScenario());
+                                        globalVariables.setCurrentScenario(102);
+                                        for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                                            globalVariables.investigators.get(i).changeXP(-3);
+                                        }
+                                        getActivity().finish();
+                                        startActivity(starterIntent);
+                                    }
+                                    break;
                             }
                         }
                     });

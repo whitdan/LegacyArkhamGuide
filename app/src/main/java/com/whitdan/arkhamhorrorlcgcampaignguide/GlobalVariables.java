@@ -160,6 +160,9 @@ public class GlobalVariables extends Application {
     private int InvestigatorsCheated;
     public void setInvestigatorsCheated(int var){this.InvestigatorsCheated = var;}
     public int getInvestigatorsCheated(){return this.InvestigatorsCheated;}
+    private int Necronomicon;
+    public void setNecronomicon(int var){this.Necronomicon = var;}
+    public int getNecronomicon(){return this.Necronomicon;}
 
     /*
     Side story variables
@@ -170,6 +173,12 @@ public class GlobalVariables extends Application {
     private int RougarouStatus;     // 1 = alive, 2 = defeated, 3 = escaped
     public void setRougarouStatus(int var){this.RougarouStatus = var;}
     public int getRougarouStatus(){return this.RougarouStatus;}
+    private int CarnevaleStatus;    // 1 = many sacrificed, 2 = banished, 3 = retreated
+    public void setCarnevaleStatus(int var){this.CarnevaleStatus = var;}
+    public int getCarnevaleStatus(){return this.CarnevaleStatus;}
+    private int CarnevaleReward;    // 1 = sacrifice made, 2 = abbess satisfied
+    public void setCarnevaleReward(int var){this.CarnevaleReward = var;}
+    public int getCarnevaleReward(){return this.CarnevaleReward;}
 
     /*
     Player cards

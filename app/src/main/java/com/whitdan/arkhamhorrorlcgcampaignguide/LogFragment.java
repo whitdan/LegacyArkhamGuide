@@ -169,6 +169,14 @@ public class LogFragment extends Fragment {
                             locations.setText(R.string.house_locations);
                             additional.setText(R.string.house_additional);
                             break;
+                        // The Miskatonic Museum
+                        case 4:
+                            sets.setText(R.string.miskatonic_sets);
+                            setsImage.setImageResource(R.drawable.miskatonic_sets);
+                            setAside.setText(R.string.miskatonic_set_aside);
+                            locations.setText(R.string.miskatonic_locations);
+                            additional.setText(R.string.miskatonic_additional);
+                            break;
                     }
                     break;
             }
@@ -185,6 +193,13 @@ public class LogFragment extends Fragment {
                         setAsideTwo.setText(R.string.rougarou_set_aside_two);
                         locations.setText(R.string.rougarou_locations);
                         additional.setText(R.string.no_changes);
+                        break;
+                    case 102:
+                        sets.setText(R.string.carnevale_sets);
+                        setsImage.setImageResource(R.drawable.carnevale_sets);
+                        setAside.setText(R.string.carnevale_set_aside);
+                        locations.setText(R.string.carnevale_locations);
+                        additional.setText(R.string.carnevale_additional);
                         break;
                 }
             }
@@ -318,6 +333,24 @@ public class LogFragment extends Fragment {
                     campaignLogBuilder.append(getString(R.string.cheated));
                 }
             }
+            // Interlude log
+            if(globalVariables.getPreviousScenario() > 3){
+                if(globalVariables.getHenryArmitage()==0){
+                    campaignLogBuilder.append(getString(R.string.armitage_kidnapped));
+                } else if(globalVariables.getHenryArmitage()==1){
+                    campaignLogBuilder.append(getString(R.string.armitage_rescued));
+                }
+            }
+            // The Miskatonic Museum log
+            if(globalVariables.getPreviousScenario() > 4){
+                if(globalVariables.getNecronomicon()==0){
+                    campaignLogBuilder.append(getString(R.string.necronomicon_failed));
+                } else if(globalVariables.getNecronomicon()==1){
+                    campaignLogBuilder.append(getString(R.string.necronomicon_destroyed));
+                } else if(globalVariables.getNecronomicon()==2){
+                    campaignLogBuilder.append(getString(R.string.necronomicon_taken));
+                }
+            }
         }
 
         /*
@@ -329,6 +362,18 @@ public class LogFragment extends Fragment {
             campaignLogBuilder.append(getString(R.string.rougarou_destroyed));
         }else if(globalVariables.getRougarouStatus()==3){
             campaignLogBuilder.append(getString(R.string.rougarou_escaped));
+        }
+        if(globalVariables.getCarnevaleStatus()==1){
+            campaignLogBuilder.append(getString(R.string.carnevale_many_sacrificed));
+        }else if(globalVariables.getCarnevaleStatus()==2){
+            campaignLogBuilder.append(getString(R.string.carnevale_banished));
+        }else if(globalVariables.getCarnevaleStatus()==3){
+            campaignLogBuilder.append(getString(R.string.carnevale_retreated));
+        }
+        if(globalVariables.getCarnevaleReward()==1){
+            campaignLogBuilder.append(getString(R.string.carnevale_sacrifice_made));
+        }else if(globalVariables.getCarnevaleReward()==2){
+            campaignLogBuilder.append(getString(R.string.carnevale_abbess_satisfied));
         }
 
         /*

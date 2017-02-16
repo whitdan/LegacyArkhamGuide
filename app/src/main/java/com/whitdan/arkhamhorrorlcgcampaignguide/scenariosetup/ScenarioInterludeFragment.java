@@ -1,17 +1,14 @@
 package com.whitdan.arkhamhorrorlcgcampaignguide.scenariosetup;
 
-import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
-import com.whitdan.arkhamhorrorlcgcampaignguide.selectcampaign.SelectCampaignActivity;
 
 /**
  * Fragment for interludes
@@ -45,10 +42,7 @@ public class ScenarioInterludeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 globalVariables.setCurrentScenario(globalVariables.getCurrentScenario() + 1);
-                Intent intent = new Intent(getActivity(), SelectCampaignActivity.class);
-                getActivity().startActivity(intent);
-                Toast toast = Toast.makeText(getActivity(), "This scenario is not available yet.", Toast.LENGTH_SHORT);
-                toast.show();
+                ((ScenarioSetupActivity) getActivity()).restartScenario(getActivity());
             }
         });
 
