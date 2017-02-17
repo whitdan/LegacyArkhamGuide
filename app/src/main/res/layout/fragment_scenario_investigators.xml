@@ -12,6 +12,17 @@
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:orientation="horizontal">
 
+        <TextView
+            android:id="@+id/campaign_completed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:text="@string/campaign_completed"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
         <LinearLayout
             android:id="@+id/lead_investigator_view"
             android:layout_width="match_parent"

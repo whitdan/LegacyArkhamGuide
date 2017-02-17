@@ -23,6 +23,7 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.Investigator;
 import com.whitdan.arkhamhorrorlcgcampaignguide.LogFragment;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
+import com.whitdan.arkhamhorrorlcgcampaignguide.campaignsetup.CampaignDifficultyFragment;
 import com.whitdan.arkhamhorrorlcgcampaignguide.selectcampaign.SelectCampaignActivity;
 
 /*
@@ -58,8 +59,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
 
         // Check if on interlude
         boolean interlude = false;
-        if ((globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 3) ||
-                globalVariables.getCurrentScenario() == 0) {
+        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 3) {
             interlude = true;
         }
 
@@ -79,6 +79,11 @@ public class ScenarioSetupActivity extends AppCompatActivity {
         // If appropriate, go to interlude
         else if (interlude) {
             InterludePagerAdapter adapter = new InterludePagerAdapter(getSupportFragmentManager());
+            viewPager.setAdapter(adapter);
+        }
+        // If appropriate, go to new campaign
+        else if(globalVariables.getCurrentScenario() == 0){
+            NewCampaignPagerAdapter adapter = new NewCampaignPagerAdapter(getSupportFragmentManager());
             viewPager.setAdapter(adapter);
         }
         // If no investigators are dead, go to normal scenario setup
@@ -275,6 +280,39 @@ public class ScenarioSetupActivity extends AppCompatActivity {
 
         // Set titles of scenario setup tabs
         private final String[] tabTitles = new String[]{"Interlude"};
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            // Generate title based on item position
+            return tabTitles[position];
+        }
+    }
+
+    // Returns the new campaign fragment instead
+    private class NewCampaignPagerAdapter extends FragmentPagerAdapter {
+
+        private NewCampaignPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        // Returns the right fragment to page to
+        @Override
+        public Fragment getItem(int position) {
+            if (position == 0) {
+                return new ScenarioInterludeFragment();
+            } else {
+                return new CampaignDifficultyFragment();
+            }
+        }
+
+        // Number of tabs
+        @Override
+        public int getCount() {
+            return 2;
+        }
+
+        // Set titles of scenario setup tabs
+        private final String[] tabTitles = new String[]{"Intro", "Difficulty"};
 
         @Override
         public CharSequence getPageTitle(int position) {

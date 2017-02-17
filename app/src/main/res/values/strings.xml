@@ -135,7 +135,7 @@
     <string name="player_cards">Player cards</string>
     <string name="pick_option">Pick an option</string>
     <string name="scenario_not_available">This scenario is not available yet.</string>
-    <string name="campaign_completed">Campaign completed.</string>
+    <string name="campaign_completed">Campaign completed</string>
     <string-array name="campaign_options">
         <item>Finish and delete campaign</item>
         <item>Night of the Zealot</item>

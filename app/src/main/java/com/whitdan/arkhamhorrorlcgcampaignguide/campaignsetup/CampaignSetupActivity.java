@@ -140,6 +140,7 @@ public class CampaignSetupActivity extends AppCompatActivity {
 
                     // Save the new campaign
                     newCampaign();
+                    campaignName = "";
 
                     // Go to scenario setup
                     Intent intent = new Intent(this, ScenarioSetupActivity.class);
@@ -344,6 +345,8 @@ public class CampaignSetupActivity extends AppCompatActivity {
                                 investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_XP, 0);
                                 db.insert(ArkhamContract.InvestigatorEntry.TABLE_NAME, null, investigatorValues);
                             }
+
+                            campaignName = "";
 
                             // Go to scenario setup
                             Intent intent = new Intent(getActivity(), ScenarioSetupActivity.class);

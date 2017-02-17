@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 /**
  * Shows info for all of the investigators in use, and allows the selection of a lead investigator for the scenario.
@@ -59,6 +60,8 @@ public class ScenarioInvestigatorsFragment extends Fragment {
                 (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5)) {
             LinearLayout lead = (LinearLayout) v.findViewById(R.id.lead_investigator_view);
             lead.setVisibility(GONE);
+            TextView completed = (TextView) v.findViewById(R.id.campaign_completed);
+            completed.setVisibility(VISIBLE);
         }
 
         // Setup ListView from the InvestigatorsListAdapter

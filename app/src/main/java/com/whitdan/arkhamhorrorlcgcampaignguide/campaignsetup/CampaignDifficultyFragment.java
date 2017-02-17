@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.whitdan.arkhamhorrorlcgcampaignguide.ContinueOnClickListener;
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
 import com.whitdan.arkhamhorrorlcgcampaignguide.standalone.StandaloneOnClickListener;
@@ -52,6 +53,9 @@ public class CampaignDifficultyFragment extends Fragment {
         if (globalVariables.getCurrentCampaign() == 999) {
             // Set click listener on continue button
             button.setOnClickListener(new StandaloneOnClickListener(this.getActivity()));
+        } else if (globalVariables.getCurrentScenario() == 0) {
+            button.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity(), this
+                    .getActivity()));
         } else {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
