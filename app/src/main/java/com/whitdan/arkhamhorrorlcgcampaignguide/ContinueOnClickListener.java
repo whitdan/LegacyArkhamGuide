@@ -49,8 +49,13 @@ public class ContinueOnClickListener implements View.OnClickListener {
 
     public void onClick(View v) {
 
+
+        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5){
+            Intent intent = new Intent(context, SelectCampaignActivity.class);
+            context.startActivity(intent);
+        }
         // If on scenario setup, set available XP and advance to scenario finish
-        if (globalVariables.getScenarioStage() == 1) {
+        else if(globalVariables.getScenarioStage() == 1) {
 
             // Subtract tempXP (as set by the spent XP view) from investigator XP and reset tempXP
             for (int i = 0; i < globalVariables.investigators.size(); i++) {
@@ -175,12 +180,14 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     }
 
                     // Increment current scenario
-                    int nextScenario;
+                    int nextScenario = 0;
                     if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getFirstScenario() == 2) {
                         if (globalVariables.getCurrentScenario() == 1) {
                             nextScenario = 3;
-                        } else {
+                        } else if (globalVariables.getCurrentScenario() == 2) {
                             nextScenario = 1;
+                        } else {
+                            nextScenario = globalVariables.getCurrentScenario() + 1;
                         }
                     } else {
                         nextScenario = globalVariables.getCurrentScenario() + 1;
@@ -199,15 +206,12 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     //   Go to scenario setup for the next scenario or end and delete campaign
                     globalVariables.setScenarioStage(1);
                     if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5) {
-                        Intent intent = new Intent(getActivity(), SelectCampaignActivity.class);
-                        getActivity().startActivity(intent);
                         Toast toast = Toast.makeText(getActivity(), "This scenario is not available yet.", Toast
                                 .LENGTH_SHORT);
                         toast.show();
-                    } else {
-                        Intent intent = new Intent(getActivity(), ScenarioSetupActivity.class);
-                        getActivity().startActivity(intent);
                     }
+                    Intent intent = new Intent(getActivity(), ScenarioSetupActivity.class);
+                    getActivity().startActivity(intent);
                 }
             });
             builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -507,7 +511,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
         /*
             Resolution 2: The Miskatonic Museum
          */
-        else if(globalVariables.getCurrentScenario()==4){
+        else if (globalVariables.getCurrentScenario() == 4) {
             for (int i = 0; i < globalVariables.investigators.size(); i++) {
                 globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
             }
@@ -552,11 +556,11 @@ public class ContinueOnClickListener implements View.OnClickListener {
         /*
             Carnevale of Horrors
          */
-        else if(globalVariables.getCurrentScenario()==102){
-                for (int i = 0; i < globalVariables.investigators.size(); i++) {
-                    globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
-                }
-                globalVariables.setCarnevaleStatus(globalVariables.getResolution()+1);
+        else if (globalVariables.getCurrentScenario() == 102) {
+            for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
+            }
+            globalVariables.setCarnevaleStatus(globalVariables.getResolution() + 1);
         }
     }
 

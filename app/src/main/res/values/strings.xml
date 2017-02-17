@@ -134,6 +134,7 @@
     <string name="add_side_story">Add side story</string>
     <string name="player_cards">Player cards</string>
     <string name="pick_option">Pick an option</string>
+    <string name="scenario_not_available">This scenario is not available yet.</string>
 
 
     <!--Night of the Zealot-->
@@ -398,8 +399,8 @@
     <string name="necronomicon_failed">The investigators failed to recover the <i>Necronomicon</i>.\n</string>
     <string name="necronomicon_destroyed">The investigators destroyed the <i>Necronomicon</i>.\n</string>
     <string name="necronomicon_taken">The investigators took custody of the <i>Necronomicon</i>.\n
-    The Necronomicon (<i>Olaus Wormius Translation</i>) added to an investigator\'s deck.\n
-    Elder Thing chaos token added to the chaos bag for the remainder of the campaign.\n</string>
+        The Necronomicon (<i>Olaus Wormius Translation</i>) added to an investigator\'s deck.\n
+        Elder Thing chaos token added to the chaos bag for the remainder of the campaign.\n</string>
 
     <string name="dunwich_setup"><b>Prologue</b>\n
     \nDr. Henry Armitage pours himself a glass of pinot and sits down at his desk, gesturing for you to sit

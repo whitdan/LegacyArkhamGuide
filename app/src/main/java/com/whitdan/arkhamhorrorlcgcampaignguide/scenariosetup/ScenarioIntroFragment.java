@@ -60,6 +60,9 @@ public class ScenarioIntroFragment extends Fragment {
                             textView.setText(R.string.miskatonic_setup_b);
                         }
                         break;
+                    case 5:
+                        textView.setText(R.string.scenario_not_available);
+                        break;
                 }
         }
 

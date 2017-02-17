@@ -28,7 +28,8 @@ public class LogFragment extends Fragment {
         /*
          Set setup instructions if on setup or in standalone scenario
           */
-        if (globalVariables.getScenarioStage() == 1 || globalVariables.getCurrentCampaign() == 999) {
+        if ((globalVariables.getScenarioStage() == 1 || globalVariables.getCurrentCampaign() == 999)
+                && !(globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5)) {
 
             // Get the various views and set the visibility of the LinearLayout to VISIBLE
             LinearLayout setup = (LinearLayout) v.findViewById(R.id.setup);

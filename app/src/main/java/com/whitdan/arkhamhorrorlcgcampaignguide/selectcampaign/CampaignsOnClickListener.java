@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.Investigator;
+import com.whitdan.arkhamhorrorlcgcampaignguide.R;
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract;
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.CampaignEntry;
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.InvestigatorEntry;
@@ -245,14 +246,12 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
 
         // If on the first unreleased scenario, display a toast and do nothing more
         if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5) {
-            Toast toast = Toast.makeText(context, "This scenario is not available yet.", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(context, R.string.scenario_not_available, Toast.LENGTH_SHORT);
             toast.show();
         }
         // Advance to scenario setup
-        else {
-            globalVariables.setScenarioStage(1);
-            Intent intent = new Intent(context, ScenarioSetupActivity.class);
-            context.startActivity(intent);
-        }
+        globalVariables.setScenarioStage(1);
+        Intent intent = new Intent(context, ScenarioSetupActivity.class);
+        context.startActivity(intent);
     }
 }

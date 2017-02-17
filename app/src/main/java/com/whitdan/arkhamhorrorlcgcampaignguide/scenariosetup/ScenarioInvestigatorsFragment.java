@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,6 +20,8 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.view.View.GONE;
 
 /**
  * Shows info for all of the investigators in use, and allows the selection of a lead investigator for the scenario.
@@ -50,6 +53,12 @@ public class ScenarioInvestigatorsFragment extends Fragment {
         leadInvestigator.setAdapter(leadInvestigatorAdapter);
         leadInvestigatorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         leadInvestigator.setOnItemSelectedListener(new ListenerLeadInvestigatorSpinner());
+
+        // Hide spinner if on unreleased scenario or end of campaign
+        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5) {
+            LinearLayout lead = (LinearLayout) v.findViewById(R.id.lead_investigator_view);
+            lead.setVisibility(GONE);
+        }
 
         // Setup ListView from the InvestigatorsListAdapter
         ListView listView = (ListView) v.findViewById(R.id.investigator_list);

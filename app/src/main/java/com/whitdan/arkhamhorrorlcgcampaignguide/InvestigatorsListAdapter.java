@@ -74,7 +74,8 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
         // If on scenario setup set up spent XP view and buttons
         View xpView = listItemView.findViewById(R.id.xp_spent_layout);
         View defeatedView = listItemView.findViewById(R.id.defeated_layout);
-        if (globalVariables.getScenarioStage() == 1) {
+        if (globalVariables.getScenarioStage() == 1
+                && !(globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5)) {
             xpView.setVisibility(VISIBLE);
             defeatedView.setVisibility(GONE);
 
