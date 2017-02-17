@@ -85,6 +85,8 @@ public class SelectCampaignActivity extends AppCompatActivity {
         globalVariables.investigatorsInUse = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         globalVariables.setRougarouStatus(0);
         globalVariables.setStrangeSolution(0);
+        globalVariables.setCarnevaleStatus(0);
+        globalVariables.setCarnevaleReward(0);
         // Go to campaign setup
         Intent intent = new Intent(this, CampaignSetupActivity.class);
         startActivity(intent);
@@ -111,6 +113,8 @@ public class SelectCampaignActivity extends AppCompatActivity {
         globalVariables.setInvestigatorsCheated(0);
         globalVariables.setRougarouStatus(0);
         globalVariables.setStrangeSolution(0);
+        globalVariables.setCarnevaleStatus(0);
+        globalVariables.setCarnevaleReward(0);
         // Go to campaign setup
         Intent intent = new Intent(this, CampaignSetupActivity.class);
         startActivity(intent);
@@ -225,6 +229,9 @@ public class SelectCampaignActivity extends AppCompatActivity {
                             switch (which) {
                                 case 0:
                                     globalVariables.setCurrentScenario(101);
+                                    break;
+                                case 1:
+                                    globalVariables.setCurrentScenario(102);
                                     break;
                             }
                             Intent intent = new Intent(getActivity(), StandaloneActivity.class);

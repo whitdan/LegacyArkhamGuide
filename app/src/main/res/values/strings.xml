@@ -40,7 +40,7 @@
     <string-array name="player_cards">
         <item>Strange Solution identified</item>
     </string-array>
-    <string name="strange_solution">You have identified the solution.</string>
+    <string name="strange_solution">You have identified the solution.\n</string>
 
     <!--Strings for the investigator defeated spinner-->
     <string-array name="investigator_eliminated">
@@ -368,7 +368,7 @@
     <string name="dunwich_scenario_one">Scenario 1-A: Extracurricular Activity</string>
     <string name="dunwich_scenario_two">Scenario 1-B: The House Always Wins</string>
     <string name="dunwich_scenario_three">Scenario 2: The Miskatonic Museum</string>
-    <string name="dunwich_scenario_four">The Essex County Express</string>
+    <string name="dunwich_scenario_four">Scenario 3: The Essex County Express</string>
     <string name="dunwich_scenario_five">Blood on the Altar</string>
     <string name="dunwich_scenario_six">Undimensional and Unseen</string>
     <string name="dunwich_scenario_seven">Where Doom Awaits</string>
@@ -384,16 +384,22 @@
     <string name="investigators_unconscious">The investigators were unconscious for several hours.\n</string>
     <string name="warren_kidnapped">Professor Warren Rice was kidnapped.\n</string>
     <string name="warren_rescued">The investigators rescued Professor Warren Rice.\n</string>
-    <string name="students_failed">The investigators failed to save the students.\n1 Tablet chaos token added to the
-        chaos bag for the remainder of the campaign.\n</string>
+    <string name="students_failed">The investigators failed to save the students.\nTablet chaos token added to the chaos bag for the remainder of the campaign.\n</string>
     <string name="students_rescued">The students were rescued.\n</string>
     <string name="experiment_defeated">The Experiment was defeated.\n</string>
     <string name="obannion_failed">The O\'Bannion gang has a bone to pick with the investigators.\n</string>
     <string name="obannion_succeeded">Naomi has the investigators\' backs.\n</string>
     <string name="morgan_kidnapped">Dr. Francis Morgan was kidnapped.\n</string>
     <string name="morgan_rescued">The investigators rescued Dr. Francis Morgan.\n</string>
-    <string name="cheated">1 Elder Thing chaos token added to the chaos bag for the remainder of the
+    <string name="cheated">Elder Thing chaos token added to the chaos bag for the remainder of the
         campaign.\n</string>
+    <string name="armitage_kidnapped">Dr. Herny Armitage was kidnapped.\n</string>
+    <string name="armitage_rescued">The investigators rescued Dr. Henry Armitage.\n</string>
+    <string name="necronomicon_failed">The investigators failed to recover the <i>Necronomicon</i>.\n</string>
+    <string name="necronomicon_destroyed">The investigators destroyed the <i>Necronomicon</i>.\n</string>
+    <string name="necronomicon_taken">The investigators took custody of the <i>Necronomicon</i>.\n
+    The Necronomicon (<i>Olaus Wormius Translation</i>) added to an investigator\'s deck.\n
+    Elder Thing chaos token added to the chaos bag for the remainder of the campaign.\n</string>
 
     <string name="dunwich_setup"><b>Prologue</b>\n
     \nDr. Henry Armitage pours himself a glass of pinot and sits down at his desk, gesturing for you to sit
@@ -553,10 +559,87 @@
         that night&#8230;\n
     \n<b>Any one investigator may choose to add Dr. Henry Armitage to his or her deck.</b></string>
 
+    <!--Scenario 2: The Miskatonic Museum-->
+    <string name="miskatonic_setup_a"><b>Scenario 2: The Miskatonic Museum</b>\n
+    \nSeveral months ago, Armitage and his colleagues stopped a rampaging horror from tearing through Dunwich,
+        a backwater town several hours north and west of Arkham. At first you imagine this beast as a rabid
+        bear, or worse, but the professor\'s description of the creature paints a different picture.\n
+    \nIt all began when a man named Wilbur Whately entered the Orne Library looking for Olaus Wormius\'s Latin
+        translation of a book called the <i>Necronomicon</i>. Wilbur already possessed a beaten-up English
+        translation by Dr. John Dee, but it was insufficient for his purposes. Armitage turned the man away,
+        fearing what use the strange man had for the book. Whateley returned in secret, hoping to steal the
+        book, but was attacked by a hound guarding the university. Armitage, Rice, and Morgan later discovered
+        Whateley\'s body. A description of the foul corpse - semi-anthropomorphic and covered in fur, with a
+        leathery hide and greenish-grey tentacles - causes you to question whether or not Whateley was truly
+        human.\n
+        \nThe notes written by Dr. Armitage in the journal stress Whateley\'s
+        desire to get his hands on the <i>Necronomicon</i> for some terrible purpose. As you read on, it seems
+        that Dr. Armitage brought the university\'s copy of the tome to Harold Walsted - the curator of the
+        Miskatonic Museum - for safekeeping in the museum\'s Restricted Hall. Although you are worried about
+        your mentor, you are equally worried that Armitage\'s kidnappers might get their hands on the
+        <i>Necronomicon</i>. You decide to head to the museum to prevent them from acquiring it.</string>
+    <string name="miskatonic_setup_b"><b>Scenario 2: The Miskatonic Museum</b>\n
+    \nSeveral months ago, Armitage and his colleagues stopped a rampaging horror from tearing through Dunwich,
+        a backwater town several hours north and west of Arkham. At first you imagine this beast as a rabid
+        bear, or worse, but the professor\'s description of the creature paints a different picture.\n
+    \nIt all began when a man named Wilbur Whately entered the Orne Library looking for Olaus Wormius\'s Latin
+        translation of a book called the <i>Necronomicon</i>. Wilbur already possessed a beaten-up English
+        translation by Dr. John Dee, but it was insufficient for his purposes. Armitage turned the man away,
+        fearing what use the strange man had for the book. Whateley returned in secret, hoping to steal the
+        book, but was attacked by a hound guarding the university. Armitage, Rice, and Morgan later discovered
+        Whateley\'s body. A description of the foul corpse - semi-anthropomorphic and covered in fur, with a
+        leathery hide and greenish-grey tentacles - causes you to question whether or not Whateley was truly
+        human.\n
+        \n\"My colleagues and I were quick to put the ordeal behind us,\"
+        Armitage says with a sigh. \"But it seems that things haven\'t fully resolved themselves. I\'ll tell
+        you the rest later, but for now, it is imperative that we get our hands on that copy of the
+        <i>Necronomicon</i>. If my instincts are correct, the assailants you\'ve encountered will be searching
+        for it. After all that transpired, I didn\'t feel safe keeping at the library, so I brought it to my
+        good friend, Harold Walsted. He is the current curator of the Miskatonic Museum. I thought it would be
+        safe in the museum\'s Restricted Hall, but now I\'m not so sure. You must retrieve it at all costs! I
+        fear terribly what they could do with the rites contianed in its pages&#8230;\"</string>
+
+    <string name="miskatonic_sets">The Miskatonic Museum, Bad Luck, Sorcery, The Beyond, Chilling Cold, and
+        Locked Doors.</string>
+    <string name="miskatonic_locations">Put one of the two Administration Office locations and one of the two
+        Security Office locations into play at random. Remove the other versions from the game. Then, put the
+        Museum Entrance and Museum Halls locations into play.\n
+    \nEach investigator begins play at the Museum Entrance.\n</string>
+    <string name="miskatonic_set_aside">Harold Walsted, Adam Lynch, The Necronomicon
+        (<i>Olaus Wormius Translation</i>), and Shadow-spawned.\n</string>
+    <string name="miskatonic_additional">Set the 6 "Exhibit Hall" locations aside as a separate "Exhibit Deck."
+        To do this, perform the following:\n
+    \nShuffle the Exhibit Hall (<i>Restricted Hall</i>) and 2 other random Exhibit Hall locations together to
+        form the bottom 3 cards of the Exhibit Deck, unrevealed side faceup.\n
+    \nThen, place the other 3 Exhibit Hall locations on top, in a random order. All 6 cards of the Exhibit Hall
+    deck should be showing only the unrevealed side, so that the players do not know which Exhibit Hall is the
+        Exhibit Hall (<i>Restricted Hall</i>).\n</string>
+
+    <string name="miskatonic_no_resolution">Whatever the creature in the museum was, you had neither the will
+        nor the tools to destroy it. It seems you must give up any hope of recovering the <i>Necronomicon</i>.
+        Even so, there are others depending on you. Gathering your courage, you prepare for your next task.</string>
+    <string name="miskatonic_resolution_one">As long as this translation of the <i>Necronomicon</i> exists,
+        there will be sorcerers and other foul agents like Whateley seeking it. In the end, you know what must
+        be done to protect humanity from the threats you\'ve seen. You find a trash bin and fill it with books
+        and documents, throwing the <i>Necronomicon</i> on top. It takes several matches to set the contents of
+    the bin alight. The flames fill the room with heat and the creeping shadows retreat from its light. You
+        watch the book burn for some time, its pages turning to ash. You can only hope you\'ve made the right
+        decision.</string>
+    <string name="miskatonic_resolution_two">The <i>Necronomicon</i> is more than just a book; it is a tool.
+        Within its pages is a wealth of information about the forces and creatures you have encountered.
+        Knowing how useful it could be in your endeavors, how could you possibly bring yourself to destroy it?
+        Besides, as long as you keep the book safely in your possession, you will still be foiling those who
+        wish to use it for nefarious purposes.\n
+    \n<b>Any one investigator may choose to add The Necronomicon (<i>Olaus Wormius Translation</i>) to his or her
+     deck.</b>\n
+    \n<b>You have given in to the temptation of power. Add 1 Elder Thing chaos token to the chaos bag for the
+            remainder of the campaign.</b></string>
+
 
     <!--Side stories-->
     <string-array name="side_stories">
         <item>Curse of the Rougarou</item>
+        <item>Carnevale of Horrors</item>
     </string-array>
 
     <!--Curse of the Rougarou-->
@@ -600,9 +683,91 @@
         eyes and grips your arm tightly. \"Don\'t let it take control,\" he warns. \"I was weak, but you - I
         can tell you are strong. Control the curse as I could not.\"\n
     \n<b>The bearer of the Curse of the Rougarou weakness must add Monstrous Transformation to his or her deck.</b></string>
-    <string name="rougarou_alive">The Rougarou continues to haunt the bayou.\nCurse of the Rougarou weakness added to an investigator\'s deck.</string>
+    <string name="rougarou_alive">The Rougarou continues to haunt the bayou.\nCurse of the Rougarou weakness added to
+        an investigator\'s deck.\n</string>
     <string name="rougarou_destroyed">The Rougarou is destroyed, and the curse is lifted.\nLady Esprit added to an investigator\'s deck.\n</string>
-    <string name="rougarou_escaped">The Rougarou escaped, and you embraced the curse.\nCurse of the Rougarou weakness and Monstrous Transformation added to an investigator\'s deck.</string>
+    <string name="rougarou_escaped">The Rougarou escaped, and you embraced the curse.\nCurse of the Rougarou weakness
+        and Monstrous Transformation added to an investigator\'s deck.\n</string>
+
+    <!--Carnevale of Horrors-->
+    <string name="carnevale_setup"><b>Carnevale of Horrors</b>\n
+        \n<b>The Carnevale is Coming&#8230;</b>\n
+    \n\"Look,\" Sheriff Engel insists, \"I know it sounds crazy, but that\'s all there is to it.\" He sighs and
+    sits back down, pouring a cup of joe for you and one for himself. \"A dame in Uptown spotted a cracked egg
+        wearing this mask and holdin\' a bloody butcher\'s cleaver,\" he says, motioning to the black leather
+        mask sitting on his desk. It has a comically long nose and a strange symbol scrawled in yellow on its
+        forehead. \"So, she calls it in. My boys and I picked him up on the corner of Saltonstall &amp;
+        Garrison.\" The sheriff\'s jaw clenches and his brows furrow as he recounts the story. \"Fella did
+        nothing but laugh as we slapped the bracelets on him. Called himself Zanni. Said nothing except the
+        \'carnival is coming,\' whatever the hell that meant. Wasn\'t until the next day we found the victim\'s
+    body. Defense wanted him in a straitjacket. We were happy to oblige.\"\n
+    \nThere isn\'t much time to spare. If your research is right, there is more to this case than meets the eye
+        . This \"Zanni\" wasn\'t talking about Darke\'s Carnival, but rather, the Carnevale of Venice, which
+        begins just before the next full moon&#8230;</string>
+    <string name="carnevale_sets">Carnevale of Horrors</string>
+    <string name="carnevale_locations">Choose 1 location at random and remove it from the game. If San Marco
+        Basilica or Canal-side is chosen, randomly choose a different location instead.\n
+        Put the other 8 locations into play, in a random circular formation.\n
+    \nEach investigator begins play at San Marco Basilica.\n</string>
+    <string name="carnevale_set_aside">Cnidathqua, Pantalone, Medico Della Peste, Bauta, and Gilded Volto.\n</string>
+    <string name="carnevale_additional">Put Abbess Allegria Di Biase into play at San Marco Basilica.\n
+    \nShuffle the 7 Masked Carnevale-Goers and put 1 into play at each location other than San Marco Basilica,
+        Masked Carnevale-Goer side face-up. Do not look at their other sides.\n</string>
+    <string name="carnevale_no_resolution">You sputter awake as an oar gently taps your shoulder.
+        \"<i>Tutto bene</i>?\" The gondolier holding the oar says with a concerned expression. You nod and drag
+    yourself onto the docks from his gondola, drenched and aching all over. The city is devastated. Most of the
+    boats in the canal are wrecked, and the streets are covered not in confetti, but in blood&#8230;\n
+    \n<b>Move 1 Innocent Reveler from underneath the act deck to underneath the agenda deck, if able.</b>\n
+    \n<b>In player order, each investigator may choose one of the following <i>Mask</i> cards to add to his or
+            her deck: Pantalone, Medico Della Peste, Bauta, or Gilded Volto.</b>\n
+    \n<b>If there are no Innocent Revelers underneath the act deck and at least 1 underneath the agenda deck,
+            select <i>Sacrifice Made</i>.</b>\n
+    \n<b>If there are no Innocent Revelers underneath the agenda deck and 3 underneath the act deck, select
+            <i>Abbess Satisfied</i>.</b></string>
+    <string name="carnevale_resolution_one">The city is still recovering from the events during the eclipse.
+        With nearly all evidence of the creature melted away by the hot sun, many attribute the violence during
+    the Carnevale to local crime lord Cascio Di Boerio and his crew. Those that know the truth know better than
+    the speak of the elder creature that lives in Laguna Veneta. With any luck, its name will never be spoken
+        again.\n
+    \n<b>In player order, each investigator may choose one of the following <i>Mask</i> cards to add to his or
+            her deck: Pantalone, Medico Della Peste, Bauta, or Gilded Volto.</b>\n
+    \n<b>If there are no Innocent Revelers underneath the act deck and at least 1 underneath the agenda deck,
+            select <i>Sacrifice Made</i>.</b>\n
+    \n<b>If there are no Innocent Revelers underneath the agenda deck and 3 underneath the act deck, select
+            <i>Abbess Satisfied</i>.</b></string>
+    <string name="carnevale_resolution_two">The creature recoils as globules of its jelly-like flesh rip and
+        tear from its body, splashing into the lagoon. It makes no sound as its torn body sinks into the depths
+        . The chanting in the city plunges into mournful silence. As you return it to the canal-side streets,
+        black feathers fall from the sky where bright confetti once fluttered. You can only wonder how long it
+        will take for the creature to recover.\n
+    \n<b>In player order, each investigator may choose one of the following <i>Mask</i> cards to add to his or
+            her deck: Pantalone, Medico Della Peste, Bauta, or Gilded Volto.</b>\n
+    \n<b>If there are no Innocent Revelers underneath the act deck and at least 1 underneath the agenda deck,
+            select <i>Sacrifice Made</i>.</b>\n
+    \n<b>If there are no Innocent Revelers underneath the agenda deck and 3 underneath the act deck, select
+            <i>Abbess Satisfied</i>.</b></string>
+    <string name="carnevale_reward_sacrifice">Too many lives were lost during the eclipse to stop the
+        machinations of Cindathqua\'s servants. The beast has been fed, its minions empowered. You find
+        yourself hoping you don\'t live long enough to see the fallout of your failure.\n
+    \n<b>Each investigator searches the collection for a random basic <i>Madness</i>, <i>Injury</i>, or
+            <i>Monster</i> weakness and adds it to his or her deck for the remainder of the campaign.</b></string>
+    <string name="carnevale_reward_abbess">"<i>Grazie mille</i> - thank you for all your help,\" Allegria says
+        as you return to the basilica. \"Thanks to you, there were few casualties. I shudder to think what
+        might have happened had you not arrived. Should you ever require assistance, please do not hesitate to
+        ask.\"\n
+    \n<b>Any one investigator may choose to add Abbess Allegria Di Biase to his or her deck.</b></string>
+    <string name="carnevale_many_sacrificed">Many were sacrificed to Cnidathqua during the Carnevale.\n<i>Mask</i> card added to each investigator\'s deck.\n</string>
+    <string name="carnevale_banished">The sun banished Cnidathqua into the depths.\n<i>Mask</i> card added to each investigator\'s deck.\n</string>
+    <string name="carnevale_retreated">Cnidathqua retreated to nurse its wounds.\n<i>Mask</i> card added to each investigator\'s deck.\n</string>
+    <string-array name="carnevale_rewards">
+        <item>No additional rewards</item>
+        <item>Sacrifice Made</item>
+        <item>Abbess Satisfied</item>
+    </string-array>
+    <string name="carnevale_no_rewards">No additional rewards.</string>
+    <string name="carnevale_sacrifice_made">Random basic <i>Madness</i>, <i>Injury</i>, or <i>Monster</i> weakness
+        added to each investigator\'s deck.</string>
+    <string name="carnevale_abbess_satisfied">Abbess Allegria Di Biase added to an investigator\'s deck.</string>
 
 
 </resources>

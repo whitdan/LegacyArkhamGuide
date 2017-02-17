@@ -56,7 +56,9 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                 CampaignEntry.COLUMN_JIM_INUSE,
                 CampaignEntry.COLUMN_PETE_INUSE,
                 CampaignEntry.COLUMN_ROUGAROU_STATUS,
-                CampaignEntry.COLUMN_STRANGE_SOLUTION
+                CampaignEntry.COLUMN_STRANGE_SOLUTION,
+                CampaignEntry.COLUMN_CARNEVALE_STATUS,
+                CampaignEntry.COLUMN_CARNEVALE_REWARDS
         };
         String campaignSelection = CampaignEntry._ID + " = ?";
         Cursor campaignCursor = db.query(
@@ -99,6 +101,10 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                     (CampaignEntry.COLUMN_ROUGAROU_STATUS)));
             globalVariables.setStrangeSolution(campaignCursor.getInt(campaignCursor.getColumnIndexOrThrow
                     (CampaignEntry.COLUMN_STRANGE_SOLUTION)));
+            globalVariables.setCarnevaleStatus(campaignCursor.getInt(campaignCursor.getColumnIndexOrThrow
+                    (CampaignEntry.COLUMN_CARNEVALE_STATUS)));
+            globalVariables.setCarnevaleReward(campaignCursor.getInt(campaignCursor.getColumnIndexOrThrow
+                    (CampaignEntry.COLUMN_CARNEVALE_REWARDS)));
         }
         campaignCursor.close();
 
@@ -201,7 +207,8 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                     ArkhamContract.DunwichEntry.COLUMN_STUDENTS,
                     ArkhamContract.DunwichEntry.COLUMN_OBANNION_GANG,
                     ArkhamContract.DunwichEntry.COLUMN_FRANCIS_MORGAN,
-                    ArkhamContract.DunwichEntry.COLUMN_INVESTIGATORS_CHEATED
+                    ArkhamContract.DunwichEntry.COLUMN_INVESTIGATORS_CHEATED,
+                    ArkhamContract.DunwichEntry.COLUMN_NECRONOMICON
             };
             String dunwichSelection = ArkhamContract.DunwichEntry.PARENT_ID + " = ?";
             Cursor dunwichCursor = db.query(
@@ -230,12 +237,14 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                         (ArkhamContract.DunwichEntry.COLUMN_FRANCIS_MORGAN)));
                 globalVariables.setInvestigatorsCheated(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow
                         (ArkhamContract.DunwichEntry.COLUMN_INVESTIGATORS_CHEATED)));
+                globalVariables.setNecronomicon(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow
+                        (ArkhamContract.DunwichEntry.COLUMN_NECRONOMICON)));
             }
             dunwichCursor.close();
         }
 
         // If on the first unreleased scenario, display a toast and do nothing more
-        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 4) {
+        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5) {
             Toast toast = Toast.makeText(context, "This scenario is not available yet.", Toast.LENGTH_SHORT);
             toast.show();
         }

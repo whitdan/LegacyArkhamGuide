@@ -300,6 +300,44 @@ public class CampaignDifficultyFragment extends Fragment {
                                     minusEightLayout.setVisibility(VISIBLE);
                                     minusEight.setText(R.string.one);
                                     skull.setText(R.string.three);
+                                    break;
+                            }
+                            break;
+                        // Carnevale of Horrors
+                        case 102:
+                            // Hide all unused token views
+                            plusTwoLayout.setVisibility(GONE);
+                            minusEightLayout.setVisibility(GONE);
+                            // Set consistent values
+                            plusOne.setText(R.string.one);
+                            zero.setText(R.string.three);
+                            minusThree.setText(R.string.one);
+                            minusFour.setText(R.string.one);
+                            minusSix.setText(R.string.one);
+                            skull.setText(R.string.three);
+                            cultist.setText(R.string.one);
+                            tablet.setText(R.string.one);
+                            elderThing.setText(R.string.one);
+                            tentacles.setText(R.string.one);
+                            elderSign.setText(R.string.one);
+                            switch (position) {
+                                // Standard
+                                case 0:
+                                    minusOne.setText(R.string.three);
+                                    minusTwoLayout.setVisibility(VISIBLE);
+                                    minusTwo.setText(R.string.one);
+                                    minusFiveLayout.setVisibility(GONE);
+                                    minusSevenLayout.setVisibility(GONE);
+                                    break;
+                                // Hard
+                                case 1:
+                                    minusOne.setText(R.string.two);
+                                    minusTwoLayout.setVisibility(GONE);
+                                    minusFiveLayout.setVisibility(VISIBLE);
+                                    minusFive.setText(R.string.one);
+                                    minusSevenLayout.setVisibility(VISIBLE);
+                                    minusSeven.setText(R.string.one);
+                                    break;
                             }
                             break;
                     }

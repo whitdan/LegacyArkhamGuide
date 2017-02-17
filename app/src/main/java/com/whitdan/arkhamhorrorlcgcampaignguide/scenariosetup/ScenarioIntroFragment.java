@@ -52,6 +52,14 @@ public class ScenarioIntroFragment extends Fragment {
                     case 2:
                         textView.setText(R.string.house_setup);
                         break;
+                    case 4:
+                        if(globalVariables.getHenryArmitage()==0){
+                            textView.setText(R.string.miskatonic_setup_a);
+                        }
+                        else{
+                            textView.setText(R.string.miskatonic_setup_b);
+                        }
+                        break;
                 }
         }
 
@@ -60,6 +68,9 @@ public class ScenarioIntroFragment extends Fragment {
             switch(globalVariables.getCurrentScenario()){
                 case 101:
                     textView.setText(R.string.rougarou_setup);
+                    break;
+                case 102:
+                    textView.setText(R.string.carnevale_setup);
                     break;
             }
         }

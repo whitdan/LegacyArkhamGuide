@@ -34,6 +34,8 @@ public class ArkhamContract {
         public static final String COLUMN_PETE_INUSE = "pete";
         public static final String COLUMN_ROUGAROU_STATUS = "rougarou_status";
         public static final String COLUMN_STRANGE_SOLUTION = "strange_solution";
+        public static final String COLUMN_CARNEVALE_STATUS = "carnevale_status";
+        public static final String COLUMN_CARNEVALE_REWARDS = "carnevale_rewards";
     }
 
     public static class InvestigatorEntry implements BaseColumns{
@@ -77,5 +79,6 @@ public class ArkhamContract {
         public static final String COLUMN_OBANNION_GANG = "obannion_gang";
         public static final String COLUMN_FRANCIS_MORGAN = "francis_morgan";
         public static final String COLUMN_INVESTIGATORS_CHEATED = "investigators_cheated";
+        public static final String COLUMN_NECRONOMICON = "necronomicon";
     }
 }

@@ -34,7 +34,7 @@ public class FinishResolutionFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_finish_resolution, container, false);
+        final View v = inflater.inflate(R.layout.fragment_finish_resolution, container, false);
         globalVariables = (GlobalVariables) getActivity().getApplication();
 
         /*
@@ -67,6 +67,10 @@ public class FinishResolutionFragment extends Fragment {
                         adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
                                 R.array.resolutions_four, android.R.layout.simple_spinner_item);
                         break;
+                    case 4:
+                        adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                                R.array.resolutions_two, android.R.layout.simple_spinner_item);
+                        break;
                 }
                 break;
         }
@@ -77,6 +81,11 @@ public class FinishResolutionFragment extends Fragment {
                     adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
                             R.array.resolutions_three, android.R.layout.simple_spinner_item);
                     break;
+                case 102:
+                    adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                            R.array.resolutions_two, android.R.layout.simple_spinner_item);
+                    break;
+
             }
         }
         // Set the layout, adapter and OnItemSelectedListener to the spinner
@@ -146,8 +155,47 @@ public class FinishResolutionFragment extends Fragment {
             });
         }
 
+        // If on Carnevale of Horrors, set rewards display to visible and setup rewards display
+        if(globalVariables.getCurrentScenario()==102){
+            final LinearLayout rewards = (LinearLayout) v.findViewById(R.id.rewards_view);
+            rewards.setVisibility(VISIBLE);
+            Spinner rewardsSpinner = (Spinner) v.findViewById(R.id.rewards_selection);
+            ArrayAdapter<CharSequence> rewardsAdapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                    R.array.carnevale_rewards, android.R.layout.simple_spinner_item);;
+            rewardsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            rewardsSpinner.setAdapter(rewardsAdapter);
+            rewardsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    TextView rewardsText = (TextView) v.findViewById(R.id.rewards_text);
+                    switch(position){
+                        case 0:
+                            rewardsText.setText(R.string.carnevale_no_rewards);
+                            globalVariables.setCarnevaleReward(0);
+                            break;
+                        case 1:
+                            rewardsText.setText(R.string.carnevale_reward_sacrifice);
+                            globalVariables.setCarnevaleReward(1);
+                            break;
+                        case 2:
+                            rewardsText.setText(R.string.carnevale_reward_abbess);
+                            globalVariables.setCarnevaleReward(2);
+                            break;
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+       }
+
         // Standalone scenario
         if(globalVariables.getCurrentCampaign()==999){
+            // Hide victory display
+            LinearLayout victory = (LinearLayout) v.findViewById(R.id.victory_layout);
+            victory.setVisibility(GONE);
             // Set click listener on continue button
             TextView button = (TextView) v.findViewById(R.id.continue_button);
             button.setOnClickListener(new StandaloneOnClickListener(this.getActivity()));
@@ -273,6 +321,7 @@ public class FinishResolutionFragment extends Fragment {
                                     break;
                             }
                             break;
+                        // Scenario 1-B: The House Always Wins
                         case 2:
                             switch(pos){
                                 // No resolution
@@ -302,6 +351,26 @@ public class FinishResolutionFragment extends Fragment {
                                     break;
                             }
                             break;
+                        // Scenario 2: The Miskatonic Museum
+                        case 4:
+                            switch(pos){
+                                // No resolution
+                                case 0:
+                                    resolutionText.setText(R.string.miskatonic_no_resolution);
+                                    globalVariables.setResolution(0);
+                                    break;
+                                // Resolution One
+                                case 1:
+                                    resolutionText.setText(R.string.miskatonic_resolution_one);
+                                    globalVariables.setResolution(1);
+                                    break;
+                                // Resolution Two
+                                case 2:
+                                    resolutionText.setText(R.string.miskatonic_resolution_two);
+                                    globalVariables.setResolution(2);
+                                    break;
+                            }
+                            break;
                     }
                     break;
             }
@@ -325,6 +394,21 @@ public class FinishResolutionFragment extends Fragment {
                                 break;
                         }
                         break;
+                    case 102:
+                        switch(pos){
+                            case 0:
+                                resolutionText.setText(R.string.carnevale_no_resolution);
+                                globalVariables.setResolution(0);
+                                break;
+                            case 1:
+                                resolutionText.setText(R.string.carnevale_resolution_one);
+                                globalVariables.setResolution(1);
+                                break;
+                            case 2:
+                                resolutionText.setText(R.string.carnevale_resolution_two);
+                                globalVariables.setResolution(2);
+                                break;
+                        }
                 }
             }
         }

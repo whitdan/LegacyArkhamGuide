@@ -14,6 +14,7 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract;
 import com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamDbHelper;
@@ -119,7 +120,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                             dunwichResolutions(globalVariables, getActivity());
                             break;
                     }
-                    if(globalVariables.getCurrentScenario()>100){
+                    if (globalVariables.getCurrentScenario() > 100) {
                         sideResolutions(globalVariables, getActivity());
                     }
 
@@ -175,7 +176,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
 
                     // Increment current scenario
                     int nextScenario;
-                    if (globalVariables.getCurrentCampaign()==2 && globalVariables.getFirstScenario() == 2) {
+                    if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getFirstScenario() == 2) {
                         if (globalVariables.getCurrentScenario() == 1) {
                             nextScenario = 3;
                         } else {
@@ -184,7 +185,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     } else {
                         nextScenario = globalVariables.getCurrentScenario() + 1;
                     }
-                    if(globalVariables.getCurrentScenario()>100){
+                    if (globalVariables.getCurrentScenario() > 100) {
                         nextScenario = globalVariables.getPreviousScenario();
                     }
                     globalVariables.setCurrentScenario(nextScenario);
@@ -197,8 +198,16 @@ public class ContinueOnClickListener implements View.OnClickListener {
 
                     //   Go to scenario setup for the next scenario or end and delete campaign
                     globalVariables.setScenarioStage(1);
-                    Intent intent = new Intent(getActivity(), ScenarioSetupActivity.class);
-                    getActivity().startActivity(intent);
+                    if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5) {
+                        Intent intent = new Intent(getActivity(), SelectCampaignActivity.class);
+                        getActivity().startActivity(intent);
+                        Toast toast = Toast.makeText(getActivity(), "This scenario is not available yet.", Toast
+                                .LENGTH_SHORT);
+                        toast.show();
+                    } else {
+                        Intent intent = new Intent(getActivity(), ScenarioSetupActivity.class);
+                        getActivity().startActivity(intent);
+                    }
                 }
             });
             builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -453,7 +462,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
         else if (globalVariables.getCurrentScenario() == 2) {
 
             CheckBox cheated = (CheckBox) parent.findViewById(R.id.cheated_checkbox);
-            if(cheated.isChecked()){
+            if (cheated.isChecked()) {
                 globalVariables.setInvestigatorsCheated(1);
             }
 
@@ -494,6 +503,16 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     break;
             }
         }
+
+        /*
+            Resolution 2: The Miskatonic Museum
+         */
+        else if(globalVariables.getCurrentScenario()==4){
+            for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
+            }
+            globalVariables.setNecronomicon(globalVariables.getResolution());
+        }
     }
 
     /*
@@ -529,6 +548,15 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     }
                     break;
             }
+        }
+        /*
+            Carnevale of Horrors
+         */
+        else if(globalVariables.getCurrentScenario()==102){
+                for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                    globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
+                }
+                globalVariables.setCarnevaleStatus(globalVariables.getResolution()+1);
         }
     }
 
@@ -567,6 +595,8 @@ public class ContinueOnClickListener implements View.OnClickListener {
                 .investigatorsInUse[Investigator.ASHCAN_PETE]);
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_ROUGAROU_STATUS, globalVariables.getRougarouStatus());
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_STRANGE_SOLUTION, globalVariables.getStrangeSolution());
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_CARNEVALE_STATUS, globalVariables.getCarnevaleStatus());
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_CARNEVALE_REWARDS, globalVariables.getCarnevaleReward());
         String campaignSelection = ArkhamContract.CampaignEntry._ID + " LIKE ?";
         String[] campaignSelectionArgs = {Long.toString(globalVariables.getCampaignID())};
         db.update(
@@ -617,6 +647,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
             dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_FRANCIS_MORGAN, globalVariables.getFrancisMorgan());
             dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_INVESTIGATORS_CHEATED, globalVariables
                     .getInvestigatorsCheated());
+            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_NECRONOMICON, globalVariables.getNecronomicon());
 
             String dunwichSelection = ArkhamContract.DunwichEntry.PARENT_ID + " LIKE ?";
             String[] dunwichSelectionArgs = {Long.toString(globalVariables.getCampaignID())};
