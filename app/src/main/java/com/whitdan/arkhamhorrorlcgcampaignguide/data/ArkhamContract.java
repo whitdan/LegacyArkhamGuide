@@ -67,6 +67,7 @@ public class ArkhamContract {
         public static final String COLUMN_VICTORIA_INTERROGATED = "victoria_interrogated";
         public static final String COLUMN_RUTH_INTERROGATED = "ruth_interrogated";
         public static final String COLUMN_MASKED_INTERROGATED = "masked_interrogated";
+        public static final String COLUMN_UMORDHOTH_STATUS = "umordhoth_status";
     }
 
     public static class DunwichEntry implements BaseColumns{

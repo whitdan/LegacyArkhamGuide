@@ -82,7 +82,8 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
                 + NightEntry.COLUMN_PETER_INTERROGATED + " INTEGER, "
                 + NightEntry.COLUMN_VICTORIA_INTERROGATED + " INTEGER, "
                 + NightEntry.COLUMN_RUTH_INTERROGATED + " INTEGER, "
-                + NightEntry.COLUMN_MASKED_INTERROGATED + " INTEGER);";
+                + NightEntry.COLUMN_MASKED_INTERROGATED + " INTEGER, "
+                + NightEntry.COLUMN_UMORDHOTH_STATUS + " INTEGER);";
 
         // The Dunwich Legacy table
         String SQL_CREATE_DUNWICH_TABLE = "CREATE TABLE " + DunwichEntry.TABLE_NAME + " ("
@@ -153,17 +154,20 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
                 String SQL_UPGRADE_FIVE_TWO = "ALTER TABLE " + CampaignEntry.TABLE_NAME + " ADD COLUMN " +
                         CampaignEntry.COLUMN_CARNEVALE_STATUS + " INTEGER";
                 String SQL_UPGRADE_FIVE_THREE = "ALTER TABLE " + CampaignEntry.TABLE_NAME + " ADD COLUMN " +
-                        CampaignEntry.COLUMN_CARNEVALE_REWARDS + " INTEGER ";
+                        CampaignEntry.COLUMN_CARNEVALE_REWARDS + " INTEGER";
                 db.execSQL(SQL_UPGRADE_FIVE_ONE);
                 db.execSQL(SQL_UPGRADE_FIVE_TWO);
                 db.execSQL(SQL_UPGRADE_FIVE_THREE);
             case 7:
                 String SQL_UPGRADE_SIX_ONE = "ALTER TABLE " + CampaignEntry.TABLE_NAME + " ADD COLUMN " +
-                        CampaignEntry.COLUMN_NIGHT_COMPLETED + " INTEGER ";
+                        CampaignEntry.COLUMN_NIGHT_COMPLETED + " INTEGER";
                 String SQL_UPGRADE_SIX_TWO = "ALTER TABLE " + CampaignEntry.TABLE_NAME + " ADD COLUMN " +
-                        CampaignEntry.COLUMN_DUNWICH_COMPLETED + " INTEGER ";
+                        CampaignEntry.COLUMN_DUNWICH_COMPLETED + " INTEGER";
+                String SQL_UPGRADE_SIX_THREE = "ALTER TABLE " + NightEntry.TABLE_NAME + " ADD COLUMN " +
+                        NightEntry.COLUMN_UMORDHOTH_STATUS + " INTEGER";
                 db.execSQL(SQL_UPGRADE_SIX_ONE);
                 db.execSQL(SQL_UPGRADE_SIX_TWO);
+                db.execSQL(SQL_UPGRADE_SIX_THREE);
         }
     }
 }

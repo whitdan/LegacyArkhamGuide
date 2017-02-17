@@ -333,18 +333,22 @@
     <string name="devourer_cultists_two">Place 2 doom on Agenda 1a.\n</string>
     <string name="devourer_cultists_three">Place 3 doom on Agenda 1a.\n</string>
 
+    <string name="umordhoth_succumbed">Arkham succumbed to Umordhoth\'s terrible vengeance.\n</string>
+    <string name="umordhoth_broken">The ritual to summon Umordhoth was broken.\n</string>
+    <string name="umordhoth_repelled">The investigators repelled Umordhoth.\n</string>
+    <string name="umordhoth_sacrificed">The investigators sacrificed Lita Chantler to Umordhoth.
+    \nRandom <i>Madness</i> weakness added to each investigator\'s deck.\n</string>
+
     <string name="devourer_no_resolution">Too frightened to face her fate, Lita flees into the night.
     She realizes that she has failed and Umordhoth\'s vengeance will pursue her wherever she goes.
     The creature\'s tendrils spread throughout the city of Arkham, searching for her. It lurks in the
     darkness of every corner, tugging at the seams of reality. But Lita is nowhere to be found, so the
     creature dwells in the shadows to this day, searching&#8230;killing.\n
-    \n<b>Arkham succumbed to Umordhoth\'s terrible vengeance.</b>\n
     \n<b>The investigators lose.</b></string>
     <string name="devourer_resolution_one">You have managed to prevent the cult from summoning its
     master. Although you\'re unsure what would have happened had the cult succeeded, you\'re relieved
     that - at least for the time being - Arkham is safe. You capture as many cultists as you can find,
     but very few townspeople believe your tale. Perhaps it was all in your head, after all.\n
-    \n<b>The ritual to summon Umordhoth was broken.</b>\n
     \n<b>The investigators win!</b></string>
     <string name="devourer_resolution_two">Through force of arms and strength of will, you are
     somehow able to harm Umordhoth enough to send it reeling back to the dimension from which it
@@ -354,7 +358,6 @@
     pit below, fleeing with terrible cries and shrieks. You have stopped an evil plot, but the fight
     has taken its toll on your body and mind. Worse, you can\'t help but feel insignificant in the
     face of the world\'s mysteries. What other terrors exist in the deep, dark corners of reality?\n
-    \n<b>The investigators repelled Umordhoth.</b>\n
     \n<b>The investigators win!</b></string>
     <string name="devourer_resolution_three">In the face of this horror, you don\'t believe there is
     anything you can do to stop it. You have but one hope if you are to survive. You turn on Lita and
@@ -365,7 +368,8 @@
     the guilty and the dead. Go, and you shall be spared.\" The swirling mass vanishes, and warmth
     and light return to the woods. The cultists slink away, leaving you alive. Lita\'s last moments
     are forever etched upon your memory.\n
-    \n<b>The investigators sacrificed Lita Chantler to Umordhoth.</b>\n
+        \n<b>The guilt over sacrificing Lita forever haunts your memory. Each investigator must search the
+            collection for a random <i>Madness</i> weakness and add it to his or her deck.</b>\n
     \n<b>The investigators have survived, but their actions weigh heavily on their consciences.</b></string>
 
 
@@ -404,9 +408,9 @@
     <string name="armitage_rescued">The investigators rescued Dr. Henry Armitage.\n</string>
     <string name="necronomicon_failed">The investigators failed to recover the <i>Necronomicon</i>.\n</string>
     <string name="necronomicon_destroyed">The investigators destroyed the <i>Necronomicon</i>.\n</string>
-    <string name="necronomicon_taken">The investigators took custody of the <i>Necronomicon</i>.\n
-        The Necronomicon (<i>Olaus Wormius Translation</i>) added to an investigator\'s deck.\n
-        Elder Thing chaos token added to the chaos bag for the remainder of the campaign.\n</string>
+    <string name="necronomicon_taken">The investigators took custody of the <i>Necronomicon</i>.
+        \nThe Necronomicon (<i>Olaus Wormius Translation</i>) added to an investigator\'s deck.
+        \nElder Thing chaos token added to the chaos bag for the remainder of the campaign.\n</string>
 
     <string name="dunwich_setup"><b>Prologue</b>\n
     \nDr. Henry Armitage pours himself a glass of pinot and sits down at his desk, gesturing for you to sit

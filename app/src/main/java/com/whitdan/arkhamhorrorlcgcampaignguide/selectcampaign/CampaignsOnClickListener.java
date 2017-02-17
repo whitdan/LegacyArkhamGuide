@@ -46,6 +46,8 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                 CampaignEntry._ID,
                 CampaignEntry.COLUMN_CURRENT_CAMPAIGN,
                 CampaignEntry.COLUMN_CURRENT_SCENARIO,
+                CampaignEntry.COLUMN_NIGHT_COMPLETED,
+                CampaignEntry.COLUMN_DUNWICH_COMPLETED,
                 CampaignEntry.COLUMN_ROLAND_INUSE,
                 CampaignEntry.COLUMN_DAISY_INUSE,
                 CampaignEntry.COLUMN_SKIDS_INUSE,
@@ -163,7 +165,8 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                     NightEntry.COLUMN_HERMAN_INTERROGATED,
                     NightEntry.COLUMN_VICTORIA_INTERROGATED,
                     NightEntry.COLUMN_RUTH_INTERROGATED,
-                    NightEntry.COLUMN_MASKED_INTERROGATED
+                    NightEntry.COLUMN_MASKED_INTERROGATED,
+                    NightEntry.COLUMN_UMORDHOTH_STATUS
             };
             String nightSelection = NightEntry.PARENT_ID + " = ?";
             Cursor nightCursor = db.query(
@@ -198,6 +201,8 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                         .COLUMN_RUTH_INTERROGATED)));
                 globalVariables.setMaskedInterrogated(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
                         .COLUMN_MASKED_INTERROGATED)));
+                globalVariables.setUmordhothStatus(nightCursor.getInt(nightCursor.getColumnIndexOrThrow(NightEntry
+                        .COLUMN_UMORDHOTH_STATUS)));
             }
             nightCursor.close();
         }

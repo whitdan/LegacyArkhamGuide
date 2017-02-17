@@ -292,12 +292,29 @@ public class LogFragment extends Fragment {
                 TextView cultistsGotAwayView = (TextView) v.findViewById(R.id.cultists_got_away);
                 cultistsGotAwayView.setText(allCultistsGotAway);
             }
+            // Devourer Below log
+            if (globalVariables.getNightCompleted()==1){
+                switch(globalVariables.getUmordhothStatus()){
+                    case 0:
+                        campaignLogBuilder.append(getString(R.string.umordhoth_succumbed));
+                        break;
+                    case 1:
+                        campaignLogBuilder.append(getString(R.string.umordhoth_broken));
+                        break;
+                    case 2:
+                        campaignLogBuilder.append(getString(R.string.umordhoth_repelled));
+                        break;
+                    case 3:
+                        campaignLogBuilder.append(getString(R.string.umordhoth_sacrificed));
+                        break;
+                }
+            }
         }
 
         /*
             Dunwich Legacy log
          */
-        else if (globalVariables.getCurrentCampaign() == 2) {
+        if (globalVariables.getCurrentCampaign() == 2) {
             if (globalVariables.getInvestigatorsUnconscious() == 1) {
                 campaignLogBuilder.append(getString(R.string.investigators_unconscious));
             }

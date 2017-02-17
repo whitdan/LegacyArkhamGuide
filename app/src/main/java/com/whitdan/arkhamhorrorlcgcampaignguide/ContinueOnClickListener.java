@@ -11,7 +11,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Toast;
@@ -56,13 +55,20 @@ public class ContinueOnClickListener implements View.OnClickListener {
             context.startActivity(intent);
         }
         // If on campaign start, either continue or set up dunwich dialog
-        else if(globalVariables.getCurrentScenario()==0){
+        else if (globalVariables.getCurrentScenario() == 0) {
             switch (globalVariables.getCurrentCampaign()) {
                 // Night of the Zealot
                 case 1:
                     // Set current scenario to first scenario
                     globalVariables.setCurrentScenario(1);
                     globalVariables.setScenarioStage(1);
+
+                    // Create campaign specific table
+                    ArkhamDbHelper dbHelper = new ArkhamDbHelper(context);
+                    SQLiteDatabase db = dbHelper.getReadableDatabase();
+                    ContentValues nightValues = new ContentValues();
+                    nightValues.put(ArkhamContract.NightEntry.PARENT_ID, globalVariables.getCampaignID());
+                    db.insert(ArkhamContract.NightEntry.TABLE_NAME, null, nightValues);
 
                     // Save the new campaign
                     saveCampaign(context);
@@ -199,8 +205,6 @@ public class ContinueOnClickListener implements View.OnClickListener {
                         // Check health and sanity
                         if ((currentInvestigator.getDamage() >= currentInvestigator.getHealth()) ||
                                 (currentInvestigator.getHorror() >= currentInvestigator.getSanity())) {
-                            Log.i("TEST", "Sanity: " + currentInvestigator.getSanity());
-                            Log.i("TEST", "Mental Trauma: " + currentInvestigator.getHorror());
                             currentInvestigator.setStatus(2);
                         }
                     }
@@ -223,9 +227,6 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     }
                     globalVariables.setCurrentScenario(nextScenario);
 
-                    // Save the campaign
-                    saveCampaign(getActivity());
-
                     // Reset victory display
                     globalVariables.setVictoryDisplay(0);
 
@@ -236,6 +237,9 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     } else {
                         globalVariables.setScenarioStage(1);
                     }
+
+                    // Save the campaign
+                    saveCampaign(getActivity());
 
                     //   Go to scenario setup for the next scenario
                     if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5) {
@@ -309,7 +313,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                                         Toast toast = Toast.makeText(getActivity(), "You have already completed this " +
                                                 "campaign.", Toast.LENGTH_SHORT);
                                         toast.show();
-                                    } else{
+                                    } else {
                                         globalVariables.setCurrentCampaign(1);
                                         globalVariables.setCurrentScenario(0);
                                         globalVariables.setScenarioStage(1);
@@ -323,7 +327,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                                         Toast toast = Toast.makeText(getActivity(), "You have already completed this " +
                                                 "campaign.", Toast.LENGTH_SHORT);
                                         toast.show();
-                                    } else{
+                                    } else {
                                         globalVariables.setCurrentCampaign(2);
                                         globalVariables.setCurrentScenario(0);
                                         globalVariables.setScenarioStage(1);
@@ -473,6 +477,44 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     globalVariables.setMidnightStatus(1);
                     for (int i = 0; i < globalVariables.investigators.size(); i++) {
                         globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
+                    }
+                    break;
+            }
+        }
+
+        /*
+            The Devourer Below resolutions
+         */
+        else if (globalVariables.getCurrentScenario() == 3) {
+            switch (globalVariables.getResolution()) {
+                // No resolution
+                case 0:
+                    globalVariables.setUmordhothStatus(0);
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        globalVariables.investigators.get(i).setStatus(2);
+                    }
+                    break;
+                case 1:
+                    globalVariables.setUmordhothStatus(1);
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay() + 5);
+                        globalVariables.investigators.get(i).changeHorror(2);
+                    }
+                    break;
+                case 2:
+                    globalVariables.setUmordhothStatus(2);
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay() + 10);
+                        globalVariables.investigators.get(i).changeHorror(2);
+                        globalVariables.investigators.get(i).changeDamage(2);
+                    }
+                    break;
+                case 3:
+                    globalVariables.setUmordhothStatus(3);
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
+                        globalVariables.investigators.get(i).changeHorror(2);
+                        globalVariables.investigators.get(i).changeDamage(2);
                     }
                     break;
             }
@@ -662,6 +704,16 @@ public class ContinueOnClickListener implements View.OnClickListener {
                                     break;
                             }
                             globalVariables.setScenarioStage(1);
+
+                            // Create campaign specific table
+                            ArkhamDbHelper dbHelper = new ArkhamDbHelper(getActivity());
+                            SQLiteDatabase db = dbHelper.getReadableDatabase();
+                            ContentValues dunwichValues = new ContentValues();
+                            dunwichValues.put(ArkhamContract.DunwichEntry.PARENT_ID, globalVariables.getCampaignID());
+                            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_FIRST_SCENARIO,
+                                    globalVariables.getFirstScenario());
+                            db.insert(ArkhamContract.DunwichEntry.TABLE_NAME, null, dunwichValues);
+
                             saveCampaign(getActivity());
 
                             // Go to scenario setup
@@ -742,6 +794,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     .getVictoriaInterrogated());
             nightValues.put(ArkhamContract.NightEntry.COLUMN_MASKED_INTERROGATED, globalVariables
                     .getMaskedInterrogated());
+            nightValues.put(ArkhamContract.NightEntry.COLUMN_UMORDHOTH_STATUS, globalVariables.getUmordhothStatus());
 
             String nightSelection = ArkhamContract.NightEntry.PARENT_ID + " LIKE ?";
             String[] nightSelectionArgs = {Long.toString(globalVariables.getCampaignID())};

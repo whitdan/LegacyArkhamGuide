@@ -116,6 +116,10 @@ public class GlobalVariables extends Application {
         return this.mMidnightStatus;
     }
 
+    private int UmordhothStatus;
+    public void setUmordhothStatus(int var){this.UmordhothStatus = var;}
+    public int getUmordhothStatus(){return this.UmordhothStatus;}
+
     // All of the cultists
     private int mCultistsInterrogated = 0;
     public void incrementCultistsInterrogated(){this.mCultistsInterrogated++;}
