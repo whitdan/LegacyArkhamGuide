@@ -22,7 +22,7 @@ import static com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.Inves
 public class ArkhamDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "campaigns.db";
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 8;
 
     public ArkhamDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -40,6 +40,8 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
                 + CampaignEntry.COLUMN_CAMPAIGN_NAME + " STRING NOT NULL, "
                 + CampaignEntry.COLUMN_CURRENT_CAMPAIGN + " INTEGER NOT NULL, "
                 + CampaignEntry.COLUMN_CURRENT_SCENARIO + " INTEGER NOT NULL, "
+                + CampaignEntry.COLUMN_NIGHT_COMPLETED + " INTEGER, "
+                + CampaignEntry.COLUMN_DUNWICH_COMPLETED + " INTEGER, "
                 + CampaignEntry.COLUMN_ROLAND_INUSE + " INTEGER, "
                 + CampaignEntry.COLUMN_DAISY_INUSE + " INTEGER, "
                 + CampaignEntry.COLUMN_SKIDS_INUSE + " INTEGER, "
@@ -155,6 +157,13 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_UPGRADE_FIVE_ONE);
                 db.execSQL(SQL_UPGRADE_FIVE_TWO);
                 db.execSQL(SQL_UPGRADE_FIVE_THREE);
+            case 7:
+                String SQL_UPGRADE_SIX_ONE = "ALTER TABLE " + CampaignEntry.TABLE_NAME + " ADD COLUMN " +
+                        CampaignEntry.COLUMN_NIGHT_COMPLETED + " INTEGER ";
+                String SQL_UPGRADE_SIX_TWO = "ALTER TABLE " + CampaignEntry.TABLE_NAME + " ADD COLUMN " +
+                        CampaignEntry.COLUMN_DUNWICH_COMPLETED + " INTEGER ";
+                db.execSQL(SQL_UPGRADE_SIX_ONE);
+                db.execSQL(SQL_UPGRADE_SIX_TWO);
         }
     }
 }

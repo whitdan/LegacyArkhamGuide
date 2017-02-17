@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.whitdan.arkhamhorrorlcgcampaignguide.ContinueOnClickListener;
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
 
@@ -22,6 +23,16 @@ public class ScenarioInterludeFragment extends Fragment {
 
         // Set interlude text
         TextView interlude = (TextView) v.findViewById(R.id.interlude_text);
+        if (globalVariables.getCurrentScenario() == 0) {
+            switch (globalVariables.getCurrentCampaign()) {
+                case 1:
+                    interlude.setText(R.string.night_setup);
+                    break;
+                case 2:
+                    interlude.setText(R.string.dunwich_setup);
+                    break;
+            }
+        }
         if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 3) {
             if (globalVariables.getInvestigatorsUnconscious() == 1) {
                 interlude.setText(R.string.dunwich_interlude_one_text);
@@ -29,8 +40,7 @@ public class ScenarioInterludeFragment extends Fragment {
                 for (int i = 0; i < globalVariables.investigators.size(); i++) {
                     globalVariables.investigators.get(i).changeXP(2);
                 }
-            }
-            else if(globalVariables.getInvestigatorsUnconscious()==0){
+            } else if (globalVariables.getInvestigatorsUnconscious() == 0) {
                 interlude.setText(R.string.dunwich_interlude_two_text);
                 globalVariables.setHenryArmitage(1);
             }
@@ -38,13 +48,18 @@ public class ScenarioInterludeFragment extends Fragment {
 
         // Set onClickListener on the continue button
         TextView continueButton = (TextView) v.findViewById(R.id.continue_button);
-        continueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                globalVariables.setCurrentScenario(globalVariables.getCurrentScenario() + 1);
-                ((ScenarioSetupActivity) getActivity()).restartScenario(getActivity());
-            }
-        });
+        if (globalVariables.getCurrentScenario() == 0) {
+            continueButton.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity(), this
+                    .getActivity()));
+        } else {
+            continueButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    globalVariables.setCurrentScenario(globalVariables.getCurrentScenario() + 1);
+                    ((ScenarioSetupActivity) getActivity()).restartScenario(getActivity());
+                }
+            });
+        }
 
         return v;
     }

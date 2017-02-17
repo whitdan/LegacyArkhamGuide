@@ -55,7 +55,8 @@ public class ScenarioInvestigatorsFragment extends Fragment {
         leadInvestigator.setOnItemSelectedListener(new ListenerLeadInvestigatorSpinner());
 
         // Hide spinner if on unreleased scenario or end of campaign
-        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5) {
+        if (globalVariables.getScenarioStage()==3 ||
+                (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5)) {
             LinearLayout lead = (LinearLayout) v.findViewById(R.id.lead_investigator_view);
             lead.setVisibility(GONE);
         }
@@ -67,7 +68,7 @@ public class ScenarioInvestigatorsFragment extends Fragment {
 
         // Set click listener for continue button
         TextView button = (TextView) v.findViewById(R.id.continue_button);
-        button.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity()));
+        button.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity(), this.getActivity()));
 
         return v;
     }

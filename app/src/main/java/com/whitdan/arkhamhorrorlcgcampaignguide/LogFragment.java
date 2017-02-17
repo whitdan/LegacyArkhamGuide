@@ -225,9 +225,9 @@ public class LogFragment extends Fragment {
         /*
         Night of the Zealot log
          */
-        if (globalVariables.getCurrentCampaign() == 1) {
+        if (globalVariables.getCurrentCampaign() == 1 || globalVariables.getNightCompleted()==1) {
             // First scenario log
-            if (globalVariables.getPreviousScenario() > 1) {
+            if (globalVariables.getPreviousScenario() > 1 || globalVariables.getNightCompleted()==1) {
                 // Set house status
                 if (globalVariables.getHouseStanding() == 1) {
                     campaignLogBuilder.append(getString(R.string.house_standing));
@@ -244,7 +244,7 @@ public class LogFragment extends Fragment {
                 }
             }
             // Second scenario log
-            if (globalVariables.getPreviousScenario() > 2) {
+            if (globalVariables.getPreviousScenario() > 2 || globalVariables.getNightCompleted()==1) {
                 // Set midnight status
                 if (globalVariables.getMidnightStatus() == 1) {
                     campaignLogBuilder.append(getString(R.string.past_midnight));

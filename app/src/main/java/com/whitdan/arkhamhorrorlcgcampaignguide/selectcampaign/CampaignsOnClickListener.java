@@ -78,6 +78,10 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_CURRENT_CAMPAIGN)));
             globalVariables.setCurrentScenario(campaignCursor.getInt(campaignCursor
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_CURRENT_SCENARIO)));
+            globalVariables.setNightCompleted(campaignCursor.getInt(campaignCursor.getColumnIndexOrThrow
+                    (CampaignEntry.COLUMN_NIGHT_COMPLETED)));
+            globalVariables.setDunwichCompleted(campaignCursor.getInt(campaignCursor.getColumnIndexOrThrow
+                    (CampaignEntry.COLUMN_DUNWICH_COMPLETED)));
             globalVariables.investigatorsInUse[Investigator.ROLAND_BANKS] = campaignCursor.getInt(campaignCursor
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_ROLAND_INUSE));
             globalVariables.investigatorsInUse[Investigator.DAISY_WALKER] = campaignCursor.getInt(campaignCursor
@@ -249,8 +253,13 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
             Toast toast = Toast.makeText(context, R.string.scenario_not_available, Toast.LENGTH_SHORT);
             toast.show();
         }
+        // If on completed campaign set scenario stage
+        if(globalVariables.getCurrentCampaign() == 1 && globalVariables.getCurrentScenario() == 4){
+            globalVariables.setScenarioStage(3);
+        } else {
+            globalVariables.setScenarioStage(1);
+        }
         // Advance to scenario setup
-        globalVariables.setScenarioStage(1);
         Intent intent = new Intent(context, ScenarioSetupActivity.class);
         context.startActivity(intent);
     }

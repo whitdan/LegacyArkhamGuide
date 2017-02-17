@@ -82,11 +82,7 @@ public class SelectCampaignActivity extends AppCompatActivity {
         globalVariables.setCurrentScenario(0);
         // Reset a couple of variables used elsewhere
         globalVariables.investigatorNames.clear();
-        globalVariables.investigatorsInUse = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        globalVariables.setRougarouStatus(0);
-        globalVariables.setStrangeSolution(0);
-        globalVariables.setCarnevaleStatus(0);
-        globalVariables.setCarnevaleReward(0);
+        resetVariables();
         // Go to campaign setup
         Intent intent = new Intent(this, CampaignSetupActivity.class);
         startActivity(intent);
@@ -108,16 +104,23 @@ public class SelectCampaignActivity extends AppCompatActivity {
         globalVariables.setCurrentScenario(0);
         // Reset a couple of variables used elsewhere
         globalVariables.investigatorNames.clear();
+        resetVariables();
+        // Go to campaign setup
+        Intent intent = new Intent(this, CampaignSetupActivity.class);
+        startActivity(intent);
+    }
+
+    // All the variables which need resetting
+    public void resetVariables(){
         globalVariables.investigatorsInUse = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        globalVariables.setNightCompleted(0);
+        globalVariables.setDunwichCompleted(0);
         globalVariables.setInvestigatorsUnconscious(0);
         globalVariables.setInvestigatorsCheated(0);
         globalVariables.setRougarouStatus(0);
         globalVariables.setStrangeSolution(0);
         globalVariables.setCarnevaleStatus(0);
         globalVariables.setCarnevaleReward(0);
-        // Go to campaign setup
-        Intent intent = new Intent(this, CampaignSetupActivity.class);
-        startActivity(intent);
     }
 
     /* These exist to allow passing the adapter to the DeleteCampaignDialogFragment to allow refreshing

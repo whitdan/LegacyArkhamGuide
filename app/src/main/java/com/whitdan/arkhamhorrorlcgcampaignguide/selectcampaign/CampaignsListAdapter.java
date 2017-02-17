@@ -54,6 +54,9 @@ class CampaignsListAdapter extends CursorAdapter {
                     case 3:
                         currentScenarioView.setText(R.string.night_scenario_three);
                         break;
+                    case 4:
+                        currentScenarioView.setText(R.string.campaign_completed);
+                        break;
                 }
                 break;
             case 2:

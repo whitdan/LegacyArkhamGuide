@@ -32,6 +32,7 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.selectcampaign.SelectCampaignAct
 public class ContinueOnClickListener implements View.OnClickListener {
 
     private static GlobalVariables globalVariables;
+    private static int option = -1;
     private Context context;
     private Activity activity;
 
@@ -49,14 +50,37 @@ public class ContinueOnClickListener implements View.OnClickListener {
 
     public void onClick(View v) {
 
-
-        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5){
+        // If on unreleased scenario
+        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5) {
             Intent intent = new Intent(context, SelectCampaignActivity.class);
             context.startActivity(intent);
         }
-        // If on scenario setup, set available XP and advance to scenario finish
-        else if(globalVariables.getScenarioStage() == 1) {
+        // If on campaign start, either continue or set up dunwich dialog
+        else if(globalVariables.getCurrentScenario()==0){
+            switch (globalVariables.getCurrentCampaign()) {
+                // Night of the Zealot
+                case 1:
+                    // Set current scenario to first scenario
+                    globalVariables.setCurrentScenario(1);
+                    globalVariables.setScenarioStage(1);
 
+                    // Save the new campaign
+                    saveCampaign(context);
+
+                    // Go to scenario setup
+                    Intent intent = new Intent(context, ScenarioSetupActivity.class);
+                    context.startActivity(intent);
+                    break;
+                // The Dunwich Legacy
+                case 2:
+                    // Create dialogfragment for scenario selection
+                    DialogFragment dunwichFragment = new ContinueDunwichDialog();
+                    dunwichFragment.show(activity.getFragmentManager(), "dunwich");
+                    break;
+            }
+        }
+        // If on scenario setup, set available XP and advance to scenario finish
+        else if (globalVariables.getScenarioStage() == 1) {
             // Subtract tempXP (as set by the spent XP view) from investigator XP and reset tempXP
             for (int i = 0; i < globalVariables.investigators.size(); i++) {
                 int XPSpent = globalVariables.investigators.get(i).getTempXP();
@@ -68,14 +92,16 @@ public class ContinueOnClickListener implements View.OnClickListener {
             globalVariables.setScenarioStage(2);
             Intent intent = new Intent(context, FinishScenarioActivity.class);
             context.startActivity(intent);
-        } else if (globalVariables.getScenarioStage() == 2 && globalVariables.getCurrentScenario() != 3) {
-            // Save and continue the campaign
+        }
+        // If on campaign finish, set up dialog
+        else if (globalVariables.getScenarioStage() == 3) {
+            FinishCampaignDialogFragment newFragment = new FinishCampaignDialogFragment();
+            newFragment.show(activity.getFragmentManager(), "finish");
+        }
+        // Save and continue the campaign
+        else {
             FinishScenarioDialogFragment newFragment = new FinishScenarioDialogFragment();
             newFragment.show(activity.getFragmentManager(), "continue");
-        } else if (globalVariables.getScenarioStage() == 2 && globalVariables.getCurrentScenario() == 3) {
-            // End and delete the campaign
-            FinishCampaignDialogFragment newFragment = new FinishCampaignDialogFragment();
-            newFragment.show(activity.getFragmentManager(), "delete");
         }
     }
 
@@ -203,8 +229,15 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     // Reset victory display
                     globalVariables.setVictoryDisplay(0);
 
-                    //   Go to scenario setup for the next scenario or end and delete campaign
-                    globalVariables.setScenarioStage(1);
+                    // Go to campaign finish if appropriate
+                    if (globalVariables.getCurrentCampaign() == 1 && globalVariables.getCurrentScenario() == 4) {
+                        globalVariables.setScenarioStage(3);
+                        globalVariables.setNightCompleted(1);
+                    } else {
+                        globalVariables.setScenarioStage(1);
+                    }
+
+                    //   Go to scenario setup for the next scenario
                     if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5) {
                         Toast toast = Toast.makeText(getActivity(), "This scenario is not available yet.", Toast
                                 .LENGTH_SHORT);
@@ -238,33 +271,75 @@ public class ContinueOnClickListener implements View.OnClickListener {
 
             // Create a new Alert Dialog Builder
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage("Finish and delete campaign?");
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
+            builder.setTitle(R.string.pick_option)
+                    .setSingleChoiceItems(R.array.campaign_options, -1, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            option = which;
+                        }
+                    })
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            switch (option) {
+                                // Finish and delete campaign
+                                case 0:
+                                    // Set selectionArgs as the _ID of the campaign clicked on
+                                    String[] selectionArgs = {Long.toString(position)};
 
-                    // Set selectionArgs as the _ID of the campaign clicked on
-                    String[] selectionArgs = {Long.toString(position)};
+                                    // Find all of the relevant rows of the database tables for the campaign clicked on
+                                    String campaignSelection = ArkhamContract.CampaignEntry._ID + " = ?";
+                                    String investigatorSelection = ArkhamContract.InvestigatorEntry.PARENT_ID + " = ?";
+                                    String nightSelection = ArkhamContract.NightEntry.PARENT_ID + " = ?";
 
-                    // Find all of the relevant rows of the database tables for the campaign clicked on
-                    String campaignSelection = ArkhamContract.CampaignEntry._ID + " = ?";
-                    String investigatorSelection = ArkhamContract.InvestigatorEntry.PARENT_ID + " = ?";
-                    String nightSelection = ArkhamContract.NightEntry.PARENT_ID + " = ?";
+                                    // Delete the rows
+                                    db.delete(ArkhamContract.CampaignEntry.TABLE_NAME, campaignSelection,
+                                            selectionArgs);
+                                    db.delete(ArkhamContract.InvestigatorEntry.TABLE_NAME, investigatorSelection,
+                                            selectionArgs);
+                                    db.delete(ArkhamContract.NightEntry.TABLE_NAME, nightSelection, selectionArgs);
 
-                    // Delete the rows
-                    db.delete(ArkhamContract.CampaignEntry.TABLE_NAME, campaignSelection, selectionArgs);
-                    db.delete(ArkhamContract.InvestigatorEntry.TABLE_NAME, investigatorSelection, selectionArgs);
-                    db.delete(ArkhamContract.NightEntry.TABLE_NAME, nightSelection, selectionArgs);
+                                    // Go back to the CampaignSelectActivity
+                                    Intent intent = new Intent(getActivity(), SelectCampaignActivity.class);
+                                    getActivity().startActivity(intent);
+                                    break;
+                                // Night of the Zealot
+                                case 1:
+                                    if (globalVariables.getNightCompleted() == 1) {
+                                        Toast toast = Toast.makeText(getActivity(), "You have already completed this " +
+                                                "campaign.", Toast.LENGTH_SHORT);
+                                        toast.show();
+                                    } else{
+                                        globalVariables.setCurrentCampaign(1);
+                                        globalVariables.setCurrentScenario(0);
+                                        globalVariables.setScenarioStage(1);
+                                        Intent restart = new Intent(getActivity(), ScenarioSetupActivity.class);
+                                        getActivity().startActivity(restart);
+                                    }
+                                    break;
+                                // The Dunwich Legacy
+                                case 2:
+                                    if (globalVariables.getDunwichCompleted() == 1) {
+                                        Toast toast = Toast.makeText(getActivity(), "You have already completed this " +
+                                                "campaign.", Toast.LENGTH_SHORT);
+                                        toast.show();
+                                    } else{
+                                        globalVariables.setCurrentCampaign(2);
+                                        globalVariables.setCurrentScenario(0);
+                                        globalVariables.setScenarioStage(1);
+                                        Intent restart = new Intent(getActivity(), ScenarioSetupActivity.class);
+                                        getActivity().startActivity(restart);
+                                    }
+                                    break;
+                            }
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
 
-                    // Go back to the CampaignSelectActivity
-                    Intent intent = new Intent(getActivity(), SelectCampaignActivity.class);
-                    getActivity().startActivity(intent);
-                }
-            });
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    // User cancelled the dialog
-                }
-            });
             return builder.create();
         }
 
@@ -564,6 +639,40 @@ public class ContinueOnClickListener implements View.OnClickListener {
         }
     }
 
+    /*
+        DialogFragment for The Dunwich Legacy
+     */
+    public static class ContinueDunwichDialog extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle(R.string.pick_option)
+                    .setItems(R.array.dunwich_setup_options, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            switch (which) {
+                                case 0:
+                                    // Set current scenario and first scenario
+                                    globalVariables.setCurrentScenario(1);
+                                    globalVariables.setFirstScenario(1);
+                                    break;
+                                case 1:
+                                    globalVariables.setCurrentScenario(2);
+                                    globalVariables.setFirstScenario(2);
+                                    break;
+                            }
+                            globalVariables.setScenarioStage(1);
+                            saveCampaign(getActivity());
+
+                            // Go to scenario setup
+                            Intent intent = new Intent(getActivity(), ScenarioSetupActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+            return builder.create();
+        }
+    }
+
 
     /*
      Saves the campaign, including all relevant variables
@@ -576,7 +685,12 @@ public class ContinueOnClickListener implements View.OnClickListener {
 
         // Update campaign variables (currently only the scenario number and which investigators are in use)
         ContentValues campaignValues = new ContentValues();
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_CURRENT_CAMPAIGN, globalVariables.getCurrentCampaign());
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_CURRENT_SCENARIO, globalVariables.getCurrentScenario());
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_NIGHT_COMPLETED, globalVariables
+                .getNightCompleted());
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_DUNWICH_COMPLETED, globalVariables
+                .getDunwichCompleted());
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_ROLAND_INUSE, globalVariables
                 .investigatorsInUse[Investigator.ROLAND_BANKS]);
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_DAISY_INUSE, globalVariables

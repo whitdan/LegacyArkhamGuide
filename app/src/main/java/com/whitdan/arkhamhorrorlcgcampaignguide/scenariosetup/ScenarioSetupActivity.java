@@ -58,15 +58,21 @@ public class ScenarioSetupActivity extends AppCompatActivity {
 
         // Check if on interlude
         boolean interlude = false;
-        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 3) {
+        if ((globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 3) ||
+                globalVariables.getCurrentScenario() == 0) {
             interlude = true;
         }
 
         // Find the view pager that will allow the user to swipe between fragments and set the adapter onto it
         ViewPager viewPager = (ViewPager) findViewById(R.id.scenario_viewpager);
         viewPager.setOffscreenPageLimit(2);
+        // If on campaign finish, go to campaign finish setup
+        if (globalVariables.getScenarioStage() == 3) {
+            CampaignFinishPagerAdapter adapter = new CampaignFinishPagerAdapter(getSupportFragmentManager());
+            viewPager.setAdapter(adapter);
+        }
         // If any investigators are dead, go to new investigator fragment
-        if (investigatorDead) {
+        else if (investigatorDead) {
             NewInvestigatorPagerAdapter adapter = new NewInvestigatorPagerAdapter(getSupportFragmentManager());
             viewPager.setAdapter(adapter);
         }
@@ -122,6 +128,8 @@ public class ScenarioSetupActivity extends AppCompatActivity {
             builder.setTitle(R.string.pick_option)
                     .setItems(R.array.side_stories, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+                            // Set scenario stage back to 1
+                            globalVariables.setScenarioStage(1);
                             // Work out lowest XP level
                             int XP = 9999999;
                             for (int i = 0; i < globalVariables.investigators.size(); i++) {
@@ -132,13 +140,13 @@ public class ScenarioSetupActivity extends AppCompatActivity {
                             switch (which) {
                                 // Check XP, set current scenario and charge XP
                                 case 0:
-                                    if (XP < 1) {
-                                        Toast toast = Toast.makeText(getActivity(), "You do not have enough XP (cost:" +
-                                                " 1 per investigator).", Toast.LENGTH_SHORT);
-                                        toast.show();
-                                    } else if (globalVariables.getRougarouStatus() > 0) {
+                                    if (globalVariables.getRougarouStatus() > 0) {
                                         Toast toast = Toast.makeText(getActivity(), "You have already completed this " +
                                                 "scenario.", Toast.LENGTH_SHORT);
+                                        toast.show();
+                                    } else if (XP < 1) {
+                                        Toast toast = Toast.makeText(getActivity(), "You do not have enough XP (cost:" +
+                                                " 1 per investigator).", Toast.LENGTH_SHORT);
                                         toast.show();
                                     } else {
                                         globalVariables.setPreviousScenario(globalVariables.getCurrentScenario());
@@ -151,13 +159,13 @@ public class ScenarioSetupActivity extends AppCompatActivity {
                                     }
                                     break;
                                 case 1:
-                                    if (XP < 3) {
-                                        Toast toast = Toast.makeText(getActivity(), "You do not have enough XP (cost:" +
-                                                " 3 per investigator).", Toast.LENGTH_SHORT);
-                                        toast.show();
-                                    } else if (globalVariables.getCarnevaleStatus() > 0) {
+                                    if (globalVariables.getCarnevaleStatus() > 0) {
                                         Toast toast = Toast.makeText(getActivity(), "You have already completed this " +
                                                 "scenario.", Toast.LENGTH_SHORT);
+                                        toast.show();
+                                    } else if (XP < 3) {
+                                        Toast toast = Toast.makeText(getActivity(), "You do not have enough XP (cost:" +
+                                                " 3 per investigator).", Toast.LENGTH_SHORT);
                                         toast.show();
                                     } else {
                                         globalVariables.setPreviousScenario(globalVariables.getCurrentScenario());
@@ -267,6 +275,39 @@ public class ScenarioSetupActivity extends AppCompatActivity {
 
         // Set titles of scenario setup tabs
         private final String[] tabTitles = new String[]{"Interlude"};
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            // Generate title based on item position
+            return tabTitles[position];
+        }
+    }
+
+    // Returns the campaign finish fragments instead
+    private class CampaignFinishPagerAdapter extends FragmentPagerAdapter {
+
+        private CampaignFinishPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        // Returns the right fragment to page to
+        @Override
+        public Fragment getItem(int position) {
+            if (position == 0) {
+                return new ScenarioInvestigatorsFragment();
+            } else {
+                return new LogFragment();
+            }
+        }
+
+        // Number of tabs
+        @Override
+        public int getCount() {
+            return 2;
+        }
+
+        // Set titles of scenario setup tabs
+        private final String[] tabTitles = new String[]{"Investigators", "Log"};
 
         @Override
         public CharSequence getPageTitle(int position) {

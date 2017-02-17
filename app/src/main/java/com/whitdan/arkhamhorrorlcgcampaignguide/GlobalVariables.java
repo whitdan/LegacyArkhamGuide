@@ -72,6 +72,14 @@ public class GlobalVariables extends Application {
         return mVictoryDisplay;
     }
 
+    // Completed campaigns
+    private int NightCompleted;
+    public void setNightCompleted(int var){this.NightCompleted = var;}
+    public int getNightCompleted(){return this.NightCompleted;}
+    private int DunwichCompleted;
+    public void setDunwichCompleted(int var){this.DunwichCompleted = var;}
+    public int getDunwichCompleted(){return this.DunwichCompleted;}
+
     /*
     Night of the Zealot variables
     */
