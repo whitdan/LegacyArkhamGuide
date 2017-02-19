@@ -5,113 +5,326 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_horizontal_margin">
-
-        <EditText
-            android:id="@+id/campaign_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/campaign_name"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingBottom="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_horizontal_margin"
-            android:text="@string/choose_investigators"
-            android:textAllCaps="true"
-            android:textStyle="bold"/>
+        android:fillViewport="true"
+        android:layout_above="@id/divider">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
 
             <LinearLayout
-                android:id="@+id/core_investigators"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:id="@+id/choose_investigators_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/activity_vertical_margin">
 
-                <CheckBox
-                    android:id="@+id/roland_banks"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/campaign_name"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/roland_banks"/>
+                    android:hint="@string/campaign_name"/>
 
-                <CheckBox
-                    android:id="@+id/daisy_walker"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/daisy_walker"/>
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_horizontal_margin"
+                    android:text="@string/choose_investigators"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"/>
 
-                <CheckBox
-                    android:id="@+id/skids_otoole"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/skids_otoole"/>
+                    android:orientation="horizontal">
 
-                <CheckBox
-                    android:id="@+id/agnes_baker"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/agnes_baker"/>
+                    <LinearLayout
+                        android:id="@+id/core_investigators"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                <CheckBox
-                    android:id="@+id/wendy_adams"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/wendy_adams"/>
+                        <CheckBox
+                            android:id="@+id/roland_banks"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/roland_banks"/>
+
+                        <CheckBox
+                            android:id="@+id/daisy_walker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/daisy_walker"/>
+
+                        <CheckBox
+                            android:id="@+id/skids_otoole"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/skids_otoole"/>
+
+                        <CheckBox
+                            android:id="@+id/agnes_baker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/agnes_baker"/>
+
+                        <CheckBox
+                            android:id="@+id/wendy_adams"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/wendy_adams"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/dunwich_investigators"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/zoey_samaras"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/zoey_samaras"/>
+
+                        <CheckBox
+                            android:id="@+id/rex_murphy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rex_murphy"/>
+
+                        <CheckBox
+                            android:id="@+id/jenny_barnes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/jenny_barnes"/>
+
+                        <CheckBox
+                            android:id="@+id/jim_culver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/jim_culver"/>
+
+                        <CheckBox
+                            android:id="@+id/ashcan_pete"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ashcan_pete"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/divider_two"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@id/choose_investigators_layout"
+                android:background="?android:attr/listDivider"/>
+
+            <TextView
+                android:id="@+id/current_team"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_two"
+                android:gravity="center"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:text="Current team"
+                android:textAllCaps="true"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:id="@+id/investigator_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/investigator_one_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="true"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/investigator_one_player"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/player_name"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <EditText
+                        android:id="@+id/investigator_one_deck"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/decklist"/>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/dunwich_investigators"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:id="@+id/investigator_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <CheckBox
-                    android:id="@+id/zoey_samaras"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/zoey_samaras"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <CheckBox
-                    android:id="@+id/rex_murphy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rex_murphy"/>
+                    <TextView
+                        android:id="@+id/investigator_two_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="true"
+                        android:textStyle="bold"/>
 
-                <CheckBox
-                    android:id="@+id/jenny_barnes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/jenny_barnes"/>
+                    <EditText
+                        android:id="@+id/investigator_two_player"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/player_name"/>
+                </LinearLayout>
 
-                <CheckBox
-                    android:id="@+id/jim_culver"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/jim_culver"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <CheckBox
-                    android:id="@+id/ashcan_pete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ashcan_pete"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <EditText
+                        android:id="@+id/investigator_two_deck"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/decklist"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/investigator_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/investigator_three_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="true"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/investigator_three_player"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/player_name"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <EditText
+                        android:id="@+id/investigator_three_deck"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/decklist"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/investigator_four"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/investigator_four_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="true"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/investigator_four_player"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/player_name"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <EditText
+                        android:id="@+id/investigator_four_deck"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/decklist"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
     <TextView
         android:id="@+id/divider"

@@ -15,12 +15,14 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.Investigator;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
 
 import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 /**
  * Allows the selection of up to four investigators for the campaign.
@@ -135,6 +137,8 @@ public class CampaignInvestigatorsFragment extends Fragment {
 
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+            View parent = (View) buttonView.getParent().getParent().getParent().getParent();
 
             if (buttonView.isPressed()) {
                 switch (buttonView.getId()) {
@@ -289,6 +293,42 @@ public class CampaignInvestigatorsFragment extends Fragment {
                         }
                         break;
                 }
+
+                LinearLayout investigatorOne = (LinearLayout) parent.findViewById(R.id.investigator_one);
+                LinearLayout investigatorTwo = (LinearLayout) parent.findViewById(R.id.investigator_two);
+                LinearLayout investigatorThree = (LinearLayout) parent.findViewById(R.id.investigator_three);
+                LinearLayout investigatorFour = (LinearLayout) parent.findViewById(R.id.investigator_four);
+                TextView investigatorOneName = (TextView) parent.findViewById(R.id.investigator_one_name);
+                TextView investigatorTwoName = (TextView) parent.findViewById(R.id.investigator_two_name);
+                TextView investigatorThreeName = (TextView) parent.findViewById(R.id.investigator_three_name);
+                TextView investigatorFourName = (TextView) parent.findViewById(R.id.investigator_four_name);
+                String[] investigatorNames = getContext().getResources().getStringArray(R.array.investigators);
+
+                // Show relevant views
+                if(investigators > 0){
+                    investigatorOne.setVisibility(VISIBLE);
+                    String nameOne = investigatorNames[globalVariables.investigatorNames.get(0)];
+                    investigatorOneName.setText(nameOne);
+                } else {investigatorOne.setVisibility(GONE);}
+
+                if(investigators > 1){
+                    investigatorTwo.setVisibility(VISIBLE);
+                    String nameTwo = investigatorNames[globalVariables.investigatorNames.get(1)];
+                    investigatorTwoName.setText(nameTwo);
+                } else {investigatorTwo.setVisibility(GONE);}
+
+                if(investigators > 2){
+                    investigatorThree.setVisibility(VISIBLE);
+                    String nameThree = investigatorNames[globalVariables.investigatorNames.get(2)];
+                    investigatorThreeName.setText(nameThree);
+                } else {investigatorThree.setVisibility(GONE);}
+
+                if(investigators > 3){
+                    investigatorFour.setVisibility(VISIBLE);
+                    String nameFour = investigatorNames[globalVariables.investigatorNames.get(3)];
+                    investigatorFourName.setText(nameFour);
+                } else {investigatorFour.setVisibility(GONE);}
+
             }
         }
     }

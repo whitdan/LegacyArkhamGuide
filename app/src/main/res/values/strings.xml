@@ -120,6 +120,8 @@
     <string name="lead_investigator">Lead investigator: </string>
     <string name="victory_display">Victory display: </string>
     <string name="campaign_name">Campaign name</string>
+    <string name="player_name">Player name</string>
+    <string name="decklist">Decklist URL</string>
     <string name="setup">Setup</string>
     <string name="sets">Encounter sets: </string>
     <string name="locations">Starting locations: </string>
