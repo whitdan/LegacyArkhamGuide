@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -55,7 +56,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
             context.startActivity(intent);
         }
         // If on campaign start, either continue or set up dunwich dialog
-        else if (globalVariables.getCurrentScenario() == 0) {
+        else if (globalVariables.getCurrentScenario() == 1000) {
             switch (globalVariables.getCurrentCampaign()) {
                 // Night of the Zealot
                 case 1:
@@ -315,7 +316,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                                         toast.show();
                                     } else {
                                         globalVariables.setCurrentCampaign(1);
-                                        globalVariables.setCurrentScenario(0);
+                                        globalVariables.setCurrentScenario(1000);
                                         globalVariables.setScenarioStage(1);
                                         Intent restart = new Intent(getActivity(), ScenarioSetupActivity.class);
                                         getActivity().startActivity(restart);
@@ -328,8 +329,15 @@ public class ContinueOnClickListener implements View.OnClickListener {
                                                 "campaign.", Toast.LENGTH_SHORT);
                                         toast.show();
                                     } else {
+                                        // Set Dunwich Legacy to owned in settings
+                                        String sharedPrefs = getString(R.string.expacs_owned);
+                                        String dunwichOwnedString = getString(R.string.dunwich_campaign_name);
+                                        SharedPreferences settings = getActivity().getSharedPreferences(sharedPrefs, 0);
+                                        SharedPreferences.Editor editor = settings.edit();
+                                        editor.putBoolean(dunwichOwnedString, true);
+                                        editor.apply();
                                         globalVariables.setCurrentCampaign(2);
-                                        globalVariables.setCurrentScenario(0);
+                                        globalVariables.setCurrentScenario(1000);
                                         globalVariables.setScenarioStage(1);
                                         Intent restart = new Intent(getActivity(), ScenarioSetupActivity.class);
                                         getActivity().startActivity(restart);

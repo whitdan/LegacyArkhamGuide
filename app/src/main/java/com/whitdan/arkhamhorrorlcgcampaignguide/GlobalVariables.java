@@ -24,7 +24,7 @@ public class GlobalVariables extends Application {
         return mCurrentCampaign;
     }
 
-    // Current scenario (0 = Setup)
+    // Current scenario (0 = Setup, >100 = standalone, 1000 = setup between campaigns)
     private int mCurrentScenario;
     public void setCurrentScenario(int currentScenario) {
         this.mCurrentScenario = currentScenario;

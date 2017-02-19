@@ -82,7 +82,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
             viewPager.setAdapter(adapter);
         }
         // If appropriate, go to new campaign
-        else if(globalVariables.getCurrentScenario() == 0){
+        else if(globalVariables.getCurrentScenario() == 1000){
             NewCampaignPagerAdapter adapter = new NewCampaignPagerAdapter(getSupportFragmentManager());
             viewPager.setAdapter(adapter);
         }
@@ -354,7 +354,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
         }
     }
 
-    // Used when an investigator has died to restart the scenario;
+    // Used when an investigator has died to restart the scenario
     public void restartScenario(Context context) {
         boolean[] removeInvestigator = new boolean[4];
         // If the investigator is dead, recreates it

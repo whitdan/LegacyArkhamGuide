@@ -23,7 +23,7 @@ public class ScenarioInterludeFragment extends Fragment {
 
         // Set interlude text
         TextView interlude = (TextView) v.findViewById(R.id.interlude_text);
-        if (globalVariables.getCurrentScenario() == 0) {
+        if (globalVariables.getCurrentScenario() == 1000) {
             switch (globalVariables.getCurrentCampaign()) {
                 case 1:
                     interlude.setText(R.string.night_setup);
@@ -48,7 +48,7 @@ public class ScenarioInterludeFragment extends Fragment {
 
         // Set onClickListener on the continue button
         TextView continueButton = (TextView) v.findViewById(R.id.continue_button);
-        if (globalVariables.getCurrentScenario() == 0) {
+        if (globalVariables.getCurrentScenario() == 1000) {
             continueButton.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity(), this
                     .getActivity()));
         } else {

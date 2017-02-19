@@ -293,4 +293,3 @@ public class CampaignInvestigatorsFragment extends Fragment {
         }
     }
 }
-

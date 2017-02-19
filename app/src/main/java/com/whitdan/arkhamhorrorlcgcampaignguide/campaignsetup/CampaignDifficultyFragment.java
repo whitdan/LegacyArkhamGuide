@@ -53,7 +53,7 @@ public class CampaignDifficultyFragment extends Fragment {
         if (globalVariables.getCurrentCampaign() == 999) {
             // Set click listener on continue button
             button.setOnClickListener(new StandaloneOnClickListener(this.getActivity()));
-        } else if (globalVariables.getCurrentScenario() == 0) {
+        } else if (globalVariables.getCurrentScenario() == 1000) {
             button.setOnClickListener(new ContinueOnClickListener(globalVariables, this.getActivity(), this
                     .getActivity()));
         } else {
