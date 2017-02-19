@@ -2,6 +2,8 @@ package com.whitdan.arkhamhorrorlcgcampaignguide;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,9 +29,11 @@ import static android.view.View.VISIBLE;
 public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
 
     private GlobalVariables globalVariables;
+    private Context context;
 
-    public InvestigatorsListAdapter(Context context, ArrayList<Investigator> investigators, GlobalVariables global) {
-        super(context, 0, investigators);
+    public InvestigatorsListAdapter(Context con, ArrayList<Investigator> investigators, GlobalVariables global) {
+        super(con, 0, investigators);
+        context = con;
         globalVariables = global;
     }
 
@@ -55,6 +59,30 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
         int investigatorName = currentInvestigator.getName();
         TextView investigatorNameView = (TextView) listItemView.findViewById(R.id.investigator_name);
         investigatorNameView.setText(investigatorNames[investigatorName]);
+        String playerName = currentInvestigator.getPlayer();
+        TextView playerNameView = (TextView) listItemView.findViewById(R.id.player_name);
+        playerNameView.setText(playerName);
+        final String decklist = currentInvestigator.getDecklist();
+        TextView decklistPaddingView = (TextView) listItemView.findViewById(R.id.decklist_padding);
+        TextView decklistView = (TextView) listItemView.findViewById(R.id.decklist);
+        if(decklist == null){
+            decklistPaddingView.setVisibility(GONE);
+            decklistView.setVisibility(GONE);
+        } else{
+            decklistView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String deck;
+                    if (!decklist.startsWith("http://") && !decklist.startsWith("https://")){
+                        deck = "http://" + decklist;
+                    } else {
+                        deck = decklist;
+                    }
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deck));
+                    context.startActivity(browserIntent);
+                }
+            });
+        }
 
         // Get physical trauma and apply to corresponding TextView
         int investigatorDamage = currentInvestigator.getDamage();

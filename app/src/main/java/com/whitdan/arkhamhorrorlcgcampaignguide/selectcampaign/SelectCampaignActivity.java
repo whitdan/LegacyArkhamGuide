@@ -82,6 +82,8 @@ public class SelectCampaignActivity extends AppCompatActivity {
         globalVariables.setCurrentScenario(0);
         // Reset a couple of variables used elsewhere
         globalVariables.investigatorNames.clear();
+        globalVariables.playerNames = new String[4];
+        globalVariables.decklists = new String[4];
         resetVariables();
         // Go to campaign setup
         Intent intent = new Intent(this, CampaignSetupActivity.class);
@@ -104,6 +106,8 @@ public class SelectCampaignActivity extends AppCompatActivity {
         globalVariables.setCurrentScenario(0);
         // Reset a couple of variables used elsewhere
         globalVariables.investigatorNames.clear();
+        globalVariables.playerNames = new String[4];
+        globalVariables.decklists = new String[4];
         resetVariables();
         // Go to campaign setup
         Intent intent = new Intent(this, CampaignSetupActivity.class);

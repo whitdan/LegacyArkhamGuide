@@ -29,6 +29,7 @@
                     android:id="@+id/campaign_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textCapSentences"
                     android:hint="@string/campaign_name"/>
 
                 <TextView
@@ -165,6 +166,7 @@
 
                     <EditText
                         android:id="@+id/investigator_one_player"
+                        android:inputType="textCapSentences"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -185,7 +187,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="@string/decklist"/>
+                        android:hint="@string/decklist_url"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -210,6 +212,7 @@
 
                     <EditText
                         android:id="@+id/investigator_two_player"
+                        android:inputType="textCapSentences"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -230,7 +233,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="@string/decklist"/>
+                        android:hint="@string/decklist_url"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -255,6 +258,7 @@
 
                     <EditText
                         android:id="@+id/investigator_three_player"
+                        android:inputType="textCapSentences"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -275,7 +279,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="@string/decklist"/>
+                        android:hint="@string/decklist_url"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -300,6 +304,7 @@
 
                     <EditText
                         android:id="@+id/investigator_four_player"
+                        android:inputType="textCapSentences"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -320,7 +325,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="@string/decklist"/>
+                        android:hint="@string/decklist_url"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

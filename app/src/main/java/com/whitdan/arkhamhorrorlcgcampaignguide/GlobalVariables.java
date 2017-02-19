@@ -54,6 +54,8 @@ public class GlobalVariables extends Application {
     // Investigators and associated arrays
     public ArrayList<Investigator> investigators = new ArrayList<>();
     public ArrayList<Integer> investigatorNames = new ArrayList<>();
+    public String[] playerNames = new String[4];
+    public String[] decklists = new String[4];
     public int[] investigatorsInUse = {0,0,0,0,0,0,0,0,0,0,0};          // Matches up to the names in the string array
     private int leadInvestigator;
     public void setLeadInvestigator(int lead) {

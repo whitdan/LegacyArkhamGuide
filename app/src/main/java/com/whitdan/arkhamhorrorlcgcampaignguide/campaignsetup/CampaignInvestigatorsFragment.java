@@ -329,6 +329,145 @@ public class CampaignInvestigatorsFragment extends Fragment {
                     investigatorFourName.setText(nameFour);
                 } else {investigatorFour.setVisibility(GONE);}
 
+                // Set listeners on the edit text fields
+                final EditText playerOneName = (EditText) parent.findViewById(R.id.investigator_one_player);
+                playerOneName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.playerNames[0] = playerOneName.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerTwoName = (EditText) parent.findViewById(R.id.investigator_two_player);
+                playerTwoName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.playerNames[1] = playerTwoName.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerThreeName = (EditText) parent.findViewById(R.id.investigator_three_player);
+                playerThreeName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.playerNames[2] = playerThreeName.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerFourName = (EditText) parent.findViewById(R.id.investigator_four_player);
+                playerFourName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.playerNames[3] = playerFourName.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+
+
+                final EditText playerOneDeck = (EditText) parent.findViewById(R.id.investigator_one_deck);
+                playerOneDeck.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.decklists[0] = playerOneDeck.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerTwoDeck = (EditText) parent.findViewById(R.id.investigator_two_deck);
+                playerTwoDeck.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.decklists[1] = playerTwoDeck.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerThreeDeck = (EditText) parent.findViewById(R.id.investigator_three_deck);
+                playerThreeDeck.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.decklists[2] = playerThreeDeck.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerFourDeck = (EditText) parent.findViewById(R.id.investigator_four_deck);
+                playerFourDeck.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.decklists[3] = playerFourDeck.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
             }
         }
     }

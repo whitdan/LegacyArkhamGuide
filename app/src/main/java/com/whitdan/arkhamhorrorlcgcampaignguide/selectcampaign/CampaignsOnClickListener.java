@@ -121,7 +121,9 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                 InvestigatorEntry.COLUMN_INVESTIGATOR_STATUS,
                 InvestigatorEntry.COLUMN_INVESTIGATOR_DAMAGE,
                 InvestigatorEntry.COLUMN_INVESTIGATOR_HORROR,
-                InvestigatorEntry.COLUMN_INVESTIGATOR_XP
+                InvestigatorEntry.COLUMN_INVESTIGATOR_XP,
+                InvestigatorEntry.COLUMN_INVESTIGATOR_PLAYER,
+                InvestigatorEntry.COLUMN_INVESTIGATOR_DECKLIST
         };
         String investigatorSelection = InvestigatorEntry.PARENT_ID + " = ?";
         Cursor investigatorCursor = db.query(
@@ -137,7 +139,11 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
         for (int i = 0; investigatorCursor.moveToNext(); i++) {
             int name = investigatorCursor.getInt(investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
                     .COLUMN_INVESTIGATOR_NAME));
-            globalVariables.investigators.add(new Investigator(name));
+            String player = investigatorCursor.getString(investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
+                    .COLUMN_INVESTIGATOR_PLAYER));
+            String deck = investigatorCursor.getString(investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
+                    .COLUMN_INVESTIGATOR_DECKLIST));
+            globalVariables.investigators.add(new Investigator(name, player, deck));
             globalVariables.investigators.get(i).setStatus(investigatorCursor.getInt(investigatorCursor
                     .getColumnIndexOrThrow(InvestigatorEntry.COLUMN_INVESTIGATOR_STATUS)));
             globalVariables.investigators.get(i).changeDamage(investigatorCursor.getInt

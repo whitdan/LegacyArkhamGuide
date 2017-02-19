@@ -50,6 +50,8 @@ public class ArkhamContract {
         public static final String COLUMN_INVESTIGATOR_DAMAGE = "damage";
         public static final String COLUMN_INVESTIGATOR_HORROR = "horror";
         public static final String COLUMN_INVESTIGATOR_XP = "xp";
+        public static final String COLUMN_INVESTIGATOR_PLAYER = "player";
+        public static final String COLUMN_INVESTIGATOR_DECKLIST = "decklist";
     }
 
     public static class NightEntry implements BaseColumns{

@@ -22,7 +22,7 @@ import static com.whitdan.arkhamhorrorlcgcampaignguide.data.ArkhamContract.Inves
 public class ArkhamDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "campaigns.db";
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 9;
 
     public ArkhamDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -66,7 +66,9 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
                 + InvestigatorEntry.COLUMN_INVESTIGATOR_STATUS + " INTEGER NOT NULL, "
                 + InvestigatorEntry.COLUMN_INVESTIGATOR_DAMAGE + " INTEGER NOT NULL, "
                 + InvestigatorEntry.COLUMN_INVESTIGATOR_HORROR + " INTEGER NOT NULL, "
-                + InvestigatorEntry.COLUMN_INVESTIGATOR_XP + " INTEGER NOT NULL);";
+                + InvestigatorEntry.COLUMN_INVESTIGATOR_XP + " INTEGER NOT NULL, "
+                + InvestigatorEntry.COLUMN_INVESTIGATOR_PLAYER + " STRING, "
+                + InvestigatorEntry.COLUMN_INVESTIGATOR_DECKLIST + " STRING);";
 
         // Night of the Zealot table
         String SQL_CREATE_NIGHT_TABLE = "CREATE TABLE " + NightEntry.TABLE_NAME + " ("
@@ -168,6 +170,13 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_UPGRADE_SIX_ONE);
                 db.execSQL(SQL_UPGRADE_SIX_TWO);
                 db.execSQL(SQL_UPGRADE_SIX_THREE);
+            case 8:
+                String SQL_UPGRADE_SEVEN_ONE = "ALTER TABLE " + InvestigatorEntry.TABLE_NAME + " ADD COLUMN " +
+                        InvestigatorEntry.COLUMN_INVESTIGATOR_PLAYER + " STRING";
+                String SQL_UPGRADE_SEVEN_TWO = "ALTER TABLE " + InvestigatorEntry.TABLE_NAME + " ADD COLUMN " +
+                        InvestigatorEntry.COLUMN_INVESTIGATOR_DECKLIST + " STRING";
+                db.execSQL(SQL_UPGRADE_SEVEN_ONE);
+                db.execSQL(SQL_UPGRADE_SEVEN_TWO);
         }
     }
 }
