@@ -55,6 +55,7 @@ public class GlobalVariables extends Application {
     public ArrayList<Investigator> investigators = new ArrayList<>();
     public ArrayList<Integer> investigatorNames = new ArrayList<>();
     public String[] playerNames = new String[4];
+    public String[] deckNames = new String[4];
     public String[] decklists = new String[4];
     public int[] investigatorsInUse = {0,0,0,0,0,0,0,0,0,0,0};          // Matches up to the names in the string array
     private int leadInvestigator;
@@ -177,6 +178,9 @@ public class GlobalVariables extends Application {
     private int Necronomicon;
     public void setNecronomicon(int var){this.Necronomicon = var;}
     public int getNecronomicon(){return this.Necronomicon;}
+    private int Delayed;
+    public void setDelayed(int var){this.Delayed = var;}
+    public int getDelayed(){return this.Delayed;}
 
     /*
     Side story variables

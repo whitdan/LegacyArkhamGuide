@@ -51,7 +51,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
     public void onClick(View v) {
 
         // If on unreleased scenario
-        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5) {
+        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 6) {
             Intent intent = new Intent(context, SelectCampaignActivity.class);
             context.startActivity(intent);
         }
@@ -243,7 +243,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     saveCampaign(getActivity());
 
                     //   Go to scenario setup for the next scenario
-                    if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5) {
+                    if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 6) {
                         Toast toast = Toast.makeText(getActivity(), "This scenario is not available yet.", Toast
                                 .LENGTH_SHORT);
                         toast.show();
@@ -634,13 +634,73 @@ public class ContinueOnClickListener implements View.OnClickListener {
         }
 
         /*
-            Resolution 2: The Miskatonic Museum
+            Scenario 2: The Miskatonic Museum
          */
         else if (globalVariables.getCurrentScenario() == 4) {
             for (int i = 0; i < globalVariables.investigators.size(); i++) {
                 globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
             }
             globalVariables.setNecronomicon(globalVariables.getResolution());
+        }
+
+        /*
+            Scenario 3: The Essex County Express
+         */
+        else if (globalVariables.getCurrentScenario() == 5) {
+            CheckBox necronomicon = (CheckBox) parent.findViewById(R.id.necronomicon_defeated);
+            CheckBox armitage = (CheckBox) parent.findViewById(R.id.armitage_defeated);
+            CheckBox morgan = (CheckBox) parent.findViewById(R.id.morgan_defeated);
+            CheckBox rice = (CheckBox) parent.findViewById(R.id.rice_defeated);
+            switch (globalVariables.getResolution()) {
+                // No resolution or resolution two
+                case 2:
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        if (globalVariables.investigators.get(i).getTempStatus() < 2) {
+                            globalVariables.investigators.get(i).changeHorror(1);
+                        }
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay() + 1);
+                    }
+                    if (globalVariables.getNecronomicon() == 2) {
+                        globalVariables.setNecronomicon(3);
+                    }
+                    if (globalVariables.getHenryArmitage() == 1) {
+                        globalVariables.setHenryArmitage(0);
+                    }
+                    if (globalVariables.getWarrenRice() == 1) {
+                        globalVariables.setWarrenRice(0);
+                    }
+                    if (globalVariables.getFrancisMorgan() == 1) {
+                        globalVariables.setFrancisMorgan(0);
+                    }
+                    globalVariables.setDelayed(1);
+                    break;
+                // Resolution one
+                case 1:
+                    int investigatorDefeated = 0;
+                    for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                        if (globalVariables.investigators.get(i).getTempStatus() > 1) {
+                            globalVariables.investigators.get(i).changeXP(1);
+                            investigatorDefeated = 1;
+                        }
+                        globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay());
+                    }
+                    if (investigatorDefeated == 1) {
+                        if (necronomicon.isChecked()) {
+                            globalVariables.setNecronomicon(3);
+                        }
+                        if (armitage.isChecked()) {
+                            globalVariables.setHenryArmitage(0);
+                        }
+                        if (rice.isChecked()) {
+                            globalVariables.setWarrenRice(0);
+                        }
+                        if (morgan.isChecked()) {
+                            globalVariables.setFrancisMorgan(0);
+                        }
+                    }
+                    globalVariables.setDelayed(0);
+                    break;
+            }
         }
     }
 
@@ -827,6 +887,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
             dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_INVESTIGATORS_CHEATED, globalVariables
                     .getInvestigatorsCheated());
             dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_NECRONOMICON, globalVariables.getNecronomicon());
+            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_DELAYED, globalVariables.getDelayed());
 
             String dunwichSelection = ArkhamContract.DunwichEntry.PARENT_ID + " LIKE ?";
             String[] dunwichSelectionArgs = {Long.toString(globalVariables.getCampaignID())};

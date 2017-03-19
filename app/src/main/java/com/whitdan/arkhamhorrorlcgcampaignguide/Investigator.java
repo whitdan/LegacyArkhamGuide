@@ -22,9 +22,10 @@ public class Investigator {
     private int[] health = {0,9,5,8,6,7,9,6,8,7,6};
     private int[] sanity = {0,5,9,6,8,7,6,9,7,8,5};
 
-    public Investigator(int investigator, String name, String deck){
+    public Investigator(int investigator, String name, String deckName, String deck){
         setupInvestigator(investigator);
         this.mPlayerName = name;
+        this.mDeckName = deckName;
         this.mDecklist = deck;
     }
 
@@ -47,6 +48,7 @@ public class Investigator {
     private int mHorror;
     private int mAvailableXP;
     private String mPlayerName;
+    private String mDeckName;
     private String mDecklist;
 
     // Temp variables for when a change might be pending clicking the continue button
@@ -66,7 +68,7 @@ public class Investigator {
         mHorror += horror;}
 
     void setTempStatus(int status){mTempStatus = status;}
-    int getTempStatus(){return mTempStatus;}
+    public int getTempStatus(){return mTempStatus;}
 
     void setTempXP(int XP){
         mTempXP = XP;}
@@ -83,5 +85,6 @@ public class Investigator {
     int getHorror(){return mHorror;}
     public int getAvailableXP(){return mAvailableXP;}
     public String getPlayer(){return this.mPlayerName;}
+    public String getDeckName(){return this.mDeckName;}
     public String getDecklist(){return this.mDecklist;}
 }

@@ -29,7 +29,7 @@ public class LogFragment extends Fragment {
          Set setup instructions if on setup or in standalone scenario
           */
         if ((globalVariables.getScenarioStage() == 1 || globalVariables.getCurrentCampaign() == 999)
-                && !(globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5)) {
+                && !(globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 6)) {
 
             // Get the various views and set the visibility of the LinearLayout to VISIBLE
             LinearLayout setup = (LinearLayout) v.findViewById(R.id.setup);
@@ -177,6 +177,14 @@ public class LogFragment extends Fragment {
                             setAside.setText(R.string.miskatonic_set_aside);
                             locations.setText(R.string.miskatonic_locations);
                             additional.setText(R.string.miskatonic_additional);
+                            break;
+                        // The Essex County Express
+                        case 5:
+                            sets.setText(R.string.essex_sets);
+                            setsImage.setImageResource(R.drawable.essex_sets);
+                            setAside.setText(R.string.essex_set_aside);
+                            locations.setText(R.string.essex_locations);
+                            additional.setText(R.string.essex_additional);
                             break;
                     }
                     break;
@@ -367,7 +375,13 @@ public class LogFragment extends Fragment {
                     campaignLogBuilder.append(getString(R.string.necronomicon_destroyed));
                 } else if(globalVariables.getNecronomicon()==2){
                     campaignLogBuilder.append(getString(R.string.necronomicon_taken));
+                } else if(globalVariables.getNecronomicon()==3){
+                    campaignLogBuilder.append(getString(R.string.necronomicon_stolen));
                 }
+            }
+            // The Essex County Express log
+            if(globalVariables.getDelayed()==1){
+                campaignLogBuilder.append(getString(R.string.investigators_delayed));
             }
         }
 

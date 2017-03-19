@@ -176,7 +176,6 @@
                 android:id="@+id/resolution_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/activity_horizontal_margin" />
 
             <LinearLayout
@@ -198,6 +197,62 @@
                     android:layout_marginBottom="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="@dimen/activity_horizontal_margin" />
             </LinearLayout>
+
+            <!--Scenario 3: The Essex County Express-->
+            <CheckBox
+                android:id="@+id/necronomicon_defeated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/necronomicon_defeated"
+                android:visibility="gone"/>
+            <CheckBox
+                android:id="@+id/armitage_defeated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/armitage_defeated"
+                android:visibility="gone"/>
+            <CheckBox
+                android:id="@+id/rice_defeated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rice_defeated"
+                android:visibility="gone"/>
+            <CheckBox
+                android:id="@+id/morgan_defeated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/morgan_defeated"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/remove_necronomicon"
+                android:text="@string/remove_necronomicon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/remove_armitage"
+                android:text="@string/remove_armitage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/remove_rice"
+                android:text="@string/remove_rice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/remove_morgan"
+                android:text="@string/remove_morgan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <!--Padding-->
+            <TextView
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

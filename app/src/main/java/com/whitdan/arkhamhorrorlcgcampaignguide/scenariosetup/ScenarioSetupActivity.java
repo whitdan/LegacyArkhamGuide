@@ -366,11 +366,12 @@ public class ScenarioSetupActivity extends AppCompatActivity {
         }
         for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
             globalVariables.investigators.add(new Investigator(globalVariables.investigatorNames.get(i),
-                    globalVariables.playerNames[i], globalVariables.decklists[i]));
+                    globalVariables.playerNames[i], globalVariables.deckNames[i], globalVariables.decklists[i]));
             globalVariables.investigatorsInUse[globalVariables.investigatorNames.get(i)] = 1;
         }
         globalVariables.investigatorNames.clear();
         globalVariables.playerNames = new String[4];
+        globalVariables.deckNames = new String[4];
         globalVariables.decklists = new String[4];
 
         // Removes any unused investigators (works backwards to avoid reindexing)

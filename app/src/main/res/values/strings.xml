@@ -120,8 +120,9 @@
     <string name="lead_investigator">Lead investigator: </string>
     <string name="victory_display">Victory display: </string>
     <string name="campaign_name">Campaign name</string>
-    <string name="player_name">Player name</string>
-    <string name="decklist_url">Decklist URL</string>
+    <string name="player_name">Player name (optional)</string>
+    <string name="deck_name">Decklist name (optional)</string>
+    <string name="decklist_url">Decklist URL (optional)</string>
     <string name="decklist"><u>Decklist</u></string>
     <string name="setup">Setup</string>
     <string name="sets">Encounter sets: </string>
@@ -407,13 +408,15 @@
     <string name="morgan_rescued">The investigators rescued Dr. Francis Morgan.\n</string>
     <string name="cheated">Elder Thing chaos token added to the chaos bag for the remainder of the
         campaign.\n</string>
-    <string name="armitage_kidnapped">Dr. Herny Armitage was kidnapped.\n</string>
+    <string name="armitage_kidnapped">Dr. Henry Armitage was kidnapped.\n</string>
     <string name="armitage_rescued">The investigators rescued Dr. Henry Armitage.\n</string>
     <string name="necronomicon_failed">The investigators failed to recover the <i>Necronomicon</i>.\n</string>
     <string name="necronomicon_destroyed">The investigators destroyed the <i>Necronomicon</i>.\n</string>
     <string name="necronomicon_taken">The investigators took custody of the <i>Necronomicon</i>.
         \nThe Necronomicon (<i>Olaus Wormius Translation</i>) added to an investigator\'s deck.
         \nElder Thing chaos token added to the chaos bag for the remainder of the campaign.\n</string>
+    <string name="necronomicon_stolen">The Necronomicon was stolen.\n</string>
+    <string name="investigators_delayed">The investigators were delayed on their way to Dunwich.\n</string>
 
     <string name="dunwich_setup"><b>Prologue</b>\n
     \nDr. Henry Armitage pours himself a glass of pinot and sits down at his desk, gesturing for you to sit
@@ -649,6 +652,94 @@
     \n<b>You have given in to the temptation of power. Add 1 Elder Thing chaos token to the chaos bag for the
             remainder of the campaign.</b></string>
 
+    <!--Scenario 3: The Essex County Express-->
+    <string name="essex_setup"><b>Scenario 3: The Essex County Express</b>\n
+    \nRecent events in the Museum have forced you to re-evaluate Armitage\'s tale about Dunwich. It cannot be a
+    coincidence - Wilbur Whateley, the Necronomicon, the creature from Dunwich, and the people and creatures
+        who attacked here in Arkham - everything must be connected. You\'re certain now where you must head:
+        the lonely and dismal town of Dunwich Village.\n
+    \nYou consider telling the Massachusetts State Police what you know, but the negative consequences
+        outweigh the potential gain. Given the nature of your story, they would likely write your stories off
+        as an absurd hoax. Worse, they could lock you up. After all, you were present in an illegal speakeasy,
+        and you also trespassed in the museum. Instead, you decide to head to Dunwich yourself, in order to
+        investigate further.\n
+    \nYou pack everything you think you might need and manage to get some rest for the night. In the morning,
+        you head to the train station in Northside and purchase a last-minute express ticket. Dunwich is
+        several hours by train northwest along the Miskatonic River Valley. There is no train station in
+        Dunwich, but you manage to phone one of Armitage\'s acquaintances in the small village: a man by the
+        name of Zebulon Whateley who was present during the events several months ago.\n
+    \nArmitage\'s notes indicate that the Whateley family is spread across many branches, some decadent and
+        unscrupulous, others \"undecayed\" or otherwise untouched by nefarious and diabolic rites. According to
+    Armitage, Zebulon\'s branch of the family lay somewhere between the decayed and undecayed Whateleys, who
+        knew of the traditions of his ancestors, but was not corrupted by them. He agrees to pick you up at the
+    closest station and drive you into town.\n
+    \nAs the train departs from Arkham, you feel the events of the previous night catching up to you, and
+        exhaustion sets in. But before you can safely reach your destination, the train car suddenly rumbles
+        and shakes, startling you out of your reverie. The train loudly skids to a violent halt, and you hear a
+    rattling noise behind you&#8230;</string>
+
+    <string name="essex_sets">The Essex County Express, The Beyond, Striking Fear, Ancient Evils, and Dark Cult
+        .</string>
+    <string name="essex_locations">Put one of the three Engine Car locations into play at random and remove the
+    others from the game.\n
+    \nPut six of the eight Train Car locations into play at random, in a straight line to the left of the
+        Engine Car, and remove the others from the game.\n
+    \nEach investigator beings play at the leftmost Train Car location.\n</string>
+    <string name="essex_set_aside">All 4 copies of Across Space and Time.\n</string>
+    <string name="essex_additional">Based on your difficulty level, add the following chaos token to the chaos
+        bag, for the remainder of the campaign:\n
+    \n<b>Easy:</b> -2\n
+    \n<b>Standard:</b> -3\n
+    \n<b>Hard: -4</b>\n
+    \n<b>Expert: -5</b>\n</string>
+
+    <string name="essex_resolution_one">You breathe a sigh of relief as the gate behind the train collapses harmlessly
+        upon itself. The few
+        passengers who survived the ordeal seem unable to comprehend what just happened. One passenger mentions
+    \"a pipe bursting in the rear car,\" and that quickly becomes the explanation for the innocent and
+        ignorant, those who either cannot or choose not to delve further into the mystery. You, on the other
+        hand, know better&#8230; although in hindsight, you wish you didn\'t.</string>
+    <string name="essex_resolution_one_defeated"><b>Defeated investigators:</b>\n
+        \nYour experience beyond the gate is spontaneously terrifying and impossible to recall with clarity.
+        A hypnotic spectacle of lights, otherworldly sensations, and
+        altered geometry dances at the tattered edges of your mind. An unearthly voice from beyond rings in
+        your ears, its significance an enigma. When you awaken, you find yourself in the woods, several miles
+        from the Miskatonic River. Destroyed train cars surround you. They are crumpled as if from a severe
+        impact; they are also decayed as if years of rust and squalor have claimed them. There is no sign if
+        the other investigators.\n
+    \n<b>Each investigator who was defeated must add 1 copy of the Across Space and Time weakness to his or her
+            deck.</b>\n
+        \n<b>Surviving investigators:</b>\n
+    \nYou breathe a sigh of relief as the gate behind the train collapses harmlessly upon itself. The few
+        passengers who survived the ordeal seem unable to comprehend what just happened. One passenger mentions
+    \"a pipe bursting in the rear car,\" and that quickly becomes the explanation for the innocent and
+        ignorant, those who either cannot or choose not to delve further into the mystery. You, on the other
+        hand, know better&#8230; although in hindsight, you wish you didn\'t.\n</string>
+    <string name="essex_resolution_two">Your experience beyond the gate is spontaneously terrifying and impossible to
+        recall with clarity. A hypnotic spectacle of lights, otherworldly sensations, and
+        altered geometry dances at the tattered edges of your mind. An unearthly voice from beyond rings in
+        your ears, its significance an enigma. When you awaken, you find yourself in the woods, several miles
+        from the Miskatonic River. Destroyed train cars surround you. They are crumpled as if from a severe
+        impact; they are also decayed as if years of rust and squalor have claimed them. There is no sign if
+        the other investigators.\n
+        \nRattled, you begin walking alongside the train tracks, making your way towards Dunwich.\n
+    \n<b>Each investigator must add 1 copy of the Across Space and Time weakness to his or her
+            deck.</b></string>
+
+    <string name="necronomicon_defeated">Investigator with The Necronomicon (<i>Olaus Wormius Translation</i>)
+        was defeated.</string>
+    <string name="armitage_defeated">Investigator with the Dr. Henry Armitage card was defeated.</string>
+    <string name="rice_defeated">Investigator with the Professor Warren Rice card was defeated.</string>
+    <string name="morgan_defeated">Investigator with the Dr. Francis Morgan card was defeated.</string>
+    <string
+        name="remove_necronomicon"><b>Remove The Necronomicon (<i>Olaus Wormius Translation</i>) from the
+        relevant investigator\'s deck.</b></string>
+    <string name="remove_armitage"><b>Remove the Dr. Henry Armitage card from the relevant investigator\'s deck
+        .</b></string>
+    <string name="remove_rice"><b>Remove the Professor Warren Rice card from the relevant investigator\'s deck
+        .</b></string>
+    <string
+        name="remove_morgan"><b>Remove the Dr. Francis Morgan card from the relevant investigator\'s deck.</b></string>
 
     <!--Side stories-->
     <string-array name="side_stories">

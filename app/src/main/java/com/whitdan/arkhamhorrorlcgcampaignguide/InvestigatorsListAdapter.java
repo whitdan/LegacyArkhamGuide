@@ -3,6 +3,8 @@ package com.whitdan.arkhamhorrorlcgcampaignguide;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -55,20 +57,29 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
         View investigatorView = listItemView.findViewById(R.id.investigator_view);
         investigatorView.setVisibility(VISIBLE);
 
-        // Get name and apply to corresponding TextView
+        // Get name and player name and apply to corresponding TextViews
         int investigatorName = currentInvestigator.getName();
         TextView investigatorNameView = (TextView) listItemView.findViewById(R.id.investigator_name);
         investigatorNameView.setText(investigatorNames[investigatorName]);
         String playerName = currentInvestigator.getPlayer();
         TextView playerNameView = (TextView) listItemView.findViewById(R.id.player_name);
         playerNameView.setText(playerName);
+
+        // Get decklist name and url and apply to corresponding TextView
+        String deckName = currentInvestigator.getDeckName();
+        TextView decklistView = (TextView) listItemView.findViewById(R.id.decklist);
         final String decklist = currentInvestigator.getDecklist();
         TextView decklistPaddingView = (TextView) listItemView.findViewById(R.id.decklist_padding);
-        TextView decklistView = (TextView) listItemView.findViewById(R.id.decklist);
-        if(decklist == null){
+        if(deckName == null && decklist == null){
             decklistPaddingView.setVisibility(GONE);
             decklistView.setVisibility(GONE);
-        } else{
+        }
+        if(deckName != null){
+            decklistView.setText(deckName);
+        }
+        if(decklist != null){
+            decklistView.setPaintFlags(decklistView.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+            decklistView.setTextColor(Color.BLUE);
             decklistView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -207,6 +218,14 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
         public void onItemSelected(AdapterView<?> parent, View view,
                                    int pos, long id) {
             globalVariables.investigators.get(position).setTempStatus(pos);
+
+            // Required for The Essex County Express
+            if(globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5 &&
+                    globalVariables.getResolution() == 1){
+                Spinner spinner = (Spinner) parent.getRootView().findViewById(R.id.resolution_selection);
+                spinner.setSelection(2, true);
+                spinner.setSelection(1, true);
+            }
         }
 
         public void onNothingSelected(AdapterView<?> parent) {

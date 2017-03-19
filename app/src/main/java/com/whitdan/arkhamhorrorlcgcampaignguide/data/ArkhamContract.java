@@ -51,6 +51,7 @@ public class ArkhamContract {
         public static final String COLUMN_INVESTIGATOR_HORROR = "horror";
         public static final String COLUMN_INVESTIGATOR_XP = "xp";
         public static final String COLUMN_INVESTIGATOR_PLAYER = "player";
+        public static final String COLUMN_INVESTIGATOR_DECKNAME = "deckname";
         public static final String COLUMN_INVESTIGATOR_DECKLIST = "decklist";
     }
 
@@ -85,5 +86,6 @@ public class ArkhamContract {
         public static final String COLUMN_FRANCIS_MORGAN = "francis_morgan";
         public static final String COLUMN_INVESTIGATORS_CHEATED = "investigators_cheated";
         public static final String COLUMN_NECRONOMICON = "necronomicon";
+        public static final String COLUMN_DELAYED = "delayed";
     }
 }

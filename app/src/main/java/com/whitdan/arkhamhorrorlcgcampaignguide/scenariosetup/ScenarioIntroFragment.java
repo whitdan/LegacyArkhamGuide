@@ -61,6 +61,9 @@ public class ScenarioIntroFragment extends Fragment {
                         }
                         break;
                     case 5:
+                        textView.setText(R.string.essex_setup);
+                        break;
+                    case 6:
                         textView.setText(R.string.scenario_not_available);
                         break;
                 }

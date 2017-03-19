@@ -399,8 +399,76 @@ public class CampaignInvestigatorsFragment extends Fragment {
                     }
                 });
 
+                final EditText playerOneDeckName = (EditText) parent.findViewById(R.id.investigator_one_deck_name);
+                playerOneDeckName.addTextChangedListener(new TextWatcher(){
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                final EditText playerOneDeck = (EditText) parent.findViewById(R.id.investigator_one_deck);
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.deckNames[0] = playerOneDeckName.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerTwoDeckName = (EditText) parent.findViewById(R.id.investigator_two_deck_name);
+                playerTwoDeckName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.deckNames[1] = playerTwoDeckName.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerThreeDeckName = (EditText) parent.findViewById(R.id.investigator_three_deck_name);
+                playerThreeDeckName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.deckNames[2] = playerThreeDeckName.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerFourDeckName = (EditText) parent.findViewById(R.id.investigator_four_deck_name);
+                playerFourDeckName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.deckNames[3] = playerFourDeckName.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+
+                final EditText playerOneDeck = (EditText) parent.findViewById(R.id.investigator_one_deck_link);
                 playerOneDeck.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -417,7 +485,7 @@ public class CampaignInvestigatorsFragment extends Fragment {
 
                     }
                 });
-                final EditText playerTwoDeck = (EditText) parent.findViewById(R.id.investigator_two_deck);
+                final EditText playerTwoDeck = (EditText) parent.findViewById(R.id.investigator_two_deck_link);
                 playerTwoDeck.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -434,7 +502,7 @@ public class CampaignInvestigatorsFragment extends Fragment {
 
                     }
                 });
-                final EditText playerThreeDeck = (EditText) parent.findViewById(R.id.investigator_three_deck);
+                final EditText playerThreeDeck = (EditText) parent.findViewById(R.id.investigator_three_deck_link);
                 playerThreeDeck.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -451,7 +519,7 @@ public class CampaignInvestigatorsFragment extends Fragment {
 
                     }
                 });
-                final EditText playerFourDeck = (EditText) parent.findViewById(R.id.investigator_four_deck);
+                final EditText playerFourDeck = (EditText) parent.findViewById(R.id.investigator_four_deck_link);
                 playerFourDeck.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {

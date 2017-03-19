@@ -77,6 +77,9 @@ class CampaignsListAdapter extends CursorAdapter {
                     case 5:
                         currentScenarioView.setText(R.string.dunwich_scenario_four);
                         break;
+                    case 6:
+                        currentScenarioView.setText(R.string.dunwich_scenario_five);
+                        break;
                 }
         }
     }
