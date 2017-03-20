@@ -384,10 +384,10 @@
     <string name="dunwich_scenario_two">Scenario 1-B: The House Always Wins</string>
     <string name="dunwich_scenario_three">Scenario 2: The Miskatonic Museum</string>
     <string name="dunwich_scenario_four">Scenario 3: The Essex County Express</string>
-    <string name="dunwich_scenario_five">Blood on the Altar</string>
-    <string name="dunwich_scenario_six">Undimensional and Unseen</string>
-    <string name="dunwich_scenario_seven">Where Doom Awaits</string>
-    <string name="dunwich_scenario_eight">Lost in Time and Space</string>
+    <string name="dunwich_scenario_five">Scenario 4: Blood on the Altar</string>
+    <string name="dunwich_scenario_six">Scenario 5: Undimensional and Unseen</string>
+    <string name="dunwich_scenario_seven">Scenario 6: Where Doom Awaits</string>
+    <string name="dunwich_scenario_eight">Scenario 7: Lost in Time and Space</string>
     <string name="dunwich_interlude_one">Interlude 1: Armitage\'s Fate</string>
 
     <!--Miscellaneous-->
@@ -678,8 +678,7 @@
         and shakes, startling you out of your reverie. The train loudly skids to a violent halt, and you hear a
     rattling noise behind you&#8230;</string>
 
-    <string name="essex_sets">The Essex County Express, The Beyond, Striking Fear, Ancient Evils, and Dark Cult
-        .</string>
+    <string name="essex_sets">The Essex County Express, The Beyond, Striking Fear, Ancient Evils, and Dark Cult.</string>
     <string name="essex_locations">Put one of the three Engine Car locations into play at random and remove the
     others from the game.\n
     \nPut six of the eight Train Car locations into play at random, in a straight line to the left of the
@@ -727,10 +726,10 @@
             deck.</b></string>
 
     <string name="necronomicon_defeated">Investigator with The Necronomicon (<i>Olaus Wormius Translation</i>)
-        was defeated.</string>
-    <string name="armitage_defeated">Investigator with the Dr. Henry Armitage card was defeated.</string>
-    <string name="rice_defeated">Investigator with the Professor Warren Rice card was defeated.</string>
-    <string name="morgan_defeated">Investigator with the Dr. Francis Morgan card was defeated.</string>
+        was defeated</string>
+    <string name="armitage_defeated">Investigator with the Dr. Henry Armitage card was defeated</string>
+    <string name="rice_defeated">Investigator with the Professor Warren Rice card was defeated</string>
+    <string name="morgan_defeated">Investigator with the Dr. Francis Morgan card was defeated</string>
     <string
         name="remove_necronomicon"><b>Remove The Necronomicon (<i>Olaus Wormius Translation</i>) from the
         relevant investigator\'s deck.</b></string>

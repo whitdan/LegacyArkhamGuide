@@ -2,6 +2,24 @@
 <items version="2" >
 
     <item
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\954c53ec3ef2251798b142dcd7136d2809854fb0\output\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\internal_impl-24.2.1_54693c7bd7311b605f9e85aba6cb1a7255e2450e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\7375d612833e20cd42d13bd7c579ac7658bdfc1f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\classes_a005a197977e8ff2dd6558e6603bc20e5342a1e9.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="C:\Users\danie\.android\build-cache\564bd5f7e54951bd7778935d263da89f231a88bd\output\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="true"
@@ -38,22 +56,13 @@
         <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a005a197977e8ff2dd6558e6603bc20e5342a1e9\classes.dex" />
     </item>
     <item
-        is-multidex="true"
-        jar="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\e836ef44a6de32cc0bb8c1c12d0210957424d134\output\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.1"
-        sha1="aaa63b7b46e608de8c7b17dffba19e55aa59c702">
-        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_7f370c7ce2adabd47e649561467a6cced2146297\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\danie\.android\build-cache\f7f9c3e08daaec4faa4e712f1d1026a87d412f9e\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9ba5717633ead22f86f3cdd28a04d75bc58e2593\classes.dex" />
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\classes_a0cea3d5fc513c8085b41c38f8fb0854e003f3bc.jar" />
     </item>
     <item
         is-multidex="true"
@@ -65,13 +74,13 @@
         <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_54693c7bd7311b605f9e85aba6cb1a7255e2450e\classes.dex" />
     </item>
     <item
-        is-multidex="true"
-        jar="C:\Users\danie\.android\build-cache\2a6c094d593fac8a36c28fc5190e984b67605bf1\output\jars\classes.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\f7f9c3e08daaec4faa4e712f1d1026a87d412f9e\output\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.1"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8327b7808b900fe1d5a06288e273e8f456d41b99\classes.dex" />
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\classes_9ba5717633ead22f86f3cdd28a04d75bc58e2593.jar" />
     </item>
     <item
         is-multidex="true"
@@ -83,13 +92,13 @@
         <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f84bba9b684dba24767d737b3fe52918ed3f1df5\classes.dex" />
     </item>
     <item
-        is-multidex="true"
-        jar="C:\Users\danie\.android\build-cache\240a00ac628050cdfb36e53253d9abac8076b820\output\jars\classes.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\c77c3494cd3a0a721be5449d702e18e03b581f25\output\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.1"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8f975451a7e30c115c8a87cb470e43d3cf75c502\classes.dex" />
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\classes_19728f02959597619f04c2e0049b00e80901b27a.jar" />
     </item>
     <item
         is-multidex="true"
@@ -111,21 +120,138 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\danie\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_bf26e6b38e16dd99a6a17c6e8f4a57a3a1c6ccb9\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\danie\.android\build-cache\85a0029096ffbba3242fd4a6683ed27db61a7cb9\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
         <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4baf19d891b06d40535dedda4d173a39ffb46beb\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\85a0029096ffbba3242fd4a6683ed27db61a7cb9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\classes_4baf19d891b06d40535dedda4d173a39ffb46beb.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_afab8f0e0700b74c4e99eced180b51d338df6e20\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\564bd5f7e54951bd7778935d263da89f231a88bd\output\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\internal_impl-24.2.1_681cbbf7e55da5f0e1c3510b80ab66b9bcdac367.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\987c141c9bf857fc79af431eedb6b2570ce86362\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\classes_f84bba9b684dba24767d737b3fe52918ed3f1df5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\2a6c094d593fac8a36c28fc5190e984b67605bf1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\classes_8327b7808b900fe1d5a06288e273e8f456d41b99.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\11af036a98b191ba33de11ab27d16908441d813d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\classes_0d7f0fc64621f9dce517fe68e38bac7347c896a4.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="aaa63b7b46e608de8c7b17dffba19e55aa59c702">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_7f370c7ce2adabd47e649561467a6cced2146297\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\danie\.android\build-cache\f7f9c3e08daaec4faa4e712f1d1026a87d412f9e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9ba5717633ead22f86f3cdd28a04d75bc58e2593\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\danie\.android\build-cache\2a6c094d593fac8a36c28fc5190e984b67605bf1\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8327b7808b900fe1d5a06288e273e8f456d41b99\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\240a00ac628050cdfb36e53253d9abac8076b820\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\classes_8f975451a7e30c115c8a87cb470e43d3cf75c502.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\danie\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\support-annotations-24.2.1_bf26e6b38e16dd99a6a17c6e8f4a57a3a1c6ccb9.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\danie\.android\build-cache\240a00ac628050cdfb36e53253d9abac8076b820\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8f975451a7e30c115c8a87cb470e43d3cf75c502\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\954c53ec3ef2251798b142dcd7136d2809854fb0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\classes_390d8ab27968fe6bb610208e1e196a24a57f2e76.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\danie\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_bf26e6b38e16dd99a6a17c6e8f4a57a3a1c6ccb9\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -137,13 +263,40 @@
         <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_390d8ab27968fe6bb610208e1e196a24a57f2e76\classes.dex" />
     </item>
     <item
-        is-multidex="true"
-        jar="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\e836ef44a6de32cc0bb8c1c12d0210957424d134\output\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.1"
-        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_afab8f0e0700b74c4e99eced180b51d338df6e20\classes.dex" />
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\internal_impl-24.2.1_18ad152eed2d955eed7126a5d8f5077c330fc6ee.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\564bd5f7e54951bd7778935d263da89f231a88bd\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\classes_8e82c2074ee3f0b37326b89bc692b0f91509dba7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\f7f9c3e08daaec4faa4e712f1d1026a87d412f9e\output\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\internal_impl-24.2.1_727552d4581a65158aca2a65c52785b5f304ccc4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\11af036a98b191ba33de11ab27d16908441d813d\output\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\internal_impl-24.2.1_e8c88f634a7035a116fede10a563c37ee4d5e9e8.jar" />
     </item>
     <item
         is-multidex="true"
