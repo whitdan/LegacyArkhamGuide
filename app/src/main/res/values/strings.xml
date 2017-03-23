@@ -139,7 +139,7 @@
     <string name="pick_expacs_owned">Pick expansions owned</string>
     <string name="standalone">Standalone scenario</string>
     <string name="add_side_story">Add side story</string>
-    <string name="edit_investigators">Edit investigators</string>
+    <string name="edit_investigators">Edit team</string>
     <string name="player_cards">Player cards</string>
     <string name="pick_option">Pick an option</string>
     <string name="scenario_not_available">This scenario is not available yet.</string>
