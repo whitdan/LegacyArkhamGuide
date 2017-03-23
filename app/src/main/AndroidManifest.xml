@@ -22,7 +22,8 @@
             android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".scenariosetup.ScenarioSetupActivity"
-            android:parentActivityName=".selectcampaign.SelectCampaignActivity"/>
+            android:parentActivityName=".selectcampaign.SelectCampaignActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".finishscenario.FinishScenarioActivity"
             android:parentActivityName=".selectcampaign.SelectCampaignActivity"/>

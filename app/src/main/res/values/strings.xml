@@ -21,6 +21,9 @@
         <item>\"Ashcan\" Pete</item>
     </string-array>
     <string name="choose_investigators">Choose Investigators</string>
+    <string name="new_investigators">New Investigators</string>
+    <string name="saved_investigators">Saved Investigators</string>
+    <string name="current_team">Current Team</string>
     <string name="roland_banks">Roland Banks</string>
     <string name="daisy_walker">Daisy Walker</string>
     <string name="skids_otoole">Skids O\'Toole</string>
@@ -136,6 +139,7 @@
     <string name="pick_expacs_owned">Pick expansions owned</string>
     <string name="standalone">Standalone scenario</string>
     <string name="add_side_story">Add side story</string>
+    <string name="edit_investigators">Edit investigators</string>
     <string name="player_cards">Player cards</string>
     <string name="pick_option">Pick an option</string>
     <string name="scenario_not_available">This scenario is not available yet.</string>

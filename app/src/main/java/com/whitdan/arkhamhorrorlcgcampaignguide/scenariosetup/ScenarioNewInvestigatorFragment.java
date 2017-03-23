@@ -21,6 +21,7 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.R;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static android.view.View.Z;
 
 /**
  * Allows selection of a new investigator when one has died.
@@ -30,7 +31,10 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
 
     GlobalVariables globalVariables;
     private int investigatorsCount;
-    private int current;
+    public static Investigator investigatorOne;
+    public static Investigator investigatorTwo;
+    public static Investigator investigatorThree;
+    public static Investigator investigatorFour;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,51 +43,54 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
         String[] investigatorNames = getResources().getStringArray(R.array.investigators);
 
         investigatorsCount = 0;
-        current = 0;
+        investigatorOne = null;
+        investigatorTwo = null;
+        investigatorThree = null;
+        investigatorFour = null;
+        globalVariables.editInvestigators = false;
 
+        int first = -1;
+        int second = -1;
+        int third = -1;
+
+        // Setup death statements
         for (int i = 0; i < globalVariables.investigators.size(); i++) {
-            if (globalVariables.investigators.get(i).getStatus() == 1) {
-                investigatorsCount++;
-                current++;
-            }
-        }
-
-        // Setup first death statement
-        if (globalVariables.investigators.size() > 0) {
-            if (globalVariables.investigators.get(0).getStatus() == 2) {
-                String dead = investigatorNames[globalVariables.investigators.get(0).getName()] + " has died.";
+            if (globalVariables.investigators.get(i).getStatus() == 2) {
+                String dead = investigatorNames[globalVariables.investigators.get(i).getName()] + " has died.";
                 TextView investigator = (TextView) v.findViewById(R.id.investigator_one_died);
                 investigator.setVisibility(VISIBLE);
                 investigator.setText(dead);
+                first = i;
+                break;
             }
         }
-
-        // Setup second death statement
-        if (globalVariables.investigators.size() > 1) {
-            if (globalVariables.investigators.get(1).getStatus() == 2) {
-                String dead = investigatorNames[globalVariables.investigators.get(1).getName()] + " has died.";
+        for (int i = 0; i < globalVariables.investigators.size(); i++) {
+            if (globalVariables.investigators.get(i).getStatus() == 2 && i != first) {
+                String dead = investigatorNames[globalVariables.investigators.get(i).getName()] + " has died.";
                 TextView investigator = (TextView) v.findViewById(R.id.investigator_two_died);
                 investigator.setVisibility(VISIBLE);
                 investigator.setText(dead);
+                second = i;
+                break;
             }
         }
-        // Setup third death statement
-        if (globalVariables.investigators.size() > 2) {
-            if (globalVariables.investigators.get(2).getStatus() == 2) {
-                String dead = investigatorNames[globalVariables.investigators.get(2).getName()] + " has died.";
+        for (int i = 0; i < globalVariables.investigators.size(); i++) {
+            if (globalVariables.investigators.get(i).getStatus() == 2 && i != first && i != second) {
+                String dead = investigatorNames[globalVariables.investigators.get(i).getName()] + " has died.";
                 TextView investigator = (TextView) v.findViewById(R.id.investigator_three_died);
                 investigator.setVisibility(VISIBLE);
                 investigator.setText(dead);
+                third = i;
+                break;
             }
         }
-
-        // Setup fourth death statement
-        if (globalVariables.investigators.size() > 3) {
-            if (globalVariables.investigators.get(3).getStatus() == 2) {
-                String dead = investigatorNames[globalVariables.investigators.get(3).getName()] + " has died.";
+        for (int i = 0; i < globalVariables.investigators.size(); i++) {
+            if (globalVariables.investigators.get(i).getStatus() == 2 && i != first && i != second && i != third) {
+                String dead = investigatorNames[globalVariables.investigators.get(i).getName()] + " has died.";
                 TextView investigator = (TextView) v.findViewById(R.id.investigator_four_died);
                 investigator.setVisibility(VISIBLE);
                 investigator.setText(dead);
+                break;
             }
         }
 
@@ -200,6 +207,43 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
         if (investigators == 0) {
             TextView lost = (TextView) v.findViewById(R.id.choose_investigators);
             lost.setText(R.string.lost);
+        }
+
+        // Setup checkboxes for saved investigators
+        LinearLayout savedInvestigators = (LinearLayout) v.findViewById(R.id.saved_investigators_layout);
+        for (int i = 0; i < globalVariables.investigators.size(); i++) {
+            if (globalVariables.investigators.get(i).getStatus() == 1) {
+                CheckBox investigator = new CheckBox(getActivity());
+                String investigatorName;
+                if (globalVariables.investigators.get(i).getPlayer() != null && globalVariables.investigators.get(i)
+                        .getPlayer().length() > 0) {
+                    investigatorName = investigatorNames[globalVariables.investigators.get(i).getName()] + " (" +
+                            globalVariables.investigators.get(i).getPlayer() + ")";
+                } else {
+                    investigatorName = investigatorNames[globalVariables.investigators.get(i).getName()];
+                }
+                investigator.setText(investigatorName);
+                investigator.setId(i);
+                investigator.setOnCheckedChangeListener(new InvestigatorsCheckedChangeListener());
+                savedInvestigators.addView(investigator);
+                investigator.setChecked(true);
+            }
+        }
+        for (int i = 0; i < globalVariables.savedInvestigators.size(); i++) {
+            CheckBox investigator = new CheckBox(getActivity());
+            String investigatorName;
+            if (globalVariables.savedInvestigators.get(i).getPlayer() != null && globalVariables.savedInvestigators.get(i)
+                    .getPlayer().length() > 0) {
+                investigatorName = investigatorNames[globalVariables.savedInvestigators.get(i).getName()] + " (" +
+                        globalVariables.savedInvestigators.get(i).getPlayer() + ")";
+            } else {
+                investigatorName = investigatorNames[globalVariables.savedInvestigators.get(i).getName()];
+            }
+            investigator.setText(investigatorName);
+            investigator.setId(i + 100);
+            investigator.setOnCheckedChangeListener(new InvestigatorsCheckedChangeListener());
+            savedInvestigators.addView(investigator);
+            investigator.setChecked(false);
         }
 
         // Set onClickListener on the continue button
@@ -375,251 +419,435 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
                         }
                     }
                     break;
+                default:
+                    if (isChecked && investigatorsCount < 4) {
+                        investigatorsCount++;
+                        if (buttonView.getId() < 100) {
+                            globalVariables.investigatorNames.add(globalVariables.investigators.get(buttonView.getId())
+                                    .getName());
+                            for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+                                if (globalVariables.investigatorNames.get(i) == globalVariables.investigators.get
+                                        (buttonView.getId()).getName()) {
+                                    switch (i) {
+                                        case 0:
+                                            investigatorOne = globalVariables.investigators.get(buttonView.getId());
+                                            break;
+                                        case 1:
+                                            investigatorTwo = globalVariables.investigators.get(buttonView.getId());
+                                            break;
+                                        case 2:
+                                            investigatorThree = globalVariables.investigators.get(buttonView.getId());
+                                            break;
+                                        case 3:
+                                            investigatorFour = globalVariables.investigators.get(buttonView.getId());
+                                            break;
+                                    }
+                                }
+                            }
+                        } else {
+                            globalVariables.investigatorNames.add(globalVariables.savedInvestigators.get(buttonView
+                                    .getId() - 100).getName());
+                            for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+                                if (globalVariables.investigatorNames.get(i) == globalVariables.savedInvestigators.get
+                                        (buttonView.getId() - 100).getName()) {
+                                    switch (i) {
+                                        case 0:
+                                            investigatorOne = globalVariables.savedInvestigators.get(buttonView.getId
+                                                    () - 100);
+                                            break;
+                                        case 1:
+                                            investigatorTwo = globalVariables.savedInvestigators.get(buttonView.getId
+                                                    () - 100);
+                                            break;
+                                        case 2:
+                                            investigatorThree = globalVariables.savedInvestigators.get(buttonView
+                                                    .getId() - 100);
+                                            break;
+                                        case 3:
+                                            investigatorFour = globalVariables.savedInvestigators.get(buttonView
+                                                    .getId() - 100);
+                                            break;
+                                    }
+                                }
+                            }
+                        }
+                    } else if (isChecked) {
+                        buttonView.setChecked(false);
+                    } else {
+                        investigatorsCount--;
+                        for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+                            if (buttonView.getId() >= 100) {
+                                if (globalVariables.investigatorNames.get(i) == globalVariables.savedInvestigators.get
+                                        (buttonView.getId() - 100).getName()) {
+                                    globalVariables.investigatorNames.remove(i);
+                                    switch (i) {
+                                        case 0:
+                                            investigatorOne = investigatorTwo;
+                                        case 1:
+                                            investigatorTwo = investigatorThree;
+                                        case 2:
+                                            investigatorThree = investigatorFour;
+                                        case 3:
+                                            investigatorFour = null;
+                                    }
+                                }
+                            } else if (globalVariables.investigatorNames.get(i) == globalVariables.investigators.get
+                                    (buttonView.getId()).getName()) {
+                                globalVariables.investigatorNames.remove(i);
+                                switch (i) {
+                                    case 0:
+                                        investigatorOne = investigatorTwo;
+                                    case 1:
+                                        investigatorTwo = investigatorThree;
+                                    case 2:
+                                        investigatorThree = investigatorFour;
+                                    case 3:
+                                        investigatorFour = null;
+                                }
+                            }
+                        }
+                    }
+                    break;
             }
 
-            LinearLayout investigatorOne = (LinearLayout) parent.findViewById(R.id.investigator_one);
-            LinearLayout investigatorTwo = (LinearLayout) parent.findViewById(R.id.investigator_two);
-            LinearLayout investigatorThree = (LinearLayout) parent.findViewById(R.id.investigator_three);
-            LinearLayout investigatorFour = (LinearLayout) parent.findViewById(R.id.investigator_four);
+            LinearLayout investigatorOneLayout = (LinearLayout) parent.findViewById(R.id.investigator_one);
+            LinearLayout investigatorTwoLayout = (LinearLayout) parent.findViewById(R.id.investigator_two);
+            LinearLayout investigatorThreeLayout = (LinearLayout) parent.findViewById(R.id.investigator_three);
+            LinearLayout investigatorFourLayout = (LinearLayout) parent.findViewById(R.id.investigator_four);
             TextView investigatorOneName = (TextView) parent.findViewById(R.id.investigator_one_name);
             TextView investigatorTwoName = (TextView) parent.findViewById(R.id.investigator_two_name);
             TextView investigatorThreeName = (TextView) parent.findViewById(R.id.investigator_three_name);
             TextView investigatorFourName = (TextView) parent.findViewById(R.id.investigator_four_name);
             String[] investigatorNames = getContext().getResources().getStringArray(R.array.investigators);
 
-            Log.i("investigators: ", Integer.toString(investigatorsCount));
-            Log.i("current: ", Integer.toString(current));
+            final EditText playerOneName = (EditText) parent.findViewById(R.id.investigator_one_player);
+            final EditText playerTwoName = (EditText) parent.findViewById(R.id.investigator_two_player);
+            final EditText playerThreeName = (EditText) parent.findViewById(R.id.investigator_three_player);
+            final EditText playerFourName = (EditText) parent.findViewById(R.id.investigator_four_player);
+            final EditText playerOneDeckName = (EditText) parent.findViewById(R.id.investigator_one_deck_name);
+            final EditText playerTwoDeckName = (EditText) parent.findViewById(R.id.investigator_two_deck_name);
+            final EditText playerThreeDeckName = (EditText) parent.findViewById(R.id.investigator_three_deck_name);
+            final EditText playerFourDeckName = (EditText) parent.findViewById(R.id.investigator_four_deck_name);
+            final EditText playerOneDeck = (EditText) parent.findViewById(R.id.investigator_one_deck_link);
+            final EditText playerTwoDeck = (EditText) parent.findViewById(R.id.investigator_two_deck_link);
+            final EditText playerThreeDeck = (EditText) parent.findViewById(R.id.investigator_three_deck_link);
+            final EditText playerFourDeck = (EditText) parent.findViewById(R.id.investigator_four_deck_link);
 
             // Show relevant views
-            if(investigatorsCount - current > 0){
-                investigatorOne.setVisibility(VISIBLE);
+            if (investigatorOne != null) {
+                investigatorOneLayout.setVisibility(VISIBLE);
+                Investigator currentInvestigator = investigatorOne;
+                String nameOne = investigatorNames[currentInvestigator.getName()];
+                investigatorOneName.setText(nameOne);
+                playerOneName.setText(currentInvestigator.getPlayer());
+                playerOneDeck.setText(currentInvestigator.getDecklist());
+                playerOneDeckName.setText(currentInvestigator.getDeckName());
+            } else if (investigatorsCount > 0) {
+                investigatorOneLayout.setVisibility(VISIBLE);
                 String nameOne = investigatorNames[globalVariables.investigatorNames.get(0)];
                 investigatorOneName.setText(nameOne);
-            } else {investigatorOne.setVisibility(GONE);}
+                playerOneName.setText(null);
+                playerOneDeck.setText(null);
+                playerOneDeckName.setText(null);
+            } else {
+                investigatorOneLayout.setVisibility(GONE);
+            }
 
-            if(investigatorsCount - current > 1){
-                investigatorTwo.setVisibility(VISIBLE);
+            if (investigatorTwo != null) {
+                investigatorTwoLayout.setVisibility(VISIBLE);
+                Investigator currentInvestigator = investigatorTwo;
+                String nameTwo = investigatorNames[currentInvestigator.getName()];
+                investigatorTwoName.setText(nameTwo);
+                playerTwoName.setText(currentInvestigator.getPlayer());
+                playerTwoDeck.setText(currentInvestigator.getDecklist());
+                playerTwoDeckName.setText(currentInvestigator.getDeckName());
+            } else if (investigatorsCount > 1) {
+                investigatorTwoLayout.setVisibility(VISIBLE);
                 String nameTwo = investigatorNames[globalVariables.investigatorNames.get(1)];
                 investigatorTwoName.setText(nameTwo);
-            } else {investigatorTwo.setVisibility(GONE);}
+                playerTwoName.setText(null);
+                playerTwoDeck.setText(null);
+                playerTwoDeckName.setText(null);
+            } else {
+                investigatorTwoLayout.setVisibility(GONE);
+            }
 
-            if(investigatorsCount - current > 2){
-                investigatorThree.setVisibility(VISIBLE);
+            if (investigatorThree != null) {
+                investigatorThreeLayout.setVisibility(VISIBLE);
+                Investigator currentInvestigator = investigatorThree;
+                String nameThree = investigatorNames[currentInvestigator.getName()];
+                investigatorThreeName.setText(nameThree);
+                playerThreeName.setText(currentInvestigator.getPlayer());
+                playerThreeDeck.setText(currentInvestigator.getDecklist());
+                playerThreeDeckName.setText(currentInvestigator.getDeckName());
+            } else if (investigatorsCount > 2) {
+                investigatorThreeLayout.setVisibility(VISIBLE);
                 String nameThree = investigatorNames[globalVariables.investigatorNames.get(2)];
                 investigatorThreeName.setText(nameThree);
-            } else {investigatorThree.setVisibility(GONE);}
+                playerThreeName.setText(null);
+                playerThreeDeck.setText(null);
+                playerThreeDeckName.setText(null);
+            } else {
+                investigatorThreeLayout.setVisibility(GONE);
+            }
 
-            if(investigatorsCount - current > 3){
-                investigatorFour.setVisibility(VISIBLE);
+            if (investigatorFour != null) {
+                investigatorFourLayout.setVisibility(VISIBLE);
+                Investigator currentInvestigator = investigatorFour;
+                String nameFour = investigatorNames[currentInvestigator.getName()];
+                investigatorFourName.setText(nameFour);
+                playerFourName.setText(currentInvestigator.getPlayer());
+                playerFourDeck.setText(currentInvestigator.getDecklist());
+                playerFourDeckName.setText(currentInvestigator.getDeckName());
+            } else if (investigatorsCount > 3) {
+                investigatorFourLayout.setVisibility(VISIBLE);
                 String nameFour = investigatorNames[globalVariables.investigatorNames.get(3)];
                 investigatorFourName.setText(nameFour);
-            } else {investigatorFour.setVisibility(GONE);}
+                playerFourName.setText(null);
+                playerFourDeck.setText(null);
+                playerFourDeckName.setText(null);
+            } else {
+                investigatorFourLayout.setVisibility(GONE);
+            }
 
-            // Set listeners on the edit text fields
-            final EditText playerOneName = (EditText) parent.findViewById(R.id.investigator_one_player);
+            /*
+                Set listeners on the edit text fields
+             */
+
+            // Investigator One
             playerOneName.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
                 }
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    globalVariables.playerNames[0] = playerOneName.getText().toString().trim();
+                    if (investigatorOne != null) {
+                        investigatorOne.setPlayer(playerOneName.getText().toString().trim());
+                    } else {
+                        globalVariables.playerNames[0] = playerOneName.getText().toString().trim();
+                    }
                 }
 
                 @Override
                 public void afterTextChanged(Editable s) {
-
                 }
             });
-            final EditText playerTwoName = (EditText) parent.findViewById(R.id.investigator_two_player);
-            playerTwoName.addTextChangedListener(new TextWatcher() {
+            playerOneDeckName.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
                 }
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    globalVariables.playerNames[1] = playerTwoName.getText().toString().trim();
+                    if (investigatorOne != null) {
+                        investigatorOne.setDeckName(playerOneDeckName.getText
+                                ().toString().trim());
+                    } else {
+                        globalVariables.deckNames[0] = playerOneDeckName.getText().toString().trim();
+                    }
                 }
 
                 @Override
                 public void afterTextChanged(Editable s) {
-
                 }
             });
-            final EditText playerThreeName = (EditText) parent.findViewById(R.id.investigator_three_player);
-            playerThreeName.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    globalVariables.playerNames[2] = playerThreeName.getText().toString().trim();
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
-            final EditText playerFourName = (EditText) parent.findViewById(R.id.investigator_four_player);
-            playerFourName.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    globalVariables.playerNames[3] = playerFourName.getText().toString().trim();
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
-
-            final EditText playerOneDeckName = (EditText) parent.findViewById(R.id.investigator_one_deck_name);
-            playerOneDeckName.addTextChangedListener(new TextWatcher(){
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    globalVariables.deckNames[0] = playerOneDeckName.getText().toString().trim();
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
-            final EditText playerTwoDeckName = (EditText) parent.findViewById(R.id.investigator_two_deck_name);
-            playerTwoDeckName.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    globalVariables.deckNames[1] = playerTwoDeckName.getText().toString().trim();
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
-            final EditText playerThreeDeckName = (EditText) parent.findViewById(R.id.investigator_three_deck_name);
-            playerThreeDeckName.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    globalVariables.deckNames[2] = playerThreeDeckName.getText().toString().trim();
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
-            final EditText playerFourDeckName = (EditText) parent.findViewById(R.id.investigator_four_deck_name);
-            playerFourDeckName.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    globalVariables.deckNames[3] = playerFourDeckName.getText().toString().trim();
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
-
-            final EditText playerOneDeck = (EditText) parent.findViewById(R.id.investigator_one_deck_link);
             playerOneDeck.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
                 }
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    globalVariables.decklists[0] = playerOneDeck.getText().toString().trim();
+                    if (investigatorOne != null) {
+                        investigatorOne.setDecklist(playerOneDeck.getText
+                                ().toString().trim());
+                    } else {
+                        globalVariables.decklists[0] = playerOneDeck.getText().toString().trim();
+                    }
                 }
 
                 @Override
                 public void afterTextChanged(Editable s) {
-
                 }
             });
-            final EditText playerTwoDeck = (EditText) parent.findViewById(R.id.investigator_two_deck_link);
+
+
+            // Investigator Two
+            playerTwoName.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if (investigatorTwo != null) {
+                        investigatorTwo.setPlayer(playerTwoName.getText
+                                ().toString().trim());
+                    } else {
+                        globalVariables.playerNames[1] = playerTwoName.getText().toString().trim();
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                }
+            });
+            playerTwoDeckName.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if (investigatorTwo != null) {
+                        investigatorTwo.setDeckName(playerTwoDeckName.getText
+                                ().toString().trim());
+                    } else {
+                        globalVariables.deckNames[1] = playerTwoDeckName.getText().toString().trim();
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                }
+            });
             playerTwoDeck.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
                 }
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    globalVariables.decklists[1] = playerTwoDeck.getText().toString().trim();
+                    if (investigatorTwo != null) {
+                        investigatorTwo.setDecklist(playerTwoDeck.getText
+                                ().toString().trim());
+                    } else {
+                        globalVariables.decklists[1] = playerTwoDeck.getText().toString().trim();
+                    }
                 }
 
                 @Override
                 public void afterTextChanged(Editable s) {
-
                 }
             });
-            final EditText playerThreeDeck = (EditText) parent.findViewById(R.id.investigator_three_deck_link);
+
+            // Investigator Three
+            playerThreeName.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if (investigatorThree != null) {
+                        investigatorThree.setPlayer(playerThreeName.getText
+                                ().toString().trim());
+                    } else {
+                        globalVariables.playerNames[2] = playerThreeName.getText().toString().trim();
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                }
+            });
+            playerThreeDeckName.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if (investigatorThree != null) {
+                        investigatorThree.setDeckName(playerThreeDeckName.getText
+                                ().toString().trim());
+                    } else {
+                        globalVariables.deckNames[2] = playerThreeDeckName.getText().toString().trim();
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                }
+            });
             playerThreeDeck.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
                 }
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    globalVariables.decklists[2] = playerThreeDeck.getText().toString().trim();
+                    if (investigatorThree != null) {
+                        investigatorThree.setDecklist(playerThreeDeck.getText
+                                ().toString().trim());
+                    } else {
+                        globalVariables.decklists[2] = playerThreeDeck.getText().toString().trim();
+                    }
                 }
 
                 @Override
                 public void afterTextChanged(Editable s) {
-
                 }
             });
-            final EditText playerFourDeck = (EditText) parent.findViewById(R.id.investigator_four_deck_link);
+
+
+            // Investigator Four
+            playerFourName.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if (investigatorFour != null) {
+                        investigatorFour.setPlayer(playerFourName.getText
+                                ().toString().trim());
+                    } else {
+                        globalVariables.playerNames[3] = playerFourName.getText().toString().trim();
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                }
+            });
+            playerFourDeckName.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if (investigatorFour != null) {
+                        investigatorFour.setDeckName(playerFourDeckName.getText
+                                ().toString().trim());
+                    } else {
+                        globalVariables.deckNames[3] = playerFourDeckName.getText().toString().trim();
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                }
+            });
             playerFourDeck.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
                 }
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    globalVariables.decklists[3] = playerFourDeck.getText().toString().trim();
+                    if (investigatorFour != null) {
+                        investigatorFour.setDecklist(playerFourDeck.getText
+                                ().toString().trim());
+                    } else {
+                        globalVariables.decklists[3] = playerFourDeck.getText().toString().trim();
+                    }
                 }
 
                 @Override
                 public void afterTextChanged(Editable s) {
-
                 }
             });
         }

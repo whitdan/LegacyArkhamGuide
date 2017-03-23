@@ -42,6 +42,8 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
     @Override
     @NonNull
     public View getView(int pos, View convertView, @NonNull ViewGroup parent) {
+        final Investigator currentInvestigator = getItem(pos);
+
         // Check if an existing view is being reused, otherwise inflate the view
         View listItemView = convertView;
         if (listItemView == null) {
@@ -51,7 +53,6 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
 
         // Get array of all investigator names and the current Investigator object
         String[] investigatorNames = getContext().getResources().getStringArray(R.array.investigators);
-        final Investigator currentInvestigator = getItem(pos);
 
         // Ensure the ListView item is visible
         View investigatorView = listItemView.findViewById(R.id.investigator_view);

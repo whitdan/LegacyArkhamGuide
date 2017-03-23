@@ -247,7 +247,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
-                        android:hint="@string/deck_name"/>
+                        android:hint="@string/deck_name"
+                        android:inputType="textCapSentences"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -308,7 +309,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
-                        android:hint="@string/deck_name"/>
+                        android:hint="@string/deck_name"
+                        android:inputType="textCapSentences"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -369,7 +371,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
-                        android:hint="@string/deck_name"/>
+                        android:hint="@string/deck_name"
+                        android:inputType="textCapSentences"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"

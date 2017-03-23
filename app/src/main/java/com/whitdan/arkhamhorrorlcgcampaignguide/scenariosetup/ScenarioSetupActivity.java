@@ -72,7 +72,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
             viewPager.setAdapter(adapter);
         }
         // If any investigators are dead, go to new investigator fragment
-        else if (investigatorDead) {
+        else if (investigatorDead || globalVariables.editInvestigators) {
             NewInvestigatorPagerAdapter adapter = new NewInvestigatorPagerAdapter(getSupportFragmentManager());
             viewPager.setAdapter(adapter);
         }
@@ -82,7 +82,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
             viewPager.setAdapter(adapter);
         }
         // If appropriate, go to new campaign
-        else if(globalVariables.getCurrentScenario() == 1000){
+        else if (globalVariables.getCurrentScenario() == 1000) {
             NewCampaignPagerAdapter adapter = new NewCampaignPagerAdapter(getSupportFragmentManager());
             viewPager.setAdapter(adapter);
         }
@@ -119,6 +119,11 @@ public class ScenarioSetupActivity extends AppCompatActivity {
                 SideStoryDialog newFragment = new SideStoryDialog();
                 newFragment.show(this.getFragmentManager(), "side_story");
                 return true;
+            case R.id.edit_investigators:
+                // Set edit investigators to true and recreate activity
+                globalVariables.editInvestigators = true;
+                finish();
+                startActivity(starterIntent);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -250,7 +255,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
         }
 
         // Set titles of scenario setup tabs
-        private final String[] tabTitles = new String[]{"Dead Investigators"};
+        private final String[] tabTitles = new String[]{getString(R.string.edit_investigators)};
 
         @Override
         public CharSequence getPageTitle(int position) {
@@ -356,30 +361,60 @@ public class ScenarioSetupActivity extends AppCompatActivity {
 
     // Used when an investigator has died to restart the scenario
     public void restartScenario(Context context) {
-        boolean[] removeInvestigator = new boolean[4];
-        // If the investigator is dead, recreates it
-        for (int i = 0; i < globalVariables.investigators.size(); i++) {
-            Investigator currentInvestigator = globalVariables.investigators.get(i);
-            if (currentInvestigator.getStatus() == 2) {
-                removeInvestigator[i] = true;
+
+        for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+            for (int a = 0; a < globalVariables.investigators.size(); a++) {
+                if (globalVariables.investigators.get(a).getName() == globalVariables.investigatorNames.get(i)) {
+                    globalVariables.investigators.get(a).setStatus(999);
+                }
+            }
+            for (int a = 0; a < globalVariables.savedInvestigators.size(); a++) {
+                if (globalVariables.savedInvestigators.get(a).getName() == globalVariables.investigatorNames.get(i)) {
+                    globalVariables.savedInvestigators.get(a).setStatus(999);
+                }
             }
         }
+        for (int i = 0; i < globalVariables.investigators.size(); i++) {
+            if (globalVariables.investigators.get(i).getStatus() != 999) {
+                globalVariables.investigators.get(i).setStatus(3);
+                globalVariables.savedInvestigators.add(globalVariables.investigators.get(i));
+            }
+        }
+        for(int i = globalVariables.savedInvestigators.size() - 1; i >= 0; i--){
+            if (globalVariables.savedInvestigators.get(i).getStatus() == 999) {
+                globalVariables.savedInvestigators.remove(i);
+            }
+        }
+
+        globalVariables.investigators.clear();
+        if (ScenarioNewInvestigatorFragment.investigatorOne != null) {
+            globalVariables.investigators.add(ScenarioNewInvestigatorFragment.investigatorOne);
+        }
+        if (ScenarioNewInvestigatorFragment.investigatorTwo != null) {
+            globalVariables.investigators.add(ScenarioNewInvestigatorFragment.investigatorTwo);
+        }
+        if (ScenarioNewInvestigatorFragment.investigatorThree != null) {
+            globalVariables.investigators.add(ScenarioNewInvestigatorFragment.investigatorThree);
+        }
+        if (ScenarioNewInvestigatorFragment.investigatorFour != null) {
+            globalVariables.investigators.add(ScenarioNewInvestigatorFragment.investigatorFour);
+        }
+
         for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
-            globalVariables.investigators.add(new Investigator(globalVariables.investigatorNames.get(i),
-                    globalVariables.playerNames[i], globalVariables.deckNames[i], globalVariables.decklists[i]));
+            if (globalVariables.investigatorsInUse[globalVariables.investigatorNames.get(i)] == 0) {
+                globalVariables.investigators.add(new Investigator(globalVariables.investigatorNames.get(i),
+                        globalVariables.playerNames[i], globalVariables.deckNames[i], globalVariables.decklists[i]));
+            }
             globalVariables.investigatorsInUse[globalVariables.investigatorNames.get(i)] = 1;
         }
+        for (int i = 0; i < globalVariables.investigators.size(); i++) {
+            globalVariables.investigators.get(i).setStatus(1);
+        }
+
         globalVariables.investigatorNames.clear();
         globalVariables.playerNames = new String[4];
         globalVariables.deckNames = new String[4];
         globalVariables.decklists = new String[4];
-
-        // Removes any unused investigators (works backwards to avoid reindexing)
-        for (int i = 3; i >= 0; i--) {
-            if (removeInvestigator[i]) {
-                globalVariables.investigators.remove(i);
-            }
-        }
 
         if (globalVariables.investigators.size() == 0) {
             // Kick back to Campaign Select if no replacement investigators are selected

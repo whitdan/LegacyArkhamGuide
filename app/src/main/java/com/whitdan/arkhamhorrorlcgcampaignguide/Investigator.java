@@ -43,7 +43,7 @@ public class Investigator {
     private int mName;
     private int mHealth;
     private int mSanity;
-    private int mStatus;    // 0 = not in use, 1 = in use, 2 = dead
+    private int mStatus;    // 0 = not in use, 1 = in use, 2 = dead, 3 = saved
     private int mDamage;
     private int mHorror;
     private int mAvailableXP;
@@ -85,6 +85,9 @@ public class Investigator {
     int getHorror(){return mHorror;}
     public int getAvailableXP(){return mAvailableXP;}
     public String getPlayer(){return this.mPlayerName;}
+    public void setPlayer(String string){this.mPlayerName = string;}
     public String getDeckName(){return this.mDeckName;}
+    public void setDeckName(String string){this.mDeckName = string;}
     public String getDecklist(){return this.mDecklist;}
+    public void setDecklist(String string){this.mDecklist = string;}
 }
