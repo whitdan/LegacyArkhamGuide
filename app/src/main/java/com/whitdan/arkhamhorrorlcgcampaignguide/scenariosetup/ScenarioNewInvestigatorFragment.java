@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.R;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import static android.view.View.Z;
 
 /**
  * Allows selection of a new investigator when one has died.
@@ -48,6 +46,10 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
         investigatorThree = null;
         investigatorFour = null;
         globalVariables.editInvestigators = false;
+        globalVariables.investigatorNames.clear();
+        globalVariables.playerNames = new String[4];
+        globalVariables.deckNames = new String[4];
+        globalVariables.decklists = new String[4];
 
         int first = -1;
         int second = -1;
@@ -232,7 +234,8 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
         for (int i = 0; i < globalVariables.savedInvestigators.size(); i++) {
             CheckBox investigator = new CheckBox(getActivity());
             String investigatorName;
-            if (globalVariables.savedInvestigators.get(i).getPlayer() != null && globalVariables.savedInvestigators.get(i)
+            if (globalVariables.savedInvestigators.get(i).getPlayer() != null && globalVariables.savedInvestigators
+                    .get(i)
                     .getPlayer().length() > 0) {
                 investigatorName = investigatorNames[globalVariables.savedInvestigators.get(i).getName()] + " (" +
                         globalVariables.savedInvestigators.get(i).getPlayer() + ")";
@@ -539,9 +542,15 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
                 Investigator currentInvestigator = investigatorOne;
                 String nameOne = investigatorNames[currentInvestigator.getName()];
                 investigatorOneName.setText(nameOne);
-                playerOneName.setText(currentInvestigator.getPlayer());
-                playerOneDeck.setText(currentInvestigator.getDecklist());
-                playerOneDeckName.setText(currentInvestigator.getDeckName());
+                if (currentInvestigator.getPlayer() != null) {
+                    playerOneName.setText(currentInvestigator.getPlayer());
+                }
+                if (currentInvestigator.getDecklist() != null) {
+                    playerOneDeck.setText(currentInvestigator.getDecklist());
+                }
+                if (currentInvestigator.getDeckName() != null) {
+                    playerOneDeckName.setText(currentInvestigator.getDeckName());
+                }
             } else if (investigatorsCount > 0) {
                 investigatorOneLayout.setVisibility(VISIBLE);
                 String nameOne = investigatorNames[globalVariables.investigatorNames.get(0)];
@@ -558,9 +567,15 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
                 Investigator currentInvestigator = investigatorTwo;
                 String nameTwo = investigatorNames[currentInvestigator.getName()];
                 investigatorTwoName.setText(nameTwo);
-                playerTwoName.setText(currentInvestigator.getPlayer());
-                playerTwoDeck.setText(currentInvestigator.getDecklist());
-                playerTwoDeckName.setText(currentInvestigator.getDeckName());
+                if (currentInvestigator.getPlayer() != null) {
+                    playerTwoName.setText(currentInvestigator.getPlayer());
+                }
+                if (currentInvestigator.getDecklist() != null) {
+                    playerTwoDeck.setText(currentInvestigator.getDecklist());
+                }
+                if (currentInvestigator.getDeckName() != null) {
+                    playerTwoDeckName.setText(currentInvestigator.getDeckName());
+                }
             } else if (investigatorsCount > 1) {
                 investigatorTwoLayout.setVisibility(VISIBLE);
                 String nameTwo = investigatorNames[globalVariables.investigatorNames.get(1)];
@@ -577,9 +592,15 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
                 Investigator currentInvestigator = investigatorThree;
                 String nameThree = investigatorNames[currentInvestigator.getName()];
                 investigatorThreeName.setText(nameThree);
-                playerThreeName.setText(currentInvestigator.getPlayer());
-                playerThreeDeck.setText(currentInvestigator.getDecklist());
-                playerThreeDeckName.setText(currentInvestigator.getDeckName());
+                if (currentInvestigator.getPlayer() != null) {
+                    playerThreeName.setText(currentInvestigator.getPlayer());
+                }
+                if (currentInvestigator.getDecklist() != null) {
+                    playerThreeDeck.setText(currentInvestigator.getDecklist());
+                }
+                if (currentInvestigator.getDeckName() != null) {
+                    playerThreeDeckName.setText(currentInvestigator.getDeckName());
+                }
             } else if (investigatorsCount > 2) {
                 investigatorThreeLayout.setVisibility(VISIBLE);
                 String nameThree = investigatorNames[globalVariables.investigatorNames.get(2)];
@@ -596,9 +617,15 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
                 Investigator currentInvestigator = investigatorFour;
                 String nameFour = investigatorNames[currentInvestigator.getName()];
                 investigatorFourName.setText(nameFour);
-                playerFourName.setText(currentInvestigator.getPlayer());
-                playerFourDeck.setText(currentInvestigator.getDecklist());
-                playerFourDeckName.setText(currentInvestigator.getDeckName());
+                if (currentInvestigator.getPlayer() != null) {
+                    playerFourName.setText(currentInvestigator.getPlayer());
+                }
+                if (currentInvestigator.getDecklist() != null) {
+                    playerFourDeck.setText(currentInvestigator.getDecklist());
+                }
+                if (currentInvestigator.getDeckName() != null) {
+                    playerFourDeckName.setText(currentInvestigator.getDeckName());
+                }
             } else if (investigatorsCount > 3) {
                 investigatorFourLayout.setVisibility(VISIBLE);
                 String nameFour = investigatorNames[globalVariables.investigatorNames.get(3)];
@@ -622,10 +649,11 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String string = playerOneName.getText().toString().trim();
                     if (investigatorOne != null) {
-                        investigatorOne.setPlayer(playerOneName.getText().toString().trim());
-                    } else {
-                        globalVariables.playerNames[0] = playerOneName.getText().toString().trim();
+                        investigatorOne.setPlayer(string);
+                    } else if (string != null) {
+                        globalVariables.playerNames[0] = string;
                     }
                 }
 
@@ -640,11 +668,11 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String string = playerOneDeckName.getText().toString().trim();
                     if (investigatorOne != null) {
-                        investigatorOne.setDeckName(playerOneDeckName.getText
-                                ().toString().trim());
-                    } else {
-                        globalVariables.deckNames[0] = playerOneDeckName.getText().toString().trim();
+                        investigatorOne.setDeckName(string);
+                    } else if (string != null) {
+                        globalVariables.deckNames[0] = string;
                     }
                 }
 
@@ -659,11 +687,11 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String string = playerOneDeck.getText().toString().trim();
                     if (investigatorOne != null) {
-                        investigatorOne.setDecklist(playerOneDeck.getText
-                                ().toString().trim());
-                    } else {
-                        globalVariables.decklists[0] = playerOneDeck.getText().toString().trim();
+                        investigatorOne.setDecklist(string);
+                    } else if (string != null) {
+                        globalVariables.decklists[0] = string;
                     }
                 }
 
@@ -681,11 +709,11 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String string = playerTwoName.getText().toString().trim();
                     if (investigatorTwo != null) {
-                        investigatorTwo.setPlayer(playerTwoName.getText
-                                ().toString().trim());
-                    } else {
-                        globalVariables.playerNames[1] = playerTwoName.getText().toString().trim();
+                        investigatorTwo.setPlayer(string);
+                    } else if (string != null) {
+                        globalVariables.playerNames[1] = string;
                     }
                 }
 
@@ -700,11 +728,11 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String string = playerTwoDeckName.getText().toString().trim();
                     if (investigatorTwo != null) {
-                        investigatorTwo.setDeckName(playerTwoDeckName.getText
-                                ().toString().trim());
-                    } else {
-                        globalVariables.deckNames[1] = playerTwoDeckName.getText().toString().trim();
+                        investigatorTwo.setDeckName(string);
+                    } else if (string != null) {
+                        globalVariables.deckNames[1] = string;
                     }
                 }
 
@@ -719,11 +747,11 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String string = playerTwoDeck.getText().toString().trim();
                     if (investigatorTwo != null) {
-                        investigatorTwo.setDecklist(playerTwoDeck.getText
-                                ().toString().trim());
-                    } else {
-                        globalVariables.decklists[1] = playerTwoDeck.getText().toString().trim();
+                        investigatorTwo.setDecklist(string);
+                    } else if (string != null) {
+                        globalVariables.decklists[1] = string;
                     }
                 }
 
@@ -740,11 +768,11 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String string = playerThreeName.getText().toString().trim();
                     if (investigatorThree != null) {
-                        investigatorThree.setPlayer(playerThreeName.getText
-                                ().toString().trim());
-                    } else {
-                        globalVariables.playerNames[2] = playerThreeName.getText().toString().trim();
+                        investigatorThree.setPlayer(string);
+                    } else if (string != null) {
+                        globalVariables.playerNames[2] = string;
                     }
                 }
 
@@ -759,11 +787,11 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String string = playerThreeDeckName.getText().toString().trim();
                     if (investigatorThree != null) {
-                        investigatorThree.setDeckName(playerThreeDeckName.getText
-                                ().toString().trim());
-                    } else {
-                        globalVariables.deckNames[2] = playerThreeDeckName.getText().toString().trim();
+                        investigatorThree.setDeckName(string);
+                    } else if (string != null) {
+                        globalVariables.deckNames[2] = string;
                     }
                 }
 
@@ -778,11 +806,11 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String string = playerThreeDeck.getText().toString().trim();
                     if (investigatorThree != null) {
-                        investigatorThree.setDecklist(playerThreeDeck.getText
-                                ().toString().trim());
-                    } else {
-                        globalVariables.decklists[2] = playerThreeDeck.getText().toString().trim();
+                        investigatorThree.setDecklist(string);
+                    } else if (string != null) {
+                        globalVariables.decklists[2] = string;
                     }
                 }
 
@@ -800,11 +828,11 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String string = playerFourName.getText().toString().trim();
                     if (investigatorFour != null) {
-                        investigatorFour.setPlayer(playerFourName.getText
-                                ().toString().trim());
-                    } else {
-                        globalVariables.playerNames[3] = playerFourName.getText().toString().trim();
+                        investigatorFour.setPlayer(string);
+                    } else if (string != null) {
+                        globalVariables.playerNames[3] = string;
                     }
                 }
 
@@ -819,11 +847,11 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String string = playerFourDeckName.getText().toString().trim();
                     if (investigatorFour != null) {
-                        investigatorFour.setDeckName(playerFourDeckName.getText
-                                ().toString().trim());
-                    } else {
-                        globalVariables.deckNames[3] = playerFourDeckName.getText().toString().trim();
+                        investigatorFour.setDeckName(string);
+                    } else if (string != null) {
+                        globalVariables.deckNames[3] = string;
                     }
                 }
 
@@ -838,11 +866,11 @@ public class ScenarioNewInvestigatorFragment extends Fragment {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String string = playerFourDeck.getText().toString().trim();
                     if (investigatorFour != null) {
-                        investigatorFour.setDecklist(playerFourDeck.getText
-                                ().toString().trim());
-                    } else {
-                        globalVariables.decklists[3] = playerFourDeck.getText().toString().trim();
+                        investigatorFour.setDecklist(string);
+                    } else if (string != null) {
+                        globalVariables.decklists[3] = string;
                     }
                 }
 

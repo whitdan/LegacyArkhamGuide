@@ -71,29 +71,44 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
         TextView decklistView = (TextView) listItemView.findViewById(R.id.decklist);
         final String decklist = currentInvestigator.getDecklist();
         TextView decklistPaddingView = (TextView) listItemView.findViewById(R.id.decklist_padding);
-        if(deckName == null && decklist == null){
+        if (deckName == null && decklist == null) {
+            decklistPaddingView.setVisibility(GONE);
+            decklistView.setVisibility(GONE);
+        } else if (deckName == null) {
+            if (decklist.length() == 0) {
+                decklistPaddingView.setVisibility(GONE);
+                decklistView.setVisibility(GONE);
+            }
+        } else if (decklist == null) {
+            if (deckName.length() == 0) {
+                decklistPaddingView.setVisibility(GONE);
+                decklistView.setVisibility(GONE);
+            }
+        } else if (decklist.length() == 0 && deckName.length() == 0) {
             decklistPaddingView.setVisibility(GONE);
             decklistView.setVisibility(GONE);
         }
-        if(deckName != null){
+        if (deckName != null) {
             decklistView.setText(deckName);
         }
-        if(decklist != null){
-            decklistView.setPaintFlags(decklistView.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
-            decklistView.setTextColor(Color.BLUE);
-            decklistView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String deck;
-                    if (!decklist.startsWith("http://") && !decklist.startsWith("https://")){
-                        deck = "http://" + decklist;
-                    } else {
-                        deck = decklist;
+        if (decklist != null) {
+            if (decklist.length() > 0) {
+                decklistView.setPaintFlags(decklistView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+                decklistView.setTextColor(Color.BLUE);
+                decklistView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String deck;
+                        if (!decklist.startsWith("http://") && !decklist.startsWith("https://")) {
+                            deck = "http://" + decklist;
+                        } else {
+                            deck = decklist;
+                        }
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deck));
+                        context.startActivity(browserIntent);
                     }
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deck));
-                    context.startActivity(browserIntent);
-                }
-            });
+                });
+            }
         }
 
         // Get physical trauma and apply to corresponding TextView
@@ -221,8 +236,8 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
             globalVariables.investigators.get(position).setTempStatus(pos);
 
             // Required for The Essex County Express
-            if(globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5 &&
-                    globalVariables.getResolution() == 1){
+            if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5 &&
+                    globalVariables.getResolution() == 1) {
                 Spinner spinner = (Spinner) parent.getRootView().findViewById(R.id.resolution_selection);
                 spinner.setSelection(2, true);
                 spinner.setSelection(1, true);
