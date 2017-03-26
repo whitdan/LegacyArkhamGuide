@@ -350,12 +350,18 @@ public class CampaignSetupActivity extends AppCompatActivity {
                                 ContentValues investigatorValues = new ContentValues();
                                 investigatorValues.put(ArkhamContract.InvestigatorEntry.PARENT_ID, newCampaignId);
                                 investigatorValues.put(ArkhamContract.InvestigatorEntry.INVESTIGATOR_ID, i);
-                                investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_NAME,
-                                        globalVariables.investigators.get(i).getName());
+                                investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_NAME, globalVariables
+                                        .investigators.get(i).getName());
                                 investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_STATUS, 1);
                                 investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_DAMAGE, 0);
                                 investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_HORROR, 0);
                                 investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_XP, 0);
+                                investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_PLAYER, globalVariables
+                                        .investigators.get(i).getPlayer());
+                                investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_DECKNAME, globalVariables
+                                        .investigators.get(i).getDeckName());
+                                investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_DECKLIST, globalVariables
+                                        .investigators.get(i).getDecklist());
                                 db.insert(ArkhamContract.InvestigatorEntry.TABLE_NAME, null, investigatorValues);
                             }
 

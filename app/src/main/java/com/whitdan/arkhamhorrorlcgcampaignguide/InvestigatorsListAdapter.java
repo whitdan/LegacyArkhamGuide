@@ -70,30 +70,25 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
         String deckName = currentInvestigator.getDeckName();
         TextView decklistView = (TextView) listItemView.findViewById(R.id.decklist);
         final String decklist = currentInvestigator.getDecklist();
-        TextView decklistPaddingView = (TextView) listItemView.findViewById(R.id.decklist_padding);
         if (deckName == null && decklist == null) {
-            decklistPaddingView.setVisibility(GONE);
             decklistView.setVisibility(GONE);
         } else if (deckName == null) {
             if (decklist.length() == 0) {
-                decklistPaddingView.setVisibility(GONE);
                 decklistView.setVisibility(GONE);
             }
         } else if (decklist == null) {
             if (deckName.length() == 0) {
-                decklistPaddingView.setVisibility(GONE);
                 decklistView.setVisibility(GONE);
             }
         } else if (decklist.length() == 0 && deckName.length() == 0) {
-            decklistPaddingView.setVisibility(GONE);
             decklistView.setVisibility(GONE);
         }
         if (deckName != null) {
             decklistView.setText(deckName);
+            decklistView.setPaintFlags(decklistView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         }
         if (decklist != null) {
             if (decklist.length() > 0) {
-                decklistView.setPaintFlags(decklistView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                 decklistView.setTextColor(Color.BLUE);
                 decklistView.setOnClickListener(new View.OnClickListener() {
                     @Override

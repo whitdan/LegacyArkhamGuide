@@ -906,7 +906,6 @@ public class ContinueOnClickListener implements View.OnClickListener {
                 selectionArgs);
         ContentValues investigatorValues = new ContentValues();
         for (int i = 0; i < globalVariables.investigators.size(); i++) {
-            Log.i("count:", Integer.toString(i));
             investigatorValues.put(ArkhamContract.InvestigatorEntry.PARENT_ID, globalVariables.getCampaignID());
             investigatorValues.put(ArkhamContract.InvestigatorEntry.INVESTIGATOR_ID, i);
             investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_NAME, globalVariables
@@ -928,7 +927,6 @@ public class ContinueOnClickListener implements View.OnClickListener {
             db.insert(ArkhamContract.InvestigatorEntry.TABLE_NAME, null, investigatorValues);
         }
         for (int i = 0; i < globalVariables.savedInvestigators.size(); i++) {
-            Log.i("count:", Integer.toString(i));
             investigatorValues.put(ArkhamContract.InvestigatorEntry.PARENT_ID, globalVariables.getCampaignID());
             investigatorValues.put(ArkhamContract.InvestigatorEntry.INVESTIGATOR_ID, i + 100);
             investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_NAME, globalVariables

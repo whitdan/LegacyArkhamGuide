@@ -1,5 +1,6 @@
 package com.whitdan.arkhamhorrorlcgcampaignguide.scenariosetup;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
@@ -17,6 +18,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
@@ -95,6 +101,8 @@ public class ScenarioSetupActivity extends AppCompatActivity {
         // Setup tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.scenario_sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        setupUI(findViewById(R.id.scenario_setup_layout), this);
     }
 
     /*
@@ -323,6 +331,32 @@ public class ScenarioSetupActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             // Generate title based on item position
             return tabTitles[position];
+        }
+    }
+
+    // Hides the soft keyboard when someone clicks outside the EditText
+    public void setupUI(final View view, final Activity activity) {
+
+        // Set up touch listener for non-text box views to hide keyboard.
+        if (!(view instanceof EditText)) {
+            view.setOnTouchListener(new View.OnTouchListener() {
+                public boolean onTouch(View v, MotionEvent event) {
+                    InputMethodManager inputMethodManager =
+                            (InputMethodManager) activity.getSystemService(
+                                    Activity.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(
+                            view.getWindowToken(), 0);
+                    return false;
+                }
+            });
+        }
+
+        //If a layout container, iterate over children and seed recursion.
+        if (view instanceof ViewGroup) {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+                View innerView = ((ViewGroup) view).getChildAt(i);
+                setupUI(innerView, activity);
+            }
         }
     }
 
