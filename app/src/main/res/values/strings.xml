@@ -122,10 +122,10 @@
     <string name="continue_button">Continue</string>
     <string name="lead_investigator">Lead investigator: </string>
     <string name="victory_display">Victory display: </string>
-    <string name="campaign_name">Campaign name</string>
-    <string name="player_name">Player name (optional)</string>
-    <string name="deck_name">Decklist name (optional)</string>
-    <string name="decklist_url">Decklist URL (optional)</string>
+    <string name="campaign_name">Campaign name (required)</string>
+    <string name="player_name">Player name</string>
+    <string name="deck_name">Decklist name</string>
+    <string name="decklist_url">Decklist URL</string>
     <string name="decklist"><u>Decklist</u></string>
     <string name="setup">Setup</string>
     <string name="sets">Encounter sets: </string>
