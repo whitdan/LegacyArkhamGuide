@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_above="@id/continue_button"
-        android:background="?android:attr/listDivider" />
+        android:background="?android:attr/listDivider"/>
 
     <TextView
         android:id="@+id/continue_button"
@@ -18,7 +18,7 @@
         android:clickable="true"
         android:gravity="center"
         android:text="@string/continue_button"
-        android:textAllCaps="true" />
+        android:textAllCaps="true"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -46,26 +46,26 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingLeft="8dp"
-                    android:text="@string/victory_display" />
+                    android:text="@string/victory_display"/>
 
                 <Button
                     android:id="@+id/victory_decrement"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:text="@string/negative" />
+                    android:text="@string/negative"/>
 
                 <TextView
                     android:id="@+id/victory_display"
                     android:layout_width="@dimen/activity_horizontal_margin"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin" />
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"/>
 
                 <Button
                     android:id="@+id/victory_increment"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:text="@string/positive" />
+                    android:text="@string/positive"/>
 
 
             </LinearLayout>
@@ -76,21 +76,57 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/ghoul_priest_checkbox"
-                android:visibility="gone" />
+                android:visibility="gone"/>
 
-            <!--The Dunwich Legacy cheated checkbox-->
+            <!--The House Always Wins cheated checkbox-->
             <CheckBox
                 android:id="@+id/cheated_checkbox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/cheated_checkbox"
-                android:visibility="gone" />
+                android:visibility="gone"/>
+
             <TextView
                 android:id="@+id/cheated_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/cheated_text"
                 android:visibility="gone"/>
+
+            <!--Essex County Express reached the cab checkbox-->
+            <CheckBox
+                android:id="@+id/engine_car_checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/engine_car_checkbox"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:id="@+id/engine_car_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <Spinner
+                    android:id="@+id/engine_car_investigator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_horizontal_margin"/>
+
+                <CheckBox
+                    android:id="@+id/engine_car_dodge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/engine_car_dodge"/>
+
+                <CheckBox
+                    android:id="@+id/engine_car_endure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/engine_car_endure"/>
+            </LinearLayout>
 
             <!--Night of the Zealot: Scenario Two - The Midnight Masks cultists interrogated view-->
             <LinearLayout
@@ -105,7 +141,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
-                    android:text="@string/cultists_interrogated" />
+                    android:text="@string/cultists_interrogated"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -116,14 +152,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/drew" />
+                        android:text="@string/drew"/>
 
                     <CheckBox
                         android:id="@+id/herman_interrogated"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/herman" />
+                        android:text="@string/herman"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -135,14 +171,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/peter" />
+                        android:text="@string/peter"/>
 
                     <CheckBox
                         android:id="@+id/victoria_interrogated"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/victoria" />
+                        android:text="@string/victoria"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -154,14 +190,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/ruth" />
+                        android:text="@string/ruth"/>
 
                     <CheckBox
                         android:id="@+id/masked_hunter_interrogated"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/masked_hunter" />
+                        android:text="@string/masked_hunter"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -170,13 +206,13 @@
                 android:id="@+id/resolution_selection"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_horizontal_margin" />
+                android:layout_marginTop="@dimen/activity_horizontal_margin"/>
 
             <TextView
                 android:id="@+id/resolution_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_horizontal_margin" />
+                android:layout_marginTop="@dimen/activity_horizontal_margin"/>
 
             <LinearLayout
                 android:id="@+id/rewards_view"
@@ -184,18 +220,19 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone">
+
                 <Spinner
                     android:id="@+id/rewards_selection"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_horizontal_margin" />
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"/>
 
                 <TextView
                     android:id="@+id/rewards_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="@dimen/activity_horizontal_margin" />
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"/>
             </LinearLayout>
 
             <!--Scenario 3: The Essex County Express-->
@@ -205,54 +242,61 @@
                 android:layout_height="wrap_content"
                 android:text="@string/necronomicon_defeated"
                 android:visibility="gone"/>
+
             <CheckBox
                 android:id="@+id/armitage_defeated"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/armitage_defeated"
                 android:visibility="gone"/>
+
             <CheckBox
                 android:id="@+id/rice_defeated"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/rice_defeated"
                 android:visibility="gone"/>
+
             <CheckBox
                 android:id="@+id/morgan_defeated"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/morgan_defeated"
                 android:visibility="gone"/>
+
             <TextView
                 android:id="@+id/remove_necronomicon"
-                android:text="@string/remove_necronomicon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/remove_necronomicon"
                 android:visibility="gone"/>
+
             <TextView
                 android:id="@+id/remove_armitage"
-                android:text="@string/remove_armitage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/remove_armitage"
                 android:visibility="gone"/>
+
             <TextView
                 android:id="@+id/remove_rice"
-                android:text="@string/remove_rice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/remove_rice"
                 android:visibility="gone"/>
+
             <TextView
                 android:id="@+id/remove_morgan"
-                android:text="@string/remove_morgan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/remove_morgan"
                 android:visibility="gone"/>
 
             <!--Padding-->
             <TextView
-                android:layout_marginBottom="@dimen/activity_horizontal_margin"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

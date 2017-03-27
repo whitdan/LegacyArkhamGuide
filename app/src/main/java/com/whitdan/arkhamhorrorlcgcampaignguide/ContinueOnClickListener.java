@@ -12,7 +12,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Toast;
@@ -648,6 +647,12 @@ public class ContinueOnClickListener implements View.OnClickListener {
             Scenario 3: The Essex County Express
          */
         else if (globalVariables.getCurrentScenario() == 5) {
+            // Apply engine car
+            if(globalVariables.getEngineCar() == 1){
+                globalVariables.investigators.get(globalVariables.getEngineInvestigator()).changeHorror(1);
+            } else if (globalVariables.getEngineCar() == 2){
+                globalVariables.investigators.get(globalVariables.getEngineInvestigator()).changeDamage(1);
+            }
             CheckBox necronomicon = (CheckBox) parent.findViewById(R.id.necronomicon_defeated);
             CheckBox armitage = (CheckBox) parent.findViewById(R.id.armitage_defeated);
             CheckBox morgan = (CheckBox) parent.findViewById(R.id.morgan_defeated);

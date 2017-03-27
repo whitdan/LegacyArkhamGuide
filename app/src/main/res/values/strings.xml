@@ -398,6 +398,9 @@
     <string name="cheated_checkbox">An investigator \"cheated\"</string>
     <string name="cheated_text">Add 1 Elder Thing chaos token to the chaos bag for the remainder of the
         campaign.\n</string>
+    <string name="engine_car_checkbox">An investigator entered the Engine Car</string>
+    <string name="engine_car_dodge">Failed to dodge the creature</string>
+    <string name="engine_car_endure">Failed to endure the creature\'s extreme heat</string>
 
     <!--Campaign log-->
     <string name="investigators_unconscious">The investigators were unconscious for several hours.\n</string>

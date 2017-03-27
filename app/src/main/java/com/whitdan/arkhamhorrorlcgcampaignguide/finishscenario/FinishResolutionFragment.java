@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.whitdan.arkhamhorrorlcgcampaignguide.ContinueOnClickListener;
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
+import com.whitdan.arkhamhorrorlcgcampaignguide.scenariosetup.ScenarioInvestigatorsFragment;
 import com.whitdan.arkhamhorrorlcgcampaignguide.standalone.StandaloneOnClickListener;
 
 import static android.view.View.GONE;
@@ -152,6 +153,72 @@ public class FinishResolutionFragment extends Fragment {
                     }
                     if (!isChecked) {
                         cheatedText.setVisibility(GONE);
+                    }
+                }
+            });
+        }
+
+        // If on second campaign, fourth scenario, set engine car view to visible
+        if(globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5){
+            final CheckBox engine = (CheckBox) v.findViewById(R.id.engine_car_checkbox);
+            final LinearLayout engineLayout = (LinearLayout) v.findViewById(R.id.engine_car_view);
+            final CheckBox engineDodge = (CheckBox) v.findViewById(R.id.engine_car_dodge);
+            final CheckBox engineEndure = (CheckBox) v.findViewById(R.id.engine_car_endure);
+            engine.setVisibility(VISIBLE);
+            globalVariables.setEngineCar(0);
+            engine.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){
+                        engineLayout.setVisibility(VISIBLE);
+                        Spinner engineInvestigator = (Spinner) v.findViewById(R.id.engine_car_investigator);
+
+                        // Setup spinner
+                        ArrayAdapter<String> investigatorAdapter = new ArrayAdapter<>(getContext(), android.R.layout
+                                .simple_spinner_item, ScenarioInvestigatorsFragment.investigatorNames);
+                        engineInvestigator.setAdapter(investigatorAdapter);
+                        investigatorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        engineInvestigator.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                globalVariables.setEngineInvestigator(position);
+                            }
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+                            }
+                        });
+
+                        // Setup checkboxes
+                        engineDodge.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            @Override
+                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                if(isChecked){
+                                    engineEndure.setChecked(false);
+                                    globalVariables.setEngineCar(1);
+                                }
+                                if(!isChecked){
+                                    globalVariables.setEngineCar(0);
+                                }
+                            }
+                        });
+                        engineEndure.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            @Override
+                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                if(isChecked){
+                                    engineDodge.setChecked(false);
+                                    globalVariables.setEngineCar(2);
+                                }
+                                if(!isChecked){
+                                    globalVariables.setEngineCar(0);
+                                }
+                            }
+                        });
+                    }
+                    if(!isChecked){
+                        engineLayout.setVisibility(GONE);
+                        engineDodge.setChecked(false);
+                        engineEndure.setChecked(false);
+                        globalVariables.setEngineCar(0);
                     }
                 }
             });

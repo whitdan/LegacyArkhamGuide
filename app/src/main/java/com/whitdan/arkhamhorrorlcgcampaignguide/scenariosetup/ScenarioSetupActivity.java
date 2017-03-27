@@ -110,8 +110,15 @@ public class ScenarioSetupActivity extends AppCompatActivity {
       */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_scenario_setup_menu, menu);
+        // Check if on interlude
+        boolean interlude = false;
+        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 3) {
+            interlude = true;
+        }
+        if (!interlude) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.activity_scenario_setup_menu, menu);
+        }
         return true;
     }
 
@@ -414,7 +421,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
                 globalVariables.savedInvestigators.add(globalVariables.investigators.get(i));
             }
         }
-        for(int i = globalVariables.savedInvestigators.size() - 1; i >= 0; i--){
+        for (int i = globalVariables.savedInvestigators.size() - 1; i >= 0; i--) {
             if (globalVariables.savedInvestigators.get(i).getStatus() == 999) {
                 globalVariables.savedInvestigators.remove(i);
             }
@@ -459,5 +466,11 @@ public class ScenarioSetupActivity extends AppCompatActivity {
             finish();
             startActivity(starterIntent);
         }
+    }
+
+    // Used to restart the scenario for interludes
+    public void interludeRestartScenario(Context context) {
+        finish();
+        startActivity(starterIntent);
     }
 }

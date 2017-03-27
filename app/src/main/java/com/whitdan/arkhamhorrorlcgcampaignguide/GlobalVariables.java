@@ -183,6 +183,12 @@ public class GlobalVariables extends Application {
     private int Delayed;
     public void setDelayed(int var){this.Delayed = var;}
     public int getDelayed(){return this.Delayed;}
+    private int EngineInvestigator;
+    public void setEngineInvestigator(int var){this.EngineInvestigator = var;}
+    public int getEngineInvestigator(){return this.EngineInvestigator;}
+    private int EngineCar;
+    public void setEngineCar(int var){this.EngineCar = var;}
+    public int getEngineCar(){return this.EngineCar;}
 
     /*
     Side story variables

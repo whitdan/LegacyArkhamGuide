@@ -128,15 +128,6 @@
         <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4baf19d891b06d40535dedda4d173a39ffb46beb\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\danie\.android\build-cache\85a0029096ffbba3242fd4a6683ed27db61a7cb9\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\classes_4baf19d891b06d40535dedda4d173a39ffb46beb.jar" />
-    </item>
-    <item
         is-multidex="true"
         jar="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
@@ -144,6 +135,15 @@
         revision="25.0.1"
         sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
         <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_afab8f0e0700b74c4e99eced180b51d338df6e20\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\danie\.android\build-cache\85a0029096ffbba3242fd4a6683ed27db61a7cb9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\pre-dexed\release\classes_4baf19d891b06d40535dedda4d173a39ffb46beb.jar" />
     </item>
     <item
         is-multidex="false"
@@ -187,7 +187,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="33c8db701394160a8294a7de54db2f1fe657d9d7">
+        sha1="15057c340d1fa2f342125c9a6062c83431585efe">
         <dex dex="C:\Users\danie\Desktop\AHLCG\ArkhamHorrorLCGCampaignGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_7f370c7ce2adabd47e649561467a6cced2146297\classes.dex" />
     </item>
     <item
