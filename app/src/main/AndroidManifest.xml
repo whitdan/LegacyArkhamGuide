@@ -19,10 +19,11 @@
         <activity
             android:name=".campaignsetup.CampaignSetupActivity"
             android:parentActivityName=".selectcampaign.SelectCampaignActivity"
-            android:windowSoftInputMode="adjustNothing"/>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".scenariosetup.ScenarioSetupActivity"
-            android:parentActivityName=".selectcampaign.SelectCampaignActivity"/>
+            android:parentActivityName=".selectcampaign.SelectCampaignActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".finishscenario.FinishScenarioActivity"
             android:parentActivityName=".selectcampaign.SelectCampaignActivity"/>

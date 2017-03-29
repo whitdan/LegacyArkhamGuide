@@ -121,8 +121,10 @@ public class CampaignSetupActivity extends AppCompatActivity {
 
         // Clear and then set investigators
         globalVariables.investigators.clear();
+        globalVariables.savedInvestigators.clear();
         for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
-            globalVariables.investigators.add(new Investigator(globalVariables.investigatorNames.get(i)));
+            globalVariables.investigators.add(new Investigator(globalVariables.investigatorNames.get(i),
+                    globalVariables.playerNames[i], globalVariables.deckNames[i], globalVariables.decklists[i]));
             globalVariables.investigatorsInUse[globalVariables.investigatorNames.get(i)] = 1;
         }
 
@@ -137,6 +139,8 @@ public class CampaignSetupActivity extends AppCompatActivity {
                     globalVariables.setCurrentScenario(1);
                     globalVariables.setScenarioStage(1);
                     globalVariables.investigatorNames.clear();
+                    globalVariables.playerNames = new String[4];
+                    globalVariables.decklists = new String[4];
 
                     // Save the new campaign
                     newCampaign();
@@ -251,6 +255,12 @@ public class CampaignSetupActivity extends AppCompatActivity {
             investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_DAMAGE, 0);
             investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_HORROR, 0);
             investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_XP, 0);
+            investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_PLAYER, globalVariables
+                    .investigators.get(i).getPlayer());
+            investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_DECKNAME, globalVariables
+                    .investigators.get(i).getDeckName());
+            investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_DECKLIST, globalVariables
+                    .investigators.get(i).getDecklist());
             db.insert(ArkhamContract.InvestigatorEntry.TABLE_NAME, null, investigatorValues);
         }
     }
@@ -279,6 +289,9 @@ public class CampaignSetupActivity extends AppCompatActivity {
                             }
                             globalVariables.setScenarioStage(1);
                             globalVariables.investigatorNames.clear();
+                            globalVariables.playerNames = new String[4];
+                            globalVariables.deckNames = new String[4];
+                            globalVariables.decklists = new String[4];
 
                             // Save the new campaign
                             // Get a writable database
@@ -337,12 +350,18 @@ public class CampaignSetupActivity extends AppCompatActivity {
                                 ContentValues investigatorValues = new ContentValues();
                                 investigatorValues.put(ArkhamContract.InvestigatorEntry.PARENT_ID, newCampaignId);
                                 investigatorValues.put(ArkhamContract.InvestigatorEntry.INVESTIGATOR_ID, i);
-                                investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_NAME,
-                                        globalVariables.investigators.get(i).getName());
+                                investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_NAME, globalVariables
+                                        .investigators.get(i).getName());
                                 investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_STATUS, 1);
                                 investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_DAMAGE, 0);
                                 investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_HORROR, 0);
                                 investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_XP, 0);
+                                investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_PLAYER, globalVariables
+                                        .investigators.get(i).getPlayer());
+                                investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_DECKNAME, globalVariables
+                                        .investigators.get(i).getDeckName());
+                                investigatorValues.put(ArkhamContract.InvestigatorEntry.COLUMN_INVESTIGATOR_DECKLIST, globalVariables
+                                        .investigators.get(i).getDecklist());
                                 db.insert(ArkhamContract.InvestigatorEntry.TABLE_NAME, null, investigatorValues);
                             }
 

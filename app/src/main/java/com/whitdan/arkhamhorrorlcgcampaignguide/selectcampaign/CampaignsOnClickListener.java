@@ -121,7 +121,10 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                 InvestigatorEntry.COLUMN_INVESTIGATOR_STATUS,
                 InvestigatorEntry.COLUMN_INVESTIGATOR_DAMAGE,
                 InvestigatorEntry.COLUMN_INVESTIGATOR_HORROR,
-                InvestigatorEntry.COLUMN_INVESTIGATOR_XP
+                InvestigatorEntry.COLUMN_INVESTIGATOR_XP,
+                InvestigatorEntry.COLUMN_INVESTIGATOR_PLAYER,
+                InvestigatorEntry.COLUMN_INVESTIGATOR_DECKNAME,
+                InvestigatorEntry.COLUMN_INVESTIGATOR_DECKLIST
         };
         String investigatorSelection = InvestigatorEntry.PARENT_ID + " = ?";
         Cursor investigatorCursor = db.query(
@@ -134,21 +137,45 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                 null
         );
         globalVariables.investigators.clear();
+        globalVariables.savedInvestigators.clear();
+        int count = 0;
         for (int i = 0; investigatorCursor.moveToNext(); i++) {
+            int status = investigatorCursor.getInt(investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
+                    .COLUMN_INVESTIGATOR_STATUS));
             int name = investigatorCursor.getInt(investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
                     .COLUMN_INVESTIGATOR_NAME));
-            globalVariables.investigators.add(new Investigator(name));
-            globalVariables.investigators.get(i).setStatus(investigatorCursor.getInt(investigatorCursor
-                    .getColumnIndexOrThrow(InvestigatorEntry.COLUMN_INVESTIGATOR_STATUS)));
-            globalVariables.investigators.get(i).changeDamage(investigatorCursor.getInt
-                    (investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
-                            .COLUMN_INVESTIGATOR_DAMAGE)));
-            globalVariables.investigators.get(i).changeHorror(investigatorCursor.getInt
-                    (investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
-                            .COLUMN_INVESTIGATOR_HORROR)));
-            globalVariables.investigators.get(i).changeXP(investigatorCursor.getInt
-                    (investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
-                            .COLUMN_INVESTIGATOR_XP)));
+            String player = investigatorCursor.getString(investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
+                    .COLUMN_INVESTIGATOR_PLAYER));
+            String deckName = investigatorCursor.getString(investigatorCursor.getColumnIndex(InvestigatorEntry
+                    .COLUMN_INVESTIGATOR_DECKNAME));
+            String deck = investigatorCursor.getString(investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
+                    .COLUMN_INVESTIGATOR_DECKLIST));
+            if (status == 1 || status == 2) {
+                globalVariables.investigators.add(new Investigator(name, player, deckName, deck));
+                globalVariables.investigators.get(i).setStatus(status);
+                globalVariables.investigators.get(i).changeDamage(investigatorCursor.getInt
+                        (investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
+                                .COLUMN_INVESTIGATOR_DAMAGE)));
+                globalVariables.investigators.get(i).changeHorror(investigatorCursor.getInt
+                        (investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
+                                .COLUMN_INVESTIGATOR_HORROR)));
+                globalVariables.investigators.get(i).changeXP(investigatorCursor.getInt
+                        (investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
+                                .COLUMN_INVESTIGATOR_XP)));
+                count++;
+            } else if (status == 3){
+                globalVariables.savedInvestigators.add(new Investigator(name, player, deckName, deck));
+                globalVariables.savedInvestigators.get(i - count).setStatus(status);
+                globalVariables.savedInvestigators.get(i - count).changeDamage(investigatorCursor.getInt
+                        (investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
+                                .COLUMN_INVESTIGATOR_DAMAGE)));
+                globalVariables.savedInvestigators.get(i - count).changeHorror(investigatorCursor.getInt
+                        (investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
+                                .COLUMN_INVESTIGATOR_HORROR)));
+                globalVariables.savedInvestigators.get(i - count).changeXP(investigatorCursor.getInt
+                        (investigatorCursor.getColumnIndexOrThrow(InvestigatorEntry
+                                .COLUMN_INVESTIGATOR_XP)));
+            }
         }
         investigatorCursor.close();
 
@@ -218,7 +245,8 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                     ArkhamContract.DunwichEntry.COLUMN_OBANNION_GANG,
                     ArkhamContract.DunwichEntry.COLUMN_FRANCIS_MORGAN,
                     ArkhamContract.DunwichEntry.COLUMN_INVESTIGATORS_CHEATED,
-                    ArkhamContract.DunwichEntry.COLUMN_NECRONOMICON
+                    ArkhamContract.DunwichEntry.COLUMN_NECRONOMICON,
+                    ArkhamContract.DunwichEntry.COLUMN_DELAYED
             };
             String dunwichSelection = ArkhamContract.DunwichEntry.PARENT_ID + " = ?";
             Cursor dunwichCursor = db.query(
@@ -249,17 +277,19 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                         (ArkhamContract.DunwichEntry.COLUMN_INVESTIGATORS_CHEATED)));
                 globalVariables.setNecronomicon(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow
                         (ArkhamContract.DunwichEntry.COLUMN_NECRONOMICON)));
+                globalVariables.setDelayed(dunwichCursor.getInt(dunwichCursor.getColumnIndex(ArkhamContract
+                        .DunwichEntry.COLUMN_DELAYED)));
             }
             dunwichCursor.close();
         }
 
         // If on the first unreleased scenario, display a toast and do nothing more
-        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5) {
+        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 6) {
             Toast toast = Toast.makeText(context, R.string.scenario_not_available, Toast.LENGTH_SHORT);
             toast.show();
         }
         // If on completed campaign set scenario stage
-        if(globalVariables.getCurrentCampaign() == 1 && globalVariables.getCurrentScenario() == 4){
+        if (globalVariables.getCurrentCampaign() == 1 && globalVariables.getCurrentScenario() == 4) {
             globalVariables.setScenarioStage(3);
         } else {
             globalVariables.setScenarioStage(1);

@@ -1,5 +1,6 @@
 package com.whitdan.arkhamhorrorlcgcampaignguide.scenariosetup;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
@@ -17,6 +18,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
@@ -72,7 +78,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
             viewPager.setAdapter(adapter);
         }
         // If any investigators are dead, go to new investigator fragment
-        else if (investigatorDead) {
+        else if (investigatorDead || globalVariables.editInvestigators) {
             NewInvestigatorPagerAdapter adapter = new NewInvestigatorPagerAdapter(getSupportFragmentManager());
             viewPager.setAdapter(adapter);
         }
@@ -82,7 +88,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
             viewPager.setAdapter(adapter);
         }
         // If appropriate, go to new campaign
-        else if(globalVariables.getCurrentScenario() == 1000){
+        else if (globalVariables.getCurrentScenario() == 1000) {
             NewCampaignPagerAdapter adapter = new NewCampaignPagerAdapter(getSupportFragmentManager());
             viewPager.setAdapter(adapter);
         }
@@ -95,6 +101,8 @@ public class ScenarioSetupActivity extends AppCompatActivity {
         // Setup tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.scenario_sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        setupUI(findViewById(R.id.scenario_setup_layout), this);
     }
 
     /*
@@ -102,8 +110,15 @@ public class ScenarioSetupActivity extends AppCompatActivity {
       */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_scenario_setup_menu, menu);
+        // Check if on interlude
+        boolean interlude = false;
+        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 3) {
+            interlude = true;
+        }
+        if (!interlude) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.activity_scenario_setup_menu, menu);
+        }
         return true;
     }
 
@@ -119,6 +134,11 @@ public class ScenarioSetupActivity extends AppCompatActivity {
                 SideStoryDialog newFragment = new SideStoryDialog();
                 newFragment.show(this.getFragmentManager(), "side_story");
                 return true;
+            case R.id.edit_investigators:
+                // Set edit investigators to true and recreate activity
+                globalVariables.editInvestigators = true;
+                finish();
+                startActivity(starterIntent);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -250,7 +270,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
         }
 
         // Set titles of scenario setup tabs
-        private final String[] tabTitles = new String[]{"Dead Investigators"};
+        private final String[] tabTitles = new String[]{getString(R.string.edit_investigators)};
 
         @Override
         public CharSequence getPageTitle(int position) {
@@ -321,6 +341,32 @@ public class ScenarioSetupActivity extends AppCompatActivity {
         }
     }
 
+    // Hides the soft keyboard when someone clicks outside the EditText
+    public void setupUI(final View view, final Activity activity) {
+
+        // Set up touch listener for non-text box views to hide keyboard.
+        if (!(view instanceof EditText)) {
+            view.setOnTouchListener(new View.OnTouchListener() {
+                public boolean onTouch(View v, MotionEvent event) {
+                    InputMethodManager inputMethodManager =
+                            (InputMethodManager) activity.getSystemService(
+                                    Activity.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(
+                            view.getWindowToken(), 0);
+                    return false;
+                }
+            });
+        }
+
+        //If a layout container, iterate over children and seed recursion.
+        if (view instanceof ViewGroup) {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+                View innerView = ((ViewGroup) view).getChildAt(i);
+                setupUI(innerView, activity);
+            }
+        }
+    }
+
     // Returns the campaign finish fragments instead
     private class CampaignFinishPagerAdapter extends FragmentPagerAdapter {
 
@@ -356,26 +402,60 @@ public class ScenarioSetupActivity extends AppCompatActivity {
 
     // Used when an investigator has died to restart the scenario
     public void restartScenario(Context context) {
-        boolean[] removeInvestigator = new boolean[4];
-        // If the investigator is dead, recreates it
-        for (int i = 0; i < globalVariables.investigators.size(); i++) {
-            Investigator currentInvestigator = globalVariables.investigators.get(i);
-            if (currentInvestigator.getStatus() == 2) {
-                removeInvestigator[i] = true;
+
+        for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
+            for (int a = 0; a < globalVariables.investigators.size(); a++) {
+                if (globalVariables.investigators.get(a).getName() == globalVariables.investigatorNames.get(i)) {
+                    globalVariables.investigators.get(a).setStatus(999);
+                }
+            }
+            for (int a = 0; a < globalVariables.savedInvestigators.size(); a++) {
+                if (globalVariables.savedInvestigators.get(a).getName() == globalVariables.investigatorNames.get(i)) {
+                    globalVariables.savedInvestigators.get(a).setStatus(999);
+                }
             }
         }
+        for (int i = 0; i < globalVariables.investigators.size(); i++) {
+            if (globalVariables.investigators.get(i).getStatus() != 999) {
+                globalVariables.investigators.get(i).setStatus(3);
+                globalVariables.savedInvestigators.add(globalVariables.investigators.get(i));
+            }
+        }
+        for (int i = globalVariables.savedInvestigators.size() - 1; i >= 0; i--) {
+            if (globalVariables.savedInvestigators.get(i).getStatus() == 999) {
+                globalVariables.savedInvestigators.remove(i);
+            }
+        }
+
+        globalVariables.investigators.clear();
+        if (ScenarioNewInvestigatorFragment.investigatorOne != null) {
+            globalVariables.investigators.add(ScenarioNewInvestigatorFragment.investigatorOne);
+        }
+        if (ScenarioNewInvestigatorFragment.investigatorTwo != null) {
+            globalVariables.investigators.add(ScenarioNewInvestigatorFragment.investigatorTwo);
+        }
+        if (ScenarioNewInvestigatorFragment.investigatorThree != null) {
+            globalVariables.investigators.add(ScenarioNewInvestigatorFragment.investigatorThree);
+        }
+        if (ScenarioNewInvestigatorFragment.investigatorFour != null) {
+            globalVariables.investigators.add(ScenarioNewInvestigatorFragment.investigatorFour);
+        }
+
         for (int i = 0; i < globalVariables.investigatorNames.size(); i++) {
-            globalVariables.investigators.add(new Investigator(globalVariables.investigatorNames.get(i)));
+            if (globalVariables.investigatorsInUse[globalVariables.investigatorNames.get(i)] == 0) {
+                globalVariables.investigators.add(new Investigator(globalVariables.investigatorNames.get(i),
+                        globalVariables.playerNames[i], globalVariables.deckNames[i], globalVariables.decklists[i]));
+            }
             globalVariables.investigatorsInUse[globalVariables.investigatorNames.get(i)] = 1;
         }
-        globalVariables.investigatorNames.clear();
-
-        // Removes any unused investigators (works backwards to avoid reindexing)
-        for (int i = 3; i >= 0; i--) {
-            if (removeInvestigator[i]) {
-                globalVariables.investigators.remove(i);
-            }
+        for (int i = 0; i < globalVariables.investigators.size(); i++) {
+            globalVariables.investigators.get(i).setStatus(1);
         }
+
+        globalVariables.investigatorNames.clear();
+        globalVariables.playerNames = new String[4];
+        globalVariables.deckNames = new String[4];
+        globalVariables.decklists = new String[4];
 
         if (globalVariables.investigators.size() == 0) {
             // Kick back to Campaign Select if no replacement investigators are selected
@@ -386,5 +466,11 @@ public class ScenarioSetupActivity extends AppCompatActivity {
             finish();
             startActivity(starterIntent);
         }
+    }
+
+    // Used to restart the scenario for interludes
+    public void interludeRestartScenario(Context context) {
+        finish();
+        startActivity(starterIntent);
     }
 }

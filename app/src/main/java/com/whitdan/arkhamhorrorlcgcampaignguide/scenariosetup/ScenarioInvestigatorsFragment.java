@@ -31,6 +31,7 @@ import static android.view.View.VISIBLE;
 public class ScenarioInvestigatorsFragment extends Fragment {
 
     private GlobalVariables globalVariables;
+    public static List<String> investigatorNames;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class ScenarioInvestigatorsFragment extends Fragment {
         // Get all investigator names from String array
         String[] allInvestigatorNames = getResources().getStringArray(R.array.investigators);
         // Setup ArrayList and add the names of the investigators in use to it
-        List<String> investigatorNames = new ArrayList<>();
+        investigatorNames = new ArrayList<>();
         for (int i = 0; i < globalVariables.investigators.size(); i++) {
             int currentInvestigator = globalVariables.investigators.get(i).getName();
             investigatorNames.add(allInvestigatorNames[currentInvestigator]);
@@ -57,7 +58,7 @@ public class ScenarioInvestigatorsFragment extends Fragment {
 
         // Hide spinner if on unreleased scenario or end of campaign
         if (globalVariables.getScenarioStage()==3 ||
-                (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5)) {
+                (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 6)) {
             LinearLayout lead = (LinearLayout) v.findViewById(R.id.lead_investigator_view);
             lead.setVisibility(GONE);
             TextView completed = (TextView) v.findViewById(R.id.campaign_completed);

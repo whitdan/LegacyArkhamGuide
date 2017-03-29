@@ -2,6 +2,10 @@ package com.whitdan.arkhamhorrorlcgcampaignguide;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,15 +31,19 @@ import static android.view.View.VISIBLE;
 public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
 
     private GlobalVariables globalVariables;
+    private Context context;
 
-    public InvestigatorsListAdapter(Context context, ArrayList<Investigator> investigators, GlobalVariables global) {
-        super(context, 0, investigators);
+    public InvestigatorsListAdapter(Context con, ArrayList<Investigator> investigators, GlobalVariables global) {
+        super(con, 0, investigators);
+        context = con;
         globalVariables = global;
     }
 
     @Override
     @NonNull
     public View getView(int pos, View convertView, @NonNull ViewGroup parent) {
+        final Investigator currentInvestigator = getItem(pos);
+
         // Check if an existing view is being reused, otherwise inflate the view
         View listItemView = convertView;
         if (listItemView == null) {
@@ -45,16 +53,58 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
 
         // Get array of all investigator names and the current Investigator object
         String[] investigatorNames = getContext().getResources().getStringArray(R.array.investigators);
-        final Investigator currentInvestigator = getItem(pos);
 
         // Ensure the ListView item is visible
         View investigatorView = listItemView.findViewById(R.id.investigator_view);
         investigatorView.setVisibility(VISIBLE);
 
-        // Get name and apply to corresponding TextView
+        // Get name and player name and apply to corresponding TextViews
         int investigatorName = currentInvestigator.getName();
         TextView investigatorNameView = (TextView) listItemView.findViewById(R.id.investigator_name);
         investigatorNameView.setText(investigatorNames[investigatorName]);
+        String playerName = currentInvestigator.getPlayer();
+        TextView playerNameView = (TextView) listItemView.findViewById(R.id.player_name);
+        playerNameView.setText(playerName);
+
+        // Get decklist name and url and apply to corresponding TextView
+        String deckName = currentInvestigator.getDeckName();
+        TextView decklistView = (TextView) listItemView.findViewById(R.id.decklist);
+        final String decklist = currentInvestigator.getDecklist();
+        if (deckName == null && decklist == null) {
+            decklistView.setVisibility(GONE);
+        } else if (deckName == null) {
+            if (decklist.length() == 0) {
+                decklistView.setVisibility(GONE);
+            }
+        } else if (decklist == null) {
+            if (deckName.length() == 0) {
+                decklistView.setVisibility(GONE);
+            }
+        } else if (decklist.length() == 0 && deckName.length() == 0) {
+            decklistView.setVisibility(GONE);
+        }
+        if (deckName != null) {
+            decklistView.setText(deckName);
+            decklistView.setPaintFlags(decklistView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        }
+        if (decklist != null) {
+            if (decklist.length() > 0) {
+                decklistView.setTextColor(Color.BLUE);
+                decklistView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String deck;
+                        if (!decklist.startsWith("http://") && !decklist.startsWith("https://")) {
+                            deck = "http://" + decklist;
+                        } else {
+                            deck = decklist;
+                        }
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deck));
+                        context.startActivity(browserIntent);
+                    }
+                });
+            }
+        }
 
         // Get physical trauma and apply to corresponding TextView
         int investigatorDamage = currentInvestigator.getDamage();
@@ -179,6 +229,14 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
         public void onItemSelected(AdapterView<?> parent, View view,
                                    int pos, long id) {
             globalVariables.investigators.get(position).setTempStatus(pos);
+
+            // Required for The Essex County Express
+            if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5 &&
+                    globalVariables.getResolution() == 1) {
+                Spinner spinner = (Spinner) parent.getRootView().findViewById(R.id.resolution_selection);
+                spinner.setSelection(2, true);
+                spinner.setSelection(1, true);
+            }
         }
 
         public void onNothingSelected(AdapterView<?> parent) {

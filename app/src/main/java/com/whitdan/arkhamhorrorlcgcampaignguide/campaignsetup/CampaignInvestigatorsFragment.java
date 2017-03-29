@@ -15,12 +15,14 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.Investigator;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
 
 import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 /**
  * Allows the selection of up to four investigators for the campaign.
@@ -135,6 +137,8 @@ public class CampaignInvestigatorsFragment extends Fragment {
 
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+            View parent = (View) buttonView.getParent().getParent().getParent().getParent();
 
             if (buttonView.isPressed()) {
                 switch (buttonView.getId()) {
@@ -289,6 +293,249 @@ public class CampaignInvestigatorsFragment extends Fragment {
                         }
                         break;
                 }
+
+                LinearLayout investigatorOne = (LinearLayout) parent.findViewById(R.id.investigator_one);
+                LinearLayout investigatorTwo = (LinearLayout) parent.findViewById(R.id.investigator_two);
+                LinearLayout investigatorThree = (LinearLayout) parent.findViewById(R.id.investigator_three);
+                LinearLayout investigatorFour = (LinearLayout) parent.findViewById(R.id.investigator_four);
+                TextView investigatorOneName = (TextView) parent.findViewById(R.id.investigator_one_name);
+                TextView investigatorTwoName = (TextView) parent.findViewById(R.id.investigator_two_name);
+                TextView investigatorThreeName = (TextView) parent.findViewById(R.id.investigator_three_name);
+                TextView investigatorFourName = (TextView) parent.findViewById(R.id.investigator_four_name);
+                String[] investigatorNames = getContext().getResources().getStringArray(R.array.investigators);
+
+                // Show relevant views
+                if(investigators > 0){
+                    investigatorOne.setVisibility(VISIBLE);
+                    String nameOne = investigatorNames[globalVariables.investigatorNames.get(0)];
+                    investigatorOneName.setText(nameOne);
+                } else {investigatorOne.setVisibility(GONE);}
+
+                if(investigators > 1){
+                    investigatorTwo.setVisibility(VISIBLE);
+                    String nameTwo = investigatorNames[globalVariables.investigatorNames.get(1)];
+                    investigatorTwoName.setText(nameTwo);
+                } else {investigatorTwo.setVisibility(GONE);}
+
+                if(investigators > 2){
+                    investigatorThree.setVisibility(VISIBLE);
+                    String nameThree = investigatorNames[globalVariables.investigatorNames.get(2)];
+                    investigatorThreeName.setText(nameThree);
+                } else {investigatorThree.setVisibility(GONE);}
+
+                if(investigators > 3){
+                    investigatorFour.setVisibility(VISIBLE);
+                    String nameFour = investigatorNames[globalVariables.investigatorNames.get(3)];
+                    investigatorFourName.setText(nameFour);
+                } else {investigatorFour.setVisibility(GONE);}
+
+                // Set listeners on the edit text fields
+                final EditText playerOneName = (EditText) parent.findViewById(R.id.investigator_one_player);
+                playerOneName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.playerNames[0] = playerOneName.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerTwoName = (EditText) parent.findViewById(R.id.investigator_two_player);
+                playerTwoName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.playerNames[1] = playerTwoName.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerThreeName = (EditText) parent.findViewById(R.id.investigator_three_player);
+                playerThreeName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.playerNames[2] = playerThreeName.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerFourName = (EditText) parent.findViewById(R.id.investigator_four_player);
+                playerFourName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.playerNames[3] = playerFourName.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+
+                final EditText playerOneDeckName = (EditText) parent.findViewById(R.id.investigator_one_deck_name);
+                playerOneDeckName.addTextChangedListener(new TextWatcher(){
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.deckNames[0] = playerOneDeckName.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerTwoDeckName = (EditText) parent.findViewById(R.id.investigator_two_deck_name);
+                playerTwoDeckName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.deckNames[1] = playerTwoDeckName.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerThreeDeckName = (EditText) parent.findViewById(R.id.investigator_three_deck_name);
+                playerThreeDeckName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.deckNames[2] = playerThreeDeckName.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerFourDeckName = (EditText) parent.findViewById(R.id.investigator_four_deck_name);
+                playerFourDeckName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.deckNames[3] = playerFourDeckName.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+
+                final EditText playerOneDeck = (EditText) parent.findViewById(R.id.investigator_one_deck_link);
+                playerOneDeck.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.decklists[0] = playerOneDeck.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerTwoDeck = (EditText) parent.findViewById(R.id.investigator_two_deck_link);
+                playerTwoDeck.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.decklists[1] = playerTwoDeck.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerThreeDeck = (EditText) parent.findViewById(R.id.investigator_three_deck_link);
+                playerThreeDeck.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.decklists[2] = playerThreeDeck.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                final EditText playerFourDeck = (EditText) parent.findViewById(R.id.investigator_four_deck_link);
+                playerFourDeck.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        globalVariables.decklists[3] = playerFourDeck.getText().toString().trim();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
             }
         }
     }
