@@ -131,9 +131,13 @@ public class ContinueOnClickListener implements View.OnClickListener {
             if (globalVariables.getResolution() == 0) {
                 dialogMessage.append("No resolution.\n");
             } else {
-                dialogMessage.append("Resolution " + globalVariables.getResolution() + "\n");
+                dialogMessage.append("Resolution ")
+                        .append(globalVariables.getResolution())
+                        .append("\n");
             }
-            dialogMessage.append("Victory display: " + globalVariables.getVictoryDisplay() + "\n\n");
+            dialogMessage.append("Victory display: ")
+                    .append(globalVariables.getVictoryDisplay())
+                    .append("\n\n");
             for (int i = 0; i < globalVariables.investigators.size(); i++) {
                 Investigator currentInvestigator = globalVariables.investigators.get(i);
                 String[] investigatorNames = getActivity().getResources().getStringArray(R.array
@@ -142,7 +146,10 @@ public class ContinueOnClickListener implements View.OnClickListener {
                 String[] investigatorStatuses = getActivity().getResources().getStringArray(R.array
                         .investigator_eliminated);
                 String status = investigatorStatuses[currentInvestigator.getTempStatus()];
-                dialogMessage.append(name + ": " + status + "\n");
+                dialogMessage.append(name)
+                        .append(": ")
+                        .append(status)
+                        .append("\n");
             }
             dialogMessage.append("\nSave and continue?");
             builder.setMessage(dialogMessage);
@@ -160,7 +167,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                             break;
                     }
                     if (globalVariables.getCurrentScenario() > 100) {
-                        sideResolutions(globalVariables, getActivity());
+                        sideResolutions(globalVariables);
                     }
 
                     // Apply defeats from temp status and weaknesses
@@ -212,7 +219,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     }
 
                     // Increment current scenario
-                    int nextScenario = 0;
+                    int nextScenario;
                     if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getFirstScenario() == 2) {
                         if (globalVariables.getCurrentScenario() == 1) {
                             nextScenario = 3;
@@ -539,8 +546,6 @@ public class ContinueOnClickListener implements View.OnClickListener {
     Contains all the Dunwich Legacy resolutions
    */
     private static void dunwichResolutions(GlobalVariables globalVariables, Activity parent) {
-        int leadInvestigator = globalVariables.getLeadInvestigator();
-
         /*
          Extracurricular Activity - Scenario 1-A
         */
@@ -718,9 +723,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
     /*
    Contains all the side story resolutions
   */
-    private static void sideResolutions(GlobalVariables globalVariables, Activity parent) {
-        int leadInvestigator = globalVariables.getLeadInvestigator();
-
+    private static void sideResolutions(GlobalVariables globalVariables) {
         /*
          Curse of the Rougarou
         */

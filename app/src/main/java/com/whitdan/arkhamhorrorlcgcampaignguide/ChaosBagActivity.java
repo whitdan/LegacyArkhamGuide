@@ -57,7 +57,7 @@ public class ChaosBagActivity extends AppCompatActivity {
         chaosBagLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetBag(view);
+                resetBag();
             }
         });
 
@@ -101,7 +101,7 @@ public class ChaosBagActivity extends AppCompatActivity {
         }
     }
 
-    private void resetBag(View view) {
+    private void resetBag() {
         LinearLayout tokens = (LinearLayout) findViewById(R.id.token_layout);
         tokens.removeAllViews();
         ImageView currentToken = (ImageView) findViewById(R.id.current_token);

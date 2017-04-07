@@ -475,7 +475,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
     }
 
     // Used to restart the scenario for interludes
-    public void interludeRestartScenario(Context context) {
+    public void interludeRestartScenario() {
         finish();
         startActivity(starterIntent);
     }
