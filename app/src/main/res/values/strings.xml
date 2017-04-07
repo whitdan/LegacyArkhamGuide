@@ -76,6 +76,7 @@
     </string-array>
 
     <!--Difficulty strings-->
+    <string name="set_difficulty">Set difficulty</string>
     <string-array name="difficulty">
         <item>Easy</item>
         <item>Standard</item>
@@ -89,7 +90,10 @@
     <string name="one">1</string>
     <string name="two">2</string>
     <string name="three">3</string>
-    <string name="chaos_bag">Chaos Bag</string>
+    <string name="chaos_bag">Chaos bag</string>
+    <string name="draw_token">Draw token</string>
+    <string name="reset_bag">Reset bag</string>
+    <string name="current_bag">Current bag</string>
     <string name="plus_two">+2</string>
     <string name="plus_one">+1</string>
     <string name="zero">0</string>
@@ -146,6 +150,7 @@
     <string name="campaign_completed">Campaign completed</string>
     <string-array name="campaign_options">
         <item>Finish and delete campaign</item>
+        <item>Finish and save campaign</item>
         <item>Night of the Zealot</item>
         <item>The Dunwich Legacy</item>
     </string-array>
@@ -696,8 +701,8 @@
         bag, for the remainder of the campaign:\n
     \n<b>Easy:</b> -2\n
     \n<b>Standard:</b> -3\n
-    \n<b>Hard: -4</b>\n
-    \n<b>Expert: -5</b>\n</string>
+    \n<b>Hard:</b> -4\n
+    \n<b>Expert:</b> -5\n</string>
 
     <string name="essex_resolution_one">You breathe a sigh of relief as the gate behind the train collapses harmlessly
         upon itself. The few
@@ -773,7 +778,7 @@
     <string name="rougarou_locations">Sort each of the locations into 4 piles, by trait (New Orleans,
         Riverside, Wilderness, and Unhallowed). Randomly choose 1 of these piles and remove those locations
         from the game. Randomly choose another 1 of these piles and put those locations into play.\n
-        Each investigator begins play at a Bayou location in play.\n</string>
+        \nEach investigator begins play at a Bayou location in play.\n</string>
     <string name="rougarou_set_aside">Curse of the Rougarou encounter set.\n</string>
     <string name="rougarou_set_aside_two">Each location in the other 2 piles, Lady Esprit, Bear Trap, and Fishing Net.\n</string>
     <string name="rougarou_resolution_one">Somehow, you manage to make it back to safety before daybreak,
@@ -817,8 +822,8 @@
         begins just before the next full moon&#8230;</string>
     <string name="carnevale_sets">Carnevale of Horrors</string>
     <string name="carnevale_locations">Choose 1 location at random and remove it from the game. If San Marco
-        Basilica or Canal-side is chosen, randomly choose a different location instead.\n
-        Put the other 8 locations into play, in a random circular formation.\n
+        Basilica or Canal-side is chosen, randomly choose a different location instead.
+        \nPut the other 8 locations into play, in a random circular formation.\n
     \nEach investigator begins play at San Marco Basilica.\n</string>
     <string name="carnevale_set_aside">Cnidathqua, Pantalone, Medico Della Peste, Bauta, and Gilded Volto.\n</string>
     <string name="carnevale_additional">Put Abbess Allegria Di Biase into play at San Marco Basilica.\n

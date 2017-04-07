@@ -1,5 +1,6 @@
 package com.whitdan.arkhamhorrorlcgcampaignguide.standalone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -8,8 +9,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.whitdan.arkhamhorrorlcgcampaignguide.ChaosBagActivity;
 import com.whitdan.arkhamhorrorlcgcampaignguide.LogFragment;
 import com.whitdan.arkhamhorrorlcgcampaignguide.R;
 import com.whitdan.arkhamhorrorlcgcampaignguide.campaignsetup.CampaignDifficultyFragment;
@@ -43,6 +47,16 @@ public class StandaloneActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
     }
 
+    /*
+     Sets up overflow menu
+      */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_standalone_menu, menu);
+        return true;
+    }
+
     // Enables up navigation
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -50,6 +64,10 @@ public class StandaloneActivity extends AppCompatActivity {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
+                return true;
+            case R.id.chaos_bag:
+                Intent intent = new Intent(this, ChaosBagActivity.class);
+                startActivity(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);

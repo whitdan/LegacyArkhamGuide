@@ -79,6 +79,8 @@ public class CampaignDifficultyFragment extends Fragment {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+            globalVariables.setCurrentDifficulty(position);
+
             // Get all relevant views and layouts
             LinearLayout plusTwoLayout = (LinearLayout) v.findViewById(R.id.plus_two_layout);
             LinearLayout plusOneLayout = (LinearLayout) v.findViewById(R.id.plus_one_layout);

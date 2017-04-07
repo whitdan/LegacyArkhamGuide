@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.CheckBox;
@@ -308,8 +309,12 @@ public class ContinueOnClickListener implements View.OnClickListener {
                                     Intent intent = new Intent(getActivity(), SelectCampaignActivity.class);
                                     getActivity().startActivity(intent);
                                     break;
-                                // Night of the Zealot
+                                // Finish and save campaign
                                 case 1:
+                                    NavUtils.navigateUpFromSameTask(getActivity());
+                                    break;
+                                // Night of the Zealot
+                                case 2:
                                     if (globalVariables.getNightCompleted() == 1) {
                                         Toast toast = Toast.makeText(getActivity(), "You have already completed this " +
                                                 "campaign.", Toast.LENGTH_SHORT);
@@ -323,7 +328,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                                     }
                                     break;
                                 // The Dunwich Legacy
-                                case 2:
+                                case 3:
                                     if (globalVariables.getDunwichCompleted() == 1) {
                                         Toast toast = Toast.makeText(getActivity(), "You have already completed this " +
                                                 "campaign.", Toast.LENGTH_SHORT);
@@ -813,6 +818,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
         ContentValues campaignValues = new ContentValues();
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_CURRENT_CAMPAIGN, globalVariables.getCurrentCampaign());
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_CURRENT_SCENARIO, globalVariables.getCurrentScenario());
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_DIFFICULTY, globalVariables.getCurrentDifficulty());
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_NIGHT_COMPLETED, globalVariables
                 .getNightCompleted());
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_DUNWICH_COMPLETED, globalVariables

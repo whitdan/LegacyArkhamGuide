@@ -42,6 +42,11 @@ public class GlobalVariables extends Application {
         return mScenarioStage;
     }
 
+    // Current difficulty
+    private int mCurrentDifficulty;
+    public void setCurrentDifficulty(int difficulty){this.mCurrentDifficulty = difficulty;}
+    public int getCurrentDifficulty(){return mCurrentDifficulty;}
+
     // Current resolution (0 = No resolution)
     private int mResolution;
     public void setResolution(int resolution) {

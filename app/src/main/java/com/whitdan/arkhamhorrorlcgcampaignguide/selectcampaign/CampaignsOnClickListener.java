@@ -46,6 +46,7 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                 CampaignEntry._ID,
                 CampaignEntry.COLUMN_CURRENT_CAMPAIGN,
                 CampaignEntry.COLUMN_CURRENT_SCENARIO,
+                CampaignEntry.COLUMN_DIFFICULTY,
                 CampaignEntry.COLUMN_NIGHT_COMPLETED,
                 CampaignEntry.COLUMN_DUNWICH_COMPLETED,
                 CampaignEntry.COLUMN_ROLAND_INUSE,
@@ -80,6 +81,8 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_CURRENT_CAMPAIGN)));
             globalVariables.setCurrentScenario(campaignCursor.getInt(campaignCursor
                     .getColumnIndexOrThrow(CampaignEntry.COLUMN_CURRENT_SCENARIO)));
+            globalVariables.setCurrentDifficulty(campaignCursor.getInt(campaignCursor.getColumnIndexOrThrow
+                    (CampaignEntry.COLUMN_DIFFICULTY)));
             globalVariables.setNightCompleted(campaignCursor.getInt(campaignCursor.getColumnIndexOrThrow
                     (CampaignEntry.COLUMN_NIGHT_COMPLETED)));
             globalVariables.setDunwichCompleted(campaignCursor.getInt(campaignCursor.getColumnIndexOrThrow
