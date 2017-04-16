@@ -48,7 +48,7 @@ public class CampaignInvestigatorsFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                ((CampaignSetupActivity) getActivity()).campaignName = campaign.getText().toString().trim();
+                CampaignSetupActivity.campaignName = campaign.getText().toString().trim();
             }
 
             @Override

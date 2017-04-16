@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.CheckBox;
@@ -130,9 +131,13 @@ public class ContinueOnClickListener implements View.OnClickListener {
             if (globalVariables.getResolution() == 0) {
                 dialogMessage.append("No resolution.\n");
             } else {
-                dialogMessage.append("Resolution " + globalVariables.getResolution() + "\n");
+                dialogMessage.append("Resolution ")
+                        .append(globalVariables.getResolution())
+                        .append("\n");
             }
-            dialogMessage.append("Victory display: " + globalVariables.getVictoryDisplay() + "\n\n");
+            dialogMessage.append("Victory display: ")
+                    .append(globalVariables.getVictoryDisplay())
+                    .append("\n\n");
             for (int i = 0; i < globalVariables.investigators.size(); i++) {
                 Investigator currentInvestigator = globalVariables.investigators.get(i);
                 String[] investigatorNames = getActivity().getResources().getStringArray(R.array
@@ -141,7 +146,10 @@ public class ContinueOnClickListener implements View.OnClickListener {
                 String[] investigatorStatuses = getActivity().getResources().getStringArray(R.array
                         .investigator_eliminated);
                 String status = investigatorStatuses[currentInvestigator.getTempStatus()];
-                dialogMessage.append(name + ": " + status + "\n");
+                dialogMessage.append(name)
+                        .append(": ")
+                        .append(status)
+                        .append("\n");
             }
             dialogMessage.append("\nSave and continue?");
             builder.setMessage(dialogMessage);
@@ -159,7 +167,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                             break;
                     }
                     if (globalVariables.getCurrentScenario() > 100) {
-                        sideResolutions(globalVariables, getActivity());
+                        sideResolutions(globalVariables);
                     }
 
                     // Apply defeats from temp status and weaknesses
@@ -211,7 +219,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     }
 
                     // Increment current scenario
-                    int nextScenario = 0;
+                    int nextScenario;
                     if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getFirstScenario() == 2) {
                         if (globalVariables.getCurrentScenario() == 1) {
                             nextScenario = 3;
@@ -308,8 +316,12 @@ public class ContinueOnClickListener implements View.OnClickListener {
                                     Intent intent = new Intent(getActivity(), SelectCampaignActivity.class);
                                     getActivity().startActivity(intent);
                                     break;
-                                // Night of the Zealot
+                                // Finish and save campaign
                                 case 1:
+                                    NavUtils.navigateUpFromSameTask(getActivity());
+                                    break;
+                                // Night of the Zealot
+                                case 2:
                                     if (globalVariables.getNightCompleted() == 1) {
                                         Toast toast = Toast.makeText(getActivity(), "You have already completed this " +
                                                 "campaign.", Toast.LENGTH_SHORT);
@@ -323,7 +335,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                                     }
                                     break;
                                 // The Dunwich Legacy
-                                case 2:
+                                case 3:
                                     if (globalVariables.getDunwichCompleted() == 1) {
                                         Toast toast = Toast.makeText(getActivity(), "You have already completed this " +
                                                 "campaign.", Toast.LENGTH_SHORT);
@@ -534,8 +546,6 @@ public class ContinueOnClickListener implements View.OnClickListener {
     Contains all the Dunwich Legacy resolutions
    */
     private static void dunwichResolutions(GlobalVariables globalVariables, Activity parent) {
-        int leadInvestigator = globalVariables.getLeadInvestigator();
-
         /*
          Extracurricular Activity - Scenario 1-A
         */
@@ -713,9 +723,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
     /*
    Contains all the side story resolutions
   */
-    private static void sideResolutions(GlobalVariables globalVariables, Activity parent) {
-        int leadInvestigator = globalVariables.getLeadInvestigator();
-
+    private static void sideResolutions(GlobalVariables globalVariables) {
         /*
          Curse of the Rougarou
         */
@@ -813,6 +821,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
         ContentValues campaignValues = new ContentValues();
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_CURRENT_CAMPAIGN, globalVariables.getCurrentCampaign());
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_CURRENT_SCENARIO, globalVariables.getCurrentScenario());
+        campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_DIFFICULTY, globalVariables.getCurrentDifficulty());
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_NIGHT_COMPLETED, globalVariables
                 .getNightCompleted());
         campaignValues.put(ArkhamContract.CampaignEntry.COLUMN_DUNWICH_COMPLETED, globalVariables

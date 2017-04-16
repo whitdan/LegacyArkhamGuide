@@ -190,8 +190,8 @@ public class LogFragment extends Fragment {
                     break;
             }
             // Side stories
-            if(globalVariables.getCurrentScenario()>100){
-                switch(globalVariables.getCurrentScenario()){
+            if (globalVariables.getCurrentScenario() > 100) {
+                switch (globalVariables.getCurrentScenario()) {
                     case 101:
                         sets.setText(R.string.rougarou_sets);
                         setsImage.setImageResource(R.drawable.rougarou_sets);
@@ -215,7 +215,7 @@ public class LogFragment extends Fragment {
         }
 
         // Standalone scenario
-        if(globalVariables.getCurrentCampaign()==999){
+        if (globalVariables.getCurrentCampaign() == 999) {
             LinearLayout logLayout = (LinearLayout) v.findViewById(R.id.log_layout);
             logLayout.setVisibility(GONE);
             // Set click listener on continue button
@@ -226,16 +226,16 @@ public class LogFragment extends Fragment {
 
         StringBuilder campaignLogBuilder = new StringBuilder();
 
-        if(globalVariables.getCurrentScenario()<100){
+        if (globalVariables.getCurrentScenario() < 100) {
             globalVariables.setPreviousScenario(globalVariables.getCurrentScenario());
         }
 
         /*
         Night of the Zealot log
          */
-        if (globalVariables.getCurrentCampaign() == 1 || globalVariables.getNightCompleted()==1) {
+        if (globalVariables.getCurrentCampaign() == 1 || globalVariables.getNightCompleted() == 1) {
             // First scenario log
-            if (globalVariables.getPreviousScenario() > 1 || globalVariables.getNightCompleted()==1) {
+            if (globalVariables.getPreviousScenario() > 1 || globalVariables.getNightCompleted() == 1) {
                 // Set house status
                 if (globalVariables.getHouseStanding() == 1) {
                     campaignLogBuilder.append(getString(R.string.house_standing));
@@ -252,7 +252,7 @@ public class LogFragment extends Fragment {
                 }
             }
             // Second scenario log
-            if (globalVariables.getPreviousScenario() > 2 || globalVariables.getNightCompleted()==1) {
+            if (globalVariables.getPreviousScenario() > 2 || globalVariables.getNightCompleted() == 1) {
                 // Set midnight status
                 if (globalVariables.getMidnightStatus() == 1) {
                     campaignLogBuilder.append(getString(R.string.past_midnight));
@@ -264,34 +264,46 @@ public class LogFragment extends Fragment {
                 StringBuilder cultistsInterrogated = new StringBuilder();
                 StringBuilder cultistsGotAway = new StringBuilder();
                 if (globalVariables.getDrewInterrogated() == 1) {
-                    cultistsInterrogated.append(getString(R.string.drew) + "\n");
+                    cultistsInterrogated.append(getString(R.string.drew))
+                            .append("\n");
                 } else if (globalVariables.getDrewInterrogated() == 0) {
-                    cultistsGotAway.append(getString(R.string.drew) + "\n");
+                    cultistsGotAway.append(getString(R.string.drew))
+                            .append("\n");
                 }
                 if (globalVariables.getPeterInterrogated() == 1) {
-                    cultistsInterrogated.append(getString(R.string.peter) + "\n");
+                    cultistsInterrogated.append(getString(R.string.peter))
+                            .append("\n");
                 } else if (globalVariables.getPeterInterrogated() == 0) {
-                    cultistsGotAway.append(getString(R.string.peter) + "\n");
+                    cultistsGotAway.append(getString(R.string.peter))
+                            .append("\n");
                 }
                 if (globalVariables.getHermanInterrogated() == 1) {
-                    cultistsInterrogated.append(getString(R.string.herman) + "\n");
+                    cultistsInterrogated.append(getString(R.string.herman))
+                            .append("\n");
                 } else if (globalVariables.getHermanInterrogated() == 0) {
-                    cultistsGotAway.append(getString(R.string.herman) + "\n");
+                    cultistsGotAway.append(getString(R.string.herman))
+                            .append("\n");
                 }
                 if (globalVariables.getRuthInterrogated() == 1) {
-                    cultistsInterrogated.append(getString(R.string.ruth) + "\n");
+                    cultistsInterrogated.append(getString(R.string.ruth))
+                            .append("\n");
                 } else if (globalVariables.getRuthInterrogated() == 0) {
-                    cultistsGotAway.append(getString(R.string.ruth) + "\n");
+                    cultistsGotAway.append(getString(R.string.ruth))
+                            .append("\n");
                 }
                 if (globalVariables.getVictoriaInterrogated() == 1) {
-                    cultistsInterrogated.append(getString(R.string.victoria) + "\n");
+                    cultistsInterrogated.append(getString(R.string.victoria))
+                            .append("\n");
                 } else if (globalVariables.getVictoriaInterrogated() == 0) {
-                    cultistsGotAway.append(getString(R.string.victoria) + "\n");
+                    cultistsGotAway.append(getString(R.string.victoria))
+                            .append("\n");
                 }
                 if (globalVariables.getMaskedInterrogated() == 1) {
-                    cultistsInterrogated.append(getString(R.string.masked_hunter) + "\n");
+                    cultistsInterrogated.append(getString(R.string.masked_hunter))
+                            .append("\n");
                 } else if (globalVariables.getMaskedInterrogated() == 0) {
-                    cultistsGotAway.append(getString(R.string.masked_hunter) + "\n");
+                    cultistsGotAway.append(getString(R.string.masked_hunter))
+                            .append("\n");
                 }
                 String allCultistsInterrogated = cultistsInterrogated.toString();
                 String allCultistsGotAway = cultistsGotAway.toString();
@@ -301,8 +313,8 @@ public class LogFragment extends Fragment {
                 cultistsGotAwayView.setText(allCultistsGotAway);
             }
             // Devourer Below log
-            if (globalVariables.getNightCompleted()==1){
-                switch(globalVariables.getUmordhothStatus()){
+            if (globalVariables.getNightCompleted() == 1) {
+                switch (globalVariables.getUmordhothStatus()) {
                     case 0:
                         campaignLogBuilder.append(getString(R.string.umordhoth_succumbed));
                         break;
@@ -360,27 +372,27 @@ public class LogFragment extends Fragment {
                 }
             }
             // Interlude log
-            if(globalVariables.getPreviousScenario() > 3){
-                if(globalVariables.getHenryArmitage()==0){
+            if (globalVariables.getPreviousScenario() > 3) {
+                if (globalVariables.getHenryArmitage() == 0) {
                     campaignLogBuilder.append(getString(R.string.armitage_kidnapped));
-                } else if(globalVariables.getHenryArmitage()==1){
+                } else if (globalVariables.getHenryArmitage() == 1) {
                     campaignLogBuilder.append(getString(R.string.armitage_rescued));
                 }
             }
             // The Miskatonic Museum log
-            if(globalVariables.getPreviousScenario() > 4){
-                if(globalVariables.getNecronomicon()==0){
+            if (globalVariables.getPreviousScenario() > 4) {
+                if (globalVariables.getNecronomicon() == 0) {
                     campaignLogBuilder.append(getString(R.string.necronomicon_failed));
-                } else if(globalVariables.getNecronomicon()==1){
+                } else if (globalVariables.getNecronomicon() == 1) {
                     campaignLogBuilder.append(getString(R.string.necronomicon_destroyed));
-                } else if(globalVariables.getNecronomicon()==2){
+                } else if (globalVariables.getNecronomicon() == 2) {
                     campaignLogBuilder.append(getString(R.string.necronomicon_taken));
-                } else if(globalVariables.getNecronomicon()==3){
+                } else if (globalVariables.getNecronomicon() == 3) {
                     campaignLogBuilder.append(getString(R.string.necronomicon_stolen));
                 }
             }
             // The Essex County Express log
-            if(globalVariables.getDelayed()==1){
+            if (globalVariables.getDelayed() == 1) {
                 campaignLogBuilder.append(getString(R.string.investigators_delayed));
             }
         }
@@ -388,30 +400,30 @@ public class LogFragment extends Fragment {
         /*
             Side story log
          */
-        if(globalVariables.getRougarouStatus()==1){
+        if (globalVariables.getRougarouStatus() == 1) {
             campaignLogBuilder.append(getString(R.string.rougarou_alive));
-        }else if (globalVariables.getRougarouStatus()==2){
+        } else if (globalVariables.getRougarouStatus() == 2) {
             campaignLogBuilder.append(getString(R.string.rougarou_destroyed));
-        }else if(globalVariables.getRougarouStatus()==3){
+        } else if (globalVariables.getRougarouStatus() == 3) {
             campaignLogBuilder.append(getString(R.string.rougarou_escaped));
         }
-        if(globalVariables.getCarnevaleStatus()==1){
+        if (globalVariables.getCarnevaleStatus() == 1) {
             campaignLogBuilder.append(getString(R.string.carnevale_many_sacrificed));
-        }else if(globalVariables.getCarnevaleStatus()==2){
+        } else if (globalVariables.getCarnevaleStatus() == 2) {
             campaignLogBuilder.append(getString(R.string.carnevale_banished));
-        }else if(globalVariables.getCarnevaleStatus()==3){
+        } else if (globalVariables.getCarnevaleStatus() == 3) {
             campaignLogBuilder.append(getString(R.string.carnevale_retreated));
         }
-        if(globalVariables.getCarnevaleReward()==1){
+        if (globalVariables.getCarnevaleReward() == 1) {
             campaignLogBuilder.append(getString(R.string.carnevale_sacrifice_made));
-        }else if(globalVariables.getCarnevaleReward()==2){
+        } else if (globalVariables.getCarnevaleReward() == 2) {
             campaignLogBuilder.append(getString(R.string.carnevale_abbess_satisfied));
         }
 
         /*
             Player cards log
          */
-        if(globalVariables.getStrangeSolution()==1){
+        if (globalVariables.getStrangeSolution() == 1) {
             campaignLogBuilder.append(getString(R.string.strange_solution));
         }
 

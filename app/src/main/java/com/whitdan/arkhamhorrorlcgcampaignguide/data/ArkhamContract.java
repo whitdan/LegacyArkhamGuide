@@ -22,6 +22,7 @@ public class ArkhamContract {
         public static final String COLUMN_CAMPAIGN_NAME = "name";
         public static final String COLUMN_CURRENT_CAMPAIGN = "campaign"; // Denotes which campaign
         public static final String COLUMN_CURRENT_SCENARIO = "scenario";
+        public static final String COLUMN_DIFFICULTY = "difficulty";
         public static final String COLUMN_NIGHT_COMPLETED = "night_completed";
         public static final String COLUMN_DUNWICH_COMPLETED = "dunwich_completed";
         public static final String COLUMN_ROLAND_INUSE = "roland";

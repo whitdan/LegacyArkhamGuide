@@ -44,7 +44,7 @@ public class FinishResolutionFragment extends Fragment {
         Spinner resolutionSpinner = (Spinner) v.findViewById(R.id.resolution_selection);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
                 R.array.resolutions_three, android.R.layout.simple_spinner_item);
-        ;
+
         // Setup the right number of resolutions in the adapter
         switch (globalVariables.getCurrentCampaign()) {
             // Night of the Zealot
@@ -231,7 +231,6 @@ public class FinishResolutionFragment extends Fragment {
             Spinner rewardsSpinner = (Spinner) v.findViewById(R.id.rewards_selection);
             ArrayAdapter<CharSequence> rewardsAdapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
                     R.array.carnevale_rewards, android.R.layout.simple_spinner_item);
-            ;
             rewardsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             rewardsSpinner.setAdapter(rewardsAdapter);
             rewardsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

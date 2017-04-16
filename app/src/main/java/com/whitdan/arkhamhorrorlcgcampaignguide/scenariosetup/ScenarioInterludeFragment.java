@@ -56,7 +56,7 @@ public class ScenarioInterludeFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     globalVariables.setCurrentScenario(globalVariables.getCurrentScenario() + 1);
-                    ((ScenarioSetupActivity) getActivity()).interludeRestartScenario(getActivity());
+                    ((ScenarioSetupActivity) getActivity()).interludeRestartScenario();
                 }
             });
         }

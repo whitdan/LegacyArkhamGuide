@@ -4,4 +4,6 @@
           android:title="@string/add_side_story" />
     <item android:id="@+id/edit_investigators"
           android:title="@string/edit_investigators" />
+    <item android:id="@+id/chaos_bag"
+          android:title="@string/chaos_bag" />
 </menu>

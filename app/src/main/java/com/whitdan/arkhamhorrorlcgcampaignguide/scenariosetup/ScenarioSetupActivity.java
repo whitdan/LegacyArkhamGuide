@@ -25,6 +25,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.whitdan.arkhamhorrorlcgcampaignguide.ChaosBagActivity;
 import com.whitdan.arkhamhorrorlcgcampaignguide.GlobalVariables;
 import com.whitdan.arkhamhorrorlcgcampaignguide.Investigator;
 import com.whitdan.arkhamhorrorlcgcampaignguide.LogFragment;
@@ -139,6 +140,11 @@ public class ScenarioSetupActivity extends AppCompatActivity {
                 globalVariables.editInvestigators = true;
                 finish();
                 startActivity(starterIntent);
+                return true;
+            case R.id.chaos_bag:
+                Intent intent = new Intent(this, ChaosBagActivity.class);
+                startActivity(intent);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -469,7 +475,7 @@ public class ScenarioSetupActivity extends AppCompatActivity {
     }
 
     // Used to restart the scenario for interludes
-    public void interludeRestartScenario(Context context) {
+    public void interludeRestartScenario() {
         finish();
         startActivity(starterIntent);
     }

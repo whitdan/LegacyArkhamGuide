@@ -210,6 +210,7 @@ public class CampaignSetupActivity extends AppCompatActivity {
         campaignValues.put(CampaignEntry.COLUMN_CAMPAIGN_NAME, campaignName);
         campaignValues.put(CampaignEntry.COLUMN_CURRENT_CAMPAIGN, globalVariables.getCurrentCampaign());
         campaignValues.put(CampaignEntry.COLUMN_CURRENT_SCENARIO, globalVariables.getCurrentScenario());
+        campaignValues.put(CampaignEntry.COLUMN_DIFFICULTY, globalVariables.getCurrentDifficulty());
         campaignValues.put(CampaignEntry.COLUMN_ROLAND_INUSE, globalVariables.investigatorsInUse[Investigator
                 .ROLAND_BANKS]);
         campaignValues.put(CampaignEntry.COLUMN_DAISY_INUSE, globalVariables.investigatorsInUse[Investigator
@@ -305,6 +306,7 @@ public class CampaignSetupActivity extends AppCompatActivity {
                                     .getCurrentCampaign());
                             campaignValues.put(CampaignEntry.COLUMN_CURRENT_SCENARIO, globalVariables
                                     .getCurrentScenario());
+                            campaignValues.put(CampaignEntry.COLUMN_DIFFICULTY, globalVariables.getCurrentDifficulty());
                             campaignValues.put(CampaignEntry.COLUMN_ROLAND_INUSE, globalVariables
                                     .investigatorsInUse[Investigator
                                     .ROLAND_BANKS]);
