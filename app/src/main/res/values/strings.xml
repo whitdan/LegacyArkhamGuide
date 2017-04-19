@@ -92,8 +92,7 @@
     <string name="three">3</string>
     <string name="chaos_bag">Chaos bag</string>
     <string name="draw_token">Draw token</string>
-    <string name="reset_bag">Reset bag</string>
-    <string name="current_bag">Current bag</string>
+    <string name="add_token">Add</string>
     <string name="plus_two">+2</string>
     <string name="plus_one">+1</string>
     <string name="zero">0</string>
@@ -398,6 +397,7 @@
     <string name="dunwich_scenario_seven">Scenario 6: Where Doom Awaits</string>
     <string name="dunwich_scenario_eight">Scenario 7: Lost in Time and Space</string>
     <string name="dunwich_interlude_one">Interlude 1: Armitage\'s Fate</string>
+    <string name="dunwich_interlude_two">Interlude 2: The Survivors</string>
 
     <!--Miscellaneous-->
     <string name="cheated_checkbox">An investigator \"cheated\"</string>
@@ -411,6 +411,8 @@
     <string name="investigators_unconscious">The investigators were unconscious for several hours.\n</string>
     <string name="warren_kidnapped">Professor Warren Rice was kidnapped.\n</string>
     <string name="warren_rescued">The investigators rescued Professor Warren Rice.\n</string>
+    <string name="warren_sacrificed">Professor Warren Rice was sacrificed to Yog-Sothoth.\n</string>
+    <string name="warren_survived">Professor Warren Rice survived The Dunwich Legacy.\n</string>
     <string name="students_failed">The investigators failed to save the students.\nTablet chaos token added to the chaos bag for the remainder of the campaign.\n</string>
     <string name="students_rescued">The students were rescued.\n</string>
     <string name="experiment_defeated">The Experiment was defeated.\n</string>
@@ -418,10 +420,14 @@
     <string name="obannion_succeeded">Naomi has the investigators\' backs.\n</string>
     <string name="morgan_kidnapped">Dr. Francis Morgan was kidnapped.\n</string>
     <string name="morgan_rescued">The investigators rescued Dr. Francis Morgan.\n</string>
+    <string name="morgan_sacrificed">Dr. Francis Morgan was sacrificed to Yog-Sothoth.\n</string>
+    <string name="morgan_survived">Dr. Francis Morgan survived The Dunwich Legacy.\n</string>
     <string name="cheated">Elder Thing chaos token added to the chaos bag for the remainder of the
         campaign.\n</string>
     <string name="armitage_kidnapped">Dr. Henry Armitage was kidnapped.\n</string>
     <string name="armitage_rescued">The investigators rescued Dr. Henry Armitage.\n</string>
+    <string name="armitage_sacrificed">Dr. Henry Armitage was sacrificed to Yog-Sothoth.\n</string>
+    <string name="armitage_survived">Dr. Henry Armitage survived The Dunwich Legacy.\n</string>
     <string name="necronomicon_failed">The investigators failed to recover the <i>Necronomicon</i>.\n</string>
     <string name="necronomicon_destroyed">The investigators destroyed the <i>Necronomicon</i>.\n</string>
     <string name="necronomicon_taken">The investigators took custody of the <i>Necronomicon</i>.
@@ -429,6 +435,15 @@
         \nElder Thing chaos token added to the chaos bag for the remainder of the campaign.\n</string>
     <string name="necronomicon_stolen">The Necronomicon was stolen.\n</string>
     <string name="investigators_delayed">The investigators were delayed on their way to Dunwich.\n</string>
+    <string name="silas_ritual">The ritual was completed.\n</string>
+    <string name="silas_misery">The investigators put Silas Bishop out of his misery.\n</string>
+    <string name="silas_restored">The investigators restored Silas Bishop.\n</string>
+    <string name="silas_banished">The investigators banished Silas Bishop.\n</string>
+    <string name="zebulon_sacrificed">Zebulon Whateley was sacrificed to Yog-Sothoth.\n</string>
+    <string name="zebulon_survived">Zebulon Whateley survived The Dunwich Legacy.\n</string>
+    <string name="sawyer_sacrificed">Earl Sawyer was sacrificed to Yog-Sothoth.\n</string>
+    <string name="sawyer_survived">Earl Sawyer survived The Dunwich Legacy.\n</string>
+    <string name="ally_sacrificed">An ally was sacrificed to Yog-Sothoth.\n</string>
 
     <string name="dunwich_setup"><b>Prologue</b>\n
     \nDr. Henry Armitage pours himself a glass of pinot and sits down at his desk, gesturing for you to sit
@@ -644,6 +659,8 @@
     deck should be showing only the unrevealed side, so that the players do not know which Exhibit Hall is the
         Exhibit Hall (<i>Restricted Hall</i>).\n</string>
 
+    <string name="adam_lynch_harold_walsted">Adam Lynch or Harold Walsted left play</string>
+
     <string name="miskatonic_no_resolution">Whatever the creature in the museum was, you had neither the will
         nor the tools to destroy it. It seems you must give up any hope of recovering the <i>Necronomicon</i>.
         Even so, there are others depending on you. Gathering your courage, you prepare for your next task.</string>
@@ -751,6 +768,131 @@
         .</b></string>
     <string
         name="remove_morgan"><b>Remove the Dr. Francis Morgan card from the relevant investigator\'s deck.</b></string>
+
+    <!--Scenario 4: Blood on the Altar-->
+    <string name="blood_setup"><b>Scenario 4: Blood on the Altar</b>\n
+        \nWhen you finally reach Dunwich, you are greeted by Zebulon Whateley and Earl
+        Sawyer, another man from the village who had met with Dr. Armitage during the incident several months
+        ago. \"Things ain\'t lookin\' too good here,\" Earl tells you. \"Some folk up and went missin\' a few
+        nights ago. \'Dem whippoorwills won\' shut up. Dunno what yer doin\' here, but last time you Arkham
+        folk came \'round it was bad news. Very bad news.\" His eyes blink rapidly, and he coughs and looks
+        away.\n
+    \n\"Look, why don\'t you rest fer the night an\' look fer whatever it is yer looking fer t\'morra,\"
+        Zebulon chimes in, putting a wrinkled hand on your shoulder. You begin to protest, but your aching
+        muscles and weary mind won\'t allow you to refuse. The elderly man offers to take you in for the night,
+    and drives you to his home at the outskirts of Dunwich village. The down is disheveled and eerie, and you
+        find yourself wishing you hadn\'t come here at all. You fall asleep on the ride over and scarcely
+        remember anything else from that night.\n
+    \nWhen you awaken, you find that Zebulon\'s house is abandoned, and there is no sign of the elderly man, or
+    of Mr. Sawyer. Fearing the worst, you head into the village of Dunwich to investigate, hoping to find
+        answers.</string>
+
+    <string name="blood_sets">Blood on the Altar, Dunwich, Whippoorwills, Nightgaunts, and Ancient Evils.</string>
+    <string name="blood_sets_two">Seeking vengeance, the gang from the Clover Club has followed you to Dunwich.
+    Add the Naomi\'s Crew encounter set.</string>
+    <string name="blood_locations">Put Village Commons into play.\n
+    \nRemove one of the two copies of each other location from the game at random. Then, choose one of the six
+        remaining locations at random, and remove it from the game as well. Put the remaining locations into
+        play.\n
+    \nEach investigator begins play in the Village Commons.\n</string>
+    <string name="blood_set_aside">Silas Bishop, and Powder of Ibn-Ghazi.\n</string>
+    <string name="blood_additional">Take The Hidden Chamber and Key to the Chamber cards, along with the top 3
+        cards of the encounter deck. Shuffle them and randomly deal 1 card facedown underneath each location in
+    play except Village Commons.\n</string>
+    <string name="blood_additional_sacrifice_one">\nForm a facedown pile of "potential sacrifices", consisting of
+    the</string>
+    <string name="blood_additional_sacrifice_armitage">Dr. Henry Armitage,</string>
+    <string name="blood_additional_sacrifice_rice">Professor Warren Rice,</string>
+    <string name="blood_additional_sacrifice_morgan">Dr. Francis Morgan,</string>
+    <string name="blood_additional_sacrifice_two">Zebulon Whateley, and Earl Sawyer cards.\n</string>
+    <string name="blood_additional_two">\nAdd 1 doom to agenda 1a.\n</string>
+
+    <string name="blood_no_resolution">The cries of the whippoorwills fade into the distance, and the town of
+        Dunwich is filled with an eerie silence. All that can be heard is the dry whistle of the chill wind and
+    the slow rustling of dead leaves. There is no sign of the missing townsfolk, nor will there be ever again
+        .\n
+    \n<b>If there were any potential sacrifices remaining at the end of the game, place them underneath the
+            agenda deck.</b>\n
+    \n<b>Each unique card that is underneath the agenda deck is sacrificed to Yog-Sothoth. Each of those cards
+            are removed from all players\' decks and can no longer be included in any players\' decks for the
+            remainder of the campaign.</b>\n</string>
+    <string name="blood_resolution_one">As you land the finishing blow, the creature\'s body explodes into
+        hundreds of squirming ropelike appendages, wriggling across the ground and climbing up the walls.
+        You\'re so startled that you aren\'t fast enough to prevent them from escaping the room. Even so,
+        whatever that creature was, you\'re glad it\'s now dead.\n
+    \n<b>Each unique card that is underneath the agenda deck is sacrificed to Yog-Sothoth. Each of those cards
+            are removed from all players\' decks and can no longer be included in any players\' decks for the
+            remainder of the campaign.</b>\n</string>
+    <string name="blood_resolution_two">With the creature that once was Silas lashing out at you from its
+        chains, you have little time to react. Knowing that the <i>Necronomicon</i> might have a spell or
+        incantation that could subdue Silas, you fend off the abomination long enough to find a passage that
+        can help. With no time to spare, you recite the Latin incantation, and find that the words come
+        effortlessly to your tongue, as though recalled from an earlier memory. The creature\'s body begins to
+        shrink and melt away as the incantation builds, its cries terrifying and haunting. In the end, all that
+    is left is the disfigured corpse of a man - Silas Bishop. You find a silver pendant emblazoned with an odd
+        constellation tucked into his shirt. You take it with you, hoping to find a use for it.\n
+    \n<b>Each unique card that is underneath the agenda deck is sacrificed to Yog-Sothoth. Each of those cards
+            are removed from all players\' decks and can no longer be included in any players\' decks for the
+            remainder of the campaign.</b>\n</string>
+    <string name="blood_resolution_three">With the creature that once was Silas lashing out at you from its
+        chains, you have little time to react. Hoping there is something in the chamber you can use to your
+        advantage, you fend off the abomination long enough to find a journal; many of its passages are written
+    in Latin. It appears to be a handwritten excerpt from the <i>Necronomicon</i>, its purpose unknown. With no
+    time to spare, you recite the incantation, stumbling over the words and feeling your throat tighten with
+        each sentence. The creature\'s body begins to shrink and melt away as the incantation continues, its
+        cries terrifying and haunting. In the end, all that is left is a pile of wet and sticky ichor, and a
+        rotten stench.\n
+    \n<b>Each unique card that is underneath the agenda deck is sacrificed to Yog-Sothoth. Each of those cards
+            are removed from all players\' decks and can no longer be included in any players\' decks for the
+            remainder of the campaign.</b>\n</string>
+
+    <string name="underneath_agenda_deck">Underneath the agenda deck:</string>
+    <string name="henry_armitage">Dr. Henry Armitage</string>
+    <string name="warren_rice">Professor Warren Rice</string>
+    <string name="francis_morgan">Dr. Francis Morgan</string>
+    <string name="zebulon_whateley">Zebulon Whateley</string>
+    <string name="earl_sawyer">Earl Sawyer</string>
+    <string name="another_ally">Another ally</string>
+
+    <!--Interlude 2: The Survivors-->
+    <string name="survivors_interlude_text">Inside the chamber that contained the terrible beast, you find the
+        missing townsfolk and the others from Arkham; they are bound and shackled. You also find several
+        documents that suggest the creature you found isn\'t the only one of its kind in Dunwich. You free the
+        creature\'s victims from their bonds, and they offer you their thanks. You begin to plan your next move.\n</string>
+    <string name="survivors_interlude_armitage">\"It is far worse than we had thought,\" Dr. Armitage says,
+        pale and trembling. \"Wilbur Whateley was only the beginning. There were more, many more in Dunwich,
+        who knew of the \'Great Old Ones\' and who desired power and knowledge above all else, the Earth be
+        damned. I knew I should have burned that wretch\'s journal. But thanks to its contents, I know how we
+        can stop them. We are the only ones who can! Now quickly, help me with this solution - the powder is
+        the key, yes, the powder is the only way&#8230;\"\n
+    \n<b>If the Dr. Henry Armitage card is not already in an investigator\'s deck, any one investigator may
+            choose to add that card to his or her deck.</b>\n</string>
+    <string name="survivors_interlude_rice">Professor Rice adjusts his glasses and studies the documents and
+        arcane manuscripts left in the chamber. \"I thought this nightmare was over and done with,\" he sighs.
+        \"But we have a duty to see this through. We have to stop these creatures, or it won\'t be just Dunwich
+    in trouble. The powder mixture Armitage created to see the creatures will be our saving grace,\" he
+        explains, and sets off to the task of recreating the powder.\n
+    \n<b>If the Professor Warren Rice card is not already in an investigator\'s deck, any one investigator may
+            choose to add that card to his or her deck.</b>\n</string>
+    <string name="survivors_interlude_morgan">\"Thank you for everything you\'ve done,\" Dr. Morgan says,
+        taking count of your provisions and ammunition. \"Last time, we needed some of that strange powder
+        Armitage concocted to even see the beast that terrorized Dunwich. If there\'s more of those things out
+        there, we\'re going to need that powder. I think I remember how he made it&#8230;\"\n
+    \n<b>If the Dr. Francis Morgan card is not already in an investigator\'s deck, any one investigator may
+            choose to add that card to his or her deck.</b>\n</string>
+    <string name="survivors_interlude_powder"><b>If the Powder of Ibn-Ghazi card is not already in an investigator\'s
+        deck, any one investigator may choose to add that card to his or her deck.</b>\n</string>
+    <string name="survivors_interlude_zebulon">\"Dunwich\'s had its fair share of oddities,\" Zebulon
+        explains to you with a quavering voice, \"but I ain\'t ever seen anything as sick and twisted as this&#8230;
+        this&#8230;<b>thing</b>.\" He gives the creature\'s remains one last sickened glance before closing the
+    door to the chamber behind him, shuddering. He locks eyes with you, his expression grim. \"Whoever dun this
+    gotta pay. I\'ll do all I can to help.\"\n
+    \n<b>Any one investigator may choose to add Zebulon Whateley to his or her deck.</b>\n</string>
+    <string name="survivors_interlude_sawyer">\"I never could\'a made it if it weren\'t for you,\" Earl says
+        with a stammer, shaking your hand repeatedly. \"If\'n there\'s anything I can do to repay yeh, just ask
+    away. I ain\'t much of a fighter or anythin\', but I\'ll do all I can. Jus\'&#8230;don\'t make me look at
+        anythin\' like that <b>beast</b> again, a\'right?\"\n
+    \n<b>Any one investigator may choose to add Earl Sawyer to his or her deck.</b>\n</string>
 
     <!--Side stories-->
     <string-array name="side_stories">

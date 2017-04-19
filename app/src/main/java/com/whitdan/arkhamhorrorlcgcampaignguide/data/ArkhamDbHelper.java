@@ -102,7 +102,12 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
                 + DunwichEntry.COLUMN_OBANNION_GANG + " INTEGER, "
                 + DunwichEntry.COLUMN_INVESTIGATORS_CHEATED + " INTEGER, "
                 + DunwichEntry.COLUMN_NECRONOMICON + " INTEGER, "
-                + DunwichEntry.COLUMN_DELAYED + " INTEGER);";
+                + DunwichEntry.COLUMN_ADAM_LYNCH_HAROLD_WALSTED + " INTEGER, "
+                + DunwichEntry.COLUMN_DELAYED + " INTEGER, "
+                + DunwichEntry.COLUMN_SILAS_BISHOP + " INTEGER, "
+                + DunwichEntry.COLUMN_ZEBULON_WHATELEY + " INTEGER, "
+                + DunwichEntry.COLUMN_EARL_SAWYER + " INTEGER, "
+                + DunwichEntry.COLUMN_ALLY_SACRIFICED + " INTEGER);";
 
         // Execute the SQL statements
         db.execSQL(SQL_CREATE_CAMPAIGNS_TABLE);
@@ -187,9 +192,25 @@ public class ArkhamDbHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_UPGRADE_SEVEN_THREE);
                 db.execSQL(SQL_UPGRADE_SEVEN_FOUR);
             case 9:
-                String SQL_UPGRADE_EIGHT = "ALTER TABLE " + CampaignEntry.TABLE_NAME + " ADD COLUMN " + CampaignEntry
+                String SQL_UPGRADE_EIGHT_ONE = "ALTER TABLE " + CampaignEntry.TABLE_NAME + " ADD COLUMN " +
+                        CampaignEntry
                         .COLUMN_DIFFICULTY + " INTEGER";
-                db.execSQL(SQL_UPGRADE_EIGHT);
+                String SQL_UPGRADE_EIGHT_TWO = "ALTER TABLE " + DunwichEntry.TABLE_NAME + " ADD COLUMN " +
+                        DunwichEntry.COLUMN_ADAM_LYNCH_HAROLD_WALSTED + " INTEGER";
+                String SQL_UPGRADE_EIGHT_SIX = "ALTER TABLE " + DunwichEntry.TABLE_NAME + " ADD COLUMN " +
+                        DunwichEntry.COLUMN_SILAS_BISHOP + " INTEGER";
+                String SQL_UPGRADE_EIGHT_THREE = "ALTER TABLE " + DunwichEntry.TABLE_NAME + " ADD COLUMN " +
+                        DunwichEntry.COLUMN_ZEBULON_WHATELEY + " INTEGER";
+                String SQL_UPGRADE_EIGHT_FOUR = "ALTER TABLE " + DunwichEntry.TABLE_NAME + " ADD COLUMN " +
+                        DunwichEntry.COLUMN_EARL_SAWYER + " INTEGER";
+                String SQL_UPGRADE_EIGHT_FIVE = "ALTER TABLE " + DunwichEntry.TABLE_NAME + " ADD COLUMN " +
+                        DunwichEntry.COLUMN_ALLY_SACRIFICED + " INTEGER";
+                db.execSQL(SQL_UPGRADE_EIGHT_ONE);
+                db.execSQL(SQL_UPGRADE_EIGHT_TWO);
+                db.execSQL(SQL_UPGRADE_EIGHT_THREE);
+                db.execSQL(SQL_UPGRADE_EIGHT_FOUR);
+                db.execSQL(SQL_UPGRADE_EIGHT_FIVE);
+                db.execSQL(SQL_UPGRADE_EIGHT_SIX);
         }
     }
 }

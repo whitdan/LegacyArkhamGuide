@@ -27,11 +27,6 @@ import com.whitdan.arkhamhorrorlcgcampaignguide.standalone.StandaloneActivity;
 Main Activity - Allows the user to select a campaign to start.
  */
 
-/*
-    TODO: Players jumping in and out
-    TODO: Chaos bag
- */
-
 public class SelectCampaignActivity extends AppCompatActivity {
 
     private static GlobalVariables globalVariables;
@@ -127,6 +122,7 @@ public class SelectCampaignActivity extends AppCompatActivity {
         globalVariables.setStrangeSolution(0);
         globalVariables.setCarnevaleStatus(0);
         globalVariables.setCarnevaleReward(0);
+        globalVariables.setDelayed(0);
     }
 
     /* These exist to allow passing the adapter to the DeleteCampaignDialogFragment to allow refreshing
@@ -134,7 +130,6 @@ public class SelectCampaignActivity extends AppCompatActivity {
     public CampaignsListAdapter getCampaignsListAdapter() {
         return campaignsListAdapter;
     }
-
 
     /*
      Sets up overflow menu with option to Choose expansions

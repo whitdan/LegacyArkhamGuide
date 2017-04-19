@@ -185,6 +185,9 @@ public class GlobalVariables extends Application {
     private int Necronomicon;
     public void setNecronomicon(int var){this.Necronomicon = var;}
     public int getNecronomicon(){return this.Necronomicon;}
+    private int AdamLynchHaroldWalsted;
+    public void setAdamLynchHaroldWalsted(int var){this.AdamLynchHaroldWalsted = var;}
+    public int getAdamLynchHaroldWalsted(){return this.AdamLynchHaroldWalsted;}
     private int Delayed;
     public void setDelayed(int var){this.Delayed = var;}
     public int getDelayed(){return this.Delayed;}
@@ -194,6 +197,18 @@ public class GlobalVariables extends Application {
     private int EngineCar;
     public void setEngineCar(int var){this.EngineCar = var;}
     public int getEngineCar(){return this.EngineCar;}
+    private int SilasBishop;
+    public int getSilasBishop() {return this.SilasBishop;}
+    public void setSilasBishop(int silasBishop) {this.SilasBishop = silasBishop;}
+    private int ZebulonWhateley;
+    public int getZebulonWhateley() { return this.ZebulonWhateley; }
+    public void setZebulonWhateley(int zebulonWhateley) { this.ZebulonWhateley = zebulonWhateley; }
+    private int EarlSawyer;
+    public int getEarlSawyer() { return this.EarlSawyer;}
+    public void setEarlSawyer(int earlSawyer) { this.EarlSawyer = earlSawyer;}
+    private int AllySacrificed;
+    public int getAllySacrificed() {return this.AllySacrificed;}
+    public void setAllySacrificed(int allySacrificed) {this.AllySacrificed = allySacrificed;}
 
     /*
     Side story variables

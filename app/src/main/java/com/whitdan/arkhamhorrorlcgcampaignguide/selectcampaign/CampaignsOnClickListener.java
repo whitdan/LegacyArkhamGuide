@@ -249,7 +249,12 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                     ArkhamContract.DunwichEntry.COLUMN_FRANCIS_MORGAN,
                     ArkhamContract.DunwichEntry.COLUMN_INVESTIGATORS_CHEATED,
                     ArkhamContract.DunwichEntry.COLUMN_NECRONOMICON,
-                    ArkhamContract.DunwichEntry.COLUMN_DELAYED
+                    ArkhamContract.DunwichEntry.COLUMN_ADAM_LYNCH_HAROLD_WALSTED,
+                    ArkhamContract.DunwichEntry.COLUMN_DELAYED,
+                    ArkhamContract.DunwichEntry.COLUMN_SILAS_BISHOP,
+                    ArkhamContract.DunwichEntry.COLUMN_ZEBULON_WHATELEY,
+                    ArkhamContract.DunwichEntry.COLUMN_EARL_SAWYER,
+                    ArkhamContract.DunwichEntry.COLUMN_ALLY_SACRIFICED
             };
             String dunwichSelection = ArkhamContract.DunwichEntry.PARENT_ID + " = ?";
             Cursor dunwichCursor = db.query(
@@ -280,14 +285,24 @@ class CampaignsOnClickListener implements AdapterView.OnItemClickListener {
                         (ArkhamContract.DunwichEntry.COLUMN_INVESTIGATORS_CHEATED)));
                 globalVariables.setNecronomicon(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow
                         (ArkhamContract.DunwichEntry.COLUMN_NECRONOMICON)));
+                globalVariables.setAdamLynchHaroldWalsted(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow(ArkhamContract
+                        .DunwichEntry.COLUMN_ADAM_LYNCH_HAROLD_WALSTED)));
                 globalVariables.setDelayed(dunwichCursor.getInt(dunwichCursor.getColumnIndex(ArkhamContract
                         .DunwichEntry.COLUMN_DELAYED)));
+                globalVariables.setSilasBishop(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow
+                        (ArkhamContract.DunwichEntry.COLUMN_SILAS_BISHOP)));
+                globalVariables.setZebulonWhateley(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow
+                        (ArkhamContract.DunwichEntry.COLUMN_ZEBULON_WHATELEY)));
+                globalVariables.setEarlSawyer(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow(ArkhamContract
+                        .DunwichEntry.COLUMN_EARL_SAWYER)));
+                globalVariables.setAllySacrificed(dunwichCursor.getInt(dunwichCursor.getColumnIndexOrThrow
+                        (ArkhamContract.DunwichEntry.COLUMN_ALLY_SACRIFICED)));
             }
             dunwichCursor.close();
         }
 
         // If on the first unreleased scenario, display a toast and do nothing more
-        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 6) {
+        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 8) {
             Toast toast = Toast.makeText(context, R.string.scenario_not_available, Toast.LENGTH_SHORT);
             toast.show();
         }

@@ -70,7 +70,7 @@
 
                         <ImageView
                             android:id="@+id/sets_two_image"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:contentDescription="@string/sets"
                             android:visibility="gone"/>

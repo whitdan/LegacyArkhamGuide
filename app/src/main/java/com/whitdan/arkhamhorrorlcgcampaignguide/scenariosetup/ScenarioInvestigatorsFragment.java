@@ -58,7 +58,7 @@ public class ScenarioInvestigatorsFragment extends Fragment {
 
         // Hide spinner if on unreleased scenario or end of campaign
         if (globalVariables.getScenarioStage()==3 ||
-                (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 6)) {
+                (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 8)) {
             LinearLayout lead = (LinearLayout) v.findViewById(R.id.lead_investigator_view);
             lead.setVisibility(GONE);
             TextView completed = (TextView) v.findViewById(R.id.campaign_completed);

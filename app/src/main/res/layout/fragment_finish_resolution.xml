@@ -72,7 +72,7 @@
 
             <!--Night of the Zealot Ghoul Priest checkbox-->
             <CheckBox
-                android:id="@+id/ghoul_priest_killed"
+                android:id="@+id/additional_checkbox_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/ghoul_priest_checkbox"
@@ -80,7 +80,7 @@
 
             <!--The House Always Wins cheated checkbox-->
             <CheckBox
-                android:id="@+id/cheated_checkbox"
+                android:id="@+id/additional_checkbox_two"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/cheated_checkbox"
@@ -198,6 +198,81 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/masked_hunter"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--The Dunwich Legacy: Scenario Four - Blood on the Altar sacrificed to yog-sothoth view-->
+            <LinearLayout
+                android:id="@+id/sacrificed_yog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:text="@string/underneath_agenda_deck"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <CheckBox
+                        android:id="@+id/armitage_sacrificed"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/henry_armitage"/>
+
+                    <CheckBox
+                        android:id="@+id/whateley_sacrificed"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/zebulon_whateley"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <CheckBox
+                        android:id="@+id/rice_sacrificed"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/warren_rice"/>
+
+                    <CheckBox
+                        android:id="@+id/sawyer_sacrificed"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/earl_sawyer"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <CheckBox
+                        android:id="@+id/morgan_sacrificed"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/francis_morgan"/>
+
+                    <CheckBox
+                        android:id="@+id/ally_sacrificed"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/another_ally"/>
                 </LinearLayout>
             </LinearLayout>
 

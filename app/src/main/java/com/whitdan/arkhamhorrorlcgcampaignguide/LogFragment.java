@@ -29,7 +29,7 @@ public class LogFragment extends Fragment {
          Set setup instructions if on setup or in standalone scenario
           */
         if ((globalVariables.getScenarioStage() == 1 || globalVariables.getCurrentCampaign() == 999)
-                && !(globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 6)) {
+                && !(globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 8)) {
 
             // Get the various views and set the visibility of the LinearLayout to VISIBLE
             LinearLayout setup = (LinearLayout) v.findViewById(R.id.setup);
@@ -185,6 +185,42 @@ public class LogFragment extends Fragment {
                             setAside.setText(R.string.essex_set_aside);
                             locations.setText(R.string.essex_locations);
                             additional.setText(R.string.essex_additional);
+                            break;
+                        // Blood on the Altar
+                        case 6:
+                            sets.setText(R.string.blood_sets);
+                            setsImage.setImageResource(R.drawable.blood_sets);
+                            if (globalVariables.getObannionGang() == 0) {
+                                setsTwo.setVisibility(VISIBLE);
+                                setsTwoImage.setVisibility(VISIBLE);
+                                setsTwoImage.getLayoutParams().width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                                setsTwo.setText(R.string.blood_sets_two);
+                                setsTwoImage.setImageResource(R.drawable.blood_sets_two);
+                            }
+                            locations.setText(R.string.blood_locations);
+                            setAside.setText(R.string.blood_set_aside);
+                            StringBuilder bloodAdditionalBuilder = new StringBuilder();
+                            bloodAdditionalBuilder.append(getString(R.string.blood_additional));
+                            bloodAdditionalBuilder.append(getString(R.string.blood_additional_sacrifice_one));
+                            bloodAdditionalBuilder.append(" ");
+                            if (globalVariables.getHenryArmitage() == 0) {
+                                bloodAdditionalBuilder.append(getString(R.string.blood_additional_sacrifice_armitage));
+                                bloodAdditionalBuilder.append(" ");
+                            }
+                            if (globalVariables.getFrancisMorgan() == 0) {
+                                bloodAdditionalBuilder.append(getString(R.string.blood_additional_sacrifice_morgan));
+                                bloodAdditionalBuilder.append(" ");
+                            }
+                            if (globalVariables.getWarrenRice() == 0) {
+                                bloodAdditionalBuilder.append(getString(R.string.blood_additional_sacrifice_rice));
+                                bloodAdditionalBuilder.append(" ");
+                            }
+                            bloodAdditionalBuilder.append(getString(R.string.blood_additional_sacrifice_two));
+                            if (globalVariables.getDelayed() == 1) {
+                                bloodAdditionalBuilder.append(getString(R.string.blood_additional_two));
+                            }
+                            String bloodAdditional = bloodAdditionalBuilder.toString();
+                            additional.setText(bloodAdditional);
                             break;
                     }
                     break;
@@ -345,6 +381,10 @@ public class LogFragment extends Fragment {
                     campaignLogBuilder.append(getString(R.string.warren_kidnapped));
                 } else if (globalVariables.getWarrenRice() == 1) {
                     campaignLogBuilder.append(getString(R.string.warren_rescued));
+                } else if (globalVariables.getWarrenRice() == 2) {
+                    campaignLogBuilder.append(getString(R.string.warren_sacrificed));
+                } else if (globalVariables.getWarrenRice() == 3) {
+                    campaignLogBuilder.append(getString(R.string.warren_survived));
                 }
                 if (globalVariables.getStudents() == 0) {
                     campaignLogBuilder.append(getString(R.string.students_failed));
@@ -361,6 +401,10 @@ public class LogFragment extends Fragment {
                     campaignLogBuilder.append(getString(R.string.morgan_kidnapped));
                 } else if (globalVariables.getFrancisMorgan() == 1) {
                     campaignLogBuilder.append(getString(R.string.morgan_rescued));
+                } else if (globalVariables.getFrancisMorgan() == 2) {
+                    campaignLogBuilder.append(getString(R.string.morgan_sacrificed));
+                } else if (globalVariables.getFrancisMorgan() == 3) {
+                    campaignLogBuilder.append(getString(R.string.morgan_survived));
                 }
                 if (globalVariables.getObannionGang() == 0) {
                     campaignLogBuilder.append(getString(R.string.obannion_failed));
@@ -377,6 +421,10 @@ public class LogFragment extends Fragment {
                     campaignLogBuilder.append(getString(R.string.armitage_kidnapped));
                 } else if (globalVariables.getHenryArmitage() == 1) {
                     campaignLogBuilder.append(getString(R.string.armitage_rescued));
+                } else if (globalVariables.getHenryArmitage() == 2) {
+                    campaignLogBuilder.append(getString(R.string.armitage_sacrificed));
+                } else if (globalVariables.getHenryArmitage() == 3) {
+                    campaignLogBuilder.append(getString(R.string.armitage_survived));
                 }
             }
             // The Miskatonic Museum log
@@ -392,8 +440,38 @@ public class LogFragment extends Fragment {
                 }
             }
             // The Essex County Express log
-            if (globalVariables.getDelayed() == 1) {
+            if (globalVariables.getPreviousScenario() > 5 && globalVariables.getDelayed() == 1) {
                 campaignLogBuilder.append(getString(R.string.investigators_delayed));
+            }
+            // Blood on the Altar log
+            if (globalVariables.getPreviousScenario() > 6) {
+                switch (globalVariables.getSilasBishop()) {
+                    case 0:
+                        campaignLogBuilder.append(getString(R.string.silas_ritual));
+                        break;
+                    case 1:
+                        campaignLogBuilder.append(getString(R.string.silas_misery));
+                        break;
+                    case 2:
+                        campaignLogBuilder.append(getString(R.string.silas_restored));
+                        break;
+                    case 3:
+                        campaignLogBuilder.append(getString(R.string.silas_banished));
+                        break;
+                }
+                if (globalVariables.getZebulonWhateley() == 1) {
+                    campaignLogBuilder.append(getString(R.string.zebulon_sacrificed));
+                } else {
+                    campaignLogBuilder.append(getString(R.string.zebulon_survived));
+                }
+                if (globalVariables.getEarlSawyer() == 1) {
+                    campaignLogBuilder.append(getString(R.string.sawyer_sacrificed));
+                } else {
+                    campaignLogBuilder.append(getString(R.string.sawyer_survived));
+                }
+                if (globalVariables.getAllySacrificed() == 1) {
+                    campaignLogBuilder.append(getString(R.string.ally_sacrificed));
+                }
             }
         }
 

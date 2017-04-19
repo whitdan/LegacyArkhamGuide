@@ -125,7 +125,7 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
         View xpView = listItemView.findViewById(R.id.xp_spent_layout);
         View defeatedView = listItemView.findViewById(R.id.defeated_layout);
         if (globalVariables.getScenarioStage() == 1
-                && !(globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 6)) {
+                && !(globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 8)) {
             xpView.setVisibility(VISIBLE);
             defeatedView.setVisibility(GONE);
 
@@ -236,6 +236,14 @@ public class InvestigatorsListAdapter extends ArrayAdapter<Investigator> {
                 Spinner spinner = (Spinner) parent.getRootView().findViewById(R.id.resolution_selection);
                 spinner.setSelection(2, true);
                 spinner.setSelection(1, true);
+            }
+
+            // Required for Blood on the Altar
+            if(globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 6){
+                int resolution = globalVariables.getResolution();
+                Spinner spinner = (Spinner) parent.getRootView().findViewById(R.id.resolution_selection);
+                spinner.setSelection(2, true);
+                spinner.setSelection(resolution, true);
             }
         }
 

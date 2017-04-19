@@ -136,13 +136,13 @@ public class FinishResolutionFragment extends Fragment {
         // If on first campaign, second or third scenario and Ghoul Priest is alive, set ghoul priest view to visible
         if (globalVariables.getCurrentCampaign() == 1 && globalVariables.getCurrentScenario() > 1 && globalVariables
                 .getGhoulPriestAlive() == 1 && globalVariables.getCurrentScenario() < 100) {
-            CheckBox ghoulPriest = (CheckBox) v.findViewById(R.id.ghoul_priest_killed);
+            CheckBox ghoulPriest = (CheckBox) v.findViewById(R.id.additional_checkbox_one);
             ghoulPriest.setVisibility(VISIBLE);
         }
 
         // If on second campaign, second scenario, set cheated view to visible
         if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 2) {
-            CheckBox cheated = (CheckBox) v.findViewById(R.id.cheated_checkbox);
+            CheckBox cheated = (CheckBox) v.findViewById(R.id.additional_checkbox_two);
             final TextView cheatedText = (TextView) v.findViewById(R.id.cheated_text);
             cheated.setVisibility(VISIBLE);
             cheated.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -158,8 +158,26 @@ public class FinishResolutionFragment extends Fragment {
             });
         }
 
+        // If on second campaign, third scenario, set additional checkboxes to visible
+        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 4) {
+            CheckBox lynchwalsted = (CheckBox) v.findViewById(R.id.additional_checkbox_one);
+            globalVariables.setAdamLynchHaroldWalsted(0);
+            lynchwalsted.setVisibility(VISIBLE);
+            lynchwalsted.setText(R.string.adam_lynch_harold_walsted);
+            lynchwalsted.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                    if (isChecked) {
+                        globalVariables.setAdamLynchHaroldWalsted(1);
+                    } else {
+                        globalVariables.setAdamLynchHaroldWalsted(0);
+                    }
+                }
+            });
+        }
+
         // If on second campaign, fourth scenario, set engine car view to visible
-        if(globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5){
+        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 5) {
             final CheckBox engine = (CheckBox) v.findViewById(R.id.engine_car_checkbox);
             final LinearLayout engineLayout = (LinearLayout) v.findViewById(R.id.engine_car_view);
             final CheckBox engineDodge = (CheckBox) v.findViewById(R.id.engine_car_dodge);
@@ -169,7 +187,7 @@ public class FinishResolutionFragment extends Fragment {
             engine.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if(isChecked){
+                    if (isChecked) {
                         engineLayout.setVisibility(VISIBLE);
                         Spinner engineInvestigator = (Spinner) v.findViewById(R.id.engine_car_investigator);
 
@@ -183,6 +201,7 @@ public class FinishResolutionFragment extends Fragment {
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 globalVariables.setEngineInvestigator(position);
                             }
+
                             @Override
                             public void onNothingSelected(AdapterView<?> parent) {
                             }
@@ -192,11 +211,11 @@ public class FinishResolutionFragment extends Fragment {
                         engineDodge.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                             @Override
                             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                if(isChecked){
+                                if (isChecked) {
                                     engineEndure.setChecked(false);
                                     globalVariables.setEngineCar(1);
                                 }
-                                if(!isChecked){
+                                if (!isChecked) {
                                     globalVariables.setEngineCar(0);
                                 }
                             }
@@ -204,17 +223,17 @@ public class FinishResolutionFragment extends Fragment {
                         engineEndure.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                             @Override
                             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                if(isChecked){
+                                if (isChecked) {
                                     engineDodge.setChecked(false);
                                     globalVariables.setEngineCar(2);
                                 }
-                                if(!isChecked){
+                                if (!isChecked) {
                                     globalVariables.setEngineCar(0);
                                 }
                             }
                         });
                     }
-                    if(!isChecked){
+                    if (!isChecked) {
                         engineLayout.setVisibility(GONE);
                         engineDodge.setChecked(false);
                         engineEndure.setChecked(false);
@@ -222,6 +241,12 @@ public class FinishResolutionFragment extends Fragment {
                     }
                 }
             });
+        }
+
+        // If on second campaign, fourth scenario, set sacrificed view to visible
+        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 6) {
+            LinearLayout sacrificed = (LinearLayout) v.findViewById(R.id.sacrificed_yog);
+            sacrificed.setVisibility(VISIBLE);
         }
 
         // If on Carnevale of Horrors, set rewards display to visible and setup rewards display
@@ -577,6 +602,56 @@ public class FinishResolutionFragment extends Fragment {
                                     } else {
                                         removeRice.setVisibility(GONE);
                                     }
+                                    break;
+                            }
+                            break;
+                        // Scenario 4: Blood on the Altar
+                        case 6:
+                            if (pos != 2) {
+                                CheckBox necronomiconBox = (CheckBox) view.getRootView().findViewById(R.id
+                                        .necronomicon_defeated);
+                                final TextView removeNecronomiconBox = (TextView) view.getRootView().findViewById(R.id
+                                        .remove_necronomicon);
+                                int investigatorDefeated = 0;
+                                for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                                    if (globalVariables.investigators.get(i).getTempStatus() > 1) {
+                                        investigatorDefeated = 1;
+                                    }
+                                }
+                                if (investigatorDefeated == 1) {
+                                    if (globalVariables.getNecronomicon() == 2) {
+                                        necronomiconBox.setVisibility(VISIBLE);
+                                        necronomiconBox.setOnCheckedChangeListener(new CompoundButton
+                                                .OnCheckedChangeListener() {
+                                            @Override
+                                            public void onCheckedChanged(CompoundButton buttonView, boolean
+                                                    isChecked) {
+                                                if (isChecked) {
+                                                    removeNecronomiconBox.setVisibility(VISIBLE);
+                                                } else {
+                                                    removeNecronomiconBox.setVisibility(GONE);
+                                                }
+                                            }
+                                        });
+                                    }
+                                }
+                            }
+                            switch (pos) {
+                                case 0:
+                                    resolutionText.setText(R.string.blood_no_resolution);
+                                    globalVariables.setResolution(0);
+                                    break;
+                                case 1:
+                                    resolutionText.setText(R.string.blood_resolution_one);
+                                    globalVariables.setResolution(1);
+                                    break;
+                                case 2:
+                                    resolutionText.setText(R.string.blood_resolution_two);
+                                    globalVariables.setResolution(2);
+                                    break;
+                                case 3:
+                                    resolutionText.setText(R.string.blood_resolution_three);
+                                    globalVariables.setResolution(3);
                                     break;
                             }
                             break;

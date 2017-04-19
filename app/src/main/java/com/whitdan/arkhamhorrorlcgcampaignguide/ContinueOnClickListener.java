@@ -52,7 +52,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
     public void onClick(View v) {
 
         // If on unreleased scenario
-        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 6) {
+        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 8) {
             Intent intent = new Intent(context, SelectCampaignActivity.class);
             context.startActivity(intent);
         }
@@ -251,7 +251,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     saveCampaign(getActivity());
 
                     //   Go to scenario setup for the next scenario
-                    if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 6) {
+                    if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 8) {
                         Toast toast = Toast.makeText(getActivity(), "This scenario is not available yet.", Toast
                                 .LENGTH_SHORT);
                         toast.show();
@@ -430,7 +430,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
         else if (globalVariables.getCurrentScenario() == 2) {
 
             // Check if Ghoul Priest is still alive
-            CheckBox ghoulPriest = (CheckBox) parent.findViewById(R.id.ghoul_priest_killed);
+            CheckBox ghoulPriest = (CheckBox) parent.findViewById(R.id.additional_checkbox_one);
             if (ghoulPriest.isChecked()) {
                 globalVariables.setGhoulPriestAlive(0);
             }
@@ -600,7 +600,7 @@ public class ContinueOnClickListener implements View.OnClickListener {
         */
         else if (globalVariables.getCurrentScenario() == 2) {
 
-            CheckBox cheated = (CheckBox) parent.findViewById(R.id.cheated_checkbox);
+            CheckBox cheated = (CheckBox) parent.findViewById(R.id.additional_checkbox_two);
             if (cheated.isChecked()) {
                 globalVariables.setInvestigatorsCheated(1);
             }
@@ -717,6 +717,54 @@ public class ContinueOnClickListener implements View.OnClickListener {
                     globalVariables.setDelayed(0);
                     break;
             }
+        }
+
+        /*
+            Scenario 4: Blood on the Altar
+         */
+        else if (globalVariables.getCurrentScenario() == 6){
+            int investigatorDefeated = 0;
+            for (int i = 0; i < globalVariables.investigators.size(); i++) {
+                if (globalVariables.investigators.get(i).getTempStatus() > 1) {
+                    investigatorDefeated = 1;
+                }
+                globalVariables.investigators.get(i).changeXP(globalVariables.getVictoryDisplay() + 2);
+            }
+            CheckBox necronomicon = (CheckBox) parent.findViewById(R.id.necronomicon_defeated);
+            if (investigatorDefeated == 1 && globalVariables.getResolution() != 2) {
+                if (necronomicon.isChecked()) {
+                    globalVariables.setNecronomicon(3);
+                }
+            }
+            globalVariables.setSilasBishop(globalVariables.getResolution());
+            if(globalVariables.getResolution() == 0){
+                globalVariables.setCurrentScenario(globalVariables.getCurrentScenario() + 1);
+            }
+            // Check who has been sacrificed
+            CheckBox armitage = (CheckBox) parent.findViewById(R.id.armitage_sacrificed);
+            if(armitage.isChecked()){
+                globalVariables.setHenryArmitage(2);
+            } else {globalVariables.setHenryArmitage(3);}
+            CheckBox rice = (CheckBox) parent.findViewById(R.id.rice_sacrificed);
+            if(rice.isChecked()){
+                globalVariables.setWarrenRice(2);
+            } else {globalVariables.setWarrenRice(3);}
+            CheckBox morgan = (CheckBox) parent.findViewById(R.id.morgan_sacrificed);
+            if(morgan.isChecked()){
+                globalVariables.setFrancisMorgan(2);
+            } else {globalVariables.setFrancisMorgan(3);}
+            CheckBox whateley = (CheckBox) parent.findViewById(R.id.whateley_sacrificed);
+            if(whateley.isChecked()){
+                globalVariables.setZebulonWhateley(1);
+            } else {globalVariables.setZebulonWhateley(0);}
+            CheckBox sawyer = (CheckBox) parent.findViewById(R.id.sawyer_sacrificed);
+            if(sawyer.isChecked()){
+                globalVariables.setEarlSawyer(1);
+            } else { globalVariables.setEarlSawyer(0);}
+            CheckBox ally = (CheckBox) parent.findViewById(R.id.ally_sacrificed);
+            if(ally.isChecked()){
+                globalVariables.setAllySacrificed(1);
+            } else {globalVariables.setAllySacrificed(0);}
         }
     }
 
@@ -902,7 +950,14 @@ public class ContinueOnClickListener implements View.OnClickListener {
             dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_INVESTIGATORS_CHEATED, globalVariables
                     .getInvestigatorsCheated());
             dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_NECRONOMICON, globalVariables.getNecronomicon());
+            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_ADAM_LYNCH_HAROLD_WALSTED, globalVariables
+                    .getAdamLynchHaroldWalsted());
             dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_DELAYED, globalVariables.getDelayed());
+            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_SILAS_BISHOP, globalVariables.getSilasBishop());
+            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_ZEBULON_WHATELEY, globalVariables.getZebulonWhateley
+                    ());
+            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_EARL_SAWYER, globalVariables.getEarlSawyer());
+            dunwichValues.put(ArkhamContract.DunwichEntry.COLUMN_ALLY_SACRIFICED, globalVariables.getAllySacrificed());
 
             String dunwichSelection = ArkhamContract.DunwichEntry.PARENT_ID + " LIKE ?";
             String[] dunwichSelectionArgs = {Long.toString(globalVariables.getCampaignID())};

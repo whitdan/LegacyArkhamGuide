@@ -87,6 +87,11 @@ public class ArkhamContract {
         public static final String COLUMN_FRANCIS_MORGAN = "francis_morgan";
         public static final String COLUMN_INVESTIGATORS_CHEATED = "investigators_cheated";
         public static final String COLUMN_NECRONOMICON = "necronomicon";
+        public static final String COLUMN_ADAM_LYNCH_HAROLD_WALSTED = "adam_lynch_harold_walsted";
         public static final String COLUMN_DELAYED = "delayed";
+        public static final String COLUMN_SILAS_BISHOP = "silas_bishop";
+        public static final String COLUMN_ZEBULON_WHATELEY = "zebulon_whateley";
+        public static final String COLUMN_EARL_SAWYER = "earl_sawyer";
+        public static final String COLUMN_ALLY_SACRIFICED = "ally_sacrificed";
     }
 }

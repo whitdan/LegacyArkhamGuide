@@ -66,7 +66,8 @@ public class ScenarioSetupActivity extends AppCompatActivity {
 
         // Check if on interlude
         boolean interlude = false;
-        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 3) {
+        if (globalVariables.getCurrentCampaign() == 2 && (globalVariables.getCurrentScenario() == 3 ||
+                globalVariables.getCurrentScenario() == 7)) {
             interlude = true;
         }
 
@@ -113,7 +114,8 @@ public class ScenarioSetupActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Check if on interlude
         boolean interlude = false;
-        if (globalVariables.getCurrentCampaign() == 2 && globalVariables.getCurrentScenario() == 3) {
+        if (globalVariables.getCurrentCampaign() == 2 && (globalVariables.getCurrentScenario() == 3 ||
+                globalVariables.getCurrentScenario() == 7)) {
             interlude = true;
         }
         if (!interlude) {
