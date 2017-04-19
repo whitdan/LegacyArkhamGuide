@@ -1,0 +1,832 @@
+<resources>
+
+    <string name="app_name">아컴 호러 LCG 캠페인 가이드</string>
+
+    <string-array name="expansion_names">
+        <item>The Dunwich Legacy</item>
+    </string-array>
+
+    <!-- Investigator name strings-->
+    <string-array name="investigators">
+        <item>없음</item>
+        <item>롤랜드 뱅크스</item>
+        <item>데이지 워커</item>
+        <item>스키드 오\'툴</item>
+        <item>아그네스 베이커</item>
+        <item>웬디 아담스</item>
+        <item>조이 사마라스</item>
+        <item>렉스 머피</item>
+        <item>제니 반스</item>
+        <item>짐 컬버</item>
+        <item>\"재떨이\" 피트</item>
+    </string-array>
+    <string name="choose_investigators">조사자 선택</string>
+    <string name="new_investigators">새 조사자</string>
+    <string name="saved_investigators">저장된 조사자</string>
+    <string name="current_team">현재 팀</string>
+    <string name="roland_banks">롤랜드 뱅크스</string>
+    <string name="daisy_walker">데이지 워커</string>
+    <string name="skids_otoole">스키드 오\'툴</string>
+    <string name="agnes_baker">아그네스 베이커</string>
+    <string name="wendy_adams">웬디 아담스</string>
+    <string name="zoey_samaras">Zoey Samaras</string>
+    <string name="rex_murphy">Rex Murphy</string>
+    <string name="jenny_barnes">Jenny Barnes</string>
+    <string name="jim_culver">Jim Culver</string>
+    <string name="ashcan_pete">\"Ashcan\" Pete</string>
+    <string name="cover_up">해결하지 못한 은폐가 플레이에 있음</string>
+    <string name="hospital_debts">해결하지 못한 병원 빚이 플레이에 있음</string>
+    <string name="smite_the_wicked">Unresolved Smite the Wicked in play</string>
+    <string name="searching_for_izzie">Unresolved Searching for Izzie in play</string>
+
+    <!--Strings for player cards-->
+    <string-array name="player_cards">
+        <item>Strange Solution identified</item>
+    </string-array>
+    <string name="strange_solution">You have identified the solution.\n</string>
+
+    <!--Strings for the investigator defeated spinner-->
+    <string-array name="investigator_eliminated">
+        <item>패배하지 않음</item>
+        <item>사임함</item>
+        <item>피해로 인해 패배함</item>
+        <item>공포로 인해 패배함</item>
+    </string-array>
+
+    <!--Strings for the resolution spinner-->
+    <string-array name="resolutions_two">
+        <item>해결책에 도달하지 못함</item>
+        <item>해결 1</item>
+        <item>해결 2</item>
+    </string-array>
+
+    <string-array name="resolutions_three">
+        <item>해결책에 도달하지 못함</item>
+        <item>해결 1</item>
+        <item>해결 2</item>
+        <item>해결 3</item>
+    </string-array>
+
+    <string-array name="resolutions_four">
+        <item>해결책에 도달하지 못함</item>
+        <item>해결 1</item>
+        <item>해결 2</item>
+        <item>해결 3</item>
+        <item>해결 4</item>
+    </string-array>
+
+    <!--Difficulty strings-->
+    <string name="set_difficulty">난이도 설정</string>
+    <string-array name="difficulty">
+        <item>쉬움</item>
+        <item>표준</item>
+        <item>어려움</item>
+        <item>숙련</item>
+    </string-array>
+    <string-array name="difficulty_two">
+        <item>표준</item>
+        <item>어려움</item>
+    </string-array>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="chaos_bag">카오스 주머니</string>
+    <string name="draw_token">토큰 뽑기</string>
+    <string name="reset_bag">주머니 초기화</string>
+    <string name="current_bag">현재 주머니</string>
+    <string name="plus_two">+2</string>
+    <string name="plus_one">+1</string>
+    <string name="zero">0</string>
+    <string name="minus_one">-1</string>
+    <string name="minus_two">-2</string>
+    <string name="minus_three">-3</string>
+    <string name="minus_four">-4</string>
+    <string name="minus_five">-5</string>
+    <string name="minus_six">-6</string>
+    <string name="minus_seven">-7</string>
+    <string name="minus_eight">-8</string>
+    <string name="skull">해골</string>
+    <string name="cultist">컬티스트</string>
+    <string name="tablet">석판</string>
+    <string name="elder_thing">옛 것</string>
+    <string name="tentacles">촉수</string>
+    <string name="elder_sign">엘더 사인</string>
+
+    <!--Miscellaneous other UI strings-->
+    <string name="saved_campaigns">저장된 캠페인들</string>
+    <string name="current_campaign">"현재 캠페인: "</string>
+    <string name="current_scenario">"현재 시나리오: "</string>
+    <string name="physical_trauma">"신체 트라우마: "</string>
+    <string name="mental_trauma">"정신 트라우마: "</string>
+    <string name="available_xp">"사용 가능한 XP: "</string>
+    <string name="spent_xp">"사용된 XP: "</string>
+    <string name="eliminated">"패배: "</string>
+    <string name="negative">-</string>
+    <string name="positive">+</string>
+    <string name="continue_button">계속</string>
+    <string name="lead_investigator">"선임 조사자: "</string>
+    <string name="victory_display">"승리 전시 구역: "</string>
+    <string name="campaign_name">캠페인 이름 (필수)</string>
+    <string name="player_name">플레이어 이름</string>
+    <string name="deck_name">덱 목록 이름</string>
+    <string name="decklist_url">덱 목록 URL</string>
+    <string name="decklist"><u>덱 목록</u></string>
+    <string name="setup">준비</string>
+    <string name="sets">"조우 셋들: "</string>
+    <string name="locations">"시작 장소들: "</string>
+    <string name="set_aside">"별도로 놓기: "</string>
+    <string name="additional">"추가 준비: "</string>
+    <string name="campaign_log">캠페인 기록</string>
+    <string name="nothing">표시할 것이 없음.</string>
+    <string name="lost">조사자가 실종되었습니다.</string>
+    <string name="expacs_owned">보유한 확장들</string>
+    <string name="pick_expacs_owned">보유한 확장 선택</string>
+    <string name="standalone">단독 시나리오</string>
+    <string name="add_side_story">사이드 스토리 추가</string>
+    <string name="edit_investigators">팀 수정</string>
+    <string name="player_cards">Player cards</string>
+    <string name="pick_option">다음 중 선택</string>
+    <string name="scenario_not_available">이 시나리오는 아직 플레이 할 수 없습니다.</string>
+    <string name="campaign_completed">캠페인 종료</string>
+    <string-array name="campaign_options">
+        <item>캠페인을 종료하고 삭제</item>
+        <item>캠페인을 종료하고 저장</item>
+        <item>광신도의 밤</item>
+        <item>던위치 레가시</item>
+    </string-array>
+
+
+    <!--Night of the Zealot-->
+
+    <string name="night_campaign_name">광신도의 밤</string>
+    <string name="night_scenario_one">시나리오 1: 회합</string>
+    <string name="night_scenario_two">시나리오 2: 한 밤중의 괴인들</string>
+    <string name="night_scenario_three">시나리오 3: 지하의 괴물</string>
+
+    <string name="night_setup">금요일, 1913년 9월 18일. 아캄, 매사추세츠.
+        길고 비정상적으로 더운 여름의 끝자락이다. 가을이 다가오고 있음에도, 무더위는 끊임없이 계속되고 있다.
+        고요하고 형언할 수 없는 분노가 마을을 지배하고 있다. 사람들은 걸핏하면 화를 내는 일이 잦아졌고,
+        지난 주에만도 단순한 오해를 둘러싼 마을 사람들의 과격한 폭행에 대한 수많은 보고가 있었다.\n
+        \n그리고 지금, 제임스 핸커슨에게서 전화가 왔다. 그는 자신의 헛간에서 해체된 유해를 발견했다고 말했다.\n
+        \n날씨를 탓하는 것은 너무 쉬운 해결책이다. 마을에 뭔가 이상한 점이 있다. 그렇지만 이 늙은 점쟁이가 이 흐름을 막기 위해 할 수 있는 것은 많지 않다.
+        점을 친 결과, 작은 조사자 그룹이 곧 이 이상한 사건에 주의를 기울일 것이고, 이를 바로잡기 위해 출발할 것이라고 한다.
+        나는 그들의 행보를 지켜보겠지만, 그러나 그리 기대하지는 않을 것이다.</string>
+
+    <!--Miscellaneous-->
+    <string name="ghoul_priest_additional">구울 프리스트를 조우 덱에 섞어 넣습니다.\n</string>
+    <string name="ghoul_priest_checkbox">구울 프리스트가 죽었습니다.</string>
+    <string name="cultists_interrogated">심문한 컬티스트들: \n</string>
+    <string name="cultists_got_away">도주한 컬티스트들: \n</string>
+    <string name="drew">"늑대 인간" 드류</string>
+    <string name="herman">허먼 콜린스</string>
+    <string name="peter">피터 워렌</string>
+    <string name="victoria">빅토리아 데버럭스</string>
+    <string name="ruth">루스 터너</string>
+    <string name="masked_hunter">마스크쓴 추적자</string>
+    <string name="no_changes">어떤 변화도 없었다.\n</string>
+
+    <!--Campaign log-->
+    <string name="house_standing">당신의 집은 아직 남아 있습니다.\n</string>
+    <string name="house_burned">당신의 집은 불타버렸습니다.\n</string>
+    <string name="ghoul_priest_alive">구울 사제가 아직 살아 있습니다\n</string>
+    <string name="lita_forced">리타는 그녀의 대의를 위해 다른 자들을 찾도록 강요했습니다.\n</string>
+    <string name="past_midnight">자정을 지났습니다.\n</string>
+
+    <!--Scenario One - The Gathering-->
+
+    <string name="gathering_setup"><b>시나리오 1: 회합</b>\n
+        \n당신과 당신의 파트너들은 매사추세츠 주의 고향 도시, 아캄에서 일어나는 이상한 사건을 조사하고 있다.
+        지난 몇 주 동안, 여러 마을 사람들이 불가사의하게 실종되었으며 최근에는, 짐승에 의해 공격당하고 반쯤은 먹혀버린 그 사람들의 시체가 숲에서 나타났다.
+        경찰과 신문은 야생 동물 탓이라고 했지만, 당신들은 다른 일이 벌어지고 있다고 믿는다. 당신은 이 기괴한 사건을 논의하기 위해 수석 조사관의 집에 모여 있다.</string>
+
+    <string name="gathering_sets">The Gathering, Rats, Ghouls, Striking Fear, Ancient Evils, Chilling Cold.</string>
+    <string name="gathering_locations">서재 장소를 플레이에 놓습니다.\n</string>
+    <string name="gathering_set_aside">다른 장소들과 구울 프리스트 리타 챈들러.\n</string>
+
+    <string name="gathering_no_resolution">간신히 목숨은 건진 채로 집을 벗어날 수 있었다.
+        당신의 거실에서 온 여자가 현관 밖으로 당신을 따라나오며 문을 쾅 닫았다. \"멍청한 것들! 무슨 짓을 했는지 알아?\"
+        그녀는 문 앞에 있던 의자를 밀어 문 손잡이 아래에 끼워 문이 열리지 않게 막는다.
+        \"여기서 나가야 돼. 따라와. 내가 아는 걸 알려주지. 우리가 도시 전체에 도사리고 있는 위협이 풀려나는 것을 막아야 돼.\"
+        논쟁 할 상황이 아니다. 고개를 끄덕이면서, 당신은 현관에서 리버 타운쪽을 향해 비가 오는 길로 달려가는, 그 여자를 따라간다.\n
+        \n<b>선임 조사자는 리타 챈들러 카드를 얻습니다.</b></string>
+    <string name="gathering_resolution_one">당신은 고개를 끄덕이며, 붉은 머리의 여자가 당신의 집 벽과 바닥을 불지르는것을 허용했다.
+        불은 빠르게 번졌다. 당신은 지옥불에 삼켜지는 것을 피하려 현관으로 달려나갔다. 길가로 나와서, 당신은 자신이 소유한 모든 것이 화염에 의해 소멸되는 것을 보았다.
+        \"나와 함께 가지.\" 여자가 말한다. \"당신은 도사리고 있는 위협에 대해 반드시 들어야만 해. 우리는 파멸될거야... 하지만 같이 해보면, 막을 수 있을 거야.\"\n
+    \n<b>선임 조사자는 리타 챈들러 카드를 얻습니다.</b></string>
+    <string name="gathering_resolution_two">당신은 과도하게 흥분한 여자의 명령을 따르지 않고 당신의 허락없이
+        집에 불을 지를 것을 두려워하며 그녀를 집 밖으로 내쫓았다. \"바보들! 실수하는 거야!\"
+        그녀는 경고하듯이 말했다. \"당신은 우리 모두가 가진 중대한 위험에 쳐해 있다는 걸.. 도사리고 있는 위협을 모르고 있어!\"
+        여전히 밤의 사건으로 인해 동요하면서, 당신은 그 여자의 말을 듣기로 결정한다.
+        아마도 그녀는 이 기괴한 사건들에 대해 밝힐 수 있을 것이다. 그러나 그 여자는 당신을 별로 믿지는 않는 것 같다.</string>
+    <string name="gathering_resolution_three">당신은 복도로 달려가며 집에서 탈출할 수 있는 방법을 찾으려 하지만,
+        뜨거운 불의 벽이 여전히 당신의 길을 막는다. 당신의 집에 침입한 야생 생물의 무리에 의해 갇혔다, 그리고 당신은 도망칠 곳이 없다.\n
+    \n<b>사임하지 않은 모든 조사자들은 살해됩니다.</b>\n
+    \n<b>선임 조사자가 죽으면 리타 챈들러 카드를 얻을 조사자를 선택합니다.</b></string>
+
+    <!--Scenario Two - The Midnight Masks-->
+
+    <string name="midnight_setup_a"><b>시나리오 2: 한 밤중의 괴인들</b>\n
+        여자는 공황 상태에서 당신에게 왔고, 리버타운 근처의 집에서 바닥에서 나오는 괴물에 대해 미친듯이 떠들어댔다.
+        \"내가 그것들을 함정에 빠뜨리는데 성공했지만.\" 그 여자가 설명한다. \"남은 것들이 있어. 다른 구덩이도. 다른 영역도.\"
+        지난주였다면 그녀가 미치광이라고 생각했을 것이다. 하지만 최근의 사건들은 정상적이라는 것에 대한 당신의 선입견에 도전하는 것들이었다.\n
+        당신은 그녀의 말을 듣기로 결심했다. 그 여자는 리타 챈틀러(lita chantler)라고 자신을 소개하고 당신의 믿음의 한계를 확대시킬만 한 이야기를 시작한다.
+        \"내가 말한 그 생물은,\" 그 여자가 말한다. \"구울이라고 불리우는데, 아캄 시 지하에 있는 지하실, 동굴, 터널에 퍼져 있는 끔찍한 것들이야...\"\n
+        \n\"이 생물들은 인간의 시체를 먹고, 아캄 내에 퍼져 있는, 구울들의 고대의 주인을 숭배하는 어둠의 종파로부터 섬김을 받고 있어.
+        이 종교 단체는 무고한 사람들을 죽이고 그 구울에 먹이로 주고 있어. 괴물의 굶주림을 만족시켜주는 거지. 이런 어둠의 질서가 유지되고 있었어, 지금까지는.\"
+        리타가 말한다, \"최근에 시체가 보관되어 있던 그 굴 중 하나가 파괴되었는데, 그 이후로 구울들은 보통때보다 더 적극적으로 변했어.
+        나는 그것들의 움직임을 추적하고 도시 전체에서 미친듯이 날뛰는 것들을 막기 위해 최선을 다했어.
+        하지만 뭔가 더 나쁜 일이 일어나고 있는 것 같아. 이 종교단체는 내가 아직 보지 못한 것보다 더 어둡고 불길한 무언가를 계획하고 있을거야.
+        이 계획은 오늘 밤 자정 직후에 결과가 나올 것 같아. 그 뒤로는, 나는 무슨 일이 일어날 지 짐작할 수도 없어."
+        \n\"이 종교단체의 많은 사람들은\" 리타가 계속한다. \"흉악한 속내에도 불구하고 보통 사람들처럼 보일 거야. 이들은 모일 때마다 회원들은 서로의 신원을 감추기 위해
+        여러 동물의 두개골과 같은 마스크를 착용하고 나타나. 우리는 이 종교단체의 계획을 드러내고 탈선시킬 수 있도록 그들의 가면을 벗겨야 해.
+        몇 시간 여유가 있어. 자정 이전에 숭배자들을 찾아내야 해, 많으면 많을수록 좋아.\"</string>
+    <string name="midnight_setup_b"><b>시나리오 2: 한 밤중의 괴인들</b>\n
+        집에서 일어난 재앙의 여파로 거실에서 나타난 빨간 머리의 여자, 리타 챈틀러(lita chantler)는, 당신이 방금 목격했음에도 불구하고,
+        믿음의 한계를 강제로 확장시킬만한 이야기를 시작했다. \"집안에 나타난 그것들은,\" 그 여자가 말한다.
+        \"구울이라고 불리우는데, 아캄 시 지하에 있는 지하실, 동굴, 터널에 퍼져 있는 끔찍한 것들이야...\"\n
+        \n\"이 생물들은 인간의 시체를 먹고, 아캄 내에 퍼져 있는, 구울들의 고대의 주인을 숭배하는 어둠의 종파로부터 섬김을 받고 있어.
+        이 종교 단체는 무고한 사람들을 죽이고 그 구울에 먹이로 주고 있어. 괴물의 굶주림을 만족시켜주는 거지. 이런 어둠의 질서가 유지되고 있었어, 지금까지는.\"
+        리타가 말한다, \"최근에 시체가 보관되어 있던 그 굴 중 하나가 파괴되었는데, 그 이후로 구울들은 보통때보다 더 적극적으로 변했어.
+        나는 그것들의 움직임을 추적하고 도시 전체에서 미친듯이 날뛰는 것들을 막기 위해 최선을 다했어.
+        하지만 뭔가 더 나쁜 일이 일어나고 있는 것 같아. 이 종교단체는 내가 아직 보지 못한 것보다 더 어둡고 불길한 무언가를 계획하고 있을거야.
+        이 계획은 오늘 밤 자정 직후에 결과가 나올 것 같아. 그 뒤로는, 나는 무슨 일이 일어날 지 짐작할 수도 없어."
+        \n\"이 종교단체의 많은 사람들은\" 리타가 계속한다. \"흉악한 속내에도 불구하고 보통 사람들처럼 보일 거야. 이들은 모일 때마다 회원들은 서로의 신원을 감추기 위해
+        여러 동물의 두개골과 같은 마스크를 착용하고 나타나. 우리는 이 종교단체의 계획을 드러내고 탈선시킬 수 있도록 그들의 가면을 벗겨야 해.
+        몇 시간 여유가 있어. 자정 이전에 숭배자들을 찾아내야 해, 많으면 많을수록 좋아.\"</string>
+
+    <string name="midnight_sets">The Midnight Masks, Chilling Cold, Nightgaunts, Dark Cult, Locked Doors.</string>
+    <string name="midnight_set_aside">Cult of Umordhoth 조우 셋은 별도의 \"Cultist Deck\"으로 놓습니다.\n</string>
+    <string name="midnight_locations">두 번화가 장소와 두 남부 장소 중 한 장씩을 무작위로 선택하여 플레이에 놓습니다. 선택되지 않은 카드는 게임에서 제외합니다.\n
+        북부, 마을 동부, 리버 타운, 성 마리 병원, 공동 묘지, 미스케토닉 대학, 당신의 집을 플레이에 놓습니다.\n
+    \n모든 조사자는 당신의 집에서 게임을 시작합니다.\n</string>
+    <string name="midnight_locations_no_house">두 번화가 장소와 두 남부 장소 중 한 장씩을 무작위로 선택하여 플레이에 놓습니다. 선택되지 않은 카드는 게임에서 제외합니다.\n
+        북부, 마을 동부, 리버 타운, 성 마리 병원, 공동 묘지, 미스케토닉 대학을 플레이에 놓습니다. 당신의 집은 게임에서 제외합니다.\n
+    \n모든 조사자는 리버 타운에서 게임을 시작합니다.\n</string>
+    <string name="midnight_additional_two">모은 조우 셋에서 한 장의 견습 사제 카드를 찾아 남부에 배치합니다.\n</string>
+    <string name="midnight_additional_three">모은 조우 셋에서 두 장의 견습 사제 카드를 찾아 남부와 번화가에 각각 배치합니다.\n</string>
+    <string name="midnight_additional_four">모은 조우 셋에서 세 장의 견습 사제 카드를 찾아 남부, 번화가, 공동묘지에 각각 배치합니다.\n</string>
+
+    <string name="midnight_resolution_one">종교단체와 그들의 계획에 대한 유용한 정보를 얻을 수 있었다. 이것으로 충분하기를 바랄 뿐이다.</string>
+    <string name="midnight_resolution_two">열 두 번의 벨소리가 울리고 자정을 알린다. 시간이 없다. 곧 숭배의 의식이 시작될 것이다.
+        종교단체와 그들의 계획에 대한 유용한 정보를 얻을 수 있었다. 이것으로 충분하기를 바랄 뿐이다.</string>
+
+    <!--Scenario Three - The Devourer Below-->
+
+    <string name="devourer_setup"><b>시나리오 3: 지하의 괴물</b>\n
+        아캄에서의 미친 듯한 야간 수색을 한 뒤, 당신은 종교단체의 여러 멤버들을 추적하여 질문을 했다.
+        당신이 찾아낸 것은 다음과 같다: 그들은 다른 차원의 괴물인 우모르도스로 알려진 것을 숭배한다고 한다.\n
+        \n당신들은 리타의 이야기 중 많은 부분을 확인할 수 있었다: 컬트는 구울 굴의 파괴에 대해 동요하고 있다.
+        그러나 놀라운 세부 사항이 또한 나타났습니다: 은신처를 침범하고 오늘 밤 행사를 설정한 사람은 리타 챈틀러 자신이었습니다!
+        당신들은 리타의 이야기에서 왜 이 중요한 부분을 생략했는지 확신 할 수 없습니다 - 그 여자는 당신을 이 충돌에 빠뜨리는 데 필요한 만큼만 말한 것인가?
+        그러나 달리 보면, 그녀는 끔찍한 위협으로부터 아캄의 도시를 보호하기 위해 싸우고 있는 것처럼 보입니다.\n
+        \n퍼즐의 마지막 조각은 종교 단체의 숭배자들 중 한 명이 소유한 저널에 쓰여 있었다. 그 저널은 아주 어두운 밤에 아캄 남쪽 숲속에서 수행해야 할 어둠의 의식을 묘사하고 있었다.
+        저널에 따르면, 의식의 완성은 문을 열어 종교단체의 어둠의 주인을 이 세상으로 불러올 것이라고 한다.
+        \"만약 그 종교단체의 숭배가 멈추지 않으면,\" 리타는 경고하듯 말한다. \"우모르도스의 복수가 그 앞에 있는 모든 것을 빨아들일 가능성이 있어.\"
+        겁이 나지만 의식을 멈추기로 결심하고, 숲으로 향한다...</string>
+
+    <string name="devourer_sets">The Devourer Below, Ancient Evils, Striking Fear, Ghouls, Dark
+        Cult.</string>
+    <string name="devourer_sets_two">다음 중 하나의 조우 셋을 무작위로 선택합니다:\n
+    \nAgents of Yog-Sothoth, Agents of Shub-Niggurath, Agents of Cthulhu, Agents of Hastur.</string>
+    <string name="devourer_set_aside">의식 현장과 우모르도스\n</string>
+    <string name="devourer_locations">주 경로 장소를 플레이에 넣습니다. 6장의 아컴 숲 카드를 섞어서 그 중 4장을 무작위로 선택하여 뒷 면을 보지 않은 상태로 플레이에 넣습니다.
+        다른 2장은 게임에서 제외합니다.\n
+        \n각 조사자는 주 경로에서 게임을 시작합니다.\n</string>
+    <string name="devourer_additional">캠페인이 종료될 때까지 한 개의 옛 것 카오스 토큰을 카오스 가방에 추가합니다.\n</string>
+    <string name="devourer_additional_midnight">각 플레이어는 시작 손패에서 무작위로 두 장을 버립니다.\n</string>
+    <string name="devourer_cultists_one">아젠다 1a에 한 개의 둠 토큰을 놓습니다.\n</string>
+    <string name="devourer_cultists_two">아젠다 1a에 두 개의 둠 토큰을 놓습니다.\n</string>
+    <string name="devourer_cultists_three">아젠다 1a에 세 개의 둠 토큰을 놓습니다..\n</string>
+
+    <string name="umordhoth_succumbed">아컴은 우모르도스의 무시무시한 앙갚음에 굴복합니다.\n</string>
+    <string name="umordhoth_broken">우모르도스를 소환하기 위한 의식이 실패했습니다.\n</string>
+    <string name="umordhoth_repelled">조사자들이 우모르도스를 물리쳤습니다.\n</string>
+    <string name="umordhoth_sacrificed">리타 챈들러가 조사자들에 의해 우모르도스에게 희생되었습니다.
+    \n무작위 <i>광기</i> 약점 카드를 각 조사자의 덱에 추가합니다.\n</string>
+
+    <string name="devourer_no_resolution">자신의 운명에 직면하기가 너무 무서워진 리타는, 밤중으로 도망쳐 버렸다.
+        그녀는 그녀가 실패했다는 것과 그녀가 가는 곳마다 우모르도스의 복수가 그녀를 뒤쫓을 것이라는 점을 깨달았다. 그 생물의 덩굴이 아캄의 도시 전체에 퍼져 그녀를 찾고 있다.
+        모든 구석의 어둠마다 도사리고 있는 그것은 현실의 이음매를 쥐어 뜯고 있다. 그러나 리타는 어디에서도 찾을 수가 없으며,
+        그 생물은 오늘까지 그림자 속에 남아서 리타를 찾고 있다 ... 죽이기 위해.\n
+    \n<b>조사자들은 패배했습니다.</b></string>
+    <string name="devourer_resolution_one">당신은 종교단체가 그들의 주인을 소환하는 것을 막을 수 있었다.
+        종교단체가 성공했을 때 일어날 일이 무엇인지 확신 할 수는 없지만, 당신들은 적어도 당분간은 아캄이 안전할 것임에 안도했다.
+        당신은 엄청난 수의 숭배자들을 잡아들였지만, 마을 사람들은 당신의 이야기를 거의 믿지 않는다. 아마도 모든 것은 그저 당신의 상상이었을지도 모른다.\n
+    \n<b>조사자들이 승리했습니다!</b></string>
+    <string name="devourer_resolution_two">물리력과 의지력을 통해, 당신은 어떻게든 그것이 출현한 차원으로 되돌려 보낼 수 있을만큼 충분히 우모르도스에게 해를 끼칠 수 있었다.
+        공허 같은 물질이 스스로를 빨아들여 순간적으로 사라져 버리자 숲 속에 온기와 빛이 되돌아 왔다. 당신들은 이 같은 존재가 죽을 수 있는지에 대해 확신할수는 없지만, 당분간은 격퇴한 것처럼 보인다.
+        또한 그들의 주인이 사라짐에 따라, 아래의 열린 구덩이를 오르던 구울들은, 끔찍한 외침과 비명 소리로 도망쳤다. 당신은 악의 음모를 중단시켰지만, 이 싸움은 당신의 몸과 마음에 큰 타격을 주었다.
+        더 나쁜 점은, 세계의 미스터리들과 직면하니 스스로 하찮음이 느껴짐을 금할 수 없다는 것이다. 현실의 깊고 어두운 모퉁이에 또 어떤 다른 공포가 있을 것인가.\n
+    \n<b>조사자들이 승리했습니다!</b></string>
+    <string name="devourer_resolution_three">
+        공포에 직면하니, 막을 수 있었을지도 모른다는 생각조차도 들지 않는다. 단지 한 가지 희망만이 남아있을 뿐이다.
+        당신은 리타를 향해 서서 그 여자를 저 끔찍한 괴물에게 던져버리고는 소용돌이 치는 공허 같은 덩어리가 그녀를 빨아들이는 것을 공포에 휩싸인 채로 지켜보았다.
+        생명이 몸에서 빠져 나가면서 그 여자는 고통으로 울부짖었다. \"우모르도스 ... 우모르도스 ...\" 숭배자들이 되뇌이며 기도한다. 리타 챈틀러는 흔적도 없이 사라졌다.
+        잠깐동안 당신은 그 생물이 당신을 향할 것이라는 생각으로 두려움에 빠진다. 그러나 당신은 그 숭배자들 중 한 명이 말하는 것을 듣는다.
+        \"umordhoth는 단지 죄있는 자와 죽은 자들의 신이다. 가라, 너는 해를 입지 않을 것이다.\" 소용돌이 치는 덩어리는 사라지고, 숲에는 온기와 빛이 돌아왔다.
+        종교단체의 숭배자들은 당신들을 살려둔채로 조용히 움직여 나갔다. 리타의 마지막 순간은 당신의 기억에 영원히 새겨져 있을 것이다.\n
+        \n<b>리타를 희생한 죄책감은 영원히 괴로운 기억으로 남습니다. 각 조사자는 반드시 무작위 <i>광기</i> 약점 카드를 찾아서 자신의 덱에 넣어야 합니다.</b>\n
+    \n<b>조사자들은 살아남았습니다, 하지만 그 행동은 양심의 가책으로 남을 것입니다.</b></string>
+
+
+    <!--The Dunwich Legacy-->
+
+    <string name="dunwich_campaign_name">The Dunwich Legacy</string>
+    <string name="dunwich_scenario_one">Scenario 1-A: Extracurricular Activity</string>
+    <string name="dunwich_scenario_two">Scenario 1-B: The House Always Wins</string>
+    <string name="dunwich_scenario_three">Scenario 2: The Miskatonic Museum</string>
+    <string name="dunwich_scenario_four">Scenario 3: The Essex County Express</string>
+    <string name="dunwich_scenario_five">Scenario 4: Blood on the Altar</string>
+    <string name="dunwich_scenario_six">Scenario 5: Undimensional and Unseen</string>
+    <string name="dunwich_scenario_seven">Scenario 6: Where Doom Awaits</string>
+    <string name="dunwich_scenario_eight">Scenario 7: Lost in Time and Space</string>
+    <string name="dunwich_interlude_one">Interlude 1: Armitage\'s Fate</string>
+
+    <!--Miscellaneous-->
+    <string name="cheated_checkbox">An investigator \"cheated\"</string>
+    <string name="cheated_text">Add 1 Elder Thing chaos token to the chaos bag for the remainder of the
+        campaign.\n</string>
+    <string name="engine_car_checkbox">An investigator entered the Engine Car</string>
+    <string name="engine_car_dodge">Failed to dodge the creature</string>
+    <string name="engine_car_endure">Failed to endure the creature\'s extreme heat</string>
+
+    <!--Campaign log-->
+    <string name="investigators_unconscious">The investigators were unconscious for several hours.\n</string>
+    <string name="warren_kidnapped">Professor Warren Rice was kidnapped.\n</string>
+    <string name="warren_rescued">The investigators rescued Professor Warren Rice.\n</string>
+    <string name="students_failed">The investigators failed to save the students.\nTablet chaos token added to the chaos bag for the remainder of the campaign.\n</string>
+    <string name="students_rescued">The students were rescued.\n</string>
+    <string name="experiment_defeated">The Experiment was defeated.\n</string>
+    <string name="obannion_failed">The O\'Bannion gang has a bone to pick with the investigators.\n</string>
+    <string name="obannion_succeeded">Naomi has the investigators\' backs.\n</string>
+    <string name="morgan_kidnapped">Dr. Francis Morgan was kidnapped.\n</string>
+    <string name="morgan_rescued">The investigators rescued Dr. Francis Morgan.\n</string>
+    <string name="cheated">Elder Thing chaos token added to the chaos bag for the remainder of the
+        campaign.\n</string>
+    <string name="armitage_kidnapped">Dr. Henry Armitage was kidnapped.\n</string>
+    <string name="armitage_rescued">The investigators rescued Dr. Henry Armitage.\n</string>
+    <string name="necronomicon_failed">The investigators failed to recover the <i>Necronomicon</i>.\n</string>
+    <string name="necronomicon_destroyed">The investigators destroyed the <i>Necronomicon</i>.\n</string>
+    <string name="necronomicon_taken">The investigators took custody of the <i>Necronomicon</i>.
+        \nThe Necronomicon (<i>Olaus Wormius Translation</i>) added to an investigator\'s deck.
+        \nElder Thing chaos token added to the chaos bag for the remainder of the campaign.\n</string>
+    <string name="necronomicon_stolen">The Necronomicon was stolen.\n</string>
+    <string name="investigators_delayed">The investigators were delayed on their way to Dunwich.\n</string>
+
+    <string name="dunwich_setup"><b>Prologue</b>\n
+    \nDr. Henry Armitage pours himself a glass of pinot and sits down at his desk, gesturing for you to sit
+        across from him. \"I apologize for the short notice,\" he begins. His face is pale, his forehead sweaty
+        and wrinkled with worry.\n
+    \nArmitage - the head librarian of Miskatonic University, and a former mentor of yours - privately
+        contacted you in the hopes of gaining your assistance. Eager to help, you made your way to his home in
+        Southside. Upon entering, you were surprised to find his home in disarray. Books and notes litter his
+        desk, and an empty bottle of wine has tipped over onto the ground by the fireplace. You\'d always known
+        Armitage to be neat and well-organized.\n
+    \nThe elderly man takes a moment to collect his thoughts. \"I am looking for two of my colleagues - Dr.
+        Francis Morgan, professor archaeology, and Warren Rice, professor of languages. Warren was supposed to
+        meet up with me over supper earlier today to discuss several important findings, but he has since gone
+        missing. At first I thought nothing of it, but I have a nagging feeling something else is going on. A
+        very&#8230;<b>familiar</b> feeling.\" You\'ve never seen Armitage quite this worried before. His hands
+        tremble as he reaches for the glass on his desk, and he sips from it nervously. \"I tried to find
+        Francis, hoping he knew where Warren was, but he too is out of touch. Francis has been spending a lot
+        of time in some gambling den, or so I am told.\n
+    \n\"I sent for you because I am worried Warren might be in trouble. I would appreciate it greatly if you
+        could find him for me. You may also wish to ask Francis for help, if you can reach him.\"</string>
+    <string-array name="dunwich_setup_options">
+        <item>Professor Warren Rice was last seen working late at night in the humanities department of
+            Miskatonic University. Let\'s search for him there.\n</item>
+        <item>Dr. Francis Morgan was last seen gambling at the Clover Club, an upscale speakeasy and gambling
+            joint located downtown. Let\'s go talk to him.\n</item>
+    </string-array>
+
+    <!--Scenario 1-A - Extracurricular Activity-->
+    <string name="extracurricular_setup"><b>Scenario 1-A: Extracurricular Activity</b>\n
+    \nDr. Armitage is worried his colleague, Professor Warren Rice, might be in trouble, so he has asked for
+        your help in finding his friend. He seems unreasonably nervous about his colleague\'s disappearance,
+        considering Professor Rice has only been \"missing\" for a matter of hours&#8230;</string>
+
+    <string name="extracurricular_sets">Extracurricular Activity, Sorcery, The Beyond, Bishop\'s Thralls,
+        Whippoorwills, Ancient Evils, Locked Doors, and Agents of Yog-Sothoth.</string>
+    <string name="extracurricular_set_aside_one">Faculty Offices (The Night is Still Young), \"Jazz\" Mulligan,
+        Alchemical Concoction, The Experiment, Professor Warren Rice, Dormitories, and Alchemy Labs.\n</string>
+    <string name="extracurricular_set_aside_two">Faculty Offices (The Hour is Late), \"Jazz\" Mulligan,
+        Alchemical Concoction, The Experiment, Professor Warren Rice, Dormitories, and Alchemy Labs.\n</string>
+    <string name="extracurricular_locations">Put the Miskatonic Quad, Orne Library, Humanities Building,
+        Student Union, Science Building, and Administration Building locations into play.\n
+        \nEach investigator begins play at the Miskatonic Quad.\n</string>
+
+    <string name="extracurricular_no_resolution">As you flee from the university, you hear screaming from the
+        northern end of the campus. An ambulance passes you by, and you fear for the worst. Hours later, you
+        learn that a \'rabid dog of some sort\' found its way into the university dormitories. The creature
+        attacked the students inside and many were mauled or killed in the attack.\n
+    \n<b>Add 1 Tablet chaos token to the chaos bag for the remainder of the
+        campaign.</b></string>
+    <string name="extracurricular_resolution_one">You find Professor Rice bound and gagged in the closet of his
+    office. When you free him, he informs you that the strange men and women wandering around the campus had
+        been stalking him for hours. They cornered him in his office and tied him up, although for what
+        purpose, Rice isn\'t sure. You inform him that Dr. Armitage sent you, and Rice looks relieved, although
+    he suspects that Dr. Morgan might be in danger as well. Because the strangers on campus seem to have been
+        targeting Professor Rice, you decide that the best course of action is to escort him away from the
+        campus as quickly as possible. As you leave the university, you hear screaming from the northern end of
+    the campus. An ambulance passes you by, and you fear for the worst. Hours later, you
+        learn that a \'rabid dog of some sort\' found its way into the university dormitories. The creature
+        attacked the students inside and many were mauled or killed in the attack.\n
+    \n<b>Any one investigator may choose to add Professor Warren Rice to his or her deck.</b>\n
+    \n<b>Add 1 Tablet chaos token to the chaos bag for the remainder of the
+        campaign.</b></string>
+    <string name="extracurricular_resolution_two">You pull each of the dormitory\'s fire alarms and usher the
+        sutdents out of the building\'s north exit, hoping to make your way off campus. Many of the students
+        are confused and exhausted, but you believe an attempt to explain the situation will do more harm than
+        good. Minutes later, a terrible screech echoes across the campus, piercing and shrill. You tell the
+        students to wait and head back to the dormitories to investigate. Oddly, you find no trace of the
+        strange creature - a prospect that worries you more than it relieves you. You hurry to the faculty
+        offices to find Professor Rice, but there is no sign of him anywhere.</string>
+    <string name="extracurricular_resolution_three">After defeating the strange and terrifying creature from
+        the Department of Alchemy, you rush to the faculty offices to find Professor Rice. By the time you to
+        his office, there is no sign of him anywhere.</string>
+    <string name="extracurricular_resolution_four">You awaken hours later, exhausted and injured. You\'re not
+        sure what you saw, but the sight of it filled your mind with terror. From other survivors, you learn
+        that a \'rabid dog of some sort\' found its way into the university dormitories. The creature
+        attacked the students inside and many were mauled or killed in the attack.\n
+    \n<b>Add 1 Tablet chaos token to the chaos bag for the remainder of the
+        campaign.</b></string>
+
+
+    <!--Scenario 1-B - The House Always Wins-->
+    <string name="house_setup"><b>Scenario 1-B: The House Always Wins</b>\n
+    \nDr. Armitage suggested you track down his associate Dr. Francis Morgan. He\'s not sure whether Dr. Morgan
+    is in trouble, but he\'s not particularly happy with his colleague\'s present choice of company. He\'s in
+        the Clover Club, a notorious gambling joint somewhere downtown. Finding the club\'s exact location
+        isn\'t easy - you have to grease a few palms just to learn which of the Downtown restaurants operates
+        as the club\'s front. That restaurant is La Bella Luna, a somewhat upscale Italian eatery by the
+        theatre. You change into your Sunday best and make your way there.\n
+    \nIn front of La Bella Luna stands a man in a pinstripe suit who sizes you up as you approach. \"Enjoy
+        yourselves,\" he says with a snake-like grin as he holds open the restaurant\'s front door.</string>
+
+    <string name="house_sets">The House Always Wins, Bad Luck, Naomi\'s Crew, and Rats.</string>
+    <string name="house_set_aside">The Hideous Abominations and Striking Fear encounter sets.\n</string>
+    <string name="house_set_aside_two">Darkened Hall, Peter Clover, Dr. Francis Morgan, and each copy of Back
+        Hall Doorway.\n</string>
+    <string name="house_locations">Put the Clover Club Lounge, Clover Club Bar, Clover Club Cardroom, and La
+        Bella Luna locations into play.\n
+    \nEach investigator begins play in La Bella Luna.\n</string>
+    <string name="house_additional">Put Clover Club Pit Boss into play in the Clover Club Lounge.\n</string>
+
+    <string name="house_resolution_one">You flee to the end of the block and pause to recover. Before you can
+        catch your breath, the ground shakes with a thunderous crash. People emerge from their homes and
+        storefronts to see what the ruckus is, and a crowd forms on the street. You head to the front of the
+        crowd and are horrified to see the building from which you fled just minutes earlier reduced to rubble.
+        There is no sign of Dr. Morgan anywhere.</string>
+    <string name="house_resolution_two">\"What in the world&#8230;?\" Dr. Morgan finally breaks out of his daze
+        as you make your way to safety. You ask him what he remembers, and he sputters and shakes his head.
+        \"It\'s all a haze,\" he explains, visibly exhausted. \"I was having the run of my life! Perhaps I had
+        one too many shots. But, those creatures - I haven\'t seen anything like that since&#8230;\" He trails
+        off, and you can tell that his mind is racing. His eyes widen with realization and his face pales. \"I
+        may not be in the best shape, but I\'ll help with your investigation. Whatever it takes.\"\n
+    \n<b>Any one investigator may choose to add Dr. Francis Morgan to his or her deck.</b></string>
+    <string name="house_resolution_three">Although you were unable to find Dr. Morgan in the club, the man you
+        rescued is grateful for your help. He introduces himself as Peter Clover, the owner of the
+        establishment you\'d just left. Despite the situatin, he maintains an air of quiet professionalism. As
+        you make your way towards the street, a well-polished Chrysler B-70 rolls up to you, and a gorgeous
+        woman with long brown hair and narrow eyes exits. She is flanked by dangerous-looking men who slip
+        their hands under their suit jackets when they see you. \"Peter,\" she says with a sigh of relief,
+        \"Good, you\'re okay. I heard there was trouble?\" She turns and glares at you with deadly eyes. \"Who
+        are they?\"\n
+    \nMr. Clover dusts off his vest, unworried. \"Naomi, my dear, these are friends of mine. They&#8230;\" he
+        clears his throat. \"They escorted me off the premises,\" he explains after a short pause. \"They have
+        earned our gratitude.\" The woman crosses her arms and takes a moment to size you up before giving you
+        a smirk.\n
+    \n\"Very well then. I must thank you for taking care of Peter. Run along now; we\'ll handle things from
+        here.\" She nods to the goons flanking her and they walk past you toward the club\'s rear entrance,
+        pulling firearms out from underneath their coats. You\'re not sure what \'handling things\' means, but
+        you\'re pretty sure you don\'t want to be here when the gunfire starts. You thank Naomi and Peter, and
+        head off.</string>
+    <string name="house_resolution_four">You are pulled from the debris by several firefighters, on of whom
+        exclaims, \"We\'ve got a live one!\" A few of them patch you up, and the cops ask you what happened.
+        You\'re certain they wouldn\'t believe your story about horrible monstrosities demolishing the building
+    from within. Unsure of what to say, you give a vague statement about not remembering much. \"We\'re
+        bringing you to St. Mary\'s,\" one of the nurses says, pointing to a nearby ambulance. Knowing now how
+        dire the situation is, you slip away while she is distracted by something else in the rubble&#8230;</string>
+
+
+    <!--Interlude 1: Armitage's Fate-->
+    <string name="dunwich_interlude_one_text"><b>Armitage\'s Fate</b>\n
+    \nYou are more than a little rattled by your experiences in the university and the Clover Club. You\'re not
+        sure what to make of whoever - or whatever - was after Rice and Morgan. Worried about Dr. Armitage, you
+        swiftly make your way back to his home. When you arrive, you find that the latches of his front door
+        have been busted open, and his living area and study have been ransacked. Dr. Armitage is nowhere to be
+        found. Searching his home, you find a journal the intruders didn\'t steal tucked beneath several other
+        documents in the bottom drawer of Armitage\'s desk. The journal appears to be written in a strange
+        language you cannot decode, using a script you\'ve never seen in your entire life. Fortunately, it
+        seems Dr. Armitage had already gone through the trouble of translating it into English. Apparently, it
+        belongs to one \"Wilbur Whateley.\"\n
+    \nThe journal - along with Armitage\'s many notes - tells a startling tale, one you would scarcely believe
+        had it not been for your harrowing experiences earlier tonight&#8230;</string>
+    <string name="dunwich_interlude_two_text"><b>Armitage\'s Fate</b>\n
+    \nWhen you arrive at Dr. Armitage\'s home in Southside, you find him sitting at his desk, pale-faced and
+        sweating with worry. He is grateful to you for searching for his colleagues, but he doesn\'t look
+        relieved. With a long pause, he straightens his glasses and explains:\n
+    \n\"I\'m afraid I must apologize. There\'s something I didn\'t mention to you earlier.\" Dr. Armitage then
+        spins a tale that you would scarcely believe had it not been for your harrowing experiences earlier
+        that night&#8230;\n
+    \n<b>Any one investigator may choose to add Dr. Henry Armitage to his or her deck.</b></string>
+
+    <!--Scenario 2: The Miskatonic Museum-->
+    <string name="miskatonic_setup_a"><b>Scenario 2: The Miskatonic Museum</b>\n
+    \nSeveral months ago, Armitage and his colleagues stopped a rampaging horror from tearing through Dunwich,
+        a backwater town several hours north and west of Arkham. At first you imagine this beast as a rabid
+        bear, or worse, but the professor\'s description of the creature paints a different picture.\n
+    \nIt all began when a man named Wilbur Whately entered the Orne Library looking for Olaus Wormius\'s Latin
+        translation of a book called the <i>Necronomicon</i>. Wilbur already possessed a beaten-up English
+        translation by Dr. John Dee, but it was insufficient for his purposes. Armitage turned the man away,
+        fearing what use the strange man had for the book. Whateley returned in secret, hoping to steal the
+        book, but was attacked by a hound guarding the university. Armitage, Rice, and Morgan later discovered
+        Whateley\'s body. A description of the foul corpse - semi-anthropomorphic and covered in fur, with a
+        leathery hide and greenish-grey tentacles - causes you to question whether or not Whateley was truly
+        human.\n
+        \nThe notes written by Dr. Armitage in the journal stress Whateley\'s
+        desire to get his hands on the <i>Necronomicon</i> for some terrible purpose. As you read on, it seems
+        that Dr. Armitage brought the university\'s copy of the tome to Harold Walsted - the curator of the
+        Miskatonic Museum - for safekeeping in the museum\'s Restricted Hall. Although you are worried about
+        your mentor, you are equally worried that Armitage\'s kidnappers might get their hands on the
+        <i>Necronomicon</i>. You decide to head to the museum to prevent them from acquiring it.</string>
+    <string name="miskatonic_setup_b"><b>Scenario 2: The Miskatonic Museum</b>\n
+    \nSeveral months ago, Armitage and his colleagues stopped a rampaging horror from tearing through Dunwich,
+        a backwater town several hours north and west of Arkham. At first you imagine this beast as a rabid
+        bear, or worse, but the professor\'s description of the creature paints a different picture.\n
+    \nIt all began when a man named Wilbur Whately entered the Orne Library looking for Olaus Wormius\'s Latin
+        translation of a book called the <i>Necronomicon</i>. Wilbur already possessed a beaten-up English
+        translation by Dr. John Dee, but it was insufficient for his purposes. Armitage turned the man away,
+        fearing what use the strange man had for the book. Whateley returned in secret, hoping to steal the
+        book, but was attacked by a hound guarding the university. Armitage, Rice, and Morgan later discovered
+        Whateley\'s body. A description of the foul corpse - semi-anthropomorphic and covered in fur, with a
+        leathery hide and greenish-grey tentacles - causes you to question whether or not Whateley was truly
+        human.\n
+        \n\"My colleagues and I were quick to put the ordeal behind us,\"
+        Armitage says with a sigh. \"But it seems that things haven\'t fully resolved themselves. I\'ll tell
+        you the rest later, but for now, it is imperative that we get our hands on that copy of the
+        <i>Necronomicon</i>. If my instincts are correct, the assailants you\'ve encountered will be searching
+        for it. After all that transpired, I didn\'t feel safe keeping at the library, so I brought it to my
+        good friend, Harold Walsted. He is the current curator of the Miskatonic Museum. I thought it would be
+        safe in the museum\'s Restricted Hall, but now I\'m not so sure. You must retrieve it at all costs! I
+        fear terribly what they could do with the rites contianed in its pages&#8230;\"</string>
+
+    <string name="miskatonic_sets">The Miskatonic Museum, Bad Luck, Sorcery, The Beyond, Chilling Cold, and
+        Locked Doors.</string>
+    <string name="miskatonic_locations">Put one of the two Administration Office locations and one of the two
+        Security Office locations into play at random. Remove the other versions from the game. Then, put the
+        Museum Entrance and Museum Halls locations into play.\n
+    \nEach investigator begins play at the Museum Entrance.\n</string>
+    <string name="miskatonic_set_aside">Harold Walsted, Adam Lynch, The Necronomicon
+        (<i>Olaus Wormius Translation</i>), and Shadow-spawned.\n</string>
+    <string name="miskatonic_additional">Set the 6 "Exhibit Hall" locations aside as a separate "Exhibit Deck."
+        To do this, perform the following:\n
+    \nShuffle the Exhibit Hall (<i>Restricted Hall</i>) and 2 other random Exhibit Hall locations together to
+        form the bottom 3 cards of the Exhibit Deck, unrevealed side faceup.\n
+    \nThen, place the other 3 Exhibit Hall locations on top, in a random order. All 6 cards of the Exhibit Hall
+    deck should be showing only the unrevealed side, so that the players do not know which Exhibit Hall is the
+        Exhibit Hall (<i>Restricted Hall</i>).\n</string>
+
+    <string name="miskatonic_no_resolution">Whatever the creature in the museum was, you had neither the will
+        nor the tools to destroy it. It seems you must give up any hope of recovering the <i>Necronomicon</i>.
+        Even so, there are others depending on you. Gathering your courage, you prepare for your next task.</string>
+    <string name="miskatonic_resolution_one">As long as this translation of the <i>Necronomicon</i> exists,
+        there will be sorcerers and other foul agents like Whateley seeking it. In the end, you know what must
+        be done to protect humanity from the threats you\'ve seen. You find a trash bin and fill it with books
+        and documents, throwing the <i>Necronomicon</i> on top. It takes several matches to set the contents of
+    the bin alight. The flames fill the room with heat and the creeping shadows retreat from its light. You
+        watch the book burn for some time, its pages turning to ash. You can only hope you\'ve made the right
+        decision.</string>
+    <string name="miskatonic_resolution_two">The <i>Necronomicon</i> is more than just a book; it is a tool.
+        Within its pages is a wealth of information about the forces and creatures you have encountered.
+        Knowing how useful it could be in your endeavors, how could you possibly bring yourself to destroy it?
+        Besides, as long as you keep the book safely in your possession, you will still be foiling those who
+        wish to use it for nefarious purposes.\n
+    \n<b>Any one investigator may choose to add The Necronomicon (<i>Olaus Wormius Translation</i>) to his or her
+     deck.</b>\n
+    \n<b>You have given in to the temptation of power. Add 1 Elder Thing chaos token to the chaos bag for the
+            remainder of the campaign.</b></string>
+
+    <!--Scenario 3: The Essex County Express-->
+    <string name="essex_setup"><b>Scenario 3: The Essex County Express</b>\n
+    \nRecent events in the Museum have forced you to re-evaluate Armitage\'s tale about Dunwich. It cannot be a
+    coincidence - Wilbur Whateley, the Necronomicon, the creature from Dunwich, and the people and creatures
+        who attacked here in Arkham - everything must be connected. You\'re certain now where you must head:
+        the lonely and dismal town of Dunwich Village.\n
+    \nYou consider telling the Massachusetts State Police what you know, but the negative consequences
+        outweigh the potential gain. Given the nature of your story, they would likely write your stories off
+        as an absurd hoax. Worse, they could lock you up. After all, you were present in an illegal speakeasy,
+        and you also trespassed in the museum. Instead, you decide to head to Dunwich yourself, in order to
+        investigate further.\n
+    \nYou pack everything you think you might need and manage to get some rest for the night. In the morning,
+        you head to the train station in Northside and purchase a last-minute express ticket. Dunwich is
+        several hours by train northwest along the Miskatonic River Valley. There is no train station in
+        Dunwich, but you manage to phone one of Armitage\'s acquaintances in the small village: a man by the
+        name of Zebulon Whateley who was present during the events several months ago.\n
+    \nArmitage\'s notes indicate that the Whateley family is spread across many branches, some decadent and
+        unscrupulous, others \"undecayed\" or otherwise untouched by nefarious and diabolic rites. According to
+    Armitage, Zebulon\'s branch of the family lay somewhere between the decayed and undecayed Whateleys, who
+        knew of the traditions of his ancestors, but was not corrupted by them. He agrees to pick you up at the
+    closest station and drive you into town.\n
+    \nAs the train departs from Arkham, you feel the events of the previous night catching up to you, and
+        exhaustion sets in. But before you can safely reach your destination, the train car suddenly rumbles
+        and shakes, startling you out of your reverie. The train loudly skids to a violent halt, and you hear a
+    rattling noise behind you&#8230;</string>
+
+    <string name="essex_sets">The Essex County Express, The Beyond, Striking Fear, Ancient Evils, and Dark Cult.</string>
+    <string name="essex_locations">Put one of the three Engine Car locations into play at random and remove the
+    others from the game.\n
+    \nPut six of the eight Train Car locations into play at random, in a straight line to the left of the
+        Engine Car, and remove the others from the game.\n
+    \nEach investigator beings play at the leftmost Train Car location.\n</string>
+    <string name="essex_set_aside">All 4 copies of Across Space and Time.\n</string>
+    <string name="essex_additional">Based on your difficulty level, add the following chaos token to the chaos
+        bag, for the remainder of the campaign:\n
+    \n<b>Easy:</b> -2\n
+    \n<b>Standard:</b> -3\n
+    \n<b>Hard:</b> -4\n
+    \n<b>Expert:</b> -5\n</string>
+
+    <string name="essex_resolution_one">You breathe a sigh of relief as the gate behind the train collapses harmlessly
+        upon itself. The few
+        passengers who survived the ordeal seem unable to comprehend what just happened. One passenger mentions
+    \"a pipe bursting in the rear car,\" and that quickly becomes the explanation for the innocent and
+        ignorant, those who either cannot or choose not to delve further into the mystery. You, on the other
+        hand, know better&#8230; although in hindsight, you wish you didn\'t.</string>
+    <string name="essex_resolution_one_defeated"><b>Defeated investigators:</b>\n
+        \nYour experience beyond the gate is spontaneously terrifying and impossible to recall with clarity.
+        A hypnotic spectacle of lights, otherworldly sensations, and
+        altered geometry dances at the tattered edges of your mind. An unearthly voice from beyond rings in
+        your ears, its significance an enigma. When you awaken, you find yourself in the woods, several miles
+        from the Miskatonic River. Destroyed train cars surround you. They are crumpled as if from a severe
+        impact; they are also decayed as if years of rust and squalor have claimed them. There is no sign if
+        the other investigators.\n
+    \n<b>Each investigator who was defeated must add 1 copy of the Across Space and Time weakness to his or her
+            deck.</b>\n
+        \n<b>Surviving investigators:</b>\n
+    \nYou breathe a sigh of relief as the gate behind the train collapses harmlessly upon itself. The few
+        passengers who survived the ordeal seem unable to comprehend what just happened. One passenger mentions
+    \"a pipe bursting in the rear car,\" and that quickly becomes the explanation for the innocent and
+        ignorant, those who either cannot or choose not to delve further into the mystery. You, on the other
+        hand, know better&#8230; although in hindsight, you wish you didn\'t.\n</string>
+    <string name="essex_resolution_two">Your experience beyond the gate is spontaneously terrifying and impossible to
+        recall with clarity. A hypnotic spectacle of lights, otherworldly sensations, and
+        altered geometry dances at the tattered edges of your mind. An unearthly voice from beyond rings in
+        your ears, its significance an enigma. When you awaken, you find yourself in the woods, several miles
+        from the Miskatonic River. Destroyed train cars surround you. They are crumpled as if from a severe
+        impact; they are also decayed as if years of rust and squalor have claimed them. There is no sign if
+        the other investigators.\n
+        \nRattled, you begin walking alongside the train tracks, making your way towards Dunwich.\n
+    \n<b>Each investigator must add 1 copy of the Across Space and Time weakness to his or her
+            deck.</b></string>
+
+    <string name="necronomicon_defeated">Investigator with The Necronomicon (<i>Olaus Wormius Translation</i>)
+        was defeated</string>
+    <string name="armitage_defeated">Investigator with the Dr. Henry Armitage card was defeated</string>
+    <string name="rice_defeated">Investigator with the Professor Warren Rice card was defeated</string>
+    <string name="morgan_defeated">Investigator with the Dr. Francis Morgan card was defeated</string>
+    <string
+        name="remove_necronomicon"><b>Remove The Necronomicon (<i>Olaus Wormius Translation</i>) from the
+        relevant investigator\'s deck.</b></string>
+    <string name="remove_armitage"><b>Remove the Dr. Henry Armitage card from the relevant investigator\'s deck
+        .</b></string>
+    <string name="remove_rice"><b>Remove the Professor Warren Rice card from the relevant investigator\'s deck
+        .</b></string>
+    <string
+        name="remove_morgan"><b>Remove the Dr. Francis Morgan card from the relevant investigator\'s deck.</b></string>
+
+    <!--Side stories-->
+    <string-array name="side_stories">
+        <item>Curse of the Rougarou</item>
+        <item>Carnevale of Horrors</item>
+    </string-array>
+
+    <!--Curse of the Rougarou-->
+    <string name="rougarou_setup"><b>Curse of the Rougarou</b>\n
+        \n<b>Terror Grips New Orleans!</b>\n
+    \nMinnie Klein, your contact at the Arkham Advertiser, had slipped you a draft of the article over a cup of
+        coffee at Velma\'s Diner. It would have gone to print had Doyle Jeffries, the lead editor, not scoffed at
+        the concept. \"I believe his exact words were, \'I ain\'t printing the ravings of some Voodoo lunatic
+        and passing it off as news,\'\" she explained. From the sly grin spreading across her face, you could
+        tell she smelled a story.\n
+    \nThe headline was sensationalist. Three killings in nine days was enough to spook a town, sure. But you
+        doubt all of New Orleans is gripped by terror, or even knows about the killings. Still, something
+        piqued your interest. \"Lady Esprit,\" the Voodoo priestess from the article, claimed that a malign
+        curse had taken root in the bayou.\n
+    \n\"There\'s something to this, isn\'t there? I know that look,\" Minnie said. You weren\'t sure. If Lady
+        Esprit was right, this \"roux-ga-roux\" wouldn\'t stop killing at three, that\'s for sure. But curses?
+        Wolf-people? How could such things be real? Only one way to find out. You put on your coat and head for
+        the Northside station&#8230;</string>
+    <string name="rougarou_sets">The Bayou.</string>
+    <string name="rougarou_locations">Sort each of the locations into 4 piles, by trait (New Orleans,
+        Riverside, Wilderness, and Unhallowed). Randomly choose 1 of these piles and remove those locations
+        from the game. Randomly choose another 1 of these piles and put those locations into play.\n
+        \nEach investigator begins play at a Bayou location in play.\n</string>
+    <string name="rougarou_set_aside">Curse of the Rougarou encounter set.\n</string>
+    <string name="rougarou_set_aside_two">Each location in the other 2 piles, Lady Esprit, Bear Trap, and Fishing Net.\n</string>
+    <string name="rougarou_resolution_one">Somehow, you manage to make it back to safety before daybreak,
+        resting until late afternoon. It isn\'t until you seek out Lady Esprit the next day that you realize
+        who last night\'s victim was. With a heavy heart and an unshakeable dread, you choose to bury her body
+        instead of contacting the authorities - the less people who delve this deep into the bayou, the better.</string>
+    <string name="rougarou_resolution_two">The creature gives a pitiful wail as dark miry blood oozes from its
+        wounds. By the time its body collapses into the mud, it has transformed back into its original form -
+        the form of a young dark-skinned man, his expression twisted in agony. You bring his body back to Lady
+        Esprit and she works her strange magic, removing the stain of the curse from the land. \"Call on me
+        should you ever need my help,\" the mysterious woman tells you.\n
+        \n<b>Remove the Curse of the Rougarou weakness from it\'s bearer\'s deck.</b>\n
+    \n<b>Any one investigator may choose to add Lady Esprit to his or her deck.</b></string>
+    <string name="rougarou_resolution_three">Somehow, you have managed to quell the rage and bloodlust of the
+        curse within the creature, and in moments the shape of a young, dark-skinned man stands before you,
+        panting and sweating. He seems to only just now understand everything he\'s done, and agrees to flee to
+    a secluded corner of the earth where he can harm no one. However, the curse lives on. He sees it in your
+        eyes and grips your arm tightly. \"Don\'t let it take control,\" he warns. \"I was weak, but you - I
+        can tell you are strong. Control the curse as I could not.\"\n
+    \n<b>The bearer of the Curse of the Rougarou weakness must add Monstrous Transformation to his or her deck.</b></string>
+    <string name="rougarou_alive">The Rougarou continues to haunt the bayou.\nCurse of the Rougarou weakness added to
+        an investigator\'s deck.\n</string>
+    <string name="rougarou_destroyed">The Rougarou is destroyed, and the curse is lifted.\nLady Esprit added to an investigator\'s deck.\n</string>
+    <string name="rougarou_escaped">The Rougarou escaped, and you embraced the curse.\nCurse of the Rougarou weakness
+        and Monstrous Transformation added to an investigator\'s deck.\n</string>
+
+    <!--Carnevale of Horrors-->
+    <string name="carnevale_setup"><b>Carnevale of Horrors</b>\n
+        \n<b>The Carnevale is Coming&#8230;</b>\n
+    \n\"Look,\" Sheriff Engel insists, \"I know it sounds crazy, but that\'s all there is to it.\" He sighs and
+    sits back down, pouring a cup of joe for you and one for himself. \"A dame in Uptown spotted a cracked egg
+        wearing this mask and holdin\' a bloody butcher\'s cleaver,\" he says, motioning to the black leather
+        mask sitting on his desk. It has a comically long nose and a strange symbol scrawled in yellow on its
+        forehead. \"So, she calls it in. My boys and I picked him up on the corner of Saltonstall &amp;
+        Garrison.\" The sheriff\'s jaw clenches and his brows furrow as he recounts the story. \"Fella did
+        nothing but laugh as we slapped the bracelets on him. Called himself Zanni. Said nothing except the
+        \'carnival is coming,\' whatever the hell that meant. Wasn\'t until the next day we found the victim\'s
+    body. Defense wanted him in a straitjacket. We were happy to oblige.\"\n
+    \nThere isn\'t much time to spare. If your research is right, there is more to this case than meets the eye
+        . This \"Zanni\" wasn\'t talking about Darke\'s Carnival, but rather, the Carnevale of Venice, which
+        begins just before the next full moon&#8230;</string>
+    <string name="carnevale_sets">Carnevale of Horrors</string>
+    <string name="carnevale_locations">Choose 1 location at random and remove it from the game. If San Marco
+        Basilica or Canal-side is chosen, randomly choose a different location instead.
+        \nPut the other 8 locations into play, in a random circular formation.\n
+    \nEach investigator begins play at San Marco Basilica.\n</string>
+    <string name="carnevale_set_aside">Cnidathqua, Pantalone, Medico Della Peste, Bauta, and Gilded Volto.\n</string>
+    <string name="carnevale_additional">Put Abbess Allegria Di Biase into play at San Marco Basilica.\n
+    \nShuffle the 7 Masked Carnevale-Goers and put 1 into play at each location other than San Marco Basilica,
+        Masked Carnevale-Goer side face-up. Do not look at their other sides.\n</string>
+    <string name="carnevale_no_resolution">You sputter awake as an oar gently taps your shoulder.
+        \"<i>Tutto bene</i>?\" The gondolier holding the oar says with a concerned expression. You nod and drag
+    yourself onto the docks from his gondola, drenched and aching all over. The city is devastated. Most of the
+    boats in the canal are wrecked, and the streets are covered not in confetti, but in blood&#8230;\n
+    \n<b>Move 1 Innocent Reveler from underneath the act deck to underneath the agenda deck, if able.</b>\n
+    \n<b>In player order, each investigator may choose one of the following <i>Mask</i> cards to add to his or
+            her deck: Pantalone, Medico Della Peste, Bauta, or Gilded Volto.</b>\n
+    \n<b>If there are no Innocent Revelers underneath the act deck and at least 1 underneath the agenda deck,
+            select <i>Sacrifice Made</i>.</b>\n
+    \n<b>If there are no Innocent Revelers underneath the agenda deck and 3 underneath the act deck, select
+            <i>Abbess Satisfied</i>.</b></string>
+    <string name="carnevale_resolution_one">The city is still recovering from the events during the eclipse.
+        With nearly all evidence of the creature melted away by the hot sun, many attribute the violence during
+    the Carnevale to local crime lord Cascio Di Boerio and his crew. Those that know the truth know better than
+    the speak of the elder creature that lives in Laguna Veneta. With any luck, its name will never be spoken
+        again.\n
+    \n<b>In player order, each investigator may choose one of the following <i>Mask</i> cards to add to his or
+            her deck: Pantalone, Medico Della Peste, Bauta, or Gilded Volto.</b>\n
+    \n<b>If there are no Innocent Revelers underneath the act deck and at least 1 underneath the agenda deck,
+            select <i>Sacrifice Made</i>.</b>\n
+    \n<b>If there are no Innocent Revelers underneath the agenda deck and 3 underneath the act deck, select
+            <i>Abbess Satisfied</i>.</b></string>
+    <string name="carnevale_resolution_two">The creature recoils as globules of its jelly-like flesh rip and
+        tear from its body, splashing into the lagoon. It makes no sound as its torn body sinks into the depths
+        . The chanting in the city plunges into mournful silence. As you return it to the canal-side streets,
+        black feathers fall from the sky where bright confetti once fluttered. You can only wonder how long it
+        will take for the creature to recover.\n
+    \n<b>In player order, each investigator may choose one of the following <i>Mask</i> cards to add to his or
+            her deck: Pantalone, Medico Della Peste, Bauta, or Gilded Volto.</b>\n
+    \n<b>If there are no Innocent Revelers underneath the act deck and at least 1 underneath the agenda deck,
+            select <i>Sacrifice Made</i>.</b>\n
+    \n<b>If there are no Innocent Revelers underneath the agenda deck and 3 underneath the act deck, select
+            <i>Abbess Satisfied</i>.</b></string>
+    <string name="carnevale_reward_sacrifice">Too many lives were lost during the eclipse to stop the
+        machinations of Cindathqua\'s servants. The beast has been fed, its minions empowered. You find
+        yourself hoping you don\'t live long enough to see the fallout of your failure.\n
+    \n<b>Each investigator searches the collection for a random basic <i>Madness</i>, <i>Injury</i>, or
+            <i>Monster</i> weakness and adds it to his or her deck for the remainder of the campaign.</b></string>
+    <string name="carnevale_reward_abbess">"<i>Grazie mille</i> - thank you for all your help,\" Allegria says
+        as you return to the basilica. \"Thanks to you, there were few casualties. I shudder to think what
+        might have happened had you not arrived. Should you ever require assistance, please do not hesitate to
+        ask.\"\n
+    \n<b>Any one investigator may choose to add Abbess Allegria Di Biase to his or her deck.</b></string>
+    <string name="carnevale_many_sacrificed">Many were sacrificed to Cnidathqua during the Carnevale.\n<i>Mask</i> card added to each investigator\'s deck.\n</string>
+    <string name="carnevale_banished">The sun banished Cnidathqua into the depths.\n<i>Mask</i> card added to each investigator\'s deck.\n</string>
+    <string name="carnevale_retreated">Cnidathqua retreated to nurse its wounds.\n<i>Mask</i> card added to each investigator\'s deck.\n</string>
+    <string-array name="carnevale_rewards">
+        <item>No additional rewards</item>
+        <item>Sacrifice Made</item>
+        <item>Abbess Satisfied</item>
+    </string-array>
+    <string name="carnevale_no_rewards">추가 보상 없음.</string>
+    <string name="carnevale_sacrifice_made">Random basic <i>Madness</i>, <i>Injury</i>, or <i>Monster</i> weakness
+        added to each investigator\'s deck.</string>
+    <string name="carnevale_abbess_satisfied">Abbess Allegria Di Biase added to an investigator\'s deck.</string>
+
+
+</resources>
